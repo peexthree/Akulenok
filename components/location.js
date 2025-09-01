@@ -1,0 +1,39 @@
+import React from "react";
+import Container from "./container";
+import Script from "next/script";
+
+export default function Location() {
+  const address = "ул. Столярова, 1, Туймазы";
+  const phone = "+7 927 303-99-77";
+  const mapLink = "https://yandex.ru/maps/org/akulenok/125018811972/?ll=53.728390%2C54.600103&z=16";
+
+  return (
+    <Container>
+      <div id="contacts" className="grid gap-8 lg:grid-cols-2 items-start">
+        <div>
+          <h2 className="text-3xl font-semibold mb-2">Контакты и адрес</h2>
+          <div className="text-gray-700 dark:text-gray-300 space-y-2">
+            <div><span className="font-medium">Адрес:</span> {address}</div>
+            <div><span className="font-medium">Телефон:</span> <a href="tel:+79273039977" className="underline">{phone}</a></div>
+            <div><span className="font-medium">Режим:</span> Сегодня открыто до 21:00</div>
+            <div><span className="font-medium">Рейтинг:</span> ★ 4.7 (59 отзывов)</div>
+          </div>
+
+          <div className="mt-5 grid gap-3 sm:grid-cols-3">
+            <a href={mapLink} target="_blank" rel="noopener" className="text-center bg-gray-900 text-white px-4 py-3 rounded-md">Открыть в Яндекс.Картах</a>
+            <a href="https://t.me/+79273039977" target="_blank" rel="noopener" className="text-center bg-blue-500 text-white px-4 py-3 rounded-md">Telegram</a>
+            <a href="https://wa.me/+79273039977" target="_blank" rel="noopener" className="text-center bg-green-500 text-white px-4 py-3 rounded-md">WhatsApp</a>
+          </div>
+        </div>
+        
+        <div className="rounded-2xl overflow-hidden border" style={{height: "400px"}}>
+          <Script 
+            src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A3bc8364469f998d48316e3069ad02bfec23d4cf2a256c4d1fece1f5daac7dfca&width=100%25&height=400&lang=ru_RU&scroll=true" 
+            strategy="afterInteractive" 
+          />
+        </div>
+    
+      </div>
+    </Container>
+  );
+}

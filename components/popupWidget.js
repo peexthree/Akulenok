@@ -1,53 +1,51 @@
-import { Disclosure } from "@headlessui/react";
-// ... (начало файла без изменений) ...
-export default function PopupWidget() {
-  // ... (логика хуков без изменений) ...
+import { useState } from "react";
 
-  const onSubmit = async (data, e) => {
-    // ... (функция отправки без изменений) ...
-  };
+export default function PopupWidget() {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div>
-      <Disclosure>
-        {({ open }) => (
-          <>
-            {/* ... (кнопка виджета без изменений) ... */}
-            <Transition
-              className="fixed z-50 bottom-[100px] top-0 right-0 left-0 sm:top-auto sm:right-5 sm:left-auto"
-              enter="transition duration-200 transform ease"
-              enterFrom="opacity-0 translate-y-5"
-              leave="transition duration-200 transform ease"
-              leaveTo="opacity-0 translate-y-5">
-              <Disclosure.Panel className="flex flex-col overflow-hidden left-0 h-full w-full sm:w-[350px] min-h-[250px] sm:h-[600px] border border-gray-300 dark:border-gray-800 bg-white shadow-2xl rounded-md sm:max-h-[calc(100vh-120px)]">
-                <div className="flex flex-col items-center justify-center h-32 p-5 bg-indigo-600">
-                  <h3 className="text-lg text-white">Чем мы можем помочь?</h3>
-                  <p className="text-white opacity-50">
-                    Обычно отвечаем в течение часа
-                  </p>
-                </div>
-                <div className="flex-grow h-full p-6 overflow-auto bg-gray-50 ">
-                  {!isSubmitSuccessful && (
-                    <form onSubmit={handleSubmit(onSubmit)} noValidate>
-                      {/* TODO: КРИТИЧЕСКИ ВАЖНО!
-                        Замените "YOUR_ACCESS_KEY_HERE" на ваш реальный ключ с сайта web3forms.com
-                        Без этого форма работать НЕ БУДЕТ.
-                      */}
-                      <input
-                        type="hidden"
-                        value="YOUR_ACCESS_KEY_HERE"
-                        {...register("apikey")}
-                      />
-                      {/* ... (остальная форма без изменений) ... */}
-                    </form>
-                  )}
-                  {/* ... (остальной код отображения успеха/ошибки без изменений) ... */}
-                </div>
-              </Disclosure.Panel>
-            </Transition>
-          </>
-        )}
-      </Disclosure>
-    </div>
+    <>
+      {/* Кнопка открытия */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition"
+      >
+        💬
+      </button>
+
+      {/* Попап */}
+      {isOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white rounded-lg shadow-lg w-80 p-6 relative">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
+            >
+              ✖
+            </button>
+            <h2 className="text-lg font-semibold mb-4">Свяжитесь с нами</h2>
+            <p className="text-sm text-gray-600 mb-4">
+              Оставьте заявку и администратор свяжется с вами.
+            </p>
+            <a
+              href="https://wa.me/79273039977"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-center bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition mb-2"
+            >
+              WhatsApp
+            </a>
+            <a
+              href="https://t.me/akulenok_tmz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-center bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition"
+            >
+              Telegram
+            </a>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

@@ -1,39 +1,125 @@
+import { Fragment } from "react";
+import { Menu, Transition } from "@headlessui/react";
 import Link from "next/link";
-import React from "react";
-import ThemeChanger from "./DarkSwitch";
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
 export default function Navbar() {
   return (
-    <nav className="w-full py-4 flex justify-between items-center">
-      <div className="text-2xl font-bold">
-        <Link href="/">
-          <a className="flex items-center gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-indigo-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l9-9 9 9M4 10v10h16V10" />
-            </svg>
-            Акулёнок
-          </a>
-        </Link>
-      </div>
+    <nav className="bg-white shadow-md fixed w-full z-50 top-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          {/* Логотип */}
+          <div className="flex-shrink-0 flex items-center">
+            <Link href="/">
+              <img
+                className="h-8 w-auto"
+                src="/logo.svg"
+                alt="Акулёнок"
+              />
+            </Link>
+          </div>
 
-      <div className="flex items-center gap-6">
-        <Link href="/#about">
-          <a className="hover:text-indigo-600">О нас</a>
-        </Link>
-        <Link href="/#services">
-          <a className="hover:text-indigo-600">Услуги</a>
-        </Link>
-        <Link href="/#contact">
-          <a className="hover:text-indigo-600">Контакты</a>
-        </Link>
+          {/* Десктопное меню */}
+          <div className="hidden md:flex space-x-8 items-center">
+            <Link href="#services" className="text-gray-700 hover:text-blue-600">Услуги</Link>
+            <Link href="#pricing" className="text-gray-700 hover:text-blue-600">Цены</Link>
+            <Link href="#gallery" className="text-gray-700 hover:text-blue-600">Галерея</Link>
+            <Link href="#faq" className="text-gray-700 hover:text-blue-600">FAQ</Link>
+            <Link href="#contact" className="text-gray-700 hover:text-blue-600">Контакты</Link>
+          </div>
 
-        <ThemeChanger />
+          {/* Мобильное меню */}
+          <div className="flex items-center md:hidden">
+            <Menu as="div" className="relative inline-block text-left">
+              <Menu.Button className="inline-flex justify-center w-full rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600">
+                ☰
+              </Menu.Button>
+
+              <Transition
+                as={Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+              >
+                <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <div className="py-1">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link
+                          href="#services"
+                          className={classNames(
+                            active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                            "block px-4 py-2 text-sm"
+                          )}
+                        >
+                          Услуги
+                        </Link>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link
+                          href="#pricing"
+                          className={classNames(
+                            active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                            "block px-4 py-2 text-sm"
+                          )}
+                        >
+                          Цены
+                        </Link>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link
+                          href="#gallery"
+                          className={classNames(
+                            active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                            "block px-4 py-2 text-sm"
+                          )}
+                        >
+                          Галерея
+                        </Link>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link
+                          href="#faq"
+                          className={classNames(
+                            active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                            "block px-4 py-2 text-sm"
+                          )}
+                        >
+                          FAQ
+                        </Link>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link
+                          href="#contact"
+                          className={classNames(
+                            active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                            "block px-4 py-2 text-sm"
+                          )}
+                        >
+                          Контакты
+                        </Link>
+                      )}
+                    </Menu.Item>
+                  </div>
+                </Menu.Items>
+              </Transition>
+            </Menu>
+          </div>
+        </div>
       </div>
     </nav>
   );

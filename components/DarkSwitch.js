@@ -1,3 +1,5 @@
+"use client"; // Добавьте эту строку в самом верху файла
+
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 

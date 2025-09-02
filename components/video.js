@@ -13,15 +13,13 @@ export default function Video() {
       </SectionTitle>
 
       <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg">
-        <iframe
-          className="w-full h-full"
-          src="https://youtu.be/6AvZo_1tx9k"
-          title="Видео о центре Акулёнок"
-          frameBorder="0"   // ✅ исправлено
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen   // ✅ исправлено
-        ></iframe>
+       
+
+
+<iframe width="720" height="405" src="https://rutube.ru/play/embed/4ff08b99089f1cbe9ba85de425585c4c" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
       </div>
     </Container>
   );
 }
+

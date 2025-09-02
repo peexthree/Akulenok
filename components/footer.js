@@ -8,16 +8,16 @@ function Footer() {
       <div className="flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="text-lg font-semibold">© 2024 Акулёнок</div>
         <div className="flex gap-6">
-          <Link href="/" className="hover:text-indigo-600">
+          <Link href="/" className="hover:text-blue-600">
             Главная
           </Link>
-          <Link href="/#about" className="hover:text-indigo-600">
+          <Link href="/#about" className="hover:text-blue-600">
             О нас
           </Link>
-          <Link href="/#services" className="hover:text-indigo-600">
+          <Link href="/#services" className="hover:text-blue-600">
             Услуги
           </Link>
-          <Link href="/#contact" className="hover:text-indigo-600">
+          <Link href="/#contact" className="hover:text-blue-600">
             Контакты
           </Link>
         </div>

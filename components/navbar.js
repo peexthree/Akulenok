@@ -29,7 +29,7 @@ function Navbar() {
         {/* Логотип */}
         <div className="flex flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="text-xl font-bold text-indigo-600">
+            <span className="text-xl font-bold text-blue-600">
               Акулёнок
             </span>
           </Link>
@@ -41,7 +41,7 @@ function Navbar() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 hover:text-indigo-600 dark:text-white dark:hover:text-indigo-500"
+              className="text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
             >
               {item.name}
             </Link>
@@ -95,7 +95,7 @@ function Navbar() {
           >
             <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-3/4 bg-white p-6 sm:max-w-sm dark:bg-trueGray-900">
               <div className="flex items-center justify-between">
-                <Link href="/" className="text-lg font-bold text-indigo-600" onClick={() => setMobileMenuOpen(false)}>
+                <Link href="/" className="text-lg font-bold text-blue-600" onClick={() => setMobileMenuOpen(false)}>
                   Акулёнок
                 </Link>
                 <button
@@ -111,7 +111,7 @@ function Navbar() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="text-base font-medium text-gray-900 hover:text-indigo-600 dark:text-white dark:hover:text-indigo-500"
+                      className="text-base font-medium text-gray-900 hover:text-orange-500 dark:text-white dark:hover:text-orange-400"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}

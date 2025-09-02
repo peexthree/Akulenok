@@ -42,4 +42,24 @@ function Benefits({ data, imgPos = "left" }) {
               </Benefit>
             ))}
           </div>
-        </div>
+          </div>
+      </div>
+    </Container>
+  );
+}
+
+function Benefit({ title, children, icon }) {
+  return (
+    <div className="flex items-start mt-8 space-x-3">
+      <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 rounded-full bg-blue-100">
+        {React.cloneElement(icon, { className: "w-6 h-6 text-blue-600" })}
+      </div>
+      <div>
+        <div className="text-xl font-medium">{title}</div>
+        <div className="mt-1 text-gray-500 dark:text-gray-300">{children}</div>
+      </div>
+    </div>
+  );
+}
+
+export default React.memo(Benefits);

@@ -105,7 +105,7 @@ export default function Hero() {
       <Container>
         <div className="flex flex-col justify-center text-center">
           <div className="text-xl text-gray-700 dark:text-white">
-            Нам доверяют более <span className="text-indigo-600">200</span> семей в Туймазах
+            Нам доверяют более <span className="text-orange-500">200</span> семей в Туймазах
           </div>
         </div>
       </Container>

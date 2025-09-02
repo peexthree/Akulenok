@@ -1,27 +1,29 @@
 import Link from "next/link";
 import React from "react";
+import Container from "./container";
 
-export default function Footer() {
+function Footer() {
   return (
-    <footer className="bg-gray-100 dark:bg-trueGray-900 py-10">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <Container className="bg-gray-100 dark:bg-trueGray-900 py-10">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="text-lg font-semibold">© 2024 Акулёнок</div>
-
         <div className="flex gap-6">
-          <Link href="/">
-            <a className="hover:text-indigo-600">Главная</a>
+          <Link href="/" className="hover:text-indigo-600">
+            Главная
           </Link>
-          <Link href="/#about">
-            <a className="hover:text-indigo-600">О нас</a>
+          <Link href="/#about" className="hover:text-indigo-600">
+            О нас
           </Link>
-          <Link href="/#services">
-            <a className="hover:text-indigo-600">Услуги</a>
+          <Link href="/#services" className="hover:text-indigo-600">
+            Услуги
           </Link>
-          <Link href="/#contact">
-            <a className="hover:text-indigo-600">Контакты</a>
+          <Link href="/#contact" className="hover:text-indigo-600">
+            Контакты
           </Link>
         </div>
       </div>
-    </footer>
+    </Container>
   );
 }
+
+export default React.memo(Footer);

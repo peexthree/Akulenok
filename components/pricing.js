@@ -1,46 +1,103 @@
 import React from "react";
 import Container from "./container";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { CheckIcon } from "@heroicons/react/24/outline";
 
-export default function Pricing() {
+const pricingData = [
+  {
+    id: 1,
+    title: "Пробное занятие",
+    price: "850 ₽",
+    description: "в «счастливый час» 12:00–16:00*",
+    features: [
+      "30 минут в воде с инструктором",
+      "Знакомство с тренером и программой",
+      "Рекомендации для родителей",
+    ],
+    highlight: false,
+  },
+  {
+    id: 2,
+    title: "Абонемент (месяц)",
+    price: "от 8 960 ₽",
+    description: "групповые/мини‑группы",
+    features: [
+      "Регулярные тренировки по расписанию",
+      "Индивидуальный подход, мини‑группы",
+      "Сопровождение родителя по желанию",
+    ],
+    highlight: true,
+  },
+  {
+    id: 3,
+    title: "Индивидуальные",
+    price: "по запросу",
+    description: "плавание / ЛФК",
+    features: [
+      "Персональная программа под задачи",
+      "Реабилитация, гидрореабилитация",
+      "Гибкое время занятий",
+    ],
+    highlight: false,
+  },
+];
+
+function Pricing() {
   return (
     <Container>
-      <div className="text-center mb-8">
+      <div id="pricing" className="text-center mb-8">
         <h2 className="text-3xl font-semibold">Цены и форматы</h2>
-        <p className="text-gray-500 mt-2">Актуальные предложения для занятий по плаванию и ЛФК</p>
+        <p className="text-gray-500 mt-2">
+          Актуальные предложения для занятий по плаванию и ЛФК
+        </p>
       </div>
       <div className="grid gap-6 md:grid-cols-3">
-        <div className="rounded-2xl border p-6">
-          <div className="text-sm uppercase text-gray-500">Пробное занятие</div>
-          <div className="mt-2 text-3xl font-bold">850 ₽</div>
-          <div className="text-sm text-gray-500 mt-1">в «счастливый час» 12:00–16:00*</div>
-          <ul className="mt-4 space-y-2 text-gray-600">
-            <li>30 минут в воде с инструктором</li>
-            <li>Знакомство с тренером и программой</li>
-            <li>Рекомендации для родителей</li>
-          </ul>
-        </div>
-        <div className="rounded-2xl border p-6 ring-1 ring-indigo-200">
-          <div className="text-sm uppercase text-indigo-600">Абонемент (месяц)</div>
-          <div className="mt-2 text-3xl font-bold">от 8 960 ₽</div>
-          <div className="text-sm text-gray-500 mt-1">групповые/мини‑группы</div>
-          <ul className="mt-4 space-y-2 text-gray-600">
-            <li>Регулярные тренировки по расписанию</li>
-            <li>Индивидуальный подход, мини‑группы</li>
-            <li>Сопровождение родителя по желанию</li>
-          </ul>
-        </div>
-        <div className="rounded-2xl border p-6">
-          <div className="text-sm uppercase text-gray-500">Индивидуальные</div>
-          <div className="mt-2 text-3xl font-bold">по запросу</div>
-          <div className="text-sm text-gray-500 mt-1">плавание / ЛФК</div>
-          <ul className="mt-4 space-y-2 text-gray-600">
-            <li>Персональная программа под задачи</li>
-            <li>Реабилитация, гидрореабилитация</li>
-            <li>Гибкое время занятий</li>
-          </ul>
-        </div>
+        {pricingData.map((item) => (
+          <motion.div
+            key={item.id}
+            className={`rounded-2xl border p-6 dark:border-trueGray-700 ${
+              item.highlight
+                ? "ring-1 ring-indigo-200 dark:ring-indigo-700 shadow-lg relative"
+                : ""
+            }`}
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <div
+              className={`text-sm uppercase font-semibold ${
+                item.highlight ? "text-indigo-600" : "text-gray-500"
+              }`}
+            >
+              {item.title}
+            </div>
+            <div className="mt-2 text-3xl font-bold">{item.price}</div>
+            <div className="text-sm text-gray-500 mt-1">{item.description}</div>
+            <ul className="mt-4 space-y-2 text-gray-600 dark:text-gray-300">
+              {item.features.map((feature, i) => (
+                <li key={i} className="flex items-center space-x-2">
+                  <CheckIcon className="h-4 w-4 text-green-500 flex-shrink-0" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6">
+              <Link
+                href="#lead-form"
+                className={`block w-full text-center rounded-md py-3 font-medium transition ${
+                  item.highlight
+                    ? "bg-indigo-600 text-white hover:bg-indigo-700"
+                    : "bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-trueGray-700 dark:text-white dark:hover:bg-trueGray-600"
+                }`}
+              >
+                Записаться
+              </Link>
+            </div>
+          </motion.div>
+        ))}
       </div>
-      <p className="text-xs text-gray-400 mt-4">* Акции и условия могут меняться — уточняйте у администратора по телефону или в мессенджерах.</p>
     </Container>
   );
 }
+
+export default React.memo(Pricing);

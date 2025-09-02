@@ -16,8 +16,7 @@ export default async function handler(req, res) {
 Имя: ${parentName || '-'}
 Телефон: ${phone || '-'}
 Возраст ребёнка: ${childAge || '-'}
-Удобное время: ${timePref || '-'}
-UTM: ${utm || '-'}`;
+Удобное время: ${timePref || '-'}`;
 
     const tgUrl = `https://api.telegram.org/bot${tgToken}/sendMessage`;
     const tgResp = await fetch(tgUrl, {

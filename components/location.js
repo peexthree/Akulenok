@@ -1,11 +1,13 @@
 import React from "react";
 import Container from "./container";
 import Script from "next/script";
+import clsx from "clsx";
 
 export default function Location() {
   const address = "ул. Столярова, 1, Туймазы";
   const phone = "+7 927 303-99-77";
   const mapLink = "https://yandex.ru/maps/org/akulenok/125018811972/?ll=53.728390%2C54.600103&z=16";
+  const commonButtonClasses = "inline-flex items-center justify-center rounded-md px-4 py-3 font-medium transition focus:outline-none w-full text-white";
 
   return (
     <Container>
@@ -20,9 +22,15 @@ export default function Location() {
           </div>
 
           <div className="mt-5 grid gap-3 sm:grid-cols-3">
-            <a href={mapLink} target="_blank" rel="noopener" className="text-center bg-gray-900 text-white px-4 py-3 rounded-md">Открыть в Яндекс.Картах</a>
-            <a href="https://t.me/+79273039977" target="_blank" rel="noopener" className="text-center bg-blue-500 text-white px-4 py-3 rounded-md">Telegram</a>
-            <a href="https://wa.me/+79273039977" target="_blank" rel="noopener" className="text-center bg-green-500 text-white px-4 py-3 rounded-md">WhatsApp</a>
+            <a href={mapLink} target="_blank" rel="noopener noreferrer" className={clsx(commonButtonClasses, "bg-gray-900")}>
+              Открыть в Яндекс.Картах
+            </a>
+            <a href="https://t.me/+79273039977" target="_blank" rel="noopener noreferrer" className={clsx(commonButtonClasses, "bg-blue-500")}>
+              Telegram
+            </a>
+            <a href="https://wa.me/+79273039977" target="_blank" rel="noopener noreferrer" className={clsx(commonButtonClasses, "bg-green-500")}>
+              WhatsApp
+            </a>
           </div>
         </div>
         

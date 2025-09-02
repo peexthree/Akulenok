@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "./container";
 
-export default function About() {
+const About = () => {
   const stats = [
     { k: "3м+", v: "возраст начала" },
     { k: "4.7★", v: "рейтинг по отзывам" },
@@ -18,8 +18,8 @@ export default function About() {
             небольшой формат групп, внимательные инструкторы.
           </p>
           <div className="mt-5 grid grid-cols-3 gap-4">
-            {stats.map((s, i) => (
-              <div key={i} className="rounded-xl border p-4 text-center">
+            {stats.map((s) => (
+              <div key={s.k} className="rounded-xl border p-4 text-center">
                 <div className="text-2xl font-bold">{s.k}</div>
                 <div className="text-sm text-gray-500">{s.v}</div>
               </div>
@@ -29,12 +29,23 @@ export default function About() {
         <div className="rounded-2xl border p-6 dark:border-trueGray-700">
           <div className="text-lg font-semibold mb-2">Почему нам доверяют</div>
           <ul className="space-y-2 text-gray-600 dark:text-gray-300 list-disc list-inside">
-            <li>Опытные инструкторы по раннему плаванию и ЛФК.</li>
-            <li>Индивидуальный подход, работа с особенностями развития.</li>
-            <li>Зона ожидания и видеонаблюдение для родителей.</li>
+            <li>
+              Наши инструкторы имеют педагогическое, медицинское или спортивное образование и постоянно повышают квалификацию.
+            </li>
+            <li>
+              Мы используем современные технологии очистки воды: многоступенчатую фильтрацию, ультрафиолет и озонирование, без хлора.
+            </li>
+            <li>
+              У нас безопасно и комфортно: для каждого малыша отдельный инвентарь и одноразовые подгузники для плавания, которые входят в стоимость.
+            </li>
+            <li>
+              Персональный подход: составляем индивидуальную программу тренировок с учётом возраста и физических данных ребёнка.
+            </li>
           </ul>
         </div>
       </div>
     </Container>
   );
 }
+
+export default React.memo(About);

@@ -1,12 +1,16 @@
 import React from "react";
 import Container from "./container";
+import clsx from "clsx";
 
-export default function SectionTitle(props) {
+function SectionTitle(props) {
+  const containerClasses = clsx(
+    "flex w-full flex-col mt-4",
+    { "items-center justify-center text-center": props.align !== "left" },
+    props.className
+  );
+
   return (
-    <Container
-      className={`flex w-full flex-col mt-4 ${
-        props.align === "left" ? "" : "items-center justify-center text-center"
-      }`}>
+    <Container className={containerClasses}>
       {props.pretitle && (
         <div className="text-sm font-bold tracking-wider text-indigo-600 uppercase">
           {props.pretitle}
@@ -27,3 +31,5 @@ export default function SectionTitle(props) {
     </Container>
   );
 }
+
+export default React.memo(SectionTitle);

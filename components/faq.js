@@ -1,57 +1,53 @@
+"use client";
+
+import { Disclosure } from "@headlessui/react";
+import { ChevronUpIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import Container from "./container";
-import { Disclosure } from "@headlessui/react";
-import { ChevronUpIcon } from "@heroicons/react/solid";
 
-export default function Faq() {
+const faqs = [
+  {
+    question: "Как записаться?",
+    answer: "Оставьте заявку через форму на сайте или напишите нам в WhatsApp.",
+  },
+  {
+    question: "Где вы находитесь?",
+    answer: "Мы работаем в Туймазах, ул. Октябрьская 18/2.",
+  },
+  {
+    question: "Какие услуги предоставляете?",
+    answer: "Грудничковое плавание с 3 месяцев и индивидуальные занятия ЛФК.",
+  },
+];
+
+function FAQ() {
   return (
-    <Container className="!p-0">
-      <div className="w-full max-w-2xl p-2 mx-auto rounded-2xl">
-        {faqdata.map((item, index) => (
-          <div key={item.question} className="mb-5">
-            <Disclosure>
+    <Container className="p-8">
+      <div className="w-full max-w-2xl mx-auto">
+        <div className="space-y-4">
+          {faqs.map((faq, idx) => (
+            <Disclosure key={idx}>
               {({ open }) => (
-                <>
-                  <Disclosure.Button className="flex items-center justify-between w-full px-4 py-4 text-lg text-left text-gray-800 rounded-lg bg-gray-50 hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-indigo-100 focus-visible:ring-opacity-75 dark:bg-trueGray-800 dark:text-gray-200">
-                    <span>{item.question}</span>
+                <div className="rounded-lg bg-gray-50 p-4 shadow dark:bg-trueGray-800">
+                  <Disclosure.Button className="flex w-full justify-between items-center text-left text-gray-900 font-medium dark:text-gray-200">
+                    {faq.question}
                     <ChevronUpIcon
-                      className={`${
-                        open ? "transform rotate-180" : ""
-                      } w-5 h-5 text-indigo-500`}
+                      className={`h-5 w-5 text-gray-500 transition-transform ${
+                        open ? "rotate-180" : ""
+                      }`}
                     />
                   </Disclosure.Button>
-                  <Disclosure.Panel className="px-4 pt-4 pb-2 text-gray-500 dark:text-gray-300">
-                    {item.answer}
+                  <Disclosure.Panel className="mt-2 text-gray-600 dark:text-gray-400">
+                    {faq.answer}
                   </Disclosure.Panel>
-                </>
+                </div>
               )}
             </Disclosure>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </Container>
   );
 }
 
-const faqdata = [
-  {
-    question: "С какого возраста можно начинать?",
-    answer: "Мы принимаем малышей с 3 месяцев. Программы адаптированы под возраст и уровень.",
-  },
-  {
-    question: "Как очищается вода и какая температура?",
-    answer: "Используем современную фильтрацию и поддерживаем комфортную температуру для детей. Вода безопасна для занятий.",
-  },
-  {
-    question: "Сколько длится занятие и в каком формате?",
-    answer: "Обычно 30 минут. Доступны мини‑группы и индивидуальные тренировки. Родитель может присутствовать.",
-  },
-  {
-    question: "Можно ли заниматься детям с особенностями?",
-    answer: "Да, мы подбираем программу с учётом рекомендаций специалистов и состояния ребёнка.",
-  },
-  {
-    question: "Как записаться на пробное занятие?",
-    answer: "Оставьте заявку через форму на сайте — администратор свяжется и подберёт удобное время.",
-  },
-];
+export default React.memo(FAQ);

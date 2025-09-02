@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "./container";
-import { SparklesIcon, HeartIcon } from "@heroicons/react/solid";
+import { SparklesIcon, HeartIcon } from "@heroicons/react/24/solid";
 
 export default function Services() {
   const Item = ({ title, desc }) => (

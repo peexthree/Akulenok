@@ -1,24 +1,23 @@
 import Head from "next/head";
-import Hero from "../components/hero";
-import SectionTitle from "../components/sectionTitle";
-
-import { benefitOne, benefitTwo } from "../components/data";
-import Video from "../components/video";
-import Benefits from "../components/benefits";
-import Footer from "../components/footer";
-import Testimonials from "../components/testimonials";
-import Cta from "../components/cta";
-import Faq from "../components/faq";
-import Location from "../components/location";
-import ContactButtons from "../components/contactButtons";
-import Pricing from "../components/pricing";
-import Gallery from "../components/gallery";
-import Services from "../components/services";
-import Schedule from "../components/schedule";
-
 import dynamic from "next/dynamic";
 
-// ✅ грузим проблемные компоненты только на клиенте
+import Hero from "../components/hero";
+import SectionTitle from "../components/sectionTitle";
+import Benefits from "../components/benefits";
+import Services from "../components/services";
+import Pricing from "../components/pricing";
+import Testimonials from "../components/testimonials";
+import FAQ from "../components/faq";
+import Gallery from "../components/gallery";
+import Location from "../components/location";
+import Cta from "../components/cta";
+import Footer from "../components/footer";
+import ContactButtons from "../components/contactButtons";
+import Video from "../components/video";
+import About from "../components/about";
+
+import { benefitOne, benefitTwo } from "../components/data";
+
 const Navbar = dynamic(() => import("../components/navbar"), { ssr: false });
 const PopupWidget = dynamic(() => import("../components/popupWidget"), { ssr: false });
 
@@ -27,10 +26,7 @@ export default function Home() {
     <>
       <Head>
         <title>Акулёнок • Детский бассейн и ЛФК в Туймазах</title>
-        <meta
-          name="description"
-          content="Nextly is a free landing page template built with next.js & Tailwind CSS"
-        />
+        <meta name="description" content="Детский бассейн «Акулёнок» в Туймазах: грудничковое плавание, ЛФК, гидрореабилитация. Занятия для детей от 3 месяцев." />
         <link rel="icon" href="/favicon.ico" />
         <script
           type="application/ld+json"
@@ -39,6 +35,7 @@ export default function Home() {
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "name": "Акулёнок",
+              "image": "https://akulenok.tmz/img/hero.png",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "ул. Столярова, 1",
@@ -59,36 +56,32 @@ export default function Home() {
       <div className="mt-8"><ContactButtons /></div>
       <Services />
 
-      <SectionTitle pretitle="Nextly Benefits" title="Why should you use this landing page">
-        Nextly is a free landing page & marketing website template for startups
-        and indie projects. Its built with Next.js & TailwindCSS. And its
-        completely open-source.
+      <SectionTitle
+        pretitle="Почему мы"
+        title="Почему родители выбирают «Акулёнок»"
+      >
+        Специализированный детский аквацентр: грудничковое плавание и лечебная физкультура в тёплой стерильной воде под присмотром опытных инструкторов.
       </SectionTitle>
       <Benefits data={benefitOne} />
-      <div id="benefits"></div>
       <Benefits imgPos="right" data={benefitTwo} />
 
-      <SectionTitle pretitle="Watch a video" title="Learn how to fullfil your needs">
-        This section is to highlight a promo or demo video of your product.
-      </SectionTitle>
       <Video />
 
-      <SectionTitle pretitle="Testimonials" title="Here's what our customers said" />
-      <SectionTitle pretitle="Тарифы" title="Расписание и цены" />
+      <SectionTitle pretitle="Расписание и цены" title="Цены и форматы" />
       <Pricing />
-      <div id="testimonials"></div>
+
+      <SectionTitle pretitle="Отзывы" title="Что говорят наши клиенты" />
       <Testimonials />
 
-      <SectionTitle pretitle="FAQ" title="Frequently Asked Questions" />
+      <SectionTitle pretitle="Галерея" title="Фото из нашего бассейна" />
       <Gallery />
-      <div id="faq"></div>
-      <Faq />
 
-      <Cta />
-      <Schedule />
+      <SectionTitle pretitle="FAQ" title="Часто задаваемые вопросы" />
+      <FAQ />
+
       <Location />
+      <Cta />
       <Footer />
-
       <PopupWidget />
     </>
   );

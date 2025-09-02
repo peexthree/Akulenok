@@ -1,126 +1,129 @@
-import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import { Dialog, Transition } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import React from "react";
+import clsx from "clsx";
+import ThemeChanger from "./DarkSwitch";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+const navigation = [
+  { name: "Главная", href: "/" },
+  { name: "Услуги", href: "#services" },
+  { name: "Расписание и цены", href: "#pricing" },
+  { name: "Галерея", href: "#gallery" },
+  { name: "FAQ", href: "#faq" },
+  { name: "Контакты", href: "#contacts" },
+];
 
-export default function Navbar() {
+function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
-    <nav className="bg-white shadow-md fixed w-full z-50 top-0">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          {/* Логотип */}
-          <div className="flex-shrink-0 flex items-center">
-            <Link href="/">
-              <img
-                className="h-8 w-auto"
-                src="/logo.svg"
-                alt="Акулёнок"
-              />
+    <header className="fixed top-0 z-50 w-full bg-white shadow-md dark:bg-trueGray-900">
+      <nav
+        className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
+        aria-label="Global"
+      >
+        {/* Логотип */}
+        <div className="flex flex-1">
+          <Link href="/" className="-m-1.5 p-1.5">
+            <span className="text-xl font-bold text-indigo-600">
+              Акулёнок
+            </span>
+          </Link>
+        </div>
+
+        {/* Меню для десктопа */}
+        <div className="hidden lg:flex lg:gap-x-8">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 hover:text-indigo-600 dark:text-white dark:hover:text-indigo-500"
+            >
+              {item.name}
             </Link>
-          </div>
+          ))}
+        </div>
 
-          {/* Десктопное меню */}
-          <div className="hidden md:flex space-x-8 items-center">
-            <Link href="#services" className="text-gray-700 hover:text-blue-600">Услуги</Link>
-            <Link href="#pricing" className="text-gray-700 hover:text-blue-600">Цены</Link>
-            <Link href="#gallery" className="text-gray-700 hover:text-blue-600">Галерея</Link>
-            <Link href="#faq" className="text-gray-700 hover:text-blue-600">FAQ</Link>
-            <Link href="#contact" className="text-gray-700 hover:text-blue-600">Контакты</Link>
-          </div>
-
-          {/* Мобильное меню */}
-          <div className="flex items-center md:hidden">
-            <Menu as="div" className="relative inline-block text-left">
-              <Menu.Button className="inline-flex justify-center w-full rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600">
-                ☰
-              </Menu.Button>
-
-              <Transition
-                as={Fragment}
-                enter="transition ease-out duration-100"
-                enterFrom="transform opacity-0 scale-95"
-                enterTo="transform opacity-100 scale-100"
-                leave="transition ease-in duration-75"
-                leaveFrom="transform opacity-100 scale-100"
-                leaveTo="transform opacity-0 scale-95"
-              >
-                <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                  <div className="py-1">
-                    <Menu.Item>
-                      {({ active }) => (
-                        <Link
-                          href="#services"
-                          className={classNames(
-                            active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                            "block px-4 py-2 text-sm"
-                          )}
-                        >
-                          Услуги
-                        </Link>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <Link
-                          href="#pricing"
-                          className={classNames(
-                            active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                            "block px-4 py-2 text-sm"
-                          )}
-                        >
-                          Цены
-                        </Link>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <Link
-                          href="#gallery"
-                          className={classNames(
-                            active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                            "block px-4 py-2 text-sm"
-                          )}
-                        >
-                          Галерея
-                        </Link>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <Link
-                          href="#faq"
-                          className={classNames(
-                            active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                            "block px-4 py-2 text-sm"
-                          )}
-                        >
-                          FAQ
-                        </Link>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <Link
-                          href="#contact"
-                          className={classNames(
-                            active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                            "block px-4 py-2 text-sm"
-                          )}
-                        >
-                          Контакты
-                        </Link>
-                      )}
-                    </Menu.Item>
-                  </div>
-                </Menu.Items>
-              </Transition>
-            </Menu>
+        {/* Переключатель темы и кнопка меню */}
+        <div className="flex flex-1 items-center justify-end gap-x-4 lg:flex-none">
+          <ThemeChanger />
+          <div className="flex lg:hidden">
+            <button
+              type="button"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-300"
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label="Open mobile menu"
+            >
+              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            </button>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Мобильное меню */}
+      <Transition show={mobileMenuOpen} as={React.Fragment}>
+        <Dialog
+          as="div"
+          className="lg:hidden"
+          open={mobileMenuOpen}
+          onClose={setMobileMenuOpen}
+        >
+          <Transition.Child
+            as={React.Fragment}
+            enter="transition-opacity ease-in-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition-opacity ease-in-out duration-300"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 z-50 bg-black/30" />
+          </Transition.Child>
+
+          <Transition.Child
+            as={React.Fragment}
+            enter="transition ease-in-out duration-300 transform"
+            enterFrom="translate-x-full"
+            enterTo="translate-x-0"
+            leave="transition ease-in-out duration-300 transform"
+            leaveFrom="translate-x-0"
+            leaveTo="translate-x-full"
+          >
+            <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-3/4 bg-white p-6 sm:max-w-sm dark:bg-trueGray-900">
+              <div className="flex items-center justify-between">
+                <Link href="/" className="text-lg font-bold text-indigo-600" onClick={() => setMobileMenuOpen(false)}>
+                  Акулёнок
+                </Link>
+                <button
+                  type="button"
+                  className="p-2 text-gray-700 dark:text-gray-300"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                </button>
+              </div>
+              <div className="mt-6 flex flex-col gap-y-4">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="text-base font-medium text-gray-900 hover:text-indigo-600 dark:text-white dark:hover:text-indigo-500"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </Dialog.Panel>
+          </Transition.Child>
+        </Dialog>
+      </Transition>
+    </header>
   );
 }
+
+export default React.memo(Navbar);

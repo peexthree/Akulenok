@@ -1,14 +1,15 @@
 import {
-  EmojiHappyIcon,
-  ChartSquareBarIcon,
-  CursorClickIcon,
-  DeviceMobileIcon,
-  AdjustmentsIcon,
+  FaceSmileIcon,
+  ChartBarIcon,
+  CursorArrowRaysIcon,
+  DevicePhoneMobileIcon,
+  AdjustmentsHorizontalIcon,
   SunIcon,
-} from "@heroicons/react/outline";
+} from "@heroicons/react/24/outline";
 
 import benefitOneImg from "../public/img/benefit-one.png";
 import benefitTwoImg from "../public/img/benefit-two.png";
+import React from "react";
 
 const benefitOne = {
   title: "Почему родители выбирают «Акулёнок»",
@@ -18,17 +19,17 @@ const benefitOne = {
     {
       title: "С 3 месяцев",
       desc: "Безопасные занятия для самых маленьких, бережный подход и игра.",
-      icon: <EmojiHappyIcon />,
+      icon: <FaceSmileIcon />, // ✅ Имя иконки исправлено
     },
     {
       title: "Тёплая и чистая вода",
       desc: "Комфортный температурный режим и современная система очистки.",
-      icon: <ChartSquareBarIcon />,
+      icon: <ChartBarIcon />,
     },
     {
       title: "Индивидуальный подход",
       desc: "Мини‑группы и индивидуальные занятия, работа с особенностями развития.",
-      icon: <CursorClickIcon />,
+      icon: <CursorArrowRaysIcon />,
     },
   ],
 };
@@ -41,12 +42,12 @@ const benefitTwo = {
     {
       title: "ЛФК для детей",
       desc: "Занятия с элементами лечебной физкультуры в воде и на суше.",
-      icon: <DeviceMobileIcon />,
+      icon: <DevicePhoneMobileIcon />,
     },
     {
       title: "Опытные инструкторы",
       desc: "Сертифицированные специалисты по раннему плаванию и ЛФК.",
-      icon: <AdjustmentsIcon />,
+      icon: <AdjustmentsHorizontalIcon />,
     },
     {
       title: "Уют для семьи",

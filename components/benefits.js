@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Container from "./container";
 
-export default function Benefits({ data, imgPos = "left" }) {
+function Benefits({ data, imgPos = "left" }) {
   return (
     <Container className="flex flex-wrap mb-20 lg:gap-10 lg:flex-nowrap">
       <div
@@ -16,6 +16,7 @@ export default function Benefits({ data, imgPos = "left" }) {
           height={482}
           alt="Benefits"
           placeholder="blur"
+          loading="lazy"
         />
       </div>
 
@@ -64,3 +65,5 @@ function Benefit({ title, icon, children }) {
     </div>
   );
 }
+
+export default React.memo(Benefits);

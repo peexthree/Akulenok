@@ -16,7 +16,7 @@ export default function Video() {
        
 
 
-<iframe width="720" height="405" src="https://rutube.ru/play/embed/4ff08b99089f1cbe9ba85de425585c4c" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<iframe width="720" height="405" src="https://youtu.be/6AvZo_1tx9k" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 
       </div>
     </Container>

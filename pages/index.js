@@ -4,22 +4,24 @@ import dynamic from "next/dynamic";
 import Hero from "../components/hero";
 import SectionTitle from "../components/sectionTitle";
 import Benefits from "../components/benefits";
+import About from "../components/about";
 import Services from "../components/services";
+import Schedule from "../components/schedule";
 import Pricing from "../components/pricing";
 import Testimonials from "../components/testimonials";
-import FAQ from "../components/faq";
 import Gallery from "../components/gallery";
 import Location from "../components/location";
 import Cta from "../components/cta";
 import Footer from "../components/footer";
 import ContactButtons from "../components/contactButtons";
 import Video from "../components/video";
-import About from "../components/about";
 
 import { benefitOne, benefitTwo } from "../components/data";
 
+// Компоненты, которые должны быть отрендерены только на клиенте
 const Navbar = dynamic(() => import("../components/navbar"), { ssr: false });
 const PopupWidget = dynamic(() => import("../components/popupWidget"), { ssr: false });
+const Faq = dynamic(() => import("../components/faq"), { ssr: false }); // ✅ Добавлен динамический импорт для Faq
 
 export default function Home() {
   return (
@@ -73,13 +75,15 @@ export default function Home() {
       <SectionTitle pretitle="Отзывы" title="Что говорят наши клиенты" />
       <Testimonials />
 
-      <SectionTitle pretitle="Галерея" title="Фото из нашего бассейна" />
+      <SectionTitle pretitle="Галерея" title="Фото" />
       <Gallery />
 
-      <SectionTitle pretitle="FAQ" title="Часто задаваемые вопросы" />
-      <FAQ />
+      <div id="faq"></div>
+      <Faq />
 
+      <SectionTitle pretitle="Контакты" title="Адрес и контакты" />
       <Location />
+      
       <Cta />
       <Footer />
       <PopupWidget />

@@ -12,6 +12,7 @@ import SectionTitle from "../components/sectionTitle";
 import Benefits from "../components/benefits";
 import About from "../components/about";
 import Services from "../components/services";
+import Team from "../components/team";
 import Schedule from "../components/schedule";
 import Pricing from "../components/pricing";
 import Testimonials from "../components/testimonials";
@@ -69,17 +70,19 @@ export default function Home() {
       <Benefits data={benefitOne} />
       <Benefits imgPos="right" data={benefitTwo} />
 
+      <Team />
+
       <Video />
       
-      <SectionTitle pretitle="Расписание и цены" title="Цены и форматы" />
-      <Schedule />
-      <Pricing />
-
       <SectionTitle pretitle="Отзывы" title="Что говорят наши клиенты" />
       <Testimonials />
 
       <SectionTitle pretitle="Галерея" title="Фотогалерея" />
       <Gallery />
+
+      <SectionTitle pretitle="Расписание и цены" title="Цены и форматы" />
+      <Schedule />
+      <Pricing />
       
       <SectionTitle pretitle="Вопросы" title="Часто задаваемые вопросы" />
       <Faq />

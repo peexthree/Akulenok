@@ -49,10 +49,10 @@ export default function Hero() {
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8">
             <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
-              Детский бассейн и ЛФК в Туймазах
+              Тёплый детский бассейн и ЛФК для малышей от 3&nbsp;месяцев
             </h1>
             <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-xl dark:text-gray-300">
-              От 3 месяцев. Тёплая стерильная вода, опытные тренеры, видеонаблюдение для родителей. Запишитесь на пробное занятие — заботимся о здоровье и развитии вашего малыша.
+             Помогаем детям укрепить здоровье и полюбить воду с первых месяцев жизни.
             </p>
 
             {/* ==== Форма записи ==== */}

@@ -90,11 +90,13 @@ export default function Hero() {
           <div className="hidden lg:block">
             <Image
               src={heroImg}
-              width="616"
-              height="617"
+              width={616}
+              height={617}
               alt="Детский бассейн Акулёнок"
               loading="eager"
               priority
+              className="w-full h-auto"
+              sizes="(max-width:1024px) 100vw, 616px"
             />
           </div>
         </div>

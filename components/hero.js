@@ -5,7 +5,7 @@ import Container from "./container";
 import heroImg from "../public/img/hero.png";
 
 export default function Hero() {
-  const [status, setStatus] = useState("idle"); // 'idle', 'loading', 'success', 'error'
+   const [status, setStatus] = useState("idle");
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
@@ -45,26 +45,48 @@ export default function Hero() {
 
   return (
     <>
-      <Container className="flex flex-wrap pt-20">
+     <Container className="flex flex-wrap pt-20">
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8">
             <h1 className="text-4xl font-bold leading-snug tracking-tight text-aqua-dark lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-aqua-background">
               Тёплый детский бассейн и ЛФК для малышей от 3&nbsp;месяцев
             </h1>
-            <p className="py-5 text-xl leading-normal text-aqua-dark/80 lg:text-xl xl:text-xl dark:text-aqua-background/80">
+             <p className="py-5 text-xl leading-normal text-aqua-dark/80 lg:text-xl xl:text-xl dark:text-aqua-background/80">
               Помогаем детям укрепить здоровье и полюбить воду с первых месяцев жизни.
             </p>
 
             {/* ==== Форма записи ==== */}
             <form
               id="lead-form"
-              className="mt-8 grid w-full max-w-md gap-3"
+                  className="mt-8 grid w-full max-w-md gap-3"
               onSubmit={handleSubmit}
             >
-              <input name="parentName" required placeholder="Ваше имя" className="border p-3 rounded" disabled={status === 'loading'} />
-              <input name="phone" required placeholder="Телефон" className="border p-3 rounded" disabled={status === 'loading'} />
-              <input name="childAge" placeholder="Возраст ребёнка" className="border p-3 rounded" disabled={status === 'loading'} />
-              <input name="timePref" placeholder="Удобное время" className="border p-3 rounded" disabled={status === 'loading'} />
+            <input
+                name="parentName"
+                required
+                placeholder="Ваше имя"
+                className="border p-3 rounded"
+                disabled={status === "loading"}
+              />
+              <input
+                name="phone"
+                required
+                placeholder="Телефон"
+                className="border p-3 rounded"
+                disabled={status === "loading"}
+              />
+              <input
+                name="childAge"
+                placeholder="Возраст ребёнка"
+                className="border p-3 rounded"
+                disabled={status === "loading"}
+              />
+              <input
+                name="timePref"
+                placeholder="Удобное время"
+                className="border p-3 rounded"
+                disabled={status === "loading"}
+              />
               <button
                 type="submit"
                 className="rounded p-3 bg-aqua-accent text-white hover:bg-aqua-dark focus:outline-none focus:ring-2 focus:ring-aqua-accent disabled:bg-aqua-dark/50 disabled:cursor-not-allowed"
@@ -90,23 +112,23 @@ export default function Hero() {
           <div className="hidden lg:block">
             <Image
               src={heroImg}
-              width={616}
+                width={616}
               height={617}
               alt="Детский бассейн Акулёнок"
               loading="eager"
               priority
-              className="w-full h-auto"
+                   className="w-full h-auto"
               sizes="(max-width:1024px) 100vw, 616px"
             />
           </div>
         </div>
       </Container>
 
-      <Container>
-        <div className="text-xl text-aqua-dark dark:text-aqua-background">
-          Нам доверяют более <span className="text-orange-500">200</span> семей в Туймазах
-        </div>
-      </Container>
+     <Container>
+  <div className="text-xl text-aqua-dark dark:text-aqua-background">
+    Нам доверяют более <span className="text-orange-500">200</span> семей в Туймазах
+  </div>
+</Container>
     </>
   );
 }

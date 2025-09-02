@@ -7,14 +7,32 @@ export default function ContactButtons({ wide = false }) {
   const commonClasses = clsx(baseClass, fullClass);
 
   return (
-    <div className={clsx("grid gap-3", { "grid-cols-1": wide, "grid-cols-3": !wide })}>
-      <a href="https://t.me/+79273039977" target="_blank" rel="noopener noreferrer" className={clsx(commonClasses, "bg-blue-500 text-white")}>
+   <div
+      className={clsx(
+        "grid gap-x-3 gap-y-3",
+        wide ? "grid-cols-1 md:grid-cols-3" : "grid-cols-3"
+      )}
+    >
+       <a
+        href="https://t.me/+79273039977"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={clsx(commonClasses, "bg-aqua-accent text-white hover:bg-aqua-dark focus:ring-2 focus:ring-aqua-accent")}
+      >
         Telegram
       </a>
-      <a href="https://wa.me/+79273039977" target="_blank" rel="noopener noreferrer" className={clsx(commonClasses, "bg-green-500 text-white")}>
+       <a
+        href="https://wa.me/+79273039977"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={clsx(commonClasses, "bg-aqua-accent text-white hover:bg-aqua-dark focus:ring-2 focus:ring-aqua-accent")}
+      >
         WhatsApp
       </a>
-      <a href="tel:+79273039977" className={clsx(commonClasses, "bg-gray-800 text-white")}>
+       <a
+        href="tel:+79273039977"
+        className={clsx(commonClasses, "bg-aqua-accent text-white hover:bg-aqua-dark focus:ring-2 focus:ring-aqua-accent")}
+      >
         Позвонить
       </a>
     </div>

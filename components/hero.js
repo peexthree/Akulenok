@@ -45,31 +45,31 @@ export default function Hero() {
 
   return (
     <>
-      <Container className="flex flex-wrap">
+       <Container className="flex flex-wrap pt-20">
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8">
-            <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
+            <h1 className="text-4xl font-bold leading-snug tracking-tight text-aqua-dark lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-aqua-background">
               Тёплый детский бассейн и ЛФК для малышей от 3&nbsp;месяцев
             </h1>
-            <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-xl dark:text-gray-300">
+             <p className="py-5 text-xl leading-normal text-aqua-dark/80 lg:text-xl xl:text-xl dark:text-aqua-background/80">
              Помогаем детям укрепить здоровье и полюбить воду с первых месяцев жизни.
             </p>
 
             {/* ==== Форма записи ==== */}
             <form
               id="lead-form"
-              className="mt-8 grid gap-3 max-w-md"
+      className="mt-8 grid w-full max-w-md gap-3"
               onSubmit={handleSubmit}
             >
               <input name="parentName" required placeholder="Ваше имя" className="border p-3 rounded" disabled={status === 'loading'} />
               <input name="phone" required placeholder="Телефон" className="border p-3 rounded" disabled={status === 'loading'} />
               <input name="childAge" placeholder="Возраст ребёнка" className="border p-3 rounded" disabled={status === 'loading'} />
               <input name="timePref" placeholder="Удобное время" className="border p-3 rounded" disabled={status === 'loading'} />
-              <button
-                type="submit"
-                className="bg-blue-600 text-white rounded p-3 disabled:bg-gray-400 disabled:cursor-not-allowed"
-                disabled={status === "loading"}
-              >
+                <button
+                  type="submit"
+                   className="rounded p-3 bg-aqua-accent text-white hover:bg-aqua-dark focus:outline-none focus:ring-2 focus:ring-aqua-accent disabled:bg-aqua-dark/50 disabled:cursor-not-allowed"
+                  disabled={status === "loading"}
+                >
                 {status === "loading" ? "Отправка..." : "Записаться на пробное занятие"}
               </button>
               {status === "success" && (
@@ -103,8 +103,7 @@ export default function Hero() {
       </Container>
 
       <Container>
-        <div className="flex flex-col justify-center text-center">
-          <div className="text-xl text-gray-700 dark:text-white">
+        <div className="text-xl text-aqua-dark dark:text-aqua-background">
             Нам доверяют более <span className="text-orange-500">200</span> семей в Туймазах
           </div>
         </div>

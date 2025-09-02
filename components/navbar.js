@@ -21,15 +21,15 @@ function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-white shadow-md dark:bg-trueGray-900">
+     <header className="fixed top-0 z-50 w-full bg-aqua-background shadow-md dark:bg-aqua-dark">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
+            className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 lg:px-8"
         aria-label="Global"
       >
-        {/* Логотип */}
+         {/* Логотип */}
         <div className="flex flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="text-xl font-bold text-blue-600">
+                        <span className="text-xl font-bold text-aqua-accent">
               Акулёнок
             </span>
           </Link>
@@ -41,7 +41,7 @@ function Navbar() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900 transition-colors duration-200 hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
+                   className="text-sm font-semibold leading-6 text-aqua-dark transition-colors duration-200 hover:text-aqua-accent focus:text-aqua-accent dark:text-aqua-background dark:hover:text-aqua-accent dark:focus:text-aqua-accent"
             >
               {item.name}
             </Link>
@@ -54,7 +54,7 @@ function Navbar() {
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-300"
+                   className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-aqua-dark dark:text-aqua-background focus:outline-none focus:ring-2 focus:ring-aqua-accent"
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open mobile menu"
             >
@@ -93,14 +93,14 @@ function Navbar() {
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-3/4 bg-white p-6 sm:max-w-sm dark:bg-trueGray-900">
+            <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-3/4 bg-aqua-background p-6 sm:max-w-sm dark:bg-aqua-dark">
               <div className="flex items-center justify-between">
-                <Link href="/" className="text-lg font-bold text-blue-600" onClick={() => setMobileMenuOpen(false)}>
-                  Акулёнок
+                     <Link href="/" className="text-lg font-bold text-aqua-accent" onClick={() => setMobileMenuOpen(false)}>
+		 Акулёнок
                 </Link>
                 <button
                   type="button"
-                  className="p-2 text-gray-700 dark:text-gray-300"
+                               className="p-2 text-aqua-dark dark:text-aqua-background focus:outline-none focus:ring-2 focus:ring-aqua-accent"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -111,7 +111,7 @@ function Navbar() {
                   <Link
                     key={item.name}
                     href={item.href}
-                      className="text-base font-medium text-gray-900 hover:text-orange-500 dark:text-white dark:hover:text-orange-400"
+                      className="text-base font-medium text-aqua-dark hover:text-aqua-accent focus:text-aqua-accent dark:text-aqua-background dark:hover:text-aqua-accent dark:focus:text-aqua-accent"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}

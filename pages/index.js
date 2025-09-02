@@ -1,6 +1,12 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
 
+// ✅ Компоненты, которые должны быть отрендерены только на клиенте
+const Navbar = dynamic(() => import("../components/navbar"), { ssr: false });
+const Faq = dynamic(() => import("../components/faq"), { ssr: false });
+const PopupWidget = dynamic(() => import("../components/popupWidget"), { ssr: false });
+
+// Остальные компоненты, которые не вызывают ошибок
 import Hero from "../components/hero";
 import SectionTitle from "../components/sectionTitle";
 import Benefits from "../components/benefits";
@@ -17,11 +23,6 @@ import ContactButtons from "../components/contactButtons";
 import Video from "../components/video";
 
 import { benefitOne, benefitTwo } from "../components/data";
-
-// Компоненты, которые должны быть отрендерены только на клиенте
-const Navbar = dynamic(() => import("../components/navbar"), { ssr: false });
-const PopupWidget = dynamic(() => import("../components/popupWidget"), { ssr: false });
-const Faq = dynamic(() => import("../components/faq"), { ssr: false }); // ✅ Добавлен динамический импорт для Faq
 
 export default function Home() {
   return (
@@ -56,6 +57,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <div className="mt-8"><ContactButtons /></div>
+      <About />
       <Services />
 
       <SectionTitle
@@ -68,20 +70,21 @@ export default function Home() {
       <Benefits imgPos="right" data={benefitTwo} />
 
       <Video />
-
+      
       <SectionTitle pretitle="Расписание и цены" title="Цены и форматы" />
+      <Schedule />
       <Pricing />
 
       <SectionTitle pretitle="Отзывы" title="Что говорят наши клиенты" />
       <Testimonials />
 
-      <SectionTitle pretitle="Галерея" title="Фото" />
+      <SectionTitle pretitle="Галерея" title="Фотогалерея" />
       <Gallery />
-
-      <div id="faq"></div>
+      
+      <SectionTitle pretitle="Вопросы" title="Часто задаваемые вопросы" />
       <Faq />
-
-      <SectionTitle pretitle="Контакты" title="Адрес и контакты" />
+      
+      <SectionTitle pretitle="Контакты" title="Наш адрес и контакты" />
       <Location />
       
       <Cta />

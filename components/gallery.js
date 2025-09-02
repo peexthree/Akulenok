@@ -42,9 +42,9 @@ function Gallery() {
             <Image
               src={src}
               alt={`Фото из бассейна Акулёнок ${i + 1}`}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-xl"
+              fill
+              className="object-cover rounded-xl"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           </motion.div>
         ))}

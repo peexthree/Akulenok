@@ -15,7 +15,7 @@ export default function Video() {
       <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg">
         <iframe
           className="w-full h-full"
-          src="https://disk.yandex.ru/d/JDPRgVgQC-317Q/%D0%90%D0%BA%D1%83%D0%BB%D0%B5%D0%BD%D0%BE%D0%BA.mp4"
+          src="https://youtu.be/6AvZo_1tx9k"
           title="Видео о центре Акулёнок"
           frameBorder="0"   // ✅ исправлено
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

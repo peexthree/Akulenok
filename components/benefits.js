@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import Container from "./container";
+import { motion } from "framer-motion";
+import { fadeInUp } from "./animations";
 
 function Benefits({ data, imgPos = "left" }) {
   return (
@@ -50,7 +52,15 @@ function Benefits({ data, imgPos = "left" }) {
 
 function Benefit({ title, children, icon }) {
   return (
-    <div className="flex items-start mt-8 space-x-3">
+    <motion.div
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      whileHover="hover"
+      viewport={{ once: true }}
+      tabIndex={0}
+      className="flex items-start mt-8 space-x-3 transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua-accent"
+    >
       <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 rounded-full bg-blue-100">
         {React.cloneElement(icon, { className: "w-6 h-6 text-blue-600" })}
       </div>
@@ -58,7 +68,7 @@ function Benefit({ title, children, icon }) {
         <div className="text-xl font-medium">{title}</div>
         <div className="mt-1 text-gray-500 dark:text-gray-300">{children}</div>
       </div>
-    </div>
+  </motion.div>
   );
 }
 

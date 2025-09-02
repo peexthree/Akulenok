@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-
+import { inter, fredoka } from "./_app";
 class MyDocument extends Document {
   render() {
     return (
@@ -7,16 +7,9 @@ class MyDocument extends Document {
         <Head>
  <link rel="icon" href="/favicon.ico" sizes="any" />
           <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap"
-            rel="stylesheet"
-          />
+          
         </Head>
-        <body>
+        <body className={`${inter.variable} ${fredoka.variable}`}>
           <Main />
           <NextScript />
         </body>

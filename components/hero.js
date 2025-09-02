@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import Button from "./Button";
+import { PaperAirplaneIcon, PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
 import ContactButtons from "./contactButtons";
 import Container from "./container";
-import heroImg from "../public/img/hero.png";
 
 export default function Hero() {
    const [status, setStatus] = useState("idle");
@@ -44,8 +46,22 @@ export default function Hero() {
   };
 
   return (
-    <>
-     <Container className="flex flex-wrap pt-20">
+    <motion.section
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="relative"
+    >
+      <Image
+        src="/img/hero.png"
+        alt="Детский бассейн Акулёнок"
+        fill
+        priority
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-tr from-white/80 to-white/40 dark:from-black/70 dark:to-black/40" />
+
+     <Container className="relative z-10 flex flex-wrap pt-20">
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8">
             <h1 className="text-4xl font-bold leading-snug tracking-tight text-aqua-dark lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-aqua-background">
@@ -55,80 +71,104 @@ export default function Hero() {
               Помогаем детям укрепить здоровье и полюбить воду с первых месяцев жизни.
             </p>
 
-            {/* ==== Форма записи ==== */}
-            <form
-              id="lead-form"
-                  className="mt-8 grid w-full max-w-md gap-3"
-              onSubmit={handleSubmit}
-            >
-            <input
-                name="parentName"
-                required
-                placeholder="Ваше имя"
-                className="border p-3 rounded"
-                disabled={status === "loading"}
-              />
-              <input
-                name="phone"
-                required
-                placeholder="Телефон"
-                className="border p-3 rounded"
-                disabled={status === "loading"}
-              />
-              <input
-                name="childAge"
-                placeholder="Возраст ребёнка"
-                className="border p-3 rounded"
-                disabled={status === "loading"}
-              />
-              <input
-                name="timePref"
-                placeholder="Удобное время"
-                className="border p-3 rounded"
-                disabled={status === "loading"}
-              />
-              <button
-                type="submit"
-                className="rounded p-3 bg-aqua-accent text-white hover:bg-aqua-dark focus:outline-none focus:ring-2 focus:ring-aqua-accent disabled:bg-aqua-dark/50 disabled:cursor-not-allowed"
-                disabled={status === "loading"}
+               {/* ==== Форма записи ==== */}
+              <motion.form
+                id="lead-form"
+                className="mt-8 grid w-full max-w-md gap-3"
+                onSubmit={handleSubmit}
               >
-                {status === "loading" ? "Отправка..." : "Записаться на пробное занятие"}
-              </button>
-              {status === "success" && (
-                <p className="text-green-600 mt-2">{message}</p>
-              )}
-              {status === "error" && (
-                <p className="text-red-600 mt-2">{message}</p>
-              )}
-            </form>
+                <motion.input
+                  name="parentName"
+                  required
+                  placeholder="Ваше имя"
+                  className="border p-3 rounded"
+                  disabled={status === "loading"}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                />
+                <motion.input
+                  name="phone"
+                  required
+                  placeholder="Телефон"
+                  className="border p-3 rounded"
+                  disabled={status === "loading"}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                />
+                <motion.input
+                  name="childAge"
+                  placeholder="Возраст ребёнка"
+                  className="border p-3 rounded"
+                  disabled={status === "loading"}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                />
+                <motion.input
+                  name="timePref"
+                  placeholder="Удобное время"
+                  className="border p-3 rounded"
+                  disabled={status === "loading"}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                />
+                <motion.button
+                  type="submit"
+                  className="bg-aqua-accent text-white hover:bg-aqua-dark disabled:bg-aqua-dark/50 disabled:cursor-not-allowed"
+                  disabled={status === "loading"}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {status === "loading" ? "Отправка..." : "Записаться на пробное занятие"}
+                </motion.button>
+                {status === "success" && (
+                  <p className="text-green-600 mt-2">{message}</p>
+                )}
+                {status === "error" && (
+                  <p className="text-red-600 mt-2">{message}</p>
+                )}
+              </motion.form>
+<div className="flex gap-4 mt-4">
+                <motion.a
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="#"
+                  aria-label="Telegram"
+                  className="p-2 bg-white rounded-full shadow text-aqua-dark"
+                >
+                  <PaperAirplaneIcon className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="#"
+                  aria-label="Phone"
+                  className="p-2 bg-white rounded-full shadow text-aqua-dark"
+                >
+                  <PhoneIcon className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="#"
+                  aria-label="Email"
+                  className="p-2 bg-white rounded-full shadow text-aqua-dark"
+                >
+                  <EnvelopeIcon className="w-5 h-5" />
+                </motion.a>
+              </div>
 
-            <div className="mt-5">
-              <ContactButtons wide={true} />
-            </div>
-          </div>
-        </div>
-
-        <div className="flex items-center justify-center w-full lg:w-1/2">
-          <div className="hidden lg:block">
-            <Image
-              src={heroImg}
-                width={616}
-              height={617}
-              alt="Детский бассейн Акулёнок"
-              loading="eager"
-              priority
-                   className="w-full h-auto"
-              sizes="(max-width:1024px) 100vw, 616px"
-            />
+      <div className="mt-5">
+                <ContactButtons wide={true} />
+              </div>
           </div>
         </div>
       </Container>
 
-     <Container>
+     <Container className="relative z-10">
   <div className="text-xl text-aqua-dark dark:text-aqua-background">
     Нам доверяют более <span className="text-orange-500">200</span> семей в Туймазах
   </div>
 </Container>
-    </>
+     </motion.section>
   );
 }

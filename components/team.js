@@ -1,7 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Container from "./container";
-
+import { motion } from "framer-motion";
+import { fadeInUp } from "./animations";
 const members = [
   {
     name: "Алсу Ханнанова",
@@ -32,7 +33,16 @@ export default function Team() {
       </div>
       <div className="grid gap-8 md:grid-cols-3">
         {members.map((m) => (
-          <div key={m.name} className="text-center">
+         <motion.div
+            key={m.name}
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            whileHover="hover"
+            viewport={{ once: true }}
+            tabIndex={0}
+            className="text-center p-4 rounded-lg transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua-accent"
+          >
             <Image
               src={m.image}
               width={160}
@@ -43,7 +53,7 @@ export default function Team() {
             <div className="mt-4 font-medium">{m.name}</div>
             <div className="text-sm text-gray-500">{m.role}</div>
             <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">{m.desc}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </Container>

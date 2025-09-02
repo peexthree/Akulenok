@@ -7,6 +7,8 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import clsx from "clsx";
 import ThemeChanger from "./DarkSwitch";
+import { motion } from "framer-motion";
+import { fadeInUp } from "./animations";
 
 const navigation = [
   { name: "Главная", href: "/" },
@@ -16,6 +18,8 @@ const navigation = [
   { name: "FAQ", href: "#faq" },
   { name: "Контакты", href: "#contacts" },
 ];
+
+const MotionLink = motion(Link);
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -38,13 +42,18 @@ function Navbar() {
         {/* Меню для десктопа */}
         <div className="hidden lg:flex lg:gap-x-8">
           {navigation.map((item) => (
-            <Link
+            <MotionLink
               key={item.name}
               href={item.href}
-                   className="text-sm font-semibold leading-6 text-aqua-dark transition-colors duration-200 hover:text-aqua-accent focus:text-aqua-accent dark:text-aqua-background dark:hover:text-aqua-accent dark:focus:text-aqua-accent"
+                  variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              whileHover="hover"
+              viewport={{ once: true }}
+              className="text-sm font-semibold leading-6 text-aqua-dark transition-colors hover:text-aqua-accent focus:text-aqua-accent dark:text-aqua-background dark:hover:text-aqua-accent dark:focus:text-aqua-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua-accent"
             >
               {item.name}
-            </Link>
+            </MotionLink>
           ))}
         </div>
 
@@ -108,14 +117,19 @@ function Navbar() {
               </div>
               <div className="mt-6 flex flex-col gap-y-4">
                 {navigation.map((item) => (
-                  <Link
+                   <MotionLink
                     key={item.name}
                     href={item.href}
-                      className="text-base font-medium text-aqua-dark hover:text-aqua-accent focus:text-aqua-accent dark:text-aqua-background dark:hover:text-aqua-accent dark:focus:text-aqua-accent"
+                        variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    whileHover="hover"
+                    viewport={{ once: true }}
+                    className="text-base font-medium text-aqua-dark transition-colors hover:text-aqua-accent focus:text-aqua-accent dark:text-aqua-background dark:hover:text-aqua-accent dark:focus:text-aqua-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua-accent"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
-                  </Link>
+                  </MotionLink>
                 ))}
               </div>
             </Dialog.Panel>

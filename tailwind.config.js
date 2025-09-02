@@ -21,6 +21,10 @@ module.exports = {
           DEFAULT: "#0077B6", // значение по умолчанию
         },
       },
+fontFamily: {
+        inter: ["var(--font-inter)"],
+        fredoka: ["var(--font-fredoka)"],
+      },
     },
   },
   plugins: [

@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "./container";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import Button from "./Button";
 import { CheckIcon } from "@heroicons/react/24/outline";
 
 const scheduleData = [
@@ -73,16 +73,16 @@ function Schedule() {
               ))}
             </ul>
             <div className="mt-6">
-              <Link
+           <Button
                 href="#lead-form"
-                className={`block w-full text-center rounded-md py-3 font-medium transition ${
+                  className={`w-full ${
                   item.highlight
                     ? "bg-indigo-600 text-white hover:bg-indigo-700"
                     : "bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-trueGray-700 dark:text-white dark:hover:bg-trueGray-600"
                 }`}
               >
                 Записаться
-              </Link>
+                 </Button>
             </div>
           </motion.div>
         ))}

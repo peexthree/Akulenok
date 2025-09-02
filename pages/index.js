@@ -1,11 +1,7 @@
 import Head from "next/head";
-import dynamic from "next/dynamic";
-
-// ✅ Компоненты, которые должны быть отрендерены только на клиенте
-const Navbar = dynamic(() => import("../components/navbar"), { ssr: false });
-const Faq = dynamic(() => import("../components/faq"), { ssr: false });
-const PopupWidget = dynamic(() => import("../components/popupWidget"), { ssr: false });
-
+import Navbar from "../components/navbar";
+import Faq from "../components/faq";
+import PopupWidget from "../components/popupWidget";
 // Остальные компоненты, которые не вызывают ошибок
 import Hero from "../components/hero";
 import SectionTitle from "../components/sectionTitle";

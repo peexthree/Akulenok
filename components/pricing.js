@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "./container";
 import { motion } from "framer-motion";
+import { fadeInUp } from "./animations";
 import Link from "next/link";
 import { CheckIcon } from "@heroicons/react/24/outline";
 
@@ -56,13 +57,18 @@ function Pricing() {
         {pricingData.map((item) => (
           <motion.div
             key={item.id}
-            className={`rounded-2xl border p-6 dark:border-trueGray-700 ${
+             variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            whileHover="hover"
+            viewport={{ once: true }}
+            tabIndex={0}
+            className={`rounded-2xl border p-6 dark:border-trueGray-700 transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua-accent ${
               item.highlight
                 ? "ring-1 ring-indigo-200 dark:ring-indigo-700 shadow-lg relative"
                 : ""
             }`}
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 300 }}
+           
           >
             <div
               className={`text-sm uppercase font-semibold ${

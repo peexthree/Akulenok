@@ -5,7 +5,7 @@ export default function Video() {
   return (
     <Container>
       <SectionTitle
-        pretitle="Видео о центре"
+      
         title="Познакомьтесь с «Акулёнком» ближе"
       >
         Короткий ролик о том, как проходят занятия в нашем бассейне и почему

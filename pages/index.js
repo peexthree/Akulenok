@@ -74,22 +74,22 @@ export default function Home() {
 
       <Video />
       
-      <SectionTitle pretitle="Отзывы" title="Что говорят наши клиенты" />
+        <SectionTitle title="Что говорят наши клиенты" />
       <Testimonials />
 
-   <SectionTitle pretitle="Галерея" title="Фотогалерея">
+   <SectionTitle  title="Фотогалерея">
         Реальные занятия в «Акулёнке»
       </SectionTitle>
       <Gallery />
 
-      <SectionTitle pretitle="Расписание и цены" title="Цены и форматы" />
+      <SectionTitle  title="Цены и форматы" />
       <Schedule />
       <Pricing />
       
-      <SectionTitle pretitle="Вопросы" title="Часто задаваемые вопросы" />
+      <SectionTitle  title="Часто задаваемые вопросы" />
       <Faq />
       
-      <SectionTitle pretitle="Контакты" title="Наш адрес и контакты" />
+      <SectionTitle  title="Наш адрес и контакты" />
       <Location />
       
       <Cta />

@@ -8,9 +8,7 @@
   html,
   body {
       @apply bg-aqua-background text-aqua-dark dark:bg-aqua-dark dark:text-aqua-background;
-background-image: url("/img/akulenok-mascot.png");
-      background-repeat: repeat;
-      background-size: 200px;
+
   }
 
   button {

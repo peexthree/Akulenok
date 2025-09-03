@@ -19,7 +19,10 @@ import Cta from "../components/cta";
 import Footer from "../components/footer";
 import ContactButtons from "../components/contactButtons";
 import Video from "../components/video";
-import WhyChoose from "../components/whyChoose";export default function Home() {
+import WhyChoose from "../components/whyChoose";
+import Container from "../components/container";
+
+export default function Home() {
   return (
     <>
       <Head>
@@ -56,7 +59,9 @@ import WhyChoose from "../components/whyChoose";export default function Home() {
       <Methodology />
       <Checklist />
       <Services />
- <div className="mt-8"><ContactButtons /></div>
+     <Container className="mt-8">
+        <ContactButtons />
+      </Container>
       <SectionTitle title="Почему родители выбирают «Акулёнок»" />
       <WhyChoose />
       <Team />

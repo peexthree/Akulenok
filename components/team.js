@@ -28,7 +28,7 @@ export default function Team() {
     <Container>
       <div id="team" className="text-center mb-8">
         <h2 className="text-3xl font-semibold">Наша команда</h2>
-        <p className="text-gray-500 mt-2">Опытные инструкторы, которые любят детей</p>
+        <p className="text-gray-700 mt-2">Опытные инструкторы, которые любят детей</p>
       </div>
       <div className="grid gap-8 md:grid-cols-3">
         {members.map((m) => (
@@ -50,7 +50,7 @@ export default function Team() {
               className="mx-auto rounded-full object-cover"
             />
             <div className="mt-4 font-medium">{m.name}</div>
-            <div className="text-sm text-gray-500">{m.role}</div>
+            <div className="text-sm text-gray-700">{m.role}</div>
            
           </motion.div>
         ))}

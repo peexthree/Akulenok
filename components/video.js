@@ -15,7 +15,7 @@ export default function Video() {
       <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg">
         <video
           className="h-full w-full object-cover"
-          src="/video/hero.mp4"
+          src="/video/hero_small.mp4"
           // Если добавишь webm — лучше через <source> (пример ниже).
           autoPlay
           muted

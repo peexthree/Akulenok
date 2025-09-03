@@ -1,5 +1,5 @@
 import React from "react";
-import { CheckCircle2 } from "lucide-react"; // иконки
+import { CheckCircleIcon } from "@heroicons/react/24/solid"; // иконки
 import Container from "./container";
 
 const items = [
@@ -23,7 +23,7 @@ export default function Checklist() {
         <ul className="space-y-3">
           {items.map((item) => (
             <li key={item} className="flex items-center gap-3">
-              <CheckCircle2 className="text-blue-500 w-5 h-5" />
+                        <CheckCircleIcon className="text-blue-500 w-5 h-5" />
               <span>{item}</span>
             </li>
           ))}

@@ -7,7 +7,7 @@
 @layer base {
   html,
   body {
-      @apply bg-aqua-background text-aqua-dark dark:bg-aqua-dark dark:text-aqua-background;
+      @apply text-aqua-dark dark:text-aqua-background;
 
   }
 
@@ -16,6 +16,6 @@
   }
 
   img {
-    @apply bg-aqua;
+    @apply bg-white;
   }
 }

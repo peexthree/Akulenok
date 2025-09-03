@@ -25,7 +25,7 @@ function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-     <header className="fixed top-0 z-50 w-full bg-aqua-background shadow-md dark:bg-aqua-dark">
+     <header className="fixed top-0 z-50 w-full shadow-md">
       <nav
             className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 lg:px-8"
         aria-label="Global"
@@ -102,7 +102,7 @@ function Navbar() {
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-3/4 bg-aqua-background p-6 sm:max-w-sm dark:bg-aqua-dark">
+            <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-3/4 p-6 sm:max-w-sm">
               <div className="flex items-center justify-between">
                      <Link href="/" className="text-lg font-bold text-aqua-accent" onClick={() => setMobileMenuOpen(false)}>
 		 Акулёнок

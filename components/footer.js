@@ -6,7 +6,7 @@ import Image from "next/image"; // Важно: импортируем компо
 
 function Footer() {
   return (
-    <footer className="relative bg-aqua-dark text-white py-10">
+    <footer className="relative text-aqua-dark py-10">
       <div className="absolute top-0 left-0 w-full -translate-y-full overflow-hidden leading-none">
         <svg
           className="relative block w-[calc(100%+1.3px)] h-8"

@@ -48,7 +48,7 @@ export default function Hero() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="relative bg-aqua-background dark:bg-aqua-dark"
+       className="relative"
     >
       <Image
      src="/img/akulenok-mascot.png"

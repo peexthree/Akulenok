@@ -6,7 +6,7 @@ export default function Layout({ children }) {
     <div className="relative">
       <OceanBackground />
        {/* Полупрозрачный слой с размытием для улучшения читаемости текста */}
-      <div className="relative z-10 backdrop-blur-md bg-white/70 dark:bg-aqua-dark/60">
+      <div className="relative z-10 backdrop-blur-md bg-white/20 dark:bg-aqua-dark/15">
         {children}
       </div>
     </div>

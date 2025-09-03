@@ -58,7 +58,7 @@ console.error(err);
         alt="Детский бассейн Акулёнок"
         fill
         priority
-    className="object-contain object-right scale-90"
+      className="object-contain object-center md:object-right scale-90"
       />
      
      <Container className="relative z-10 flex flex-wrap pt-20">
@@ -74,14 +74,14 @@ console.error(err);
                {/* ==== Форма записи ==== */}
               <motion.form
                 id="lead-form"
-                 className="mt-8 grid w-full max-w-md gap-3 p-6 bg-white/70 rounded-lg"
+                className="mt-8 grid w-full max-w-md gap-3 p-6 bg-white/70 dark:bg-aqua-dark/70 rounded-lg"
                 onSubmit={handleSubmit}
               >
                 <motion.input
                   name="parentName"
                   required
                   placeholder="Ваше имя"
-                   className="border p-3 rounded bg-white/70"
+                  className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background"
                   disabled={status === "loading"}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -90,7 +90,7 @@ console.error(err);
                   name="phone"
                   required
                   placeholder="Телефон"
-                 className="border p-3 rounded bg-white/70"
+                 className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background"
                   disabled={status === "loading"}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -98,7 +98,7 @@ console.error(err);
                 <motion.input
                   name="childAge"
                   placeholder="Возраст ребёнка"
-                  className="border p-3 rounded bg-white/70"
+                  className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background"
                   disabled={status === "loading"}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -106,7 +106,7 @@ console.error(err);
                 <motion.input
                   name="timePref"
                   placeholder="Удобное время для связи"
-                  className="border p-3 rounded bg-white/70"
+                  className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background"
                   disabled={status === "loading"}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

@@ -7,7 +7,19 @@ import PrivacyPolicy from "./privacyPolicy";
 export default function Hero() {
    const [status, setStatus] = useState("idle");
   const [message, setMessage] = useState("");
+const [phone, setPhone] = useState("");
 
+  const handlePhoneChange = (e) => {
+    let value = e.target.value.replace(/\D/g, "");
+    if (value.startsWith("7")) value = value.slice(1);
+    value = value.substring(0, 10);
+    let formatted = "+7";
+    if (value.length > 0) formatted += " " + value.slice(0, 3);
+    if (value.length >= 4) formatted += " " + value.slice(3, 6);
+    if (value.length >= 7) formatted += " " + value.slice(6, 8);
+    if (value.length >= 9) formatted += " " + value.slice(8, 10);
+    setPhone(formatted);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("loading");
@@ -16,10 +28,15 @@ export default function Hero() {
        // Сохраняем ссылку на форму, т.к. после await React очищает объект события
     const form = e.currentTarget;
     const fd = new FormData(form);
+  const years = fd.get("childAgeYears");
+    const months = fd.get("childAgeMonths");
+    let childAge = "";
+    if (years) childAge += `${years} г`;
+    if (months) childAge += `${childAge ? " " : ""}${months} мес`;
     const payload = {
       parentName: fd.get("parentName"),
-      phone: fd.get("phone"),
-      childAge: fd.get("childAge"),
+       phone: phone,
+      childAge,
       timePref: fd.get("timePref"),
       utm: typeof window !== "undefined" ? window.location.search || "" : "",
     };
@@ -35,6 +52,7 @@ export default function Hero() {
         setStatus("success");
         setMessage("Заявка отправлена! Мы свяжемся с вами.");
        form.reset();
+ setPhone("");
       } else {
         setStatus("error");
         setMessage("Не удалось отправить. Попробуйте ещё раз.");
@@ -89,23 +107,43 @@ console.error(err);
                 <motion.input
                   name="phone"
                   required
-                  placeholder="Телефон"
-                 className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background"
-                  disabled={status === "loading"}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                />
-                <motion.input
-                  name="childAge"
-                  placeholder="Возраст ребёнка"
+                placeholder="+7 000 000 00 00"
                   className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background"
                   disabled={status === "loading"}
+value={phone}
+                  onChange={handlePhoneChange}
+                  pattern="\+7\s\d{3}\s\d{3}\s\d{2}\s\d{2}"
+                  inputMode="numeric"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 />
+ <div className="flex gap-2">
+                  <motion.input
+                    name="childAgeYears"
+                    type="number"
+                    min="0"
+                    max="17"
+                    placeholder="Годы"
+                    className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background w-1/2"
+                    disabled={status === "loading"}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  />
+                  <motion.input
+                    name="childAgeMonths"
+                    type="number"
+                    min="0"
+                    max="11"
+                    placeholder="Месяцы"
+                    className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background w-1/2"
+                    disabled={status === "loading"}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  />
+                </div>
                 <motion.input
                   name="timePref"
-                  placeholder="Удобное время для связи"
+                  type="time"
                   className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background"
                   disabled={status === "loading"}
                   whileHover={{ scale: 1.02 }}

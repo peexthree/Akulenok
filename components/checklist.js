@@ -1,4 +1,5 @@
 import React from "react";
+import { CheckCircle2 } from "lucide-react"; // иконки
 import Container from "./container";
 
 const items = [
@@ -12,11 +13,19 @@ const items = [
 export default function Checklist() {
   return (
     <Container>
-      <div className="space-y-4">
-        <h2 className="text-3xl font-semibold">Что взять на первое занятие</h2>
-        <ul className="list-disc pl-5 space-y-1">
+      <div className="space-y-6">
+        <h2 className="text-3xl font-semibold text-center">
+          Что взять на первое занятие
+        </h2>
+        <p className="text-center text-gray-600">
+          Чтобы ваше первое занятие прошло комфортно, подготовьте всё необходимое заранее:
+        </p>
+        <ul className="space-y-3">
           {items.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item} className="flex items-center gap-3">
+              <CheckCircle2 className="text-blue-500 w-5 h-5" />
+              <span>{item}</span>
+            </li>
           ))}
         </ul>
       </div>

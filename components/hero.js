@@ -48,7 +48,7 @@ export default function Hero() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="relative"
+      className="relative bg-aqua-background dark:bg-aqua-dark"
     >
       <Image
         src="/img/hero.png"
@@ -57,8 +57,7 @@ export default function Hero() {
         priority
         className="object-contain object-center scale-90"
       />
-      <div className="absolute inset-0 bg-gradient-to-tr from-white/80 to-white/40 dark:from-black/70 dark:to-black/40" />
-
+     
      <Container className="relative z-10 flex flex-wrap pt-20">
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8">

@@ -102,7 +102,7 @@ function Navbar() {
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-3/4 p-6 sm:max-w-sm">
+               <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-3/4 p-6 sm:max-w-sm bg-white dark:bg-aqua-dark">
               <div className="flex items-center justify-between">
                      <Link href="/" className="text-lg font-bold text-aqua-accent" onClick={() => setMobileMenuOpen(false)}>
 		 Акулёнок

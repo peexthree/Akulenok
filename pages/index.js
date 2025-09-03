@@ -7,6 +7,7 @@ import Hero from "../components/hero";
 import SectionTitle from "../components/sectionTitle";
 import About from "../components/about";
 import Services from "../components/services";
+import Benefits from "../components/benefits";
 import Methodology from "../components/methodology";
 import Checklist from "../components/checklist";
 import Team from "../components/team";
@@ -59,6 +60,8 @@ export default function Home() {
       <Methodology />
       <Checklist />
       <Services />
+ <SectionTitle title="Наши преимущества" />
+      <Benefits />
      <Container className="mt-8">
         <ContactButtons />
       </Container>

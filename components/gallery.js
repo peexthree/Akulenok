@@ -10,6 +10,14 @@ const images = [
   "/img/gallery/pool4.jpg",
   "/img/gallery/pool5.jpg",
   "/img/gallery/pool6.jpg",
+ "/img/gallery/pool7.jpg",
+  "/img/gallery/pool8.jpg",
+  "/img/gallery/pool9.jpg",
+  "/img/gallery/pool10.jpg",
+  "/img/gallery/pool11.jpg",
+  "/img/gallery/pool12.jpg",
+ "/img/gallery/pool13.jpg",
+  "/img/gallery/pool14.jpg",
 ];
 
 const variants = {
@@ -20,8 +28,8 @@ const variants = {
 function Gallery() {
   return (
     <Container>
-            <motion.div
-      className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-8"
+          <motion.div
+        className="flex gap-4 overflow-x-auto snap-x snap-mandatory mt-8 pb-4"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -32,13 +40,13 @@ function Gallery() {
         {images.map((src, i) => (
           <motion.div
             key={src}
-            className="relative w-full h-64 rounded-xl overflow-hidden shadow-lg"
+                className="relative w-80 h-64 flex-none snap-center rounded-xl overflow-hidden shadow-lg"
             variants={variants}
           >
             <Image
               src={src}
               alt={`Фото из бассейна Акулёнок ${i + 1}`}
-             fill
+                     fill
               className="object-cover rounded-xl"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />

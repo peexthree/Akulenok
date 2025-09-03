@@ -82,7 +82,7 @@ export default function Home() {
       </SectionTitle>
       <Gallery />
 
-      <SectionTitle  title="Цены и форматы" />
+
       <Schedule />
       <Pricing />
       

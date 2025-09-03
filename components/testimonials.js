@@ -1,19 +1,18 @@
 import React from "react";
 
 export default function Testimonials() {
-   return (
-    <div className="w-full flex justify-center">
+  return (
+    <div className="w-screen">
       <div
-        className="max-w-[560px] w-full h-96 overflow-y-scroll"
+         className="w-full h-[80vh] overflow-y-scroll"
         style={{ WebkitOverflowScrolling: "touch" }}
       >
         <iframe
           src="https://yandex.ru/maps-reviews-widget/125018811972?comments"
-          width="560"
-          height="800"
+            className="w-full h-[1200px]"
           style={{ border: "none" }}
           frameBorder="0"
-          scrolling="no"
+           scrolling="yes"
           title='Отзывы о бассейне "Акуленок"'
         ></iframe>
       </div>

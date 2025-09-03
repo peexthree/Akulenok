@@ -48,7 +48,7 @@ function Pricing() {
   return (
     <Container>
       <div id="pricing" className="text-center mb-8">
-        <h2 className="text-3xl font-semibold">Цены и форматы</h2>
+         <h2 className="text-3xl font-semibold">Цены</h2>
         <p className="text-gray-500 mt-2">
           Актуальные предложения для занятий по плаванию и ЛФК
         </p>

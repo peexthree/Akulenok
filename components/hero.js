@@ -51,11 +51,11 @@ export default function Hero() {
       className="relative bg-aqua-background dark:bg-aqua-dark"
     >
       <Image
-        src="/img/hero.png"
+     src="/img/akulenok-mascot.png"
         alt="Детский бассейн Акулёнок"
         fill
         priority
-        className="object-contain object-center scale-90"
+    className="object-contain object-right scale-90"
       />
      
      <Container className="relative z-10 flex flex-wrap pt-20">

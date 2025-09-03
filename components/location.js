@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+
 import Container from "./container";
 import clsx from "clsx";
 import { FaMapMarkerAlt, FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
@@ -17,14 +17,7 @@ export default function Location() {
         className="grid gap-8 lg:grid-cols-2 items-start bg-white p-8 rounded-2xl shadow-lg"
       >
         <div>
-        <Image
-            src="/img/akulenok-mascot.png"
-            alt="Логотип Акулёнка"
-            width={64}
-            height={64}
-            className="mb-4"
-          />
-          <div className="text-gray-700 dark:text-gray-300 space-y-2">
+                 <div className="text-gray-700 dark:text-gray-300 space-y-2">
             <div><span className="font-medium">Адрес:</span> {address}</div>
             <div><span className="font-medium">Телефон:</span> <a href="tel:+79273039977" className="underline">{phone}</a></div>
             <div><span className="font-medium">Режим:</span> Сегодня открыто до 21:00</div>

@@ -2,15 +2,38 @@ import Link from "next/link";
 import React from "react";
 import Container from "./container";
 import { FaTelegramPlane, FaWhatsapp, FaPhoneAlt, FaInstagram } from "react-icons/fa";
+import Image from "next/image"; // Важно: импортируем компонент Image
 
 function Footer() {
   return (
-    <footer className="bg-aqua-dark text-white py-10">
+    <footer className="relative bg-aqua-dark text-white py-10">
+      <div className="absolute top-0 left-0 w-full -translate-y-full overflow-hidden leading-none">
+        <svg
+          className="relative block w-[calc(100%+1.3px)] h-8"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 40"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,0 V20 C150,40 350,0 600,20 C850,40 1050,40 1200,20 V0 Z"
+            fill="#003B46"
+          ></path>
+        </svg>
+      </div>
       <Container>
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          {/* Копирайт */}
-          <div className="text-lg font-semibold text-center md:text-left">
-            © 2024 Акулёнок
+          {/* Копирайт и логотип */}
+          <div className="flex items-center gap-3">
+            <Image
+              src="/path/to/akulenok-mascot.png" // Укажите правильный путь к изображению с прозрачным фоном
+              alt="Акулёнок"
+              width={40} // Вы можете настроить размер
+              height={40}
+              className="bg-transparent" // Добавляем класс для прозрачности
+            />
+            <div className="text-lg font-semibold text-center md:text-left">
+              © 2024 Акулёнок
+            </div>
           </div>
 
           {/* Навигация */}

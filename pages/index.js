@@ -55,12 +55,12 @@ export default function Home() {
 
       <Navbar />
       <Hero />
-      <div className="mt-8"><ContactButtons /></div>
+     
       <About />
       <Methodology />
       <Checklist />
       <Services />
-
+ <div className="mt-8"><ContactButtons /></div>
       <SectionTitle
 
         title="Почему родители выбирают «Акулёнок»"

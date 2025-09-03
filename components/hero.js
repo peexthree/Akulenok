@@ -95,60 +95,98 @@ console.error(err);
                 className="mt-8 grid w-full max-w-md gap-3 p-6 bg-white/70 dark:bg-aqua-dark/70 rounded-lg"
                 onSubmit={handleSubmit}
               >
-                <motion.input
-                  name="parentName"
-                  required
-                  placeholder="Ваше имя"
-                  className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background"
-                  disabled={status === "loading"}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                />
-                <motion.input
-                  name="phone"
-                  required
-                placeholder="+7 000 000 00 00"
-                  className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background"
-                  disabled={status === "loading"}
-value={phone}
-                  onChange={handlePhoneChange}
-                  pattern="\+7\s\d{3}\s\d{3}\s\d{2}\s\d{2}"
-                  inputMode="numeric"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                />
- <div className="flex gap-2">
+                <div className="flex flex-col gap-1">
+                  <label
+                    htmlFor="parentName"
+                    className="text-xs md:text-sm text-aqua-dark/80 dark:text-aqua-background/80"
+                  >
+                    как к Вам обращаться?
+                  </label>
                   <motion.input
-                    name="childAgeYears"
-                    type="number"
-                    min="0"
-                    max="17"
-                    placeholder="Годы"
-                    className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background w-1/2"
+                    id="parentName"
+                    name="parentName"
+                    required
+                    placeholder="Ваше имя"
+                    className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background"
                     disabled={status === "loading"}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   />
+</div>
+                <div className="flex flex-col gap-1">
+                  <label
+                    htmlFor="phone"
+                    className="text-xs md:text-sm text-aqua-dark/80 dark:text-aqua-background/80"
+                  >
+                    введите номер телефона
+                  </label>
                   <motion.input
-                    name="childAgeMonths"
-                    type="number"
-                    min="0"
-                    max="11"
-                    placeholder="Месяцы"
-                    className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background w-1/2"
+                      id="phone"
+                    name="phone"
+                    required
+                    placeholder="+7 000 000 00 00"
+                    className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background"
+                    disabled={status === "loading"}
+                    value={phone}
+                    onChange={handlePhoneChange}
+                    pattern="\+7\s\d{3}\s\d{3}\s\d{2}\s\d{2}"
+                    inputMode="numeric"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label
+                    htmlFor="childAgeYears"
+                    className="text-xs md:text-sm text-aqua-dark/80 dark:text-aqua-background/80"
+                  >
+                    введите возраст ребенка год/месяц
+                  </label>
+                  <div className="flex gap-2">
+                    <motion.input
+                      id="childAgeYears"
+                      name="childAgeYears"
+                      type="number"
+                      min="0"
+                      max="17"
+                      placeholder="Годы"
+                      className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background w-1/2"
+                      disabled={status === "loading"}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    />
+                    <motion.input
+                      id="childAgeMonths"
+                      name="childAgeMonths"
+                      type="number"
+                      min="0"
+                      max="11"
+                      placeholder="Месяцы"
+                      className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background w-1/2"
+                      disabled={status === "loading"}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label
+                    htmlFor="timePref"
+                    className="text-xs md:text-sm text-aqua-dark/80 dark:text-aqua-background/80"
+                  >
+                    введите желаемое время для связи с Вами
+                  </label>
+                  <motion.input
+                    id="timePref"
+                    name="timePref"
+                    type="time"
+                    className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background"
                     disabled={status === "loading"}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   />
                 </div>
-                <motion.input
-                  name="timePref"
-                  type="time"
-                  className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background"
-                  disabled={status === "loading"}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                />
+               
                 <motion.button
                   type="submit"
                  className="bg-orange-500 text-white hover:bg-orange-600 disabled:bg-orange-300 disabled:cursor-not-allowed"

@@ -8,6 +8,7 @@ const items = [
   "Полотенце или пелёнка",
   "Шапочка и резиновая обувь",
   "Любимая игрушка для воды",
+  "Справка",
 ];
 
 export default function Checklist() {
@@ -17,7 +18,7 @@ export default function Checklist() {
         <h2 className="text-3xl font-semibold text-center">
           Что взять на первое занятие
         </h2>
-        <p className="text-center text-gray-600">
+               <ul className="space-y-3 flex flex-col items-center">
           Чтобы ваше первое занятие прошло комфортно, подготовьте всё необходимое заранее:
         </p>
         <ul className="space-y-3">

@@ -13,7 +13,9 @@ export default function Hero() {
     setStatus("loading");
     setMessage("");
 
-    const fd = new FormData(e.currentTarget);
+       // Сохраняем ссылку на форму, т.к. после await React очищает объект события
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     const payload = {
       parentName: fd.get("parentName"),
       phone: fd.get("phone"),
@@ -32,12 +34,13 @@ export default function Hero() {
       if (res.ok) {
         setStatus("success");
         setMessage("Заявка отправлена! Мы свяжемся с вами.");
-        e.currentTarget.reset();
+       form.reset();
       } else {
         setStatus("error");
         setMessage("Не удалось отправить. Попробуйте ещё раз.");
       }
     } catch (err) {
+console.error(err);
       setStatus("error");
       setMessage("Ошибка сети. Попробуйте ещё раз.");
     }
@@ -101,7 +104,7 @@ export default function Hero() {
                 />
                 <motion.input
                   name="timePref"
-                  placeholder="Удобное время"
+                  placeholder="Удобное время для связи"
                   className="border p-3 rounded"
                   disabled={status === "loading"}
                   whileHover={{ scale: 1.02 }}
@@ -132,7 +135,7 @@ export default function Hero() {
 
      <Container className="relative z-10">
   <div className="text-xl text-aqua-dark dark:text-aqua-background">
-    Нам доверяют более <span className="text-orange-500">200</span> семей в Туймазах
+    Нам доверяют уже более <span className="text-orange-500">200</span> семей в Туймазах
   </div>
 </Container>
      </motion.section>

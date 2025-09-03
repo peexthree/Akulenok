@@ -26,17 +26,19 @@ export default function Benefits() {
         {items.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col items-center text-center p-6 rounded-2xl border bg-white dark:bg-trueGray-900"
+                  className="flex flex-col items-center text-center p-6"
           >
             <Image
               src={item.img}
               alt={item.title}
-              width={200}
-              height={200}
+               width={400}
+              height={400}
               className="object-contain"
             />
-            <h3 className="mt-4 text-xl font-semibold">{item.title}</h3>
-            <p className="mt-2 text-gray-600 dark:text-gray-300">{item.desc}</p>
+             <div className="mt-4 p-4 rounded-2xl border bg-white/40">
+              <h3 className="text-xl font-semibold">{item.title}</h3>
+              <p className="mt-2 text-gray-600 dark:text-gray-300">{item.desc}</p>
+            </div>
           </div>
         ))}
       </div>

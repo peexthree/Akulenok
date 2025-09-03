@@ -5,17 +5,17 @@ const items = [
   {
     title: "Онлайн запись и поддержка",
     desc: "Свяжемся удобным для вас способом",
-    img: "/img/hero.png",
+    img: "/img/benefit-one.png",
   },
   {
     title: "Учимся играя",
     desc: "Занятия проходят легко и с интересом для малыша",
-    img: "/img/benefit-one.png",
+    img: "/img/benefit-two.png",
   },
   {
     title: "Комфорт для малыша",
     desc: "Создаём атмосферу доверия и заботы",
-    img: "/img/benefit-two.png",
+    img: "/img/hero.png",
   },
 ];
 

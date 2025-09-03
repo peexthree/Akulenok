@@ -5,14 +5,16 @@
 
 /* Base styles and default theming */
 @layer base {
-  html,
-  body {
-  @apply text-aqua-dark dark:text-aqua-background m-0 scroll-smooth;
+ html {
+    font-size: 16px; /* Ensure readable base font size */
+  }
 
+ body {
+    @apply text-aqua-dark dark:text-aqua-background m-0 scroll-smooth overflow-x-hidden leading-relaxed;
   }
 
   button {
-   @apply transition-transform transition-colors transition-shadow duration-300 ease-in-out hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-aqua-accent;
+    @apply transition-transform transition-colors transition-shadow duration-300 ease-in-out hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-aqua-accent;
   }
 
   img {

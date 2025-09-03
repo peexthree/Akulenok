@@ -13,13 +13,20 @@ export default function Video() {
       </SectionTitle>
 
       <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg">
-       
-
-
-<iframe width="720" height="405" src="https://vkvideo.ru/video-219181948_456239017" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
+        <video
+          className="h-full w-full object-cover"
+          src="/video/hero.mp4"
+          // Если добавишь webm — лучше через <source> (пример ниже).
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+          controls
+          poster="/video/poster.jpg" // опционально: положи превью в /public/video/poster.jpg
+          aria-label="Ролик о центре «Акулёнок»"
+        />
       </div>
     </Container>
   );
 }
-

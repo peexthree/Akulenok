@@ -63,18 +63,12 @@ function Pricing() {
             whileHover="hover"
             viewport={{ once: true }}
             tabIndex={0}
-            className={`rounded-2xl border p-6 dark:border-trueGray-700 transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua-accent ${
-              item.highlight
-                ? "ring-1 ring-indigo-200 dark:ring-indigo-700 shadow-lg relative"
-                : ""
+              className={`rounded-2xl border p-6 text-center dark:border-trueGray-700 transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua-accent ${
+              item.highlight ? "ring-2 ring-orange-300" : ""
             }`}
            
           >
-            <div
-              className={`text-sm uppercase font-semibold ${
-                item.highlight ? "text-indigo-600" : "text-gray-500"
-              }`}
-            >
+           <div className="text-sm uppercase font-semibold text-gray-500">
               {item.title}
             </div>
             <div className="mt-2 text-3xl font-bold">{item.price}</div>
@@ -90,10 +84,10 @@ function Pricing() {
             <div className="mt-6">
               <Link
                 href="#lead-form"
-                className={`block w-full text-center rounded-md py-3 font-medium transition ${
+               className={`block w-full rounded-md py-3 font-medium text-white transition ${
                   item.highlight
-                    ? "bg-indigo-600 text-white hover:bg-indigo-700"
-                    : "bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-trueGray-700 dark:text-white dark:hover:bg-trueGray-600"
+                     ? "bg-orange-500 hover:bg-orange-600"
+                    : "bg-blue-500 hover:bg-blue-600"
                 }`}
               >
                 Записаться

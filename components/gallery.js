@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Container from "./container";
@@ -26,6 +26,7 @@ const variants = {
 };
 
 function Gallery() {
+ const [selected, setSelected] = useState(null);
   return (
     <Container>
           <motion.div
@@ -40,8 +41,9 @@ function Gallery() {
         {images.map((src, i) => (
           <motion.div
             key={src}
-                className="relative w-80 h-64 flex-none snap-center rounded-xl overflow-hidden shadow-lg"
+               className="relative w-80 h-64 flex-none snap-center rounded-xl overflow-hidden shadow-lg cursor-pointer"
             variants={variants}
+onClick={() => setSelected(src)}
           >
             <Image
               src={src}
@@ -53,6 +55,20 @@ function Gallery() {
           </motion.div>
         ))}
       </motion.div>
+ {selected && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+          onClick={() => setSelected(null)}
+        >
+          <Image
+            src={selected}
+            alt="Просмотр фото"
+            width={800}
+            height={600}
+            className="object-contain"
+          />
+        </div>
+      )}
     </Container>
   );
 }

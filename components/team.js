@@ -6,21 +6,20 @@ import { fadeInUp } from "./animations";
 const members = [
   {
     name: "Алсу Ханнанова",
-    role: "Основатель и инструктор",
+    role: "Основатель Акулёнка",
     image: "/img/user1.jpg",
-    desc: "Сертифицированный специалист по грудничковому плаванию",
-  },
+     },
   {
-    name: "Екатерина Иванова",
-    role: "Инструктор по ЛФК",
+    name: "Любовь",
+    role: "Инструктор по плаванию",
     image: "/img/user2.jpg",
-    desc: "Помогает укреплять мышечный корсет и осанку",
+ 
   },
   {
-    name: "Марат Исламов",
+    name: "Ралина",
     role: "Тренер по гидрореабилитации",
     image: "/img/user3.jpg",
-    desc: "Находит подход к каждому малышу",
+
   },
 ];
 
@@ -52,7 +51,7 @@ export default function Team() {
             />
             <div className="mt-4 font-medium">{m.name}</div>
             <div className="text-sm text-gray-500">{m.role}</div>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">{m.desc}</p>
+           
           </motion.div>
         ))}
       </div>

@@ -5,7 +5,6 @@ import PopupWidget from "../components/popupWidget";
 // Остальные компоненты, которые не вызывают ошибок
 import Hero from "../components/hero";
 import SectionTitle from "../components/sectionTitle";
-import Benefits from "../components/benefits";
 import About from "../components/about";
 import Services from "../components/services";
 import Methodology from "../components/methodology";
@@ -20,10 +19,7 @@ import Cta from "../components/cta";
 import Footer from "../components/footer";
 import ContactButtons from "../components/contactButtons";
 import Video from "../components/video";
-
-import { benefitOne, benefitTwo } from "../components/data";
-
-export default function Home() {
+import WhyChoose from "../components/whyChoose";export default function Home() {
   return (
     <>
       <Head>
@@ -61,15 +57,8 @@ export default function Home() {
       <Checklist />
       <Services />
  <div className="mt-8"><ContactButtons /></div>
-      <SectionTitle
-
-        title="Почему родители выбирают «Акулёнок»"
-      >
-        Специализированный детский аквацентр: грудничковое плавание и лечебная физкультура в тёплой стерильной воде под присмотром опытных инструкторов.
-      </SectionTitle>
-      <Benefits data={benefitOne} />
-      <Benefits imgPos="right" data={benefitTwo} />
-
+      <SectionTitle title="Почему родители выбирают «Акулёнок»" />
+      <WhyChoose />
       <Team />
 
       <Video />

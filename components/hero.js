@@ -62,10 +62,9 @@ export default function Hero() {
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8">
             <h1 className="text-4xl font-bold leading-snug tracking-tight text-aqua-dark lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-aqua-background">
-               Здоровое и счастливое будущее вашего малыша начинается здесь
-            </h1>
-              <p className="py-5 text-xl leading-normal text-aqua-dark/80 lg:text-xl xl:text-xl dark:text-aqua-background/80">
-              Безопасное плавание для малышей от 3&nbsp;месяцев с опытными инструкторами.
+              Плавание с 3&nbsp;месяцев — здоровье и радость           </h1>
+                <p className="py-5 text-xl leading-normal text-aqua-dark/80 lg:text-xl xl:text-xl dark:text-aqua-background/80">
+              Безопасное плавание для малышей с опытными инструкторами. Пробное занятие 30&nbsp;минут бесплатно.
             </p>
 
                {/* ==== Форма записи ==== */}
@@ -110,7 +109,7 @@ export default function Hero() {
                 />
                 <motion.button
                   type="submit"
-                  className="bg-aqua-accent text-white hover:bg-aqua-dark disabled:bg-aqua-dark/50 disabled:cursor-not-allowed"
+                 className="bg-orange-500 text-white hover:bg-orange-600 disabled:bg-orange-300 disabled:cursor-not-allowed"
                   disabled={status === "loading"}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

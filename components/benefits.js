@@ -17,9 +17,9 @@ function Benefits({ data, imgPos = "left" }) {
           width={521}
           height={482}
           alt="Benefits"
-          placeholder="blur"
+          
           loading="lazy"
-          className="w-full h-auto"
+           className="w-full h-auto bg-transparent"
         />
       </div>
 

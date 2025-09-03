@@ -43,7 +43,7 @@ function Schedule() {
     <Container>
       <div id="schedule" className="text-center mb-8">
         <h2 className="text-3xl font-semibold">Расписание и форматы</h2>
-        <p className="text-gray-500 mt-2">
+        <p className="text-gray-700 mt-2">
           Ежедневно открыты до 21:00. Подберём удобное время.
         </p>
       </div>
@@ -58,13 +58,13 @@ function Schedule() {
             transition={{ type: "spring", stiffness: 300 }}
           >
             <div className={`text-sm uppercase font-semibold ${
-              item.highlight ? "text-indigo-600" : "text-gray-500"
+              item.highlight ? "text-indigo-600" : "text-gray-700"
             }`}>
               {item.title}
             </div>
             <div className="mt-2 text-xl font-bold">{item.time}</div>
-            <div className="text-sm text-gray-500 mt-1">{item.description}</div>
-            <ul className="mt-4 space-y-2 text-gray-600 dark:text-gray-300">
+            <div className="text-sm text-gray-700 mt-1">{item.description}</div>
+            <ul className="mt-4 space-y-2 text-gray-800 dark:text-gray-100">
               {item.features.map((feature, i) => (
                 <li key={i} className="flex items-center space-x-2">
                   <CheckIcon className="h-4 w-4 text-green-500 flex-shrink-0" />

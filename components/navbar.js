@@ -25,7 +25,7 @@ function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-     <header className="fixed top-0 z-50 w-full shadow-md">
+    <header className="w-full shadow-md">
       <nav
             className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 lg:px-8"
         aria-label="Global"

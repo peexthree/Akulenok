@@ -65,22 +65,23 @@ console.error(err);
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8">
             <h1 className="text-4xl font-bold leading-snug tracking-tight text-aqua-dark lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-aqua-background">
-              Плавание с 3&nbsp;месяцев — здоровье и радость           </h1>
+              Старт для здоровья вашего малыша с 3&nbsp;месяцев            </h1>
                 <p className="py-5 text-xl leading-normal text-aqua-dark/80 lg:text-xl xl:text-xl dark:text-aqua-background/80">
-              Безопасное плавание для малышей с опытными инструкторами. Пробное занятие 30&nbsp;минут бесплатно.
+             Опытные тренеры и сертифицированное оборудование для детей с 3 месяцев.
+Запишитесь на пробное занятие :
             </p>
 
                {/* ==== Форма записи ==== */}
               <motion.form
                 id="lead-form"
-                className="mt-8 grid w-full max-w-md gap-3"
+                 className="mt-8 grid w-full max-w-md gap-3 p-6 bg-white/70 rounded-lg"
                 onSubmit={handleSubmit}
               >
                 <motion.input
                   name="parentName"
                   required
                   placeholder="Ваше имя"
-                  className="border p-3 rounded"
+                   className="border p-3 rounded bg-white/70"
                   disabled={status === "loading"}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -89,7 +90,7 @@ console.error(err);
                   name="phone"
                   required
                   placeholder="Телефон"
-                  className="border p-3 rounded"
+                 className="border p-3 rounded bg-white/70"
                   disabled={status === "loading"}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -97,7 +98,7 @@ console.error(err);
                 <motion.input
                   name="childAge"
                   placeholder="Возраст ребёнка"
-                  className="border p-3 rounded"
+                  className="border p-3 rounded bg-white/70"
                   disabled={status === "loading"}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -105,7 +106,7 @@ console.error(err);
                 <motion.input
                   name="timePref"
                   placeholder="Удобное время для связи"
-                  className="border p-3 rounded"
+                  className="border p-3 rounded bg-white/70"
                   disabled={status === "loading"}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -125,8 +126,8 @@ console.error(err);
                 {status === "error" && (
                   <p className="text-red-600 mt-2">{message}</p>
                 )}
-              </motion.form>
-<div className="mt-5">
+               </motion.form>
+              <div className="mt-5">
                 <ContactButtons wide={true} />
               </div>
           </div>

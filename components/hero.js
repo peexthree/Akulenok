@@ -83,10 +83,10 @@ console.error(err);
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8">
             <h1 className="text-4xl font-bold leading-snug tracking-tight text-aqua-dark lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-aqua-background">
-              Старт для здоровья вашего малыша с 3&nbsp;месяцев            </h1>
+              Научим малыша любить воду с 3&nbsp;месяцев            </h1>
                 <p className="py-5 text-xl leading-normal text-aqua-dark/80 lg:text-xl xl:text-xl dark:text-aqua-background/80">
-             Опытные тренеры и сертифицированное оборудование для детей с 3 месяцев.
-Запишитесь на пробное занятие :
+             Мягкая адаптация, игра и результат, который видят родители.
+Закажите обратный звонок :
             </p>
 
                {/* ==== Форма записи ==== */}
@@ -100,7 +100,7 @@ console.error(err);
                     htmlFor="parentName"
                     className="text-xs md:text-sm text-aqua-dark/80 dark:text-aqua-background/80"
                   >
-                    как к Вам обращаться?
+                    Как к Вам обращаться?
                   </label>
                   <motion.input
                     id="parentName"
@@ -118,7 +118,7 @@ console.error(err);
                     htmlFor="phone"
                     className="text-xs md:text-sm text-aqua-dark/80 dark:text-aqua-background/80"
                   >
-                    введите номер телефона
+                    Введите номер телефона
                   </label>
                   <motion.input
                       id="phone"
@@ -140,7 +140,7 @@ console.error(err);
                     htmlFor="childAgeYears"
                     className="text-xs md:text-sm text-aqua-dark/80 dark:text-aqua-background/80"
                   >
-                    введите возраст ребенка год/месяц
+                    Введите возраст ребенка год/месяц
                   </label>
                   <div className="flex gap-2">
                     <motion.input
@@ -174,7 +174,7 @@ console.error(err);
                     htmlFor="timePref"
                     className="text-xs md:text-sm text-aqua-dark/80 dark:text-aqua-background/80"
                   >
-                    введите желаемое время для связи с Вами
+                    Введите желаемое время для связи с Вами
                   </label>
                   <motion.input
                     id="timePref"
@@ -213,7 +213,7 @@ console.error(err);
 
      <Container className="relative z-10">
   <div className="text-xl text-aqua-dark dark:text-aqua-background">
-    Нам доверяют уже более <span className="text-orange-500">200</span> семей в Туймазах
+    Нам доверяют уже более <span className="text-orange-500">300</span> семей в Туймазах
   </div>
 </Container>
      </motion.section>

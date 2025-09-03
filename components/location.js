@@ -1,6 +1,5 @@
 import React from "react";
 import Container from "./container";
-import Script from "next/script";
 import clsx from "clsx";
 
 export default function Location() {
@@ -34,11 +33,13 @@ export default function Location() {
           </div>
         </div>
         
-        <div className="rounded-2xl overflow-hidden border" style={{height: "400px"}}>
-          <Script 
-            src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A3bc8364469f998d48316e3069ad02bfec23d4cf2a256c4d1fece1f5daac7dfca&width=100%25&height=400&lang=ru_RU&scroll=true" 
-            strategy="afterInteractive" 
-          />
+      <div className="rounded-2xl overflow-hidden border" style={{ height: "400px" }}>
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?um=constructor%3A3bc8364469f998d48316e3069ad02bfec23d4cf2a256c4d1fece1f5daac7dfca&source=constructor"
+            width="100%"
+            height="400"
+            frameBorder="0"
+          ></iframe>
         </div>
     
       </div>

@@ -62,7 +62,7 @@ export default function Home() {
       <Services />
 
       <SectionTitle
-        pretitle="Почему мы"
+
         title="Почему родители выбирают «Акулёнок»"
       >
         Специализированный детский аквацентр: грудничковое плавание и лечебная физкультура в тёплой стерильной воде под присмотром опытных инструкторов.
@@ -77,7 +77,9 @@ export default function Home() {
       <SectionTitle pretitle="Отзывы" title="Что говорят наши клиенты" />
       <Testimonials />
 
-      <SectionTitle pretitle="Галерея" title="Фотогалерея" />
+   <SectionTitle pretitle="Галерея" title="Фотогалерея">
+        Реальные занятия в «Акулёнке»
+      </SectionTitle>
       <Gallery />
 
       <SectionTitle pretitle="Расписание и цены" title="Цены и форматы" />

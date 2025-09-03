@@ -20,12 +20,8 @@ const variants = {
 function Gallery() {
   return (
     <Container>
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-semibold">Фотогалерея</h2>
-        <p className="text-gray-500 mt-2">Реальные занятия в «Акулёнке»</p>
-      </div>
-      <motion.div
-        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+            <motion.div
+      className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-8"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}

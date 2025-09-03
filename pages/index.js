@@ -8,6 +8,8 @@ import SectionTitle from "../components/sectionTitle";
 import Benefits from "../components/benefits";
 import About from "../components/about";
 import Services from "../components/services";
+import Methodology from "../components/methodology";
+import Checklist from "../components/checklist";
 import Team from "../components/team";
 import Schedule from "../components/schedule";
 import Pricing from "../components/pricing";
@@ -55,6 +57,8 @@ export default function Home() {
       <Hero />
       <div className="mt-8"><ContactButtons /></div>
       <About />
+      <Methodology />
+      <Checklist />
       <Services />
 
       <SectionTitle

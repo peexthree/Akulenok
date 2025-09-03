@@ -1,8 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Button from "./Button";
-import { PaperAirplaneIcon, PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
 import ContactButtons from "./contactButtons";
 import Container from "./container";
 
@@ -57,7 +55,7 @@ export default function Hero() {
         alt="Детский бассейн Акулёнок"
         fill
         priority
-        className="object-cover"
+        className="object-contain object-center scale-90"
       />
       <div className="absolute inset-0 bg-gradient-to-tr from-white/80 to-white/40 dark:from-black/70 dark:to-black/40" />
 
@@ -65,10 +63,10 @@ export default function Hero() {
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8">
             <h1 className="text-4xl font-bold leading-snug tracking-tight text-aqua-dark lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-aqua-background">
-              Тёплый детский бассейн и ЛФК для малышей от 3&nbsp;месяцев
+               Здоровое и счастливое будущее вашего малыша начинается здесь
             </h1>
-             <p className="py-5 text-xl leading-normal text-aqua-dark/80 lg:text-xl xl:text-xl dark:text-aqua-background/80">
-              Помогаем детям укрепить здоровье и полюбить воду с первых месяцев жизни.
+              <p className="py-5 text-xl leading-normal text-aqua-dark/80 lg:text-xl xl:text-xl dark:text-aqua-background/80">
+              Безопасное плавание для малышей от 3&nbsp;месяцев с опытными инструкторами.
             </p>
 
                {/* ==== Форма записи ==== */}
@@ -127,37 +125,7 @@ export default function Hero() {
                   <p className="text-red-600 mt-2">{message}</p>
                 )}
               </motion.form>
-<div className="flex gap-4 mt-4">
-                <motion.a
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  href="#"
-                  aria-label="Telegram"
-                  className="p-2 bg-white rounded-full shadow text-aqua-dark"
-                >
-                  <PaperAirplaneIcon className="w-5 h-5" />
-                </motion.a>
-                <motion.a
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  href="#"
-                  aria-label="Phone"
-                  className="p-2 bg-white rounded-full shadow text-aqua-dark"
-                >
-                  <PhoneIcon className="w-5 h-5" />
-                </motion.a>
-                <motion.a
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  href="#"
-                  aria-label="Email"
-                  className="p-2 bg-white rounded-full shadow text-aqua-dark"
-                >
-                  <EnvelopeIcon className="w-5 h-5" />
-                </motion.a>
-              </div>
-
-      <div className="mt-5">
+<div className="mt-5">
                 <ContactButtons wide={true} />
               </div>
           </div>

@@ -25,7 +25,7 @@ function Footer() {
           {/* Копирайт и логотип */}
           <div className="flex items-center gap-3">
             <Image
-              src="/path/to/akulenok-mascot.png" // Укажите правильный путь к изображению с прозрачным фоном
+                 src="/img/akulenok-mascot.png"
               alt="Акулёнок"
               width={40} // Вы можете настроить размер
               height={40}

@@ -14,7 +14,7 @@ export default function Location() {
     <Container>
        <div
         id="contacts"
-        className="grid gap-8 lg:grid-cols-2 items-start bg-white p-8 rounded-2xl shadow-lg"
+       className="grid gap-8 lg:grid-cols-2 items-start lg:items-center bg-white p-8 rounded-2xl shadow-lg"
       >
         <div>
                  <div className="text-gray-700 dark:text-gray-300 space-y-2">

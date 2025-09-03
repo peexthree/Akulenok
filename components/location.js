@@ -14,17 +14,24 @@ export default function Location() {
     <Container>
        <div
         id="contacts"
-       className="grid gap-8 lg:grid-cols-2 items-start lg:items-center bg-white p-8 rounded-2xl shadow-lg"
+     className="grid gap-8 lg:grid-cols-2 items-center bg-white p-8 rounded-2xl shadow-lg"
       >
-        <div>
-                 <div className="text-gray-700 dark:text-gray-300 space-y-2">
+        <div className="flex flex-col justify-center h-full space-y-5">
+          <div className="text-gray-700 dark:text-gray-300 space-y-2">
             <div><span className="font-medium">Адрес:</span> {address}</div>
-            <div><span className="font-medium">Телефон:</span> <a href="tel:+79273039977" className="underline">{phone}</a></div>
-            <div><span className="font-medium">Режим:</span> Сегодня открыто до 21:00</div>
+         <div>
+              <span className="font-medium">Телефон:</span>{" "}
+              <a href="tel:+79273039977" className="underline">
+                {phone}
+              </a>
+            </div>
+            <div>
+              <span className="font-medium">Режим:</span> Сегодня открыто до 21:00
+            </div>
             <div><span className="font-medium">Рейтинг:</span> ★ 4.7 (59 отзывов)</div>
           </div>
 
-          <div className="mt-5 grid gap-3 sm:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-3">
             <a
               href={mapLink}
               target="_blank"
@@ -55,10 +62,7 @@ export default function Location() {
           </div>
         </div>
         
-        <div
-          className="rounded-2xl overflow-hidden border"
-          style={{ height: "400px" }}
-        >
+          <div className="rounded-2xl overflow-hidden border h-[400px]">
           <iframe
             src="https://yandex.ru/map-widget/v1/?um=constructor%3A3bc8364469f998d48316e3069ad02bfec23d4cf2a256c4d1fece1f5daac7dfca&source=constructor"
             width="100%"

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import ContactButtons from "./contactButtons";
 import Container from "./container";
-
+import PrivacyPolicy from "./privacyPolicy";
 export default function Hero() {
    const [status, setStatus] = useState("idle");
   const [message, setMessage] = useState("");
@@ -127,6 +127,7 @@ console.error(err);
                   <p className="text-red-600 mt-2">{message}</p>
                 )}
                </motion.form>
+  <PrivacyPolicy />
               <div className="mt-5">
                 <ContactButtons wide={true} />
               </div>

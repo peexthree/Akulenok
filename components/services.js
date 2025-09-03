@@ -12,7 +12,7 @@ export default function Services() {
 
   return (
     <Container>
-      <div id="services" className="text-center mb-8">
+        <div id="services" className="text-center mb-8 scroll-mt-24">
         <h2 className="text-3xl font-semibold">Наши услуги</h2>
         <p className="text-gray-500 mt-2">Детский бассейн для малышей (3м+) и ЛФК/оздоровление</p>
       </div>

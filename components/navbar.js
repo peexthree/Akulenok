@@ -25,9 +25,9 @@ function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="w-full shadow-md">
+    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur dark:bg-aqua-dark/80 shadow-md">
       <nav
-            className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 lg:px-8"
+          className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 lg:px-8"
         aria-label="Global"
       >
          {/* Логотип */}

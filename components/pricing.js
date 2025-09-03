@@ -47,7 +47,7 @@ const pricingData = [
 function Pricing() {
   return (
     <Container>
-      <div id="pricing" className="text-center mb-8">
+    <div id="pricing" className="text-center mb-8 scroll-mt-24">
          <h2 className="text-3xl font-semibold">Цены</h2>
         <p className="text-gray-700 mt-2">
           Актуальные предложения для занятий по плаванию и ЛФК

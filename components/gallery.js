@@ -34,7 +34,7 @@ const [selected, setSelected] = useState(null);
   };
   return (
     <Container>
-          <div className="relative">
+          <div id="gallery" className="relative scroll-mt-24">
         <motion.div
           ref={scrollRef}
           className="flex gap-4 overflow-x-auto snap-x snap-mandatory mt-8 pb-4"

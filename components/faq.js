@@ -30,7 +30,7 @@ const faqs = [
 function FAQ() {
   return (
     <Container className="p-8">
-      <div className="w-full max-w-2xl mx-auto">
+      <div id="faq" className="w-full max-w-2xl mx-auto scroll-mt-24">
         <div className="space-y-4">
           {faqs.map((faq, idx) => (
             <Disclosure key={idx}>

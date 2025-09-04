@@ -37,7 +37,7 @@ const [selected, setSelected] = useState(null);
           <div id="gallery" className="relative scroll-mt-24">
         <motion.div
           ref={scrollRef}
-          className="flex gap-4 overflow-x-auto snap-x snap-mandatory mt-8 pb-4"
+         className="flex gap-4 overflow-x-auto snap-x snap-mandatory mt-8 pb-4 scrollbar-custom"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}

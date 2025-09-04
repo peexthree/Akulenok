@@ -21,4 +21,23 @@
    /* Убираем фон по умолчанию, чтобы исчезли квадраты вокруг изображений */
     @apply bg-transparent;
   }
- }
+}
+
+/* Custom scrollbar for gallery */
+.scrollbar-custom {
+  scrollbar-width: thin;
+  scrollbar-color: #0077B6 transparent;
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #0077B6;
+  border-radius: 9999px;
+}

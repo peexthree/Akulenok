@@ -32,8 +32,8 @@ function Cta() {
             <Image
               src="/img/look.png"
               alt="look"
-              width={100}
-              height={100}
+              width={256}
+              height={256}
               className="ml-4"
             />
           </div>

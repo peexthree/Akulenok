@@ -57,9 +57,13 @@ function Schedule() {
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <div className={`text-sm uppercase font-semibold ${
-              item.highlight ? "text-indigo-600" : "text-gray-700"
-            }`}>
+         <div
+              className={`text-sm uppercase font-semibold ${
+                item.highlight
+                  ? "text-indigo-600"
+                  : "text-gray-700 dark:text-gray-100"
+              }`}
+            >
               {item.title}
             </div>
             <div className="mt-2 text-xl font-bold">{item.time}</div>
@@ -78,7 +82,7 @@ function Schedule() {
                   className={`w-full ${
                   item.highlight
                     ? "bg-indigo-600 text-white hover:bg-indigo-700"
-                    : "bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-trueGray-700 dark:text-white dark:hover:bg-trueGray-600"
+                     : "bg-blue-500 text-white hover:bg-blue-600 dark:bg-trueGray-700 dark:text-white dark:hover:bg-trueGray-600"
                 }`}
               >
                 Записаться

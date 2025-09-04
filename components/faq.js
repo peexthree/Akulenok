@@ -34,8 +34,8 @@ function FAQ() {
       <Image
         src="/img/love.png"
         alt="love"
-        width={120}
-        height={120}
+        width={250}
+        height={250}
         className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2"
       />
       <div id="faq" className="w-full max-w-2xl mx-auto scroll-mt-24">

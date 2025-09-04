@@ -25,10 +25,10 @@ function Footer() {
           {/* Копирайт и логотип */}
           <div className="flex items-center gap-3">
             <Image
-                 src="/img/akulenok-mascot.png"
+                 src="/img/love2.png"
               alt="Акулёнок"
-              width={40} // Вы можете настроить размер
-              height={40}
+              width={100} // Вы можете настроить размер
+              height={100}
               className="bg-transparent" // Добавляем класс для прозрачности
             />
             <div className="text-lg font-semibold text-center md:text-left">

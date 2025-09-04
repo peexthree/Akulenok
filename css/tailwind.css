@@ -47,3 +47,18 @@ text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
     @apply rounded-2xl border border-white/60 bg-white/40 backdrop-blur-md dark:bg-trueGray-800/40 dark:border-trueGray-700;
   }
 }
+@keyframes rise {
+  0% { transform: translateY(100vh) scale(0.2); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+.bubble {
+  position: absolute;
+  bottom: -10vh;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation-name: rise;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}

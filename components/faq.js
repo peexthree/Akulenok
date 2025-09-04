@@ -3,7 +3,6 @@
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/24/outline";
 import React from "react";
-import Image from "next/image";
 import Container from "./container";
 
 const faqs = [
@@ -30,14 +29,7 @@ const faqs = [
 
 function FAQ() {
   return (
-   <Container className="p-8 relative">
-      <Image
-        src="/img/love.png"
-        alt="love"
-        width={250}
-        height={250}
-        className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2"
-      />
+    <Container className="p-8">
       <div id="faq" className="w-full max-w-2xl mx-auto scroll-mt-24">
         <div className="space-y-4">
           {faqs.map((faq, idx) => (

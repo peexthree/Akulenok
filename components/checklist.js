@@ -18,8 +18,8 @@ export default function Checklist() {
         <Image
           src="/img/think.png"
           alt="Думающий акулёнок"
-          width={256}
-          height={256}
+          width={512}
+          height={512}
           className="mb-6 md:mb-0 w-48 h-auto md:w-64"
         />
         <div className="space-y-6">

@@ -34,11 +34,11 @@ export default function Team() {
             tabIndex={0}
             className="
               group text-center p-5 rounded-2xl shadow-sm transition
-              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400
+              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-200
               bg-white/70 backdrop-blur-sm hover:bg-white/80
             "
           >
-            <div className="mx-auto w-44 h-44 rounded-full p-1.5 bg-gradient-to-br from-cyan-100 to-cyan-300 shadow-md">
+            <div className="mx-auto w-44 h-44 rounded-full p-1.5 bg-gradient-to-br from-sky-100 to-sky-300 shadow-md">
               <Image
                 src={m.image}
                 width={176}

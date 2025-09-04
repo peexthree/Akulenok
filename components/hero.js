@@ -187,6 +187,31 @@ console.error(err);
                   />
                 </div>
                
+
+                <div className="flex items-center gap-2 text-xs md:text-sm text-aqua-dark/80 dark:text-aqua-background/80">
+                  <motion.input
+                    id="consent"
+                    name="consent"
+                    type="checkbox"
+                    required
+                    disabled={status === "loading"}
+                    className="accent-orange-500"
+                    whileTap={{ scale: 0.9 }}
+                  />
+                  <label htmlFor="consent">
+                    Я согласен с {" "}
+                    <a
+                      href="/privacy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline"
+                    >
+                      Политикой конфиденциальности
+                    </a>
+                  </label>
+                </div>
+
+
                 <motion.button
                   type="submit"
                  className="bg-orange-500 text-white hover:bg-orange-600 disabled:bg-orange-300 disabled:cursor-not-allowed"

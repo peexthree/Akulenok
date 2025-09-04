@@ -3,7 +3,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import ContactButtons from "./contactButtons";
 import Container from "./container";
-import PrivacyPolicy from "./privacyPolicy";
+
 export default function Hero() {
   const MAX_ATTEMPTS_PER_DAY = 4;
   const STORAGE_KEY = "leadFormAttempts";
@@ -278,7 +278,7 @@ console.error(err);
                 )}
                   </motion.form>
               )}
-  <PrivacyPolicy />
+
               <div className="mt-5">
                 <ContactButtons wide={true} />
               </div>

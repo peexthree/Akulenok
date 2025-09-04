@@ -76,8 +76,7 @@ export default function Home() {
       <Testimonials />
 
    <SectionTitle  title="Фотогалерея">
-       className="text-white opacity-80" 
-
+     
       </SectionTitle>
       <Gallery />
 

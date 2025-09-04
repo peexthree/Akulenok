@@ -14,7 +14,7 @@ export default function Location() {
     <Container>
        <div
         id="contacts"
-     className="grid gap-8 lg:grid-cols-2 items-center bg-white p-8 rounded-2xl shadow-lg scroll-mt-24"
+       className="grid gap-8 lg:grid-cols-2 items-center glass-card p-8 shadow-lg scroll-mt-24"
       >
         <div className="flex flex-col justify-center h-full space-y-5">
           <div className="text-gray-700 dark:text-gray-300 space-y-2">
@@ -62,7 +62,7 @@ export default function Location() {
           </div>
         </div>
         
-          <div className="rounded-2xl overflow-hidden border h-[400px]">
+         <div className="glass-card overflow-hidden h-[400px]">
           <iframe
             src="https://yandex.ru/map-widget/v1/?um=constructor%3A3bc8364469f998d48316e3069ad02bfec23d4cf2a256c4d1fece1f5daac7dfca&source=constructor"
             width="100%"

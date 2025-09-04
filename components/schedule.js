@@ -51,7 +51,7 @@ function Schedule() {
         {scheduleData.map((item) => (
           <motion.div
             key={item.id}
-            className={`rounded-2xl border p-6 dark:border-trueGray-700 ${
+          className={`glass-card p-6 ${
               item.highlight ? "ring-1 ring-indigo-200 dark:ring-indigo-700 shadow-lg relative" : ""
             }`}
             whileHover={{ scale: 1.02 }}

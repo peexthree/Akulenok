@@ -35,7 +35,7 @@ export default function Benefits() {
               height={400}
               className="object-contain"
             />
-             <div className="mt-4 p-4 rounded-2xl border bg-white/40">
+             <div className="mt-4 p-4 glass-card">
               <h3 className="text-xl font-semibold">{item.title}</h3>
               <p className="mt-2 text-gray-600 dark:text-gray-300">{item.desc}</p>
             </div>

@@ -63,7 +63,7 @@ function Pricing() {
             whileHover="hover"
             viewport={{ once: true }}
             tabIndex={0}
-              className={`rounded-2xl border p-6 text-center dark:border-trueGray-700 transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua-accent ${
+           className={`glass-card p-6 text-center transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua-accent ${
               item.highlight ? "ring-2 ring-orange-300" : ""
             }`}
            

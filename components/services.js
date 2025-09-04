@@ -4,7 +4,7 @@ import { SparklesIcon, HeartIcon } from "@heroicons/react/24/solid";
 
 export default function Services() {
   const Item = ({ title, desc }) => (
-    <div className="rounded-2xl border p-6 bg-white dark:bg-trueGray-900">
+    <div className="glass-card p-6">
       <div className="text-xl font-semibold">{title}</div>
       <p className="text-gray-600 dark:text-gray-300 mt-2">{desc}</p>
     </div>

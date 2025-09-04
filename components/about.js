@@ -19,14 +19,14 @@ const About = () => {
           </p>
           <div className="mt-5 grid grid-cols-3 gap-4">
             {stats.map((s) => (
-              <div key={s.k} className="rounded-xl border p-4 text-center">
+              <div key={s.k} className="glass-card p-4 text-center">
                 <div className="text-2xl font-bold">{s.k}</div>
                 <div className="text-sm text-gray-500">{s.v}</div>
               </div>
             ))}
           </div>
         </div>
-        <div className="rounded-2xl border p-6 dark:border-trueGray-700">
+        <div className="glass-card p-6">
           <div className="text-lg font-semibold mb-2">Почему нам доверяют</div>
           <ul className="space-y-2 text-gray-600 dark:text-gray-300 list-disc list-inside">
             <li>

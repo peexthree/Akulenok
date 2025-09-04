@@ -20,7 +20,6 @@ import Cta from "../components/cta";
 import Footer from "../components/footer";
 import ContactButtons from "../components/contactButtons";
 import Video from "../components/video";
-import WhyChoose from "../components/whyChoose";
 import Container from "../components/container";
 
 export default function Home() {
@@ -60,13 +59,15 @@ export default function Home() {
       <Methodology />
       <Checklist />
       <Services />
- <SectionTitle title="Наши преимущества" />
+<SectionTitle 
+  title="С нами удобно" 
+  className="text-white opacity-80" 
+/>
       <Benefits />
      <Container className="mt-8">
         <ContactButtons />
       </Container>
-      <SectionTitle title="Почему родители выбирают «Акулёнок»" />
-      <WhyChoose />
+     
       <Team />
 
       <Video />
@@ -75,7 +76,8 @@ export default function Home() {
       <Testimonials />
 
    <SectionTitle  title="Фотогалерея">
-        Реальные занятия в «Акулёнке»
+       className="text-white opacity-80" 
+
       </SectionTitle>
       <Gallery />
 

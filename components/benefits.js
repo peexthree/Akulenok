@@ -19,7 +19,7 @@ const items = [
   img: "/img/hero.png",
 },
 
-  },
+
 ];
 
 export default function Benefits() {

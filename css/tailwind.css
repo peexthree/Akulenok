@@ -64,9 +64,9 @@ text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 .bubble {
   position: absolute;
   bottom: -10vh;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255,255,255,0.6);         /* более плотный фон */
   border-radius: 50%;
-  animation-name: rise;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
+  border: 1px solid rgba(255,255,255,0.8);   /* чёткий край */
+  box-shadow: 0 0 6px rgba(255,255,255,0.5); /* лёгкая подсветка */
+  animation: rise linear forwards;
 }

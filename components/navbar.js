@@ -27,16 +27,17 @@ function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur dark:bg-aqua-dark/80 shadow-md">
       <nav
-          className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 lg:px-8"
+         className="mx-auto flex h-32 max-w-7xl items-center justify-between px-4 lg:px-8"
         aria-label="Global"
       >
          {/* Логотип */}
-        <div className="flex flex-1">
+        <div className="flex flex-1 items-center gap-x-4">
           <Link href="/" className="-m-1.5 p-1.5">
                         <span className="text-xl font-bold text-aqua-accent">
               Акулёнок
             </span>
           </Link>
+  <ThemeChanger />
         </div>
 
         {/* Меню для десктопа */}
@@ -57,7 +58,7 @@ function Navbar() {
           ))}
         </div>
 
-        {/* Переключатель темы и кнопка меню */}
+      {/* Кнопка меню */}
         <div className="flex flex-1 items-center justify-end gap-x-4 lg:flex-none">
           <ThemeChanger />
           <div className="flex lg:hidden">

@@ -34,11 +34,11 @@ export default function Team() {
             tabIndex={0}
             className="
               group text-center p-5 rounded-2xl shadow-sm transition
-              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-200
+              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-200
               bg-white/70 backdrop-blur-sm hover:bg-white/80
             "
           >
-            <div className="mx-auto w-44 h-44 rounded-full p-1.5 bg-gradient-to-br from-sky-100 to-sky-300 shadow-md">
+            <div className="mx-auto w-44 h-44 rounded-full p-1.5 bg-gradient-to-br from-slate-100 to-slate-300 shadow-md">
               <Image
                 src={m.image}
                 width={176}
@@ -55,7 +55,7 @@ export default function Team() {
             </div>
 
             {/* Роль — мягкий аква-оттенок, чуть меньше */}
-            <div className="mt-0.5 text-sm md:text-base text-sky-700/90">
+            <div className="mt-0.5 text-sm md:text-base text-slate-700/90">
               {m.role}
             </div>
           </motion.div>

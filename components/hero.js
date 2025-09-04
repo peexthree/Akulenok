@@ -1,14 +1,55 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import ContactButtons from "./contactButtons";
 import Container from "./container";
 import PrivacyPolicy from "./privacyPolicy";
 export default function Hero() {
-   const [status, setStatus] = useState("idle");
-  const [message, setMessage] = useState("");
-const [phone, setPhone] = useState("");
+  const MAX_ATTEMPTS_PER_DAY = 4;
+  const STORAGE_KEY = "leadFormAttempts";
 
+  const [status, setStatus] = useState("idle");
+  const [message, setMessage] = useState("");
+ const [phone, setPhone] = useState("");
+  const [blocked, setBlocked] = useState(false);
+
+  const getAttempts = () => {
+    if (typeof window === "undefined")
+      return { count: 0, date: new Date().toDateString() };
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    if (!stored) return { count: 0, date: new Date().toDateString() };
+    return JSON.parse(stored);
+  };
+
+  const saveAttempts = (attempts) => {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(attempts));
+  };
+
+  const incrementAttempts = () => {
+    let attempts = getAttempts();
+    const today = new Date().toDateString();
+    if (attempts.date !== today) {
+      attempts = { count: 0, date: today };
+    }
+    attempts.count += 1;
+    saveAttempts(attempts);
+    if (attempts.count >= MAX_ATTEMPTS_PER_DAY) {
+      setBlocked(true);
+    }
+  };
+
+  useEffect(() => {
+    const attempts = getAttempts();
+    const today = new Date().toDateString();
+    if (attempts.date !== today) {
+      saveAttempts({ count: 0, date: today });
+      return;
+    }
+    if (attempts.count >= MAX_ATTEMPTS_PER_DAY) {
+      setBlocked(true);
+    }
+  }, []);
   const handlePhoneChange = (e) => {
     let value = e.target.value.replace(/\D/g, "");
     if (value.startsWith("7")) value = value.slice(1);
@@ -22,6 +63,7 @@ const [phone, setPhone] = useState("");
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+ if (blocked) return;
     setStatus("loading");
     setMessage("");
 
@@ -61,6 +103,8 @@ const [phone, setPhone] = useState("");
 console.error(err);
       setStatus("error");
       setMessage("Ошибка сети. Попробуйте ещё раз.");
+ } finally {
+      incrementAttempts();
     }
   };
 
@@ -90,11 +134,16 @@ console.error(err);
             </p>
 
                {/* ==== Форма записи ==== */}
-              <motion.form
-                id="lead-form"
-                className="mt-8 grid w-full max-w-md gap-3 p-6 bg-white/70 dark:bg-aqua-dark/70 rounded-lg"
-                onSubmit={handleSubmit}
-              >
+             {blocked ? (
+                <div className="mt-8 w-full max-w-md p-6 bg-white/70 dark:bg-aqua-dark/70 rounded-lg">
+                  Попробуйте завтра — превышен лимит.
+                </div>
+              ) : (
+                <motion.form
+                  id="lead-form"
+                  className="mt-8 grid w-full max-w-md gap-3 p-6 bg-white/70 dark:bg-aqua-dark/70 rounded-lg"
+                  onSubmit={handleSubmit}
+                >
                 <div className="flex flex-col gap-1">
                   <label
                     htmlFor="parentName"
@@ -227,7 +276,8 @@ console.error(err);
                 {status === "error" && (
                   <p className="text-red-600 mt-2">{message}</p>
                 )}
-               </motion.form>
+                  </motion.form>
+              )}
   <PrivacyPolicy />
               <div className="mt-5">
                 <ContactButtons wide={true} />

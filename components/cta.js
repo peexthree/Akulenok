@@ -2,13 +2,14 @@ import React from "react";
 import clsx from "clsx";
 import Container from "./container";
 import Button from "./Button";
+
 function Cta() {
   return (
     <Container>
      <div
         className={clsx(
           "flex flex-wrap items-center justify-between w-full max-w-4xl gap-5 mx-auto text-white bg-aqua-accent px-7 py-7 lg:px-12 lg:py-12 lg:flex-nowrap rounded-xl",
-          "transform transition duration-300 hover:scale-105 hover:shadow-lg"
+          "transform transition duration-300 hover:scale-105 hover:shadow-lg animate-press-me"
         )}
       >
         <div className="flex-grow text-center lg:text-left">

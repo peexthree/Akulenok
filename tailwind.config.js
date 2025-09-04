@@ -25,6 +25,15 @@ fontFamily: {
         inter: ["var(--font-inter)"],
         fredoka: ["var(--font-fredoka)"],
       },
+ keyframes: {
+        "press-me": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.05)" },
+        },
+      },
+      animation: {
+        "press-me": "press-me 1.5s ease-in-out infinite",
+      },
     },
   },
   plugins: [

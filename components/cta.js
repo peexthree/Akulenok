@@ -2,6 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import Container from "./container";
 import Button from "./Button";
+import Image from "next/image";
 
 function Cta() {
   return (
@@ -21,12 +22,21 @@ function Cta() {
           </p>
         </div>
         <div className="flex-shrink-0 w-full text-center lg:w-auto">
-      <Button
-            href="#lead-form"
-           className="w-full bg-orange-500 text-white text-lg lg:text-xl px-8 py-4 lg:px-10 lg:py-5 hover:bg-orange-600"
-          >
-            Записаться
-         </Button>
+     <div className="flex items-center justify-center">
+            <Button
+              href="#lead-form"
+              className="w-full bg-orange-500 text-white text-lg lg:text-xl px-8 py-4 lg:px-10 lg:py-5 hover:bg-orange-600"
+            >
+              Записаться
+            </Button>
+            <Image
+              src="/img/look.png"
+              alt="look"
+              width={48}
+              height={48}
+              className="ml-4"
+            />
+          </div>
         </div>
       </div>
     </Container>

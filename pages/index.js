@@ -1,27 +1,28 @@
 import Head from "next/head";
+import dynamic from "next/dynamic";
 import Navbar from "../components/navbar";
-import Faq from "../components/faq";
-import PopupWidget from "../components/popupWidget";
-// Остальные компоненты, которые не вызывают ошибок
 import Hero from "../components/hero";
 import SectionTitle from "../components/sectionTitle";
-import About from "../components/about";
-import Services from "../components/services";
-import Benefits from "../components/benefits";
-import Methodology from "../components/methodology";
-import Checklist from "../components/checklist";
-import Team from "../components/team";
-import Schedule from "../components/schedule";
-import Pricing from "../components/pricing";
-import Testimonials from "../components/testimonials";
-import Gallery from "../components/gallery";
-import Location from "../components/location";
-import Cta from "../components/cta";
-import Footer from "../components/footer";
-import ContactButtons from "../components/contactButtons";
-import Video from "../components/video";
 import Container from "../components/container";
+import LazyLoad from "../components/lazy";
 
+const About = dynamic(() => import("../components/about"));
+const Services = dynamic(() => import("../components/services"));
+const Benefits = dynamic(() => import("../components/benefits"));
+const Methodology = dynamic(() => import("../components/methodology"));
+const Checklist = dynamic(() => import("../components/checklist"));
+const Team = dynamic(() => import("../components/team"));
+const Schedule = dynamic(() => import("../components/schedule"));
+const Pricing = dynamic(() => import("../components/pricing"));
+const Testimonials = dynamic(() => import("../components/testimonials"));
+const Gallery = dynamic(() => import("../components/gallery"));
+const Location = dynamic(() => import("../components/location"));
+const Cta = dynamic(() => import("../components/cta"));
+const Footer = dynamic(() => import("../components/footer"));
+const ContactButtons = dynamic(() => import("../components/contactButtons"));
+const Video = dynamic(() => import("../components/video"));
+const Faq = dynamic(() => import("../components/faq"));
+const PopupWidget = dynamic(() => import("../components/popupWidget"));
 export default function Home() {
   return (
     <>
@@ -54,45 +55,74 @@ export default function Home() {
 
       <Navbar />
       <Hero />
-     
-      <About />
-      <Methodology />
-      <Checklist />
-      <Services />
-<SectionTitle 
-  title="С нами удобно" 
-  className="text-white opacity-80" 
-/>
-      <Benefits />
-     <Container className="mt-8">
-        <ContactButtons />
-      </Container>
-     
-      <Team />
+    <LazyLoad>
+        <About />
+      </LazyLoad>
+      <LazyLoad>
+        <Methodology />
+      </LazyLoad>
+      <LazyLoad>
+        <Checklist />
+      </LazyLoad>
+      <LazyLoad>
+        <Services />
+      </LazyLoad>
+      <LazyLoad>
+        <SectionTitle
+          title="С нами удобно"
+          className="text-white opacity-80"
+        />
+        <Benefits />
+        <Container className="mt-8">
+          <ContactButtons />
+        </Container>
+      </LazyLoad>
 
-      <Video />
-      
+      <LazyLoad>
+        <Team />
+      </LazyLoad>
+
+      <LazyLoad>
+        <Video />
+      </LazyLoad>
+
+      <LazyLoad>
         <SectionTitle title="Что говорят наши клиенты" />
-      <Testimonials />
+    <Testimonials />
+      </LazyLoad>
 
-   <SectionTitle  title="Фотогалерея">
-     
-      </SectionTitle>
-      <Gallery />
+      <LazyLoad>
+        <SectionTitle title="Фотогалерея" />
+        <Gallery />
+      </LazyLoad>
+
+      <LazyLoad>
+        <Schedule />
+      </LazyLoad>
+      <LazyLoad>
+        <Pricing />
+      </LazyLoad>
+
+      <LazyLoad>
+        <SectionTitle title="Часто задаваемые вопросы" />
+        <Faq />
+      </LazyLoad>
+
+      <LazyLoad>
+        <SectionTitle title="Наш адрес и контакты" />
+        <Location />
+      </LazyLoad>
 
 
-      <Schedule />
-      <Pricing />
-      
-      <SectionTitle  title="Часто задаваемые вопросы" />
-      <Faq />
-      
-      <SectionTitle  title="Наш адрес и контакты" />
-      <Location />
-      
-      <Cta />
-      <Footer />
-      <PopupWidget />
+       <LazyLoad>
+        <Cta />
+      </LazyLoad>
+      <LazyLoad>
+        <Footer />
+      </LazyLoad>
+      <LazyLoad>
+        <PopupWidget />
+      </LazyLoad>
     </>
   );
 }

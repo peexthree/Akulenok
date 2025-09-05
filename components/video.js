@@ -15,17 +15,19 @@ export default function Video() {
       <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg">
         <video
           className="h-full w-full object-cover"
-          src="/video/hero_small.mp4"
-          // Если добавишь webm — лучше через <source> (пример ниже).
+          
           autoPlay
           muted
           loop
           playsInline
-          preload="none"
+            preload="metadata"
           controls
-          poster="/video/poster.jpg" // опционально: положи превью в /public/video/poster.jpg
+       poster="/video/poster.jpg"
           aria-label="Ролик о центре «Акулёнок»"
-        />
+         >
+          <source src="/video/hero_small.webm" type="video/webm" />
+          <source src="/video/hero_small.mp4" type="video/mp4" />
+        </video>
       </div>
     </Container>
   );

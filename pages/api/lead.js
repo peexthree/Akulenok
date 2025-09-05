@@ -4,10 +4,8 @@ export default async function handler(req, res) {
   try {
     const { parentName, phone, childAge, timePref, utm } = req.body || {};
 
-    const tgToken =
-      process.env.TG_BOT_TOKEN ||
-      '7577773883:AAH5D8nYO_bqrvqefXqYYG0HUeRO5T_dTyo';
-    const chatId = process.env.TG_CHAT_ID || '5178416366';
+      const tgToken = process.env.TG_BOT_TOKEN;
+    const chatId = process.env.TG_CHAT_ID;
 
     if (!tgToken || !chatId) {
       return res.status(500).json({ error: 'Missing TG_BOT_TOKEN or TG_CHAT_ID envs' });

@@ -52,9 +52,7 @@ export default function Home() {
 
       <Navbar />
       <Hero />
-     <LazyLoad>
-        <SharkBlock />
-      </LazyLoad>
+    
       <LazyLoad>
         <About />
       </LazyLoad>
@@ -67,6 +65,12 @@ export default function Home() {
       <LazyLoad>
         <Services />
       </LazyLoad>
+<LazyLoad>
+        <Team />
+      </LazyLoad>
+      <LazyLoad>
+        <SharkBlock />
+      </LazyLoad>
       <LazyLoad>
         <SectionTitle
           title="С нами удобно"
@@ -74,10 +78,6 @@ export default function Home() {
         />
         <Benefits />
        
-      </LazyLoad>
-
-      <LazyLoad>
-        <Team />
       </LazyLoad>
 
       <LazyLoad>

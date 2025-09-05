@@ -2,7 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+
 /* Base styles and default theming */
 @layer base {
  html {
@@ -11,6 +11,8 @@ text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 
 
  body {
+ /* Apply base typography and layout, including consistent text shadow */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
     @apply text-aqua-dark dark:text-aqua-background m-0 scroll-smooth overflow-x-hidden leading-relaxed;
   }
 

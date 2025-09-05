@@ -3,9 +3,7 @@ import dynamic from "next/dynamic";
 import Navbar from "../components/navbar";
 import Hero from "../components/hero";
 import SectionTitle from "../components/sectionTitle";
-
 import LazyLoad from "../components/lazy";
-
 const About = dynamic(() => import("../components/about"));
 const SharkBlock = dynamic(() => import("../components/sharkBlock"));
 const Services = dynamic(() => import("../components/services"));

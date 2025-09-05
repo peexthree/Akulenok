@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import ContactButtons from "./contactButtons";
+
 import Container from "./container";
 
 export default function Hero() {
@@ -263,12 +263,14 @@ console.error(err);
 
                 <motion.button
                   type="submit"
-                 className="bg-orange-500 text-white hover:bg-orange-600 disabled:bg-orange-300 disabled:cursor-not-allowed"
+                className="inline-flex items-center justify-center rounded-md px-5 py-3 text-base font-semibold bg-sky-500 text-white transition-colors transition-transform hover:bg-sky-600 disabled:bg-sky-300 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500"
                   disabled={status === "loading"}
+animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ repeat: Infinity, duration: 1.5 }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {status === "loading" ? "Отправка..." : "Записаться на пробное занятие"}
+                  {status === "loading" ? "Отправка..." : "Оставить заявку"}
                 </motion.button>
                 {status === "success" && (
                   <p className="text-green-600 mt-2">{message}</p>
@@ -279,10 +281,7 @@ console.error(err);
                   </motion.form>
               )}
 
-              <div className="mt-5">
-                <ContactButtons wide={true} />
-              </div>
-          </div>
+                       </div>
         </div>
       </Container>
 

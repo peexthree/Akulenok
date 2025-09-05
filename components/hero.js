@@ -120,7 +120,7 @@ console.error(err);
         alt="Детский бассейн Акулёнок"
         fill
         priority
-      className="object-contain object-center md:object-right scale-90"
+     className="object-contain object-center md:object-right scale-90 animate-swim"
       />
      
      <Container className="relative z-10 flex flex-wrap pt-20">

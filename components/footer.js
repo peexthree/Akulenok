@@ -9,7 +9,7 @@ function Footer() {
     <footer className="relative text-aqua-dark dark:text-aqua-background py-10">
       <div className="absolute top-0 left-0 w-full -translate-y-full overflow-hidden leading-none">
         <svg
-          className="relative block w-[calc(100%+1.3px)] h-8"
+          className="relative block w-full h-8"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1200 40"
           preserveAspectRatio="none"

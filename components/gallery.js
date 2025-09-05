@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Container from "./container";
@@ -28,6 +28,21 @@ const variants = {
 function Gallery() {
 const [selected, setSelected] = useState(null);
   const scrollRef = useRef(null);
+useEffect(() => {
+    const interval = setInterval(() => {
+      const el = scrollRef.current;
+      if (!el) return;
+      const { scrollLeft, clientWidth, scrollWidth } = el;
+      const maxScrollLeft = scrollWidth - clientWidth;
+      if (scrollLeft >= maxScrollLeft) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: 336, behavior: "smooth" });
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const scroll = (offset) => {
     scrollRef.current?.scrollBy({ left: offset, behavior: "smooth" });

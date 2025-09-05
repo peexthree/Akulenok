@@ -4,7 +4,7 @@ export default function Testimonials() {
   return (
  <div className="w-full">
       <div
-         className="w-full max-w-2xl mx-auto h-[80vh] overflow-y-scroll"
+         className="w-full max-w-2xl mx-auto h-[80vh] overflow-hidden overflow-y-scroll rounded-xl"
         style={{ WebkitOverflowScrolling: "touch" }}
       >
         <iframe

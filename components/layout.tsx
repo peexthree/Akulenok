@@ -1,7 +1,9 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import OceanBackground from "./OceanBackground";
 import BubbleLayer from "./BubbleLayer";
 
+const PopupWidget = dynamic(() => import("./popupWidget"), { ssr: false });
 
 export default function Layout({ children }) {
   return (
@@ -12,6 +14,7 @@ export default function Layout({ children }) {
       <div className="relative z-10 backdrop-blur-md bg-white/30 dark:bg-aqua-dark/25">
         {children}
       </div>
+ <PopupWidget />
     </div>
   );
 }

@@ -23,7 +23,6 @@ const Footer = dynamic(() => import("../components/footer"));
 const ContactButtons = dynamic(() => import("../components/contactButtons"));
 const Video = dynamic(() => import("../components/video"));
 const Faq = dynamic(() => import("../components/faq"));
-const PopupWidget = dynamic(() => import("../components/popupWidget"));
 export default function Home() {
   return (
     <>
@@ -123,9 +122,6 @@ export default function Home() {
       </LazyLoad>
       <LazyLoad>
         <Footer />
-      </LazyLoad>
-      <LazyLoad>
-        <PopupWidget />
       </LazyLoad>
     </>
   );

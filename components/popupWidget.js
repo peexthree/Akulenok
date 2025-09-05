@@ -47,7 +47,7 @@ const [hasInteracted, setHasInteracted] = useState(false);
   const fabClasses = clsx(
     "fixed bottom-6 right-6 z-[60] inline-flex items-center justify-center",
     "h-14 w-14 rounded-full shadow-2xl ring-1 ring-black/5",
-    "bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500",
+    "bg-gradient-to-br from-orange-400 via-orange-500 to-red-500",
     "text-white transition-transform focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-300",
     open ? "scale-100" : "hover:scale-105 active:scale-95"
   );
@@ -92,7 +92,7 @@ const [hasInteracted, setHasInteracted] = useState(false);
              ref={panelRef}
             key="panel"
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
+            animate={{ opacity: 1, y: 0, scale: 1.1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 260, damping: 22 }}
             className={clsx(
@@ -105,7 +105,7 @@ const [hasInteracted, setHasInteracted] = useState(false);
             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
               Напишите нам
             </h3>
-           <p className="text-sm text-gray-600 dark:text-gray-400">
+           <p className="text-sm text-gray-600 dark:text-gray-100">
               Мы ответим на ваш вопрос в ближайшее время.
             </p>
            <div className="flex flex-col gap-2">
@@ -113,7 +113,7 @@ const [hasInteracted, setHasInteracted] = useState(false);
                 href="https://wa.me/79273039977"
                 target="_blank"
                 rel="noopener noreferrer"
-               className="inline-flex items-center gap-2 rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 transition"
+               className="inline-flex items-center gap-2 rounded-md bg-green-500 px-4 py-2 text-white hover:bg-blue-600 transition"
               >
 <FaWhatsapp className="h-5 w-5" />
                 WhatsApp
@@ -122,14 +122,14 @@ const [hasInteracted, setHasInteracted] = useState(false);
                 href="https://t.me/+79273039977"
                 target="_blank"
                 rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md bg-indigo-500 px-4 py-2 text-white hover:bg-indigo-600 transition"
+              className="inline-flex items-center gap-2 rounded-md bg-indigo-500 px-4 py-2 text-white hover:bg-sky-600 transition"
               >
  <PaperAirplaneIcon className="h-5 w-5" />
                 Telegram
               </a>
  <a
                 href="tel:+79273039977"
-                className="block w-full rounded bg-blue-500 px-4 py-2 text-center text-white font-medium hover:bg-blue-600 transition"
+               className="inline-flex items-center gap-2 rounded-md bg-green-500 px-4 py-2 text-white hover:bg-orange-500 transition"
               >
  <PhoneIcon className="h-5 w-5" />
                 Позвонить

@@ -129,7 +129,7 @@ const [hasInteracted, setHasInteracted] = useState(false);
               </a>
  <a
                 href="tel:+79273039977"
-               className="inline-flex items-center gap-2 rounded-md bg-green-500 px-4 py-2 text-white hover:bg-orange-500 transition"
+               className="inline-flex items-center gap-2 rounded-md bg-orange-500 px-4 py-2 text-white hover:bg-orange-500 transition"
               >
  <PhoneIcon className="h-5 w-5" />
                 Позвонить

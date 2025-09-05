@@ -12,7 +12,7 @@
 
  body {
  /* Apply base typography and layout, including consistent text shadow */
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
       @apply text-aqua-dark dark:text-aqua-background m-0 scroll-smooth overflow-x-hidden leading-relaxed;
   }
 
@@ -66,8 +66,8 @@
 .bubble {
   position: absolute;
   bottom: -10vh;
-  background: rgba(255,255,255,0.6);         /* более плотный фон */
-  border-radius: 50%;
+  background: rgba(255,255,255,0.7);         /* более плотный фон */
+  border-radius: 70%;
   border: 1px solid rgba(255,255,255,0.8);   /* чёткий край */
   box-shadow: 0 0 6px rgba(255,255,255,0.5); /* лёгкая подсветка */
   animation: rise linear forwards;

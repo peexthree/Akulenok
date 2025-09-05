@@ -67,6 +67,12 @@ function PopupWidget() {
               >
                 Telegram
               </a>
+ <a
+                href="tel:+79273039977"
+                className="block w-full rounded bg-blue-500 px-4 py-2 text-center text-white font-medium hover:bg-blue-600 transition"
+              >
+                Позвонить
+              </a>
             </div>
           </motion.div>
         )}

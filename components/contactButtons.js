@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import Button from "./Button";
-import { FaTelegramPlane, FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
+import { FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
 
 export default function ContactButtons({ wide = false }) {
    const fullClass = wide ? "w-full" : "";
@@ -11,7 +11,7 @@ export default function ContactButtons({ wide = false }) {
     <div
       className={clsx(
         "grid gap-x-3 gap-y-3",
-        wide ? "grid-cols-1 md:grid-cols-3" : "grid-cols-3"
+        wide ? "grid-cols-1 md:grid-cols-2" : "grid-cols-2"
       )}
     >
     <Button
@@ -36,12 +36,7 @@ export default function ContactButtons({ wide = false }) {
           WhatsApp
         </span>
       </Button>
-      <Button href="tel:+79273039977" className={commonClasses}>
-        <span className="flex items-center gap-2">
-          <FaPhoneAlt size={20} />
-          Позвонить
-        </span>
-      </Button>
+   
     </div>
   );
 }

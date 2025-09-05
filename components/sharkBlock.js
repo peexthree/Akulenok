@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Container from "./container";
+import ContactButtons from "./contactButtons";
 
 function SharkBlock() {
   return (
@@ -13,9 +14,10 @@ function SharkBlock() {
           height={300}
           className="w-full h-auto mb-4"
         />
-        <p className="text-gray-700">
-          Привет! Я акула-программист. Пиши мне и я свяжусь!
-        </p>
+        <h3 className="mb-4 text-lg font-semibold text-gray-700">
+          Есть вопросы? Напиши мне
+        </h3>
+        <ContactButtons vertical={true} wide={true} />
       </div>
     </Container>
   );

@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Navbar from "../components/navbar";
 import Hero from "../components/hero";
 import SectionTitle from "../components/sectionTitle";
-import Container from "../components/container";
+
 import LazyLoad from "../components/lazy";
 
 const About = dynamic(() => import("../components/about"));
@@ -20,7 +20,6 @@ const Gallery = dynamic(() => import("../components/gallery"));
 const Location = dynamic(() => import("../components/location"));
 const Cta = dynamic(() => import("../components/cta"));
 const Footer = dynamic(() => import("../components/footer"));
-const ContactButtons = dynamic(() => import("../components/contactButtons"));
 const Video = dynamic(() => import("../components/video"));
 const Faq = dynamic(() => import("../components/faq"));
 export default function Home() {
@@ -76,9 +75,7 @@ export default function Home() {
           className="text-white opacity-80"
         />
         <Benefits />
-        <Container className="mt-8">
-          <ContactButtons />
-        </Container>
+       
       </LazyLoad>
 
       <LazyLoad>

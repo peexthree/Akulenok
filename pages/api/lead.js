@@ -13,10 +13,12 @@ export default async function handler(req, res) {
 
     const text =
 `🦈 Новая заявка с лендинга
+https://www.akulenok-tmz.ru/
+
 Имя: ${parentName || '-'}
 Телефон: ${phone || '-'}
 Возраст ребёнка: ${childAge || '-'}
-Удобное время: ${timePref || '-'}`;
+Удобное время для связи: ${timePref || '-'}`;
 
     const tgUrl = `https://api.telegram.org/bot${tgToken}/sendMessage`;
     const tgResp = await fetch(tgUrl, {

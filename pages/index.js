@@ -59,6 +59,9 @@ export default function Home() {
       <LazyLoad>
         <Methodology />
       </LazyLoad>
+ <LazyLoad>
+        <Video />
+      </LazyLoad>
       <LazyLoad>
         <Checklist />
       </LazyLoad>
@@ -77,12 +80,7 @@ export default function Home() {
           className="text-white opacity-80"
         />
         <Benefits />
-       
-      </LazyLoad>
-
-      <LazyLoad>
-        <Video />
-      </LazyLoad>
+             </LazyLoad>
 
       <LazyLoad>
         <SectionTitle title="Что говорят наши клиенты" />

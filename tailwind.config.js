@@ -21,6 +21,11 @@ module.exports = {
           800: "#075985",
           900: "#0b4a6f",
         },
+        aqua: {
+          accent: "#0ea5e9",
+          dark: "#0b4a6f",
+          background: "#ecfeff",
+        },
         accent: {
           50: "#fff1f2",
           100: "#ffe4e6",

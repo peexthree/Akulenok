@@ -66,7 +66,7 @@ function Navbar() {
               type="button"
                    className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-aqua-dark dark:text-aqua-background focus:outline-none focus:ring-2 focus:ring-aqua-accent"
               onClick={() => setMobileMenuOpen(true)}
-              aria-label="Open mobile menu"
+              aria-label="Открыть меню"
             >
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
@@ -110,8 +110,9 @@ function Navbar() {
                 </Link>
                 <button
                   type="button"
-                               className="p-2 text-aqua-dark dark:text-aqua-background focus:outline-none focus:ring-2 focus:ring-aqua-accent"
+                  className="p-2 text-aqua-dark dark:text-aqua-background focus:outline-none focus:ring-2 focus:ring-aqua-accent"
                   onClick={() => setMobileMenuOpen(false)}
+                  aria-label="Закрыть меню"
                 >
                   <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                 </button>

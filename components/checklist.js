@@ -12,31 +12,39 @@ const items = [
 
 export default function Checklist() {
   return (
-    <Container>
-        <div className="flex flex-col items-center md:flex-row md:items-start md:gap-8 md:justify-center">
+    <Container className="py-12">
+      <div className="flex flex-col items-center justify-center space-y-8">
         <Image
           src="/img/think.png"
           alt="Думающий акулёнок"
-          width={512}
-          height={512}
-          className="mb-6 md:mb-0 w-48 h-auto md:w-64"
+          width={150}
+          height={150}
+          className="w-32 h-auto md:w-40 animate-pulse"
         />
-        <div className="space-y-6">
-          <h2 className="text-3xl font-semibold text-center">
+
+        <div className="text-center max-w-2xl mx-auto space-y-4">
+          <h2 className="text-4xl font-bold text-aqua-dark dark:text-aqua-background">
             Что взять на первое занятие
           </h2>
-          <p className="text-center text-gray-600">
+          <p className="text-lg text-gray-600 dark:text-gray-300">
             Чтобы ваше первое занятие прошло комфортно, подготовьте всё необходимое заранее:
           </p>
+        </div>
 
-          <ul className="space-y-3 flex flex-col items-center">
-            {items.map(({ emoji, text }) => (
-              <li key={text} className="flex items-center gap-3">
-                <span className="text-xl">{emoji}</span>
-                <span>{text}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-10 w-full px-4">
+          {items.map(({ emoji, text }) => (
+            <div
+              key={text}
+              className="bg-white dark:bg-trueGray-800 p-6 rounded-3xl shadow-xl flex flex-col items-center justify-center text-center gap-4 transform transition hover:-translate-y-2 hover:shadow-2xl border-t-4 border-aqua-accent"
+            >
+              <div className="text-5xl drop-shadow-md">
+                {emoji}
+              </div>
+              <span className="font-semibold text-gray-700 dark:text-gray-200 leading-snug">
+                {text}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </Container>

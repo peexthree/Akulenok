@@ -4,6 +4,7 @@ import Navbar from "../components/navbar";
 import Hero from "../components/hero";
 import SectionTitle from "../components/sectionTitle";
 import LazyLoad from "../components/lazy";
+
 const About = dynamic(() => import("../components/about"));
 const SharkBlock = dynamic(() => import("../components/sharkBlock"));
 const Services = dynamic(() => import("../components/services"));
@@ -20,6 +21,7 @@ const Cta = dynamic(() => import("../components/cta"));
 const Footer = dynamic(() => import("../components/footer"));
 const Video = dynamic(() => import("../components/video"));
 const Faq = dynamic(() => import("../components/faq"));
+
 export default function Home() {
   return (
     <>
@@ -51,40 +53,52 @@ export default function Home() {
       </Head>
 
       <Navbar />
+
       <Hero />
     
       <LazyLoad>
         <About />
       </LazyLoad>
+
       <LazyLoad>
         <Methodology />
       </LazyLoad>
- <LazyLoad>
+
+      <LazyLoad>
         <Video />
       </LazyLoad>
-      <LazyLoad>
-        <Checklist />
-      </LazyLoad>
-      <LazyLoad>
-        <Services />
-      </LazyLoad>
-<LazyLoad>
-        <Team />
-      </LazyLoad>
-      <LazyLoad>
-        <SharkBlock />
-      </LazyLoad>
+
       <LazyLoad>
         <SectionTitle
           title="С нами удобно"
           className="text-white opacity-80"
         />
         <Benefits />
-             </LazyLoad>
+      </LazyLoad>
+
+      <LazyLoad>
+        <Services />
+      </LazyLoad>
+
+      <LazyLoad>
+        <Checklist />
+      </LazyLoad>
+
+      <LazyLoad>
+        <Team />
+      </LazyLoad>
+
+      <LazyLoad>
+        <Schedule />
+      </LazyLoad>
+
+      <LazyLoad>
+        <Pricing />
+      </LazyLoad>
 
       <LazyLoad>
         <SectionTitle title="Что говорят наши клиенты" />
-    <Testimonials />
+        <Testimonials />
       </LazyLoad>
 
       <LazyLoad>
@@ -93,10 +107,7 @@ export default function Home() {
       </LazyLoad>
 
       <LazyLoad>
-        <Schedule />
-      </LazyLoad>
-      <LazyLoad>
-        <Pricing />
+        <SharkBlock />
       </LazyLoad>
 
       <LazyLoad>
@@ -109,10 +120,10 @@ export default function Home() {
         <Location />
       </LazyLoad>
 
-
-       <LazyLoad>
+      <LazyLoad>
         <Cta />
       </LazyLoad>
+
       <LazyLoad>
         <Footer />
       </LazyLoad>

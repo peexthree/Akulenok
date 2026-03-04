@@ -1,38 +1,41 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Container from "./container";
 import { motion } from "framer-motion";
 
-import Container from "./container";
+const MAX_ATTEMPTS_PER_DAY = 5;
 
 export default function Hero() {
-  const MAX_ATTEMPTS_PER_DAY = 4;
-  const STORAGE_KEY = "leadFormAttempts";
-
   const [status, setStatus] = useState("idle");
   const [message, setMessage] = useState("");
- const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState("");
   const [blocked, setBlocked] = useState(false);
 
   const getAttempts = () => {
-    if (typeof window === "undefined")
-      return { count: 0, date: new Date().toDateString() };
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (!stored) return { count: 0, date: new Date().toDateString() };
-    return JSON.parse(stored);
+    if (typeof window === "undefined") return { count: 0, date: "" };
+    const saved = localStorage.getItem("leadAttempts");
+    if (saved) return JSON.parse(saved);
+    return { count: 0, date: "" };
   };
 
   const saveAttempts = (attempts) => {
-    if (typeof window === "undefined") return;
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(attempts));
+    if (typeof window !== "undefined") {
+      localStorage.setItem("leadAttempts", JSON.stringify(attempts));
+    }
   };
 
   const incrementAttempts = () => {
-    let attempts = getAttempts();
+    const attempts = getAttempts();
     const today = new Date().toDateString();
+
+    // Ensure counter resets if date changed since last fetch
     if (attempts.date !== today) {
-      attempts = { count: 0, date: today };
+      attempts.count = 1;
+      attempts.date = today;
+    } else {
+      attempts.count += 1;
     }
-    attempts.count += 1;
+
     saveAttempts(attempts);
     if (attempts.count >= MAX_ATTEMPTS_PER_DAY) {
       setBlocked(true);
@@ -50,6 +53,7 @@ export default function Hero() {
       setBlocked(true);
     }
   }, []);
+
   const handlePhoneChange = (e) => {
     let value = e.target.value.replace(/\D/g, "");
     if (value.startsWith("7")) value = value.slice(1);
@@ -61,23 +65,23 @@ export default function Hero() {
     if (value.length >= 9) formatted += " " + value.slice(8, 10);
     setPhone(formatted);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
- if (blocked) return;
+    if (blocked) return;
     setStatus("loading");
     setMessage("");
 
-       // Сохраняем ссылку на форму, т.к. после await React очищает объект события
     const form = e.currentTarget;
     const fd = new FormData(form);
-  const years = fd.get("childAgeYears");
+    const years = fd.get("childAgeYears");
     const months = fd.get("childAgeMonths");
     let childAge = "";
     if (years) childAge += `${years} г`;
     if (months) childAge += `${childAge ? " " : ""}${months} мес`;
     const payload = {
       parentName: fd.get("parentName"),
-       phone: phone,
+      phone: phone,
       childAge,
       timePref: fd.get("timePref"),
       utm: typeof window !== "undefined" ? window.location.search || "" : "",
@@ -93,17 +97,17 @@ export default function Hero() {
       if (res.ok) {
         setStatus("success");
         setMessage("Заявка отправлена! Мы свяжемся с вами.");
-       form.reset();
- setPhone("");
+        form.reset();
+        setPhone("");
       } else {
         setStatus("error");
         setMessage("Не удалось отправить. Попробуйте ещё раз.");
       }
     } catch (err) {
-console.error(err);
+      console.error(err);
       setStatus("error");
       setMessage("Ошибка сети. Попробуйте ещё раз.");
- } finally {
+    } finally {
       incrementAttempts();
     }
   };
@@ -113,183 +117,170 @@ console.error(err);
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-       className="relative"
+      className="relative"
     >
       <Image
-     src="/img/akulenok-mascot.png"
+        src="/ocean-bg.webp"
         alt="Детский бассейн Акулёнок"
         fill
         priority
-     className="object-contain object-center md:object-right scale-90 animate-swim"
+        className="object-cover object-center"
       />
      
-     <Container className="relative z-10 flex flex-wrap pt-20">
-        <div className="flex items-center w-full lg:w-1/2">
-          <div className="max-w-2xl mb-8">
+      <Container className="relative z-10 flex flex-wrap lg:flex-nowrap pt-20 lg:pt-32 pb-20 items-center justify-between">
+        <div className="flex items-center w-full lg:w-1/2 mb-10 lg:mb-0">
+          <div className="max-w-2xl text-center lg:text-left">
             <h1 className="text-4xl font-bold leading-snug tracking-tight text-aqua-dark lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-aqua-background">
-              Научим малыша любить воду с 3&nbsp;месяцев            </h1>
-                <p className="py-5 text-xl leading-normal text-aqua-dark/80 lg:text-xl xl:text-xl dark:text-aqua-background/80">
-             Мягкая адаптация, игра и результат, который видят родители.
-Закажите обратный звонок :
+              Научим малыша любить воду с 3&nbsp;месяцев
+            </h1>
+            <p className="py-5 text-xl leading-normal text-aqua-dark/80 lg:text-2xl xl:text-2xl dark:text-aqua-background/80">
+              Мягкая адаптация, игра и результат, который видят родители. Закажите обратный звонок:
             </p>
+          </div>
+        </div>
 
-               {/* ==== Форма записи ==== */}
-             {blocked ? (
-                <div className="mt-8 w-full max-w-md p-6 bg-white/70 dark:bg-aqua-dark/70 rounded-lg">
-                  Попробуйте завтра — превышен лимит.
-                </div>
-              ) : (
-                <motion.form
-                  id="lead-form"
-                  className="mt-8 grid w-full max-w-md gap-3 p-6 bg-white/70 dark:bg-aqua-dark/70 rounded-lg"
-                  onSubmit={handleSubmit}
+        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+          {blocked ? (
+            <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl dark:bg-trueGray-800">
+              Попробуйте завтра — превышен лимит.
+            </div>
+          ) : (
+            <motion.form
+              id="lead-form"
+              className="w-full max-w-md gap-4 p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl flex flex-col dark:bg-trueGray-800/90"
+              onSubmit={handleSubmit}
+            >
+              <div className="flex flex-col gap-2">
+                <label
+                  htmlFor="parentName"
+                  className="text-sm font-medium text-gray-700 dark:text-gray-300"
                 >
-                <div className="flex flex-col gap-1">
-                  <label
-                    htmlFor="parentName"
-                    className="text-xs md:text-sm text-aqua-dark/80 dark:text-aqua-background/80"
-                  >
-                    Как к Вам обращаться?
-                  </label>
-                  <motion.input
-                    id="parentName"
-                    name="parentName"
-                    required
-                    placeholder="Ваше имя"
-                    className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background"
-                    disabled={status === "loading"}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  />
-</div>
-                <div className="flex flex-col gap-1">
-                  <label
-                    htmlFor="phone"
-                    className="text-xs md:text-sm text-aqua-dark/80 dark:text-aqua-background/80"
-                  >
-                    Введите номер телефона
-                  </label>
-                  <motion.input
-                      id="phone"
-                    name="phone"
-                    required
-                    placeholder="+7 000 000 00 00"
-                    className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background"
-                    disabled={status === "loading"}
-                    value={phone}
-                    onChange={handlePhoneChange}
-                    pattern="\+7\s\d{3}\s\d{3}\s\d{2}\s\d{2}"
-                    inputMode="numeric"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <label
-                    htmlFor="childAgeYears"
-                    className="text-xs md:text-sm text-aqua-dark/80 dark:text-aqua-background/80"
-                  >
-                    Введите возраст ребенка год/месяц
-                  </label>
-                  <div className="flex gap-2">
-                    <motion.input
-                      id="childAgeYears"
-                      name="childAgeYears"
-                      type="number"
-                      min="0"
-                      max="17"
-                      placeholder="Годы"
-                      className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background w-1/2"
-                      disabled={status === "loading"}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    />
-                    <motion.input
-                      id="childAgeMonths"
-                      name="childAgeMonths"
-                      type="number"
-                      min="0"
-                      max="11"
-                      placeholder="Месяцы"
-                      className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background w-1/2"
-                      disabled={status === "loading"}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <label
-                    htmlFor="timePref"
-                    className="text-xs md:text-sm text-aqua-dark/80 dark:text-aqua-background/80"
-                  >
-                    Введите желаемое время для связи с Вами
-                  </label>
-                  <motion.input
-                    id="timePref"
-                    name="timePref"
-                    type="time"
-                    className="border p-3 rounded bg-white/70 dark:bg-aqua-dark/40 dark:text-aqua-background"
-                    disabled={status === "loading"}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  />
-                </div>
-               
-
-                <div className="flex items-center gap-2 text-xs md:text-sm text-aqua-dark/80 dark:text-aqua-background/80">
-                  <motion.input
-                    id="consent"
-                    name="consent"
-                    type="checkbox"
-                    required
-                    disabled={status === "loading"}
-                    className="accent-orange-500"
-                    whileTap={{ scale: 0.9 }}
-                  />
-                  <label htmlFor="consent">
-                    Я согласен с {" "}
-                    <a
-                      href="/privacy"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline"
-                    >
-                      Политикой конфиденциальности
-                    </a>
-                  </label>
-                </div>
-
-
-                <motion.button
-                  type="submit"
-                className="inline-flex items-center justify-center rounded-md px-5 py-3 text-base font-semibold bg-sky-500 text-white transition-colors transition-transform hover:bg-sky-600 disabled:bg-sky-300 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500"
+                  Ваше имя *
+                </label>
+                <motion.input
+                  id="parentName"
+                  name="parentName"
+                  required
+                  placeholder="Имя"
+                  className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent dark:border-gray-600 dark:text-white"
                   disabled={status === "loading"}
-animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ repeat: Infinity, duration: 1.5 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileFocus={{ scale: 1.01 }}
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label
+                  htmlFor="phone"
+                  className="text-sm font-medium text-gray-700 dark:text-gray-300"
                 >
-                  {status === "loading" ? "Отправка..." : "Оставить заявку"}
-                </motion.button>
-                {status === "success" && (
-                  <p className="text-green-600 mt-2">{message}</p>
-                )}
-                {status === "error" && (
-                  <p className="text-red-600 mt-2">{message}</p>
-                )}
-                  </motion.form>
-              )}
+                  Телефон *
+                </label>
+                <motion.input
+                  id="phone"
+                  name="phone"
+                  required
+                  placeholder="+7 000 000 00 00"
+                  className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent dark:border-gray-600 dark:text-white"
+                  disabled={status === "loading"}
+                  value={phone}
+                  onChange={handlePhoneChange}
+                  pattern="\+7\s\d{3}\s\d{3}\s\d{2}\s\d{2}"
+                  inputMode="numeric"
+                  whileFocus={{ scale: 1.01 }}
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label
+                  htmlFor="childAgeYears"
+                  className="text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  Возраст ребенка
+                </label>
+                <div className="flex gap-4">
+                  <motion.input
+                    id="childAgeYears"
+                    name="childAgeYears"
+                    type="number"
+                    min="0"
+                    max="17"
+                    placeholder="Годы"
+                    className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent dark:border-gray-600 dark:text-white w-1/2"
+                    disabled={status === "loading"}
+                    whileFocus={{ scale: 1.01 }}
+                  />
+                  <motion.input
+                    id="childAgeMonths"
+                    name="childAgeMonths"
+                    type="number"
+                    min="0"
+                    max="11"
+                    placeholder="Месяцы"
+                    className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent dark:border-gray-600 dark:text-white w-1/2"
+                    disabled={status === "loading"}
+                    whileFocus={{ scale: 1.01 }}
+                  />
+                </div>
+              </div>
 
-                       </div>
+              <div className="flex flex-col gap-2">
+                <label
+                  htmlFor="timePref"
+                  className="text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  Желаемое время
+                </label>
+                <motion.input
+                  id="timePref"
+                  name="timePref"
+                  type="time"
+                  className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent dark:border-gray-600 dark:text-white"
+                  disabled={status === "loading"}
+                  whileFocus={{ scale: 1.01 }}
+                />
+              </div>
+
+              <motion.button
+                type="submit"
+                className="mt-6 inline-flex w-full items-center justify-center rounded-full px-6 py-4 text-lg font-bold bg-aqua-accent text-white transition-colors hover:bg-aqua-dark disabled:bg-gray-400 disabled:cursor-not-allowed"
+                disabled={status === "loading"}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {status === "loading" ? "Отправка..." : "Отправить"}
+              </motion.button>
+
+              <div className="flex items-start gap-2 text-xs text-gray-500 mt-4">
+                <input
+                  id="consent"
+                  name="consent"
+                  type="checkbox"
+                  required
+                  disabled={status === "loading"}
+                  className="mt-0.5 accent-aqua-accent"
+                />
+                <label htmlFor="consent" className="leading-tight">
+                  Нажимая кнопку «отправить» я соглашаюсь с {" "}
+                  <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline text-aqua-accent">
+                    политикой конфиденциальности
+                  </a>
+                </label>
+              </div>
+
+              {status === "success" && (
+                <p className="text-green-600 text-center mt-2">{message}</p>
+              )}
+              {status === "error" && (
+                <p className="text-red-600 text-center mt-2">{message}</p>
+              )}
+            </motion.form>
+          )}
         </div>
       </Container>
 
-     <Container className="relative z-10">
-  <div className="text-xl text-aqua-dark dark:text-aqua-background">
-    Нам доверяют уже более <span className="text-orange-500">300</span> семей в Туймазах
-  </div>
-</Container>
-     </motion.section>
+      <Container className="relative z-10">
+        <div className="text-xl text-center lg:text-left text-aqua-dark dark:text-aqua-background pb-10">
+          Нам доверяют уже более <span className="text-aqua-accent font-bold">300</span> семей в Туймазах
+        </div>
+      </Container>
+    </motion.section>
   );
 }

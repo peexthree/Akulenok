@@ -2,48 +2,47 @@ import Image from "next/image";
 import Container from "./container";
 
 const items = [
-  
   {
-  title: "Нам доверяют",
-  desc: "Родители чувствуют уверенность, а малыши — заботу и внимание. Мы строим отношения на доверии, искренности и любви к детям, чтобы каждый малыш рос в атмосфере поддержки и радости.",
-  img: "/img/love.png",
-},
-{
-  title: "Учимся играя",
-  desc: "Каждое занятие построено в игровой форме: малыши двигаются, играют и осваивают новые навыки через радость. Так они быстрее адаптируются и получают удовольствие от процесса.",
-  img: "/img/play.png",
-},
-{
-  title: "Комфорт для малыша",
-  desc: "Мы создаём атмосферу доверия, заботы и уюта: тёплая вода, внимательные инструкторы и доброжелательная обстановка помогают малышу чувствовать себя спокойно и безопасно.",
-  img: "/img/hero.png",
-},
-
-
+    title: "Нам доверяют",
+    desc: "Родители чувствуют уверенность, а малыши — заботу и внимание. Мы строим отношения на доверии, искренности и любви к детям, чтобы каждый малыш рос в атмосфере поддержки и радости.",
+    img: "/img/love.png",
+  },
+  {
+    title: "Учимся играя",
+    desc: "Каждое занятие построено в игровой форме: малыши двигаются, играют и осваивают новые навыки через радость. Так они быстрее адаптируются и получают удовольствие от процесса.",
+    img: "/img/play.png",
+  },
+  {
+    title: "Комфорт для малыша",
+    desc: "Мы создаём атмосферу доверия, заботы и уюта: тёплая вода, внимательные инструкторы и доброжелательная обстановка помогают малышу чувствовать себя спокойно и безопасно.",
+    img: "/img/hero.png",
+  },
 ];
-  
-
 
 export default function Benefits() {
   return (
     <Container>
-      <div className="grid gap-8 md:grid-cols-3">
+      <div className="grid gap-8 md:grid-cols-3 pb-12">
         {items.map((item, index) => (
           <div
             key={index}
-                  className="flex flex-col items-center text-center p-6"
+            className="bg-white dark:bg-trueGray-800 rounded-2xl shadow-lg p-8 flex flex-col items-center text-center transform hover:-translate-y-2 transition-transform duration-300"
           >
-            <Image
-              src={item.img}
-              alt={item.title}
-               width={400}
-              height={400}
-              className="object-contain"
-            />
-             <div className="mt-4 p-4 glass-card">
-              <h3 className="text-xl font-semibold">{item.title}</h3>
-              <p className="mt-2 text-gray-600 dark:text-gray-300">{item.desc}</p>
+            <div className="w-32 h-32 mb-6 relative flex items-center justify-center bg-aqua-background dark:bg-trueGray-700 rounded-full overflow-hidden border-4 border-white dark:border-trueGray-800 shadow-inner">
+              <Image
+                src={item.img}
+                alt={item.title}
+                width={100}
+                height={100}
+                className="object-contain"
+              />
             </div>
+            <h3 className="text-2xl font-bold text-aqua-dark dark:text-aqua-background mb-4">
+              {item.title}
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+              {item.desc}
+            </p>
           </div>
         ))}
       </div>

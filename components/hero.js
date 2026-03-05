@@ -43,7 +43,7 @@ export default function Hero() {
           muted
           loop
           playsInline
-          poster="/video/poster.jpg"
+         
         >
           <source src="/video/HB.webm" type="video/webm" />
         </video>

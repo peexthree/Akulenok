@@ -1,17 +1,19 @@
 import "../css/tailwind.css";
-import { Inter, Fredoka } from "next/font/google";
+import { Nunito } from "next/font/google";
 import Layout from "../components/layout";
 
-export const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-export const fredoka = Fredoka({
-  subsets: ["latin"],
-  variable: "--font-fredoka",
+export const nunito = Nunito({
+  subsets: ["cyrillic", "latin"],
+  variable: "--font-nunito",
+  weight: ["400", "500", "600", "700", "800"]
 });
 
 function MyApp({ Component, pageProps }) {
   return (
     <Layout>
-      <Component {...pageProps} />
+      <main className={`${nunito.variable} font-nunito`}>
+        <Component {...pageProps} />
+      </main>
     </Layout>
   );
 }

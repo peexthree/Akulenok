@@ -1,51 +1,111 @@
 import React from "react";
 import Container from "./container";
+import { motion } from "framer-motion";
 
 export default function Services() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      }
+    },
+  };
+
   const Item = ({ title, desc }) => (
-    <div className="glass-card p-6">
-      <div className="text-xl font-semibold">{title}</div>
-      <p className="text-gray-600 mt-2">{desc}</p>
-    </div>
+    <motion.div
+      variants={itemVariants}
+      whileHover={{ scale: 1.02 }}
+      className="glass-card p-8 flex flex-col h-full justify-start transition-all duration-300 hover:shadow-lg bg-white/60"
+    >
+      <h3 className="text-xl lg:text-2xl font-bold text-slate-800 mb-3">{title}</h3>
+      <p className="text-slate-600 leading-relaxed text-base lg:text-lg">{desc}</p>
+    </motion.div>
   );
 
   return (
-    <Container>
-        <div id="services" className="text-center mb-8 scroll-mt-24">
-        <h2 className="text-3xl font-semibold text-aqua-dark">Наши услуги</h2>
-        <p className="text-gray-500 mt-2">Многопрофильный семейный центр для вашего здоровья</p>
+    <Container className="py-16">
+      <div id="services" className="text-center mb-12 scroll-mt-24">
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl lg:text-4xl font-extrabold text-slate-800"
+        >
+          Наши услуги
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-slate-500 mt-3 text-lg"
+        >
+          Многопрофильный семейный центр для вашего здоровья
+        </motion.p>
       </div>
-      <div className="grid gap-6 md:grid-cols-2">
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        className="grid gap-6 md:grid-cols-2 lg:gap-8"
+      >
         <Item
           title="Адаптивное плавание"
-          desc="Для детей от 3 мес (занятия в теплой воде). Форматы: мини-группы, индивидуальные занятия, гидрореабилитация для детей с ОВЗ (без родителей)."
-        />
-        <Item
-          title="ЛФК и Реабилитация"
-          desc="Лечебная физкультура и реабилитация для детей; укрепление мышечного корсета, осанки и моторики."
+          desc="Никакого жесткого принуждения. Только мягкое знакомство с водой в индивидуальном темпе, формирование крепкого мышечного корсета и правильного дыхания."
         />
         <Item
           title="Аквааэробика для беременных"
-          desc="Индивидуальные занятия. Убирает отечность, снимает напряжение со спины, готовит организм к родам."
+          desc="Ваше тело скажет «спасибо». Бережно снимаем напряжение со спины, убираем отечность и готовим организм к легким родам."
         />
         <Item
-          title="Женское здоровье (фитнес)"
-          desc="Укрепляют мышечный корсет, возвращают молодость, подвижность и женственность."
+          title="Детский массаж (0+)"
+          desc="Золотые руки специалиста с 17-летним опытом. Точечная работа с зажимами и запуск правильного физического развития."
         />
         <Item
-          title="Массаж для детей (0+)"
-          desc="Опытные специалисты более 17 лет опыта."
+          title="Женское здоровье (Фитнес)"
+          desc="Возвращаем телу легкость, подвижность и энергию. Укрепление корсета в комфортной, поддерживающей атмосфере."
         />
-        <Item
-          title="Занятия для детей (от 2х лет) нейропсихолог"
-          desc="(в разработке)"
-        />
-      </div>
-      <ul className="mt-6 text-gray-600 list-disc list-inside">
-        <li>Форматы занятий: мини‑группы, индивидуально, с участием родителя или без.</li>
-        <li>Длительность — обычно 30 минут (по показаниям индивидуально).</li>
-        <li>Первая встреча — знакомство с тренером и подбор программы под ребёнка.</li>
-      </ul>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="mt-12 p-8 glass-card bg-sky-50/50"
+      >
+        <ul className="text-slate-600 space-y-3 list-none text-lg">
+          <li className="flex items-start">
+            <span className="text-sky-400 mr-3 text-xl">✨</span>
+            <span>Форматы занятий: мини‑группы, индивидуально, с участием родителя или без.</span>
+          </li>
+          <li className="flex items-start">
+            <span className="text-sky-400 mr-3 text-xl">✨</span>
+            <span>Длительность — обычно 30 минут (по показаниям индивидуально).</span>
+          </li>
+          <li className="flex items-start">
+            <span className="text-sky-400 mr-3 text-xl">✨</span>
+            <span>Первая встреча — знакомство с тренером и подбор программы под ребёнка.</span>
+          </li>
+        </ul>
+      </motion.div>
     </Container>
   );
 }

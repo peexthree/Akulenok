@@ -28,7 +28,6 @@ export default function Hero() {
     const attempts = getAttempts();
     const today = new Date().toDateString();
 
-    // Ensure counter resets if date changed since last fetch
     if (attempts.date !== today) {
       attempts.count = 1;
       attempts.date = today;
@@ -99,16 +98,14 @@ export default function Hero() {
         setMessage("Заявка отправлена! Мы свяжемся с вами.");
         form.reset();
         setPhone("");
+        incrementAttempts();
       } else {
         setStatus("error");
-        setMessage("Не удалось отправить. Попробуйте ещё раз.");
+        setMessage("Ошибка при отправке. Пожалуйста, попробуйте позже.");
       }
     } catch (err) {
-      console.error(err);
       setStatus("error");
-      setMessage("Ошибка сети. Попробуйте ещё раз.");
-    } finally {
-      incrementAttempts();
+      setMessage("Ошибка при отправке. Проверьте подключение к интернету.");
     }
   };
 
@@ -116,170 +113,153 @@ export default function Hero() {
     <motion.section
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="relative"
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="relative pt-12 pb-20 lg:pt-24 overflow-hidden"
     >
-      <Image
-        src="/ocean-bg.webp"
-        alt="Детский бассейн Акулёнок"
-        fill
-        priority
-        className="object-cover object-center"
-      />
-     
-      <Container className="relative z-10 flex flex-wrap lg:flex-nowrap pt-20 lg:pt-32 pb-20 items-center justify-between">
-        <div className="flex items-center w-full lg:w-1/2 mb-10 lg:mb-0">
-          <div className="max-w-2xl text-center lg:text-left">
-            <h1 className="text-4xl font-bold leading-snug tracking-tight text-aqua-dark lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight ">
-              Больше чем бассейн: здоровье для всей семьи
-            </h1>
-            <p className="py-5 text-xl leading-normal text-aqua-dark/80 lg:text-2xl xl:text-2xl ">
-              Многопрофильный семейный центр, укрепим здоровье каждого члена семьи, потому что все услуги центра направлены на физическое и психическое состояние наших гостей. Решаем такие боли как: тонус, отставание в развитии, гиперактивность. Закажите обратный звонок:
-            </p>
-          </div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-teal-50/50 to-sky-100/30"></div>
+
+      <Container className="relative z-10 flex flex-col items-center justify-between lg:flex-row gap-12 lg:gap-8 mb-16">
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left w-full lg:w-1/2">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-4xl font-extrabold leading-tight tracking-tight text-slate-800 lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight"
+          >
+            Бережное плавание для гармоничного развития вашего малыша
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="mt-6 text-lg leading-relaxed text-slate-600 xl:text-xl"
+          >
+            Многопрофильный семейный центр. Снимаем гипертонус, укрепляем иммунитет и нервную систему через игру и мягкую адаптацию к воде. Без слез и стресса.
+          </motion.p>
         </div>
 
-        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="w-full lg:w-1/2 flex justify-center lg:justify-end"
+        >
           {blocked ? (
-            <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl ">
+            <div className="w-full max-w-md p-8 glass-card">
               Попробуйте завтра — превышен лимит.
             </div>
           ) : (
-            <motion.form
+            <form
               id="lead-form"
-              className="w-full max-w-md gap-4 p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl flex flex-col "
+              className="w-full max-w-md gap-5 p-8 glass-card flex flex-col"
               onSubmit={handleSubmit}
             >
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Запишитесь на бережную экскурсию</h3>
+
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="parentName"
-                  className="text-sm font-medium text-gray-700 "
+                  className="text-sm font-medium text-slate-600"
                 >
                   Ваше имя *
                 </label>
-                <motion.input
+                <input
                   id="parentName"
                   name="parentName"
                   required
                   placeholder="Имя"
-                  className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent  "
+                  className="w-full border border-slate-200 bg-white/50 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent transition-all"
                   disabled={status === "loading"}
-                  whileFocus={{ scale: 1.01 }}
                 />
               </div>
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="phone"
-                  className="text-sm font-medium text-gray-700 "
+                  className="text-sm font-medium text-slate-600"
                 >
                   Телефон *
                 </label>
-                <motion.input
+                <input
                   id="phone"
                   name="phone"
                   required
                   placeholder="+7 000 000 00 00"
-                  className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent  "
+                  className="w-full border border-slate-200 bg-white/50 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent transition-all"
                   disabled={status === "loading"}
                   value={phone}
                   onChange={handlePhoneChange}
                   pattern="\+7\s\d{3}\s\d{3}\s\d{2}\s\d{2}"
                   inputMode="numeric"
-                  whileFocus={{ scale: 1.01 }}
                 />
               </div>
+
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="childAgeYears"
-                  className="text-sm font-medium text-gray-700 "
+                  className="text-sm font-medium text-slate-600"
                 >
                   Возраст ребенка
                 </label>
                 <div className="flex gap-4">
-                  <motion.input
+                  <input
                     id="childAgeYears"
                     name="childAgeYears"
                     type="number"
                     min="0"
                     max="17"
                     placeholder="Годы"
-                    className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent   w-1/2"
+                    className="w-1/2 border border-slate-200 bg-white/50 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent transition-all"
                     disabled={status === "loading"}
-                    whileFocus={{ scale: 1.01 }}
                   />
-                  <motion.input
+                  <input
                     id="childAgeMonths"
                     name="childAgeMonths"
                     type="number"
                     min="0"
                     max="11"
                     placeholder="Месяцы"
-                    className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent   w-1/2"
+                    className="w-1/2 border border-slate-200 bg-white/50 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent transition-all"
                     disabled={status === "loading"}
-                    whileFocus={{ scale: 1.01 }}
                   />
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="timePref"
-                  className="text-sm font-medium text-gray-700 "
-                >
-                  Желаемое время
-                </label>
-                <motion.input
-                  id="timePref"
-                  name="timePref"
-                  type="time"
-                  className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent  "
-                  disabled={status === "loading"}
-                  whileFocus={{ scale: 1.01 }}
-                />
-              </div>
-
               <motion.button
                 type="submit"
-                className="mt-6 inline-flex w-full items-center justify-center rounded-full px-6 py-4 text-lg font-bold bg-aqua-accent text-white transition-colors hover:bg-aqua-dark disabled:bg-gray-400 disabled:cursor-not-allowed"
+                className="mt-6 inline-flex w-full items-center justify-center rounded-3xl px-6 py-4 text-lg font-bold bg-sky-400 text-white shadow-soft transition-all hover:bg-sky-500 hover:shadow-lg disabled:bg-slate-300 disabled:cursor-not-allowed"
                 disabled={status === "loading"}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                {status === "loading" ? "Отправка..." : "Отправить"}
+                {status === "loading" ? "Отправка..." : "Записаться на экскурсию"}
               </motion.button>
 
-              <div className="flex items-start gap-2 text-xs text-gray-500 mt-4">
+              <div className="flex items-start gap-2 text-xs text-slate-500 mt-2">
                 <input
                   id="consent"
                   name="consent"
                   type="checkbox"
                   required
                   disabled={status === "loading"}
-                  className="mt-0.5 accent-aqua-accent"
+                  className="mt-0.5 rounded text-sky-400 focus:ring-sky-400"
                 />
                 <label htmlFor="consent" className="leading-tight">
-                  Нажимая кнопку «отправить» я соглашаюсь с {" "}
-                  <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline text-aqua-accent">
-                    политикой конфиденциальности и офертой
+                  Нажимая кнопку, я соглашаюсь с {" "}
+                  <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline text-sky-500">
+                    политикой конфиденциальности
                   </a>
                 </label>
               </div>
 
               {status === "success" && (
-                <p className="text-green-600 text-center mt-2">{message}</p>
+                <p className="text-teal-600 text-center mt-2 font-medium">{message}</p>
               )}
               {status === "error" && (
-                <p className="text-red-600 text-center mt-2">{message}</p>
+                <p className="text-red-500 text-center mt-2 font-medium">{message}</p>
               )}
-            </motion.form>
+            </form>
           )}
-        </div>
-      </Container>
-
-      <Container className="relative z-10">
-        <div className="text-xl text-center lg:text-left text-aqua-dark  pb-10">
-          Нам доверяют уже более <span className="text-aqua-accent font-bold">300</span> семей в Туймазах
-        </div>
+        </motion.div>
       </Container>
     </motion.section>
   );

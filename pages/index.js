@@ -28,7 +28,8 @@ const LoyalClients = dynamic(() => import("../components/loyalClients"));
 
 export default function Home() {
   return (
-    <>
+    // ГЛАВНЫЙ ФИКС: main контейнер с overflow-x-hidden блокирует горизонтальный скролл
+    <main className="flex flex-col min-h-screen relative overflow-x-hidden bg-slate-50">
       <Head>
         <title>Акулёнок • Центр грудничкового плавания • Детский бассейн • ЛФК в Туймазах</title>
         <meta name="description" content="Детский бассейн «Акулёнок» в Туймазах: грудничковое плавание, ЛФК, гидрореабилитация. Занятия для детей от 3 месяцев." />
@@ -40,7 +41,7 @@ export default function Home() {
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "name": "Акулёнок",
-              "image": "https://akulenok.tmz/img/hero.png",
+              "image": "https://akulenok.tmz/img/hero.png", // Если домен .tmz тестовый, не забудь сменить на проде
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "ул. Столярова, 1",
@@ -57,16 +58,18 @@ export default function Home() {
       </Head>
 
       <Navbar />
-
       <Hero />
-      <WaveDivider color="fill-white" />
+      
+      {/* Актуальный пропс для белой волны */}
+      <WaveDivider waveColor="text-white" />
       <TrustBar />
-    
+      
       <LazyLoad>
         <About />
       </LazyLoad>
 
-      <WaveDivider color="fill-sky-50" flip={true} />
+      {/* Голубая волна */}
+      <WaveDivider waveColor="text-sky-50" />
       <LazyLoad>
         <Methodology />
       </LazyLoad>
@@ -75,12 +78,12 @@ export default function Home() {
         <JourneyTimeline />
       </LazyLoad>
 
-      <WaveDivider color="fill-white" />
+      <WaveDivider waveColor="text-white" />
       <LazyLoad>
         <Video />
       </LazyLoad>
 
-      <WaveDivider color="fill-sky-50" flip={true} />
+      <WaveDivider waveColor="text-sky-50" />
       <LazyLoad>
         <SectionTitle
           title="С нами удобно"
@@ -97,7 +100,7 @@ export default function Home() {
         <Checklist />
       </LazyLoad>
 
-      <WaveDivider color="fill-white" />
+      <WaveDivider waveColor="text-white" />
       <LazyLoad>
         <Team />
       </LazyLoad>
@@ -110,7 +113,7 @@ export default function Home() {
         <Pricing />
       </LazyLoad>
 
-      <WaveDivider color="fill-sky-50" flip={true} />
+      <WaveDivider waveColor="text-sky-50" />
       <LazyLoad>
         <Testimonials />
       </LazyLoad>
@@ -135,7 +138,7 @@ export default function Home() {
         <Location />
       </LazyLoad>
 
-      <WaveDivider color="fill-sky-400" />
+      <WaveDivider waveColor="text-sky-400" />
       <LazyLoad>
         <Cta />
       </LazyLoad>
@@ -143,6 +146,6 @@ export default function Home() {
       <LazyLoad>
         <Footer />
       </LazyLoad>
-    </>
+    </main>
   );
 }

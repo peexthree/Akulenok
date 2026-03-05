@@ -38,7 +38,7 @@ export default function Services() {
 
   return (
     <Container className="py-16">
-      <div id="services" className="text-center mb-12 scroll-mt-24">
+      <div  className="text-center mb-12 ">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}

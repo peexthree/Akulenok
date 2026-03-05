@@ -89,7 +89,7 @@ export default function Home() {
         <Benefits />
       </LazyLoad>
 
-      <LazyLoad>
+      <LazyLoad id="services" className="scroll-mt-32">
         <Services />
       </LazyLoad>
 
@@ -106,7 +106,7 @@ export default function Home() {
         <Schedule />
       </LazyLoad>
 
-      <LazyLoad>
+      <LazyLoad id="pricing" className="scroll-mt-32">
         <Pricing />
       </LazyLoad>
 
@@ -115,7 +115,7 @@ export default function Home() {
         <Testimonials />
       </LazyLoad>
 
-      <LazyLoad>
+      <LazyLoad id="gallery" className="scroll-mt-32">
         <Gallery />
       </LazyLoad>
 
@@ -123,15 +123,15 @@ export default function Home() {
         <Safety />
       </LazyLoad>
 
-      <LazyLoad>
+      <LazyLoad id="faq" className="scroll-mt-32">
         <Faq />
       </LazyLoad>
 
-      <LazyLoad>
+      <LazyLoad id="loyal" className="scroll-mt-32">
         <LoyalClients />
       </LazyLoad>
 
-      <LazyLoad>
+      <LazyLoad id="contacts" className="scroll-mt-32">
         <Location />
       </LazyLoad>
 

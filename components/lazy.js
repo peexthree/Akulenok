@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function LazyLoad({ children }) {
+export default function LazyLoad({ children, id, className }) {
   const ref = useRef(null);
   const [show, setShow] = useState(false);
 
@@ -23,7 +23,7 @@ export default function LazyLoad({ children }) {
   }, []);
 
   return (
-    <div ref={ref} className="min-h-[1px] w-full">
+    <div ref={ref} id={id} className={className || "min-h-[1px] w-full"}>
       {show ? children : null}
     </div>
   );

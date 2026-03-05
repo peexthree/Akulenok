@@ -30,7 +30,7 @@ export default function Faq() {
   };
 
   return (
-    <Container className="py-24 max-w-4xl mx-auto relative">
+    <Container  className="py-24 max-w-4xl mx-auto relative ">
       <div className="absolute top-10 right-0 w-32 h-32 opacity-20 hidden md:block">
          <Image src="/img/sad.png" alt="" width={128} height={128} />
       </div>

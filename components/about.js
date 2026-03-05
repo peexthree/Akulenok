@@ -69,23 +69,24 @@ const About = () => {
           </motion.div>
         </motion.div>
 
-        {/* ================= ПРАВАЯ КОЛОНКА ================= */}
+{/* ================= ПРАВАЯ КОЛОНКА ================= */}
         <motion.div 
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="relative group" /* Родитель без overflow-hidden, чтобы маскот мог вылезти */
+          className="relative group h-full"
         >
-          {/* Сама карточка с фоном и блюром */}
-          <div className="bg-white/80 backdrop-blur-xl border border-white rounded-[2rem] p-8 sm:p-10 shadow-soft relative overflow-hidden">
+          {/* ФИКС: Добавили pb-24 и sm:pb-32 для создания "слепой зоны" внизу */}
+          <div className="bg-white/80 backdrop-blur-xl border border-white rounded-[2rem] p-8 sm:p-10 pb-24 sm:pb-32 shadow-soft relative overflow-hidden h-full flex flex-col justify-center">
             <div className="absolute inset-0 bg-gradient-to-br from-sky-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
             
             <h3 className="text-2xl font-bold text-slate-800 mb-6 relative z-10">
               Почему нам доверяют
             </h3>
             
-            <ul className="space-y-5 relative z-10">
+            {/* ФИКС: Добавили pr-4 sm:pr-10, чтобы текст не прилипал к правому краю, где висит Акулёнок */}
+            <ul className="space-y-5 relative z-10 pr-4 sm:pr-10">
               {reasons.map((text, idx) => (
                 <li key={idx} className="flex items-start gap-4">
                   <div className="shrink-0 mt-0.5">
@@ -99,10 +100,9 @@ const About = () => {
             </ul>
           </div>
 
-          {/* ФИКС МАСКОТА 2: Вырывается за пределы карточки! (Размер 224x224) */}
-          {/* Сдвинут в правый нижний угол и выходит за рамки */}
-          <div className="absolute -bottom-10 -right-8 sm:-bottom-14 sm:-right-12 w-48 h-48 sm:w-56 sm:h-56 pointer-events-none transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-6 z-20 drop-shadow-xl">
-             <Image src="/img/akulenok-mascot.png" alt="" fill className="object-contain" sizes="(max-width: 768px) 192px, 224px" />
+          {/* Маскот остается на месте, но теперь под ним пустое пространство */}
+          <div className="absolute -bottom-8 -right-6 sm:-bottom-12 sm:-right-10 w-48 h-48 sm:w-56 sm:h-56 pointer-events-none transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-6 z-20 drop-shadow-xl">
+             <Image src="/img/love.png" alt="Акулёнок" fill className="object-contain" sizes="(max-width: 768px) 192px, 224px" />
           </div>
         </motion.div>
 

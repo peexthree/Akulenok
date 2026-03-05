@@ -100,8 +100,16 @@ export default function JourneyTimeline() {
                     {step.desc}
                   </p>
 
-                  {/* Image wrapper with smooth scaling */}
-                  <div className="relative w-full h-48 sm:h-64 rounded-3xl overflow-hidden shadow-sm">
+                 {/* Image wrapper with smooth scaling */}
+                <div className="relative w-full h-48 sm:h-64 rounded-3xl overflow-hidden shadow-sm bg-slate-100">
+                  <Image
+                    src={step.img}
+                    alt={step.title}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 66vw"
+                  />
+                </div>
                     {/* Placeholder box until real images are linked. Using color to indicate. */}
                     <div className="absolute inset-0 bg-slate-200" />
                   </div>

@@ -1,9 +1,10 @@
+"use client";
 import React from "react";
 import Container from "./container";
 import { motion } from "framer-motion";
-import { fadeInUp } from "./animations";
 import Link from "next/link";
-import { CheckIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
+import { CheckCircleIcon } from "@heroicons/react/24/solid";
 
 const pricingData = [
   {
@@ -12,115 +13,145 @@ const pricingData = [
     price: "850 ₽",
     description: "в «счастливый час» 12:00–16:00*",
     features: [
-      "Для того, чтобы протестировать и понять нужно ли это",
-      "Ощутить на себе, познакомиться с центром",
-      "Познакомиться с тренером, с диагностикой воды"
+      "Знакомство с центром и тренером",
+      "Диагностика навыков в воде",
+      "Полная адаптация малыша"
     ],
     highlight: false,
+    icon: "/img/3d-icons/service-1-mascot.webp"
   },
   {
     id: 2,
     title: "Абонемент",
-    price: "Узнать цену у администратора",
-    description: "групповые/мини‑группы",
+    price: "от 4 800 ₽", // Игорь, поставь реальную минималку
+    description: "групповые / мини‑группы",
     features: [
-      "Регулярные тренировки по расписанию",
-      "Индивидуальный подход, мини‑группы",
-      "Сопровождение родителя по желанию",
+      "Индивидуальный план развития",
+      "Фиксированное расписание",
+      "Максимальная выгода за занятие"
     ],
     highlight: true,
+    icon: "/img/3d-icons/service-4-mascot.webp"
   },
   {
     id: 3,
     title: "Разовое занятие",
-    price: "Узнать цену у администратора",
-    description: "Полноценное стандартное занятие",
+    price: "от 1 200 ₽",
+    description: "Персональная тренировка",
     features: [
-      "Персональная программа под задачи",
-      "Реабилитация, гидрореабилитация",
-      "Гибкое время занятий",
+      "Работа 1-на-1 с инструктором",
+      "Гидрореабилитация и ЛФК",
+      "Гибкий график посещений"
     ],
     highlight: false,
+    icon: "/img/3d-icons/service-2-mascot.webp"
   },
 ];
 
 function Pricing() {
   return (
-    <Container>
-    <div  className="text-center mb-8 ">
-         <h2 className="text-3xl font-semibold">Цены</h2>
-        <p className="text-gray-700 mt-2">
-          Актуальные предложения для занятий по плаванию и ЛФК
-        </p>
-      </div>
-      <div className="grid gap-6 md:grid-cols-3">
-        {pricingData.map((item) => (
-          <motion.div
-            key={item.id}
-             variants={fadeInUp}
-            initial="hidden"
-            whileInView="visible"
-            whileHover="hover"
-            viewport={{ once: true }}
-            tabIndex={0}
-           className={`glass-card p-6 text-center transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua-accent ${
-              item.highlight ? "ring-2 ring-orange-300" : ""
-            }`}
-           
+    <section className="py-24 bg-slate-50 relative overflow-hidden">
+      <Container>
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-4xl sm:text-5xl font-black text-slate-900 mb-6"
           >
-           <div className="text-sm uppercase font-semibold text-gray-500">
-              {item.title}
-            </div>
-            <div className="mt-2 text-2xl font-bold">{item.price}</div>     <div className="text-sm text-gray-700 mt-1">{item.description}</div>
-            <ul className="mt-4 space-y-2 text-gray-800 ">
-              {item.features.map((feature, i) => (
-                <li key={i} className="flex items-center space-x-2 text-left">
-                  <CheckIcon className="h-4 w-4 text-green-500 flex-shrink-0" />
-                  <span className="text-sm">{feature}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6">
+            Стоимость занятий
+          </motion.h2>
+          <p className="text-xl text-slate-600 font-medium">
+            Выберите подходящий формат обучения для вашего ребенка.
+          </p>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-3 items-stretch">
+          {pricingData.map((item) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -12 }}
+              className={`relative flex flex-col p-8 rounded-[3rem] transition-all duration-500 bg-white/70 backdrop-blur-xl border-2 ${
+                item.highlight 
+                ? "border-sky-400 shadow-2xl scale-105 z-10 bg-white" 
+                : "border-white shadow-xl hover:shadow-2xl"
+              }`}
+            >
+              {item.highlight && (
+                <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-sky-500 text-white px-6 py-1 rounded-full text-sm font-black uppercase tracking-widest shadow-lg">
+                  Популярно
+                </div>
+              )}
+
+              {/* 3D Иконка тарифа */}
+              <div className="relative w-24 h-24 mx-auto mb-6">
+                <Image src={item.icon} alt={item.title} fill className="object-contain drop-shadow-md" />
+              </div>
+
+              <div className="text-center mb-6">
+                <div className="text-xs uppercase font-black text-slate-400 tracking-widest mb-1">{item.title}</div>
+                <div className="text-4xl font-black text-slate-900">{item.price}</div>
+                <div className="text-sm text-slate-500 mt-2 font-medium">{item.description}</div>
+              </div>
+
+              <ul className="space-y-4 mb-8 flex-grow">
+                {item.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckCircleIcon className="h-5 w-5 text-sky-400 shrink-0" />
+                    <span className="text-slate-600 text-sm font-semibold">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
               <Link
                 href="#lead-form"
-               className={`block w-full rounded-md py-3 font-medium text-white transition ${
+                className={`w-full py-4 rounded-2xl font-black text-center transition-all duration-300 ${
                   item.highlight
-                     ? "bg-orange-500 hover:bg-orange-600"
-                    : "bg-blue-500 hover:bg-blue-600"
+                    ? "bg-sky-500 text-white shadow-sky-200 shadow-lg hover:bg-sky-600 hover:shadow-xl"
+                    : "bg-slate-100 text-slate-800 hover:bg-slate-200"
                 }`}
               >
-                Узнать цену / Записаться
+                Записаться
               </Link>
-            </div>
-          </motion.div>
-        ))}
-      </div>
+            </motion.div>
+          ))}
+        </div>
 
-      <div className="mt-12 bg-white rounded-2xl shadow-md p-8 border border-aqua-accent/10">
-        <h3 className="text-2xl font-bold text-center text-aqua-dark mb-6">Наши скидки</h3>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-aqua-background p-6 rounded-xl flex items-start gap-4">
-            <div className="w-12 h-12 bg-aqua-accent text-white rounded-full flex items-center justify-center text-xl font-bold shrink-0">
+        {/* Блок скидок в стиле Apple-карточек */}
+        <div className="mt-20 grid md:grid-cols-2 gap-8">
+          <motion.div 
+            whileHover={{ scale: 1.02 }}
+            className="p-8 rounded-[2.5rem] bg-gradient-to-br from-white to-sky-50 border border-white shadow-soft flex items-center gap-6"
+          >
+            <div className="w-16 h-16 bg-sky-500 text-white rounded-2xl flex items-center justify-center text-2xl font-black shadow-lg shadow-sky-200 shrink-0">
               5%
             </div>
             <div>
-              <h4 className="font-bold text-lg mb-2">Для постоянных клиентов</h4>
-              <p className="text-gray-700">Скидка предоставляется вне зависимости от выбранного абонемента.</p>
+              <h4 className="font-black text-xl text-slate-800 mb-1">Постоянным клиентам</h4>
+              <p className="text-slate-600 font-medium">Ваша лояльность вознаграждается на каждом абонементе.</p>
             </div>
-          </div>
-          <div className="bg-orange-50 p-6 rounded-xl flex items-start gap-4">
-            <div className="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center text-xl font-bold shrink-0">
-              10%
+          </motion.div>
+
+          <motion.div 
+            whileHover={{ scale: 1.02 }}
+            className="p-8 rounded-[2.5rem] bg-gradient-to-br from-white to-orange-50 border border-white shadow-soft flex flex-col justify-center"
+          >
+            <div className="flex items-center gap-6">
+              <div className="w-16 h-16 bg-orange-500 text-white rounded-2xl flex items-center justify-center text-2xl font-black shadow-lg shadow-orange-200 shrink-0">
+                10%
+              </div>
+              <div>
+                <h4 className="font-black text-xl text-slate-800 mb-1">Социальные льготы</h4>
+                <p className="text-slate-600 font-medium text-sm">Многодетным, участникам СВО, детям с ОВЗ.</p>
+                <p className="text-orange-600 font-black text-xs mt-1 uppercase tracking-wider">+2% за наличный расчет</p>
+              </div>
             </div>
-            <div>
-              <h4 className="font-bold text-lg mb-2">Особым категориям</h4>
-              <p className="text-gray-700">Многодетным, участникам СВО, детям с ОВЗ — всем скидка 10%.</p>
-              <p className="text-sm text-gray-500 mt-2 font-semibold">+2% при оплате наличными</p>
-            </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </section>
   );
 }
 

@@ -2,7 +2,7 @@
 
 export default function Privacy() {
   return (
-    <main className="max-w-3xl mx-auto p-6 text-gray-800 dark:text-gray-100 leading-relaxed">
+    <main className="max-w-3xl mx-auto p-6 text-gray-800  leading-relaxed">
       <h1 className="text-2xl font-bold mb-4">Политика конфиденциальности</h1>
 
       <p>

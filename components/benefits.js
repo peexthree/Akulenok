@@ -26,9 +26,9 @@ export default function Benefits() {
         {items.map((item, index) => (
           <div
             key={index}
-            className="bg-white dark:bg-trueGray-800 rounded-2xl shadow-lg p-8 flex flex-col items-center text-center transform hover:-translate-y-2 transition-transform duration-300"
+            className="bg-white  rounded-2xl shadow-lg p-8 flex flex-col items-center text-center transform hover:-translate-y-2 transition-transform duration-300"
           >
-            <div className="w-32 h-32 mb-6 relative flex items-center justify-center bg-aqua-background dark:bg-trueGray-700 rounded-full overflow-hidden border-4 border-white dark:border-trueGray-800 shadow-inner">
+            <div className="w-32 h-32 mb-6 relative flex items-center justify-center bg-aqua-background  rounded-full overflow-hidden border-4 border-white  shadow-inner">
               <Image
                 src={item.img}
                 alt={item.title}
@@ -37,10 +37,10 @@ export default function Benefits() {
                 className="object-contain"
               />
             </div>
-            <h3 className="text-2xl font-bold text-aqua-dark dark:text-aqua-background mb-4">
+            <h3 className="text-2xl font-bold text-aqua-dark  mb-4">
               {item.title}
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+            <p className="text-gray-600  leading-relaxed">
               {item.desc}
             </p>
           </div>

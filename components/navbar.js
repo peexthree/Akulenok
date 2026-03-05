@@ -6,12 +6,12 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import clsx from "clsx";
-import ThemeChanger from "./DarkSwitch";
+
 import { motion } from "framer-motion";
 import { fadeInUp } from "./animations";
 
 const navigation = [
-  { name: "Главная", href: "/" },
+  { name: "Главная", href: "/" }, { name: "Для постоянных клиентов", href: "#loyal" },
   { name: "Услуги", href: "#services" },
   { name: "Расписание и цены", href: "#pricing" },
   { name: "Галерея", href: "#gallery" },
@@ -25,7 +25,7 @@ function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur dark:bg-aqua-dark/80 shadow-md">
+    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur  shadow-md">
       <nav
          className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:px-8"
         aria-label="Global"
@@ -33,11 +33,12 @@ function Navbar() {
          {/* Логотип */}
         <div className="flex flex-1 items-center gap-x-4">
           <Link href="/" className="-m-1.5 p-1.5">
-                        <span className="text-xl font-bold text-aqua-accent">
+                        <img src="/img/logo-akulenok.png" alt="Акулёнок" className="h-8 w-auto inline-block mr-2" />
+              <span className="text-xl font-bold text-aqua-accent">
               Акулёнок
             </span>
           </Link>
-  <ThemeChanger />
+
         </div>
 
         {/* Меню для десктопа */}
@@ -51,7 +52,7 @@ function Navbar() {
               whileInView="visible"
               whileHover="hover"
               viewport={{ once: true }}
-              className="text-sm font-semibold leading-6 text-aqua-dark transition-colors hover:text-aqua-accent focus:text-aqua-accent dark:text-aqua-background dark:hover:text-aqua-accent dark:focus:text-aqua-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua-accent"
+              className="text-sm font-semibold leading-6 text-aqua-dark transition-colors hover:text-aqua-accent focus:text-aqua-accent  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua-accent"
             >
               {item.name}
             </MotionLink>
@@ -64,7 +65,7 @@ function Navbar() {
           <div className="flex lg:hidden">
             <button
               type="button"
-                   className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-aqua-dark dark:text-aqua-background focus:outline-none focus:ring-2 focus:ring-aqua-accent"
+                   className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-aqua-dark  focus:outline-none focus:ring-2 focus:ring-aqua-accent"
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open mobile menu"
             >
@@ -103,14 +104,14 @@ function Navbar() {
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-                <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-3/4 p-6 sm:max-w-sm bg-white/70 dark:bg-aqua-dark/70">
+                <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-3/4 p-6 sm:max-w-sm bg-white/70 ">
               <div className="flex items-center justify-between">
                      <Link href="/" className="text-lg font-bold text-aqua-accent" onClick={() => setMobileMenuOpen(false)}>
 		 Акулёнок
                 </Link>
                 <button
                   type="button"
-                               className="p-2 text-aqua-dark dark:text-aqua-background focus:outline-none focus:ring-2 focus:ring-aqua-accent"
+                               className="p-2 text-aqua-dark  focus:outline-none focus:ring-2 focus:ring-aqua-accent"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -126,7 +127,7 @@ function Navbar() {
                     whileInView="visible"
                     whileHover="hover"
                     viewport={{ once: true }}
-                    className="text-base font-medium text-aqua-dark transition-colors hover:text-aqua-accent focus:text-aqua-accent dark:text-aqua-background dark:hover:text-aqua-accent dark:focus:text-aqua-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua-accent"
+                    className="text-base font-medium text-aqua-dark transition-colors hover:text-aqua-accent focus:text-aqua-accent  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua-accent"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}

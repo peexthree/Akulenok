@@ -12,16 +12,16 @@ const pricingData = [
     price: "850 ₽",
     description: "в «счастливый час» 12:00–16:00*",
     features: [
-      "30 минут в воде с инструктором",
-      "Знакомство с тренером и программой",
-      "Рекомендации для родителей",
+      "Для того, чтобы протестировать и понять нужно ли это",
+      "Ощутить на себе, познакомиться с центром",
+      "Познакомиться с тренером, с диагностикой воды"
     ],
     highlight: false,
   },
   {
     id: 2,
-    title: "Абонемент (месяц)",
-    price: "от 8 960 ₽",
+    title: "Абонемент",
+    price: "Узнать цену у администратора",
     description: "групповые/мини‑группы",
     features: [
       "Регулярные тренировки по расписанию",
@@ -32,9 +32,9 @@ const pricingData = [
   },
   {
     id: 3,
-    title: "Индивидуальные",
-    price: "по запросу",
-    description: "плавание / ЛФК",
+    title: "Разовое занятие",
+    price: "Узнать цену у администратора",
+    description: "Полноценное стандартное занятие",
     features: [
       "Персональная программа под задачи",
       "Реабилитация, гидрореабилитация",
@@ -71,12 +71,12 @@ function Pricing() {
            <div className="text-sm uppercase font-semibold text-gray-500">
               {item.title}
             </div>
-            <div className="mt-2 text-3xl font-bold">{item.price}</div>     <div className="text-sm text-gray-700 mt-1">{item.description}</div>
-            <ul className="mt-4 space-y-2 text-gray-800 dark:text-gray-100">
+            <div className="mt-2 text-2xl font-bold">{item.price}</div>     <div className="text-sm text-gray-700 mt-1">{item.description}</div>
+            <ul className="mt-4 space-y-2 text-gray-800 ">
               {item.features.map((feature, i) => (
-                <li key={i} className="flex items-center space-x-2">
+                <li key={i} className="flex items-center space-x-2 text-left">
                   <CheckIcon className="h-4 w-4 text-green-500 flex-shrink-0" />
-                  <span>{feature}</span>
+                  <span className="text-sm">{feature}</span>
                 </li>
               ))}
             </ul>
@@ -89,11 +89,36 @@ function Pricing() {
                     : "bg-blue-500 hover:bg-blue-600"
                 }`}
               >
-                Записаться
+                Узнать цену / Записаться
               </Link>
             </div>
           </motion.div>
         ))}
+      </div>
+
+      <div className="mt-12 bg-white rounded-2xl shadow-md p-8 border border-aqua-accent/10">
+        <h3 className="text-2xl font-bold text-center text-aqua-dark mb-6">Наши скидки</h3>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-aqua-background p-6 rounded-xl flex items-start gap-4">
+            <div className="w-12 h-12 bg-aqua-accent text-white rounded-full flex items-center justify-center text-xl font-bold shrink-0">
+              5%
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-2">Для постоянных клиентов</h4>
+              <p className="text-gray-700">Скидка предоставляется вне зависимости от выбранного абонемента.</p>
+            </div>
+          </div>
+          <div className="bg-orange-50 p-6 rounded-xl flex items-start gap-4">
+            <div className="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center text-xl font-bold shrink-0">
+              10%
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-2">Особым категориям</h4>
+              <p className="text-gray-700">Многодетным, участникам СВО, детям с ОВЗ — всем скидка 10%.</p>
+              <p className="text-sm text-gray-500 mt-2 font-semibold">+2% при оплате наличными</p>
+            </div>
+          </div>
+        </div>
       </div>
     </Container>
   );

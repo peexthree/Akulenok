@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import Container from "./container";
 import Image from "next/image";
 
@@ -24,7 +24,7 @@ const steps = [
   },
   {
     num: "04",
-    title: "Отдых  ",
+    title: "Отдых",
     desc: "После занятия можно погреться в теплой детской сауне и спокойно покормить малыша в зоне отдыха.",
     img: "/img/gallery/gallery-05.jpeg"
   }
@@ -42,7 +42,7 @@ export default function JourneyTimeline() {
       <Container>
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 relative">
 
-          {/* Sticky Header / Sticky Scroll Mechanics */}
+          {/* Sticky Header */}
           <div className="w-full lg:w-1/3 flex flex-col items-start lg:sticky lg:top-32 lg:h-[calc(100vh-8rem)]">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
@@ -100,18 +100,15 @@ export default function JourneyTimeline() {
                     {step.desc}
                   </p>
 
-                 {/* Image wrapper with smooth scaling */}
-                <div className="relative w-full h-48 sm:h-64 rounded-3xl overflow-hidden shadow-sm bg-slate-100">
-                  <Image
-                    src={step.img}
-                    alt={step.title}
-                    fill
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 66vw"
-                  />
-                </div>
-                    {/* Placeholder box until real images are linked. Using color to indicate. */}
-                    <div className="absolute inset-0 bg-slate-200" />
+                  {/* Image wrapper with smooth scaling */}
+                  <div className="relative w-full h-48 sm:h-64 rounded-3xl overflow-hidden shadow-sm bg-slate-100 z-10">
+                    <Image
+                      src={step.img}
+                      alt={step.title}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 66vw"
+                    />
                   </div>
                 </div>
               </motion.div>

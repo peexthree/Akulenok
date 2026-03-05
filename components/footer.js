@@ -58,6 +58,7 @@ function Footer() {
               href="https://t.me/akulenok_tmz"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Telegram"
               className="p-3 bg-blue-600 hover:bg-blue-700 rounded-full transition"
             >
               <FaTelegramPlane size={20} />
@@ -66,12 +67,14 @@ function Footer() {
               href="https://wa.me/79273039977"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="WhatsApp"
               className="p-3 bg-green-600 hover:bg-green-700 rounded-full transition"
             >
               <FaWhatsapp size={20} />
             </a>
             <a
               href="tel:+79273039977"
+              aria-label="Позвонить"
               className="p-3 bg-orange-500 hover:bg-orange-600 rounded-full transition"
             >
               <FaPhoneAlt size={18} />
@@ -80,6 +83,7 @@ function Footer() {
               href="https://www.instagram.com/akulenok_tmz"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Instagram"
               className="p-3 bg-pink-600 hover:bg-pink-700 rounded-full transition"
             >
               <FaInstagram size={20} />

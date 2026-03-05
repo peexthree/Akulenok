@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function MultiStepForm({ isOpen, onClose }) {
@@ -10,6 +10,15 @@ export default function MultiStepForm({ isOpen, onClose }) {
     phone: "",
   });
   const [status, setStatus] = useState("idle");
+
+  // Закрытие по клавише Esc
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && isOpen) onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -27,17 +36,25 @@ export default function MultiStepForm({ isOpen, onClose }) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Более стабильная маска (рекомендую заменить на react-imask в будущем)
   const handlePhoneChange = (e) => {
-    let value = e.target.value.replace(/\D/g, "");
-    if (value.startsWith("7")) value = value.slice(1);
-    value = value.substring(0, 10);
+    const input = e.target.value.replace(/\D/g, "");
     let formatted = "+7";
-    if (value.length > 0) formatted += " " + value.slice(0, 3);
-    if (value.length >= 4) formatted += " " + value.slice(3, 6);
-    if (value.length >= 7) formatted += " " + value.slice(6, 8);
-    if (value.length >= 9) formatted += " " + value.slice(8, 10);
+    
+    // Если вводят 8, меняем на 7
+    const digits = input.startsWith("8") || input.startsWith("7") ? input.slice(1) : input;
+    
+    if (digits.length > 0) formatted += " " + digits.substring(0, 3);
+    if (digits.length >= 4) formatted += " " + digits.substring(3, 6);
+    if (digits.length >= 7) formatted += " " + digits.substring(6, 8);
+    if (digits.length >= 9) formatted += " " + digits.substring(8, 10);
+    
     setFormData((prev) => ({ ...prev, phone: formatted }));
   };
+
+  // Проверка валидности телефона (минимум 11 цифр включая +7)
+  const isPhoneValid = formData.phone.replace(/\D/g, "").length === 11;
+  const isStep3Valid = formData.name.trim().length > 1 && isPhoneValid;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -75,29 +92,33 @@ export default function MultiStepForm({ isOpen, onClose }) {
   };
 
   const modalVariants = {
-    hidden: { opacity: 0, y: "100%", scale: 0.95 },
+    hidden: { opacity: 0, y: "10%", scale: 0.95 },
     visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", damping: 25, stiffness: 200 } },
-    exit: { opacity: 0, y: "100%", scale: 0.95, transition: { duration: 0.2 } },
+    exit: { opacity: 0, y: "10%", scale: 0.95, transition: { duration: 0.2 } },
   };
 
   const stepVariants = {
-    hidden: { opacity: 0, x: 50 },
+    hidden: { opacity: 0, x: 20 },
     visible: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: -50 },
+    exit: { opacity: 0, x: -20 },
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 sm:p-0">
+    <div 
+      className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 sm:p-0"
+      onClick={onClose} // Закрытие по клику на фон
+    >
       <motion.div
         variants={modalVariants}
         initial="hidden"
         animate="visible"
         exit="exit"
+        onClick={(e) => e.stopPropagation()} // Блокируем закрытие при клике на саму форму
         className="w-full max-w-lg bg-white rounded-3xl sm:rounded-[2.5rem] p-6 sm:p-10 shadow-2xl relative overflow-hidden"
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 text-slate-400 hover:text-slate-600 bg-slate-100 rounded-full transition-colors"
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 text-slate-400 hover:text-slate-600 bg-slate-100 rounded-full transition-colors z-10"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -126,10 +147,11 @@ export default function MultiStepForm({ isOpen, onClose }) {
               />
             </div>
 
-            <div className="flex-grow relative">
-              <AnimatePresence mode="wait">
+            {/* Layout motion wrapper для плавного изменения высоты контента */}
+            <motion.div layout className="flex-grow relative overflow-hidden">
+              <AnimatePresence mode="wait" initial={false}>
                 {step === 1 && (
-                  <motion.div key="step1" variants={stepVariants} initial="hidden" animate="visible" exit="exit" className="relative w-full">
+                  <motion.div key="step1" variants={stepVariants} initial="hidden" animate="visible" exit="exit" className="w-full">
                     <h3 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-6 text-balance">Сколько месяцев или лет вашему малышу?</h3>
                     <div className="space-y-4">
                       {["0-3 месяца", "3-6 месяцев", "6-12 месяцев", "От 1 года до 3 лет", "Старше 3 лет"].map((option) => (
@@ -143,7 +165,7 @@ export default function MultiStepForm({ isOpen, onClose }) {
                 )}
 
                 {step === 2 && (
-                  <motion.div key="step2" variants={stepVariants} initial="hidden" animate="visible" exit="exit" className="relative w-full">
+                  <motion.div key="step2" variants={stepVariants} initial="hidden" animate="visible" exit="exit" className="w-full">
                     <h3 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-6 text-balance">Какая главная цель занятий?</h3>
                     <div className="space-y-4">
                       {[
@@ -163,7 +185,7 @@ export default function MultiStepForm({ isOpen, onClose }) {
                 )}
 
                 {step === 3 && (
-                  <motion.div key="step3" variants={stepVariants} initial="hidden" animate="visible" exit="exit" className="relative w-full">
+                  <motion.div key="step3" variants={stepVariants} initial="hidden" animate="visible" exit="exit" className="w-full">
                     <h3 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-6 text-balance">Оставьте контакты для связи</h3>
                     <p className="text-slate-500 mb-6">Наш педиатр перезвонит вам, чтобы обсудить детали и подобрать удобное время.</p>
 
@@ -200,15 +222,15 @@ export default function MultiStepForm({ isOpen, onClose }) {
                     </div>
 
                     {status === "error" && (
-                      <p className="text-red-500 mt-4 text-sm">Произошла ошибка при отправке. Попробуйте еще раз.</p>
+                      <p className="text-red-500 mt-4 text-sm font-medium">Произошла ошибка при отправке. Попробуйте еще раз.</p>
                     )}
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+            </motion.div>
 
             {/* Footer Buttons */}
-            <div className="mt-8 flex gap-4 pt-4 border-t border-slate-100">
+            <motion.div layout className="mt-8 flex gap-4 pt-4 border-t border-slate-100">
               {step > 1 && (
                 <button
                   type="button"
@@ -221,12 +243,12 @@ export default function MultiStepForm({ isOpen, onClose }) {
 
               <button
                 type="submit"
-                disabled={step === 1 ? !formData.age : step === 2 ? !formData.goal : status === "loading"}
+                disabled={step === 1 ? !formData.age : step === 2 ? !formData.goal : (!isStep3Valid || status === "loading")}
                 className="flex-1 py-4 rounded-full font-bold text-white bg-sky-400 hover:bg-sky-500 transition-all disabled:opacity-50 shadow-soft disabled:shadow-none"
               >
                 {step === 3 ? (status === "loading" ? "Отправка..." : "Отправить") : "Далее"}
               </button>
-            </div>
+            </motion.div>
           </form>
         )}
       </motion.div>

@@ -46,7 +46,6 @@ export default function Hero() {
           poster="/video/poster.jpg"
         >
           <source src="/video/HB.webm" type="video/webm" />
-          <source src="/video/hero_small.mp4" type="video/mp4" />
         </video>
         {/* Dynamic Gradient Overlay for depth and readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-transparent to-slate-900/80 z-10" />

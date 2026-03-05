@@ -1,15 +1,14 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Container from "./container";
-import TrustBar from "./TrustBar";
 import { motion, useScroll, useTransform } from "framer-motion";
 import MultiStepForm from "./MultiStepForm";
 
 export default function Hero() {
   const [isFormOpen, setFormOpen] = useState(false);
   const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 150]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -100]);
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
 
   // Magnet effect reference
   const buttonRef = useRef(null);
@@ -34,55 +33,64 @@ export default function Hero() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
-      className="relative min-h-[95vh] flex items-center pt-24 pb-20 overflow-hidden mesh-bg animate-mesh rounded-b-[3rem] sm:rounded-b-[4rem]"
+      className="relative min-h-[90vh] flex items-center pt-24 pb-20 overflow-hidden rounded-b-[3rem] sm:rounded-b-[5rem] bg-slate-900"
     >
-      {/* Cinematic Background Images / Gradients */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none mix-blend-multiply">
-        {/* We can use the mesh-bg directly as a class above, but keep these animated blobs for extra feel */}
-        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-teal-200/40 rounded-full blur-[120px] animate-blob" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-sky-200/40 rounded-full blur-[120px] animate-blob delay-700" />
+      {/* Cinematic Background Video (Nike/Apple style) */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <video
+          className="absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 object-cover scale-105"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/video/poster.jpg"
+        >
+          <source src="/video/Herobg.webm" type="video/webm" />
+          <source src="/video/hero_small.mp4" type="video/mp4" />
+        </video>
+        {/* Dynamic Gradient Overlay for depth and readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-transparent to-slate-900/80 z-10" />
+        <div className="absolute inset-0 bg-slate-900/20 z-10" />
       </div>
 
-      <Container className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <Container className="relative z-30 flex flex-col items-center text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/40 backdrop-blur-xl border border-white/60 shadow-glass mb-8 hover:bg-white/60 transition-colors"
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="inline-flex items-center px-6 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8"
         >
-          <img src="/img/logo-akulenok-social.jpg" className="w-6 h-6 rounded-full" />
-          <span className="flex h-2.5 w-2.5 rounded-full bg-sky-500 animate-pulse"></span>
-          <span className="text-sm font-bold text-slate-700 tracking-wide uppercase">Первое занятие со скидкой 50%</span>
+          <span className="text-xs sm:text-sm font-bold text-white tracking-[0.2em] uppercase">Первое занятие со скидкой 50%</span>
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight text-slate-800 leading-[1.05] mb-8 text-balance"
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="text-5xl sm:text-7xl lg:text-9xl font-extrabold tracking-tighter text-white leading-[0.9] mb-8 text-balance uppercase"
         >
-          Бережное плавание для гармоничного развития
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-sky-500"> вашего малыша</span>
+          Мягкое плавание <br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-sky-300">для лучших детей</span>
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-xl sm:text-2xl text-slate-600 mb-12 max-w-2xl mx-auto leading-relaxed text-balance font-medium"
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="text-xl sm:text-2xl text-slate-200 mb-12 max-w-3xl mx-auto leading-relaxed text-balance font-medium"
         >
-          Снимаем гипертонус, укрепляем иммунитет и нервную систему через игру и мягкую адаптацию к воде. Без слез и стресса.
+          Снимаем гипертонус, укрепляем иммунитет и нервную систему через игру и мягкую адаптацию.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 0.7, duration: 0.8, type: "spring", stiffness: 100 }}
-          className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="flex flex-col sm:flex-row gap-4 items-center"
         >
           <div
-             className="relative inline-block"
+             className="relative inline-block w-full sm:w-auto"
              onMouseMove={handleMouseMove}
              onMouseLeave={handleMouseLeave}
              ref={buttonRef}
@@ -90,34 +98,32 @@ export default function Hero() {
           >
             <button
               onClick={() => setFormOpen(true)}
-              className="group relative px-10 py-6 sm:px-12 sm:py-7 bg-slate-900 text-white rounded-[2.5rem] text-xl sm:text-2xl font-bold overflow-hidden shadow-2xl hover:shadow-sky-500/20 transition-all duration-300 w-full sm:w-auto"
+              className="group relative px-10 py-6 bg-white text-slate-900 rounded-full text-xl font-bold overflow-hidden transition-all duration-300 w-full sm:w-auto hover:scale-105 active:scale-95"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-sky-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"></div>
-              <span className="relative z-10 flex items-center justify-center gap-3">
-                Записаться на экскурсию
-                <svg className="w-6 h-6 group-hover:translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              <div className="absolute inset-0 bg-sky-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <span className="relative z-10 flex items-center justify-center gap-3 group-hover:text-white">
+                Записаться
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </span>
             </button>
           </div>
 
-          <button className="px-10 py-6 sm:px-12 sm:py-7 bg-white/40 backdrop-blur-xl text-slate-800 rounded-[2.5rem] text-xl sm:text-2xl font-bold border border-white/60 shadow-glass hover:bg-white/60 hover:shadow-soft transition-all duration-300 w-full sm:w-auto">
-            Узнать цены
+          <button className="px-10 py-6 bg-transparent text-white rounded-full text-xl font-bold border border-white/30 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
+            О центре
           </button>
         </motion.div>
 
-        {/* Decorative Floating Elements */}
-        <motion.div style={{ y: y1 }} className="absolute hidden lg:block left-[5%] top-[20%] w-32 h-32 bg-white/30 backdrop-blur-2xl rounded-3xl rotate-12 shadow-glass border border-white/50 overflow-hidden">
-           <Image src="/img/akulenok-mascot.png" alt="" fill className="object-contain p-4" />
+        {/* Mascot images - Enlarged (approx 2.5x increase) */}
+        <motion.div style={{ y: y1 }} className="absolute hidden lg:block left-[-20%] top-[10%] w-[700px] h-[700px] pointer-events-none opacity-30 mix-blend-screen">
+           <Image src="/img/akulenok-mascot.png" alt="" fill className="object-contain" priority />
         </motion.div>
-        <motion.div style={{ y: y2 }} className="absolute hidden lg:block right-[5%] top-[40%] w-40 h-40 bg-white/30 backdrop-blur-2xl rounded-full shadow-glass border border-white/50 overflow-hidden">
-           <Image src="/img/love.png" alt="" fill className="object-contain p-6" />
+        <motion.div style={{ y: y2 }} className="absolute hidden lg:block right-[-20%] top-[30%] w-[800px] h-[800px] pointer-events-none opacity-30 mix-blend-screen">
+           <Image src="/img/love.png" alt="" fill className="object-contain" priority />
         </motion.div>
 
       </Container>
-
-      {/* We'll mount the TrustBar below the hero natively or slightly overlapping */}
 
       <MultiStepForm isOpen={isFormOpen} onClose={() => setFormOpen(false)} />
     </motion.section>

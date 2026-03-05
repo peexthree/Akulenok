@@ -8,7 +8,7 @@ const steps = [
     num: "01",
     title: "Теплая встреча",
     desc: "Вас встретит заботливый администратор, поможет с коляской и покажет, где уютная раздевалка.",
-    img: "/img/gallery/gallery-02.jpeg"
+    img: "/img/gallery/gallery-03.jpeg"
   },
   {
     num: "02",

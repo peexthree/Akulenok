@@ -1,146 +1,48 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Container from "./container";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-const images = [
-  "/img/gallery/pool1.jpg",
-  "/img/gallery/pool2.jpg",
-  "/img/gallery/pool3.jpg",
-  "/img/gallery/pool4.jpg",
-  "/img/gallery/pool5.jpg",
-  "/img/gallery/pool6.jpg",
- "/img/gallery/pool7.jpg",
-  "/img/gallery/pool81.jpg",
-  "/img/gallery/pool91.jpg",
-  "/img/gallery/pool101.jpg",
-  "/img/gallery/pool111.jpg",
-  "/img/gallery/pool12.jpg",
- "/img/gallery/pool13.jpg",
-  "/img/gallery/pool14.jpg",
+
+const photos = [
+  { src: "/img/gallery/gallery-01.jpg", alt: "Малыш в бассейне", size: "col-span-1 row-span-2 h-80 sm:h-96" },
+  { src: "/img/gallery/gallery-02.jpg", alt: "Раздевалка", size: "col-span-1 row-span-1 h-40 sm:h-48" },
+  { src: "/img/gallery/gallery-03.jpg", alt: "Тренер и малыш", size: "col-span-1 row-span-1 h-40 sm:h-48" },
+  { src: "/img/gallery/gallery-04.jpg", alt: "ЛФК", size: "col-span-2 row-span-1 h-48 sm:h-64" },
+  { src: "/img/gallery/gallery-05.jpg", alt: "Счастливая мама", size: "col-span-1 row-span-1 h-48 sm:h-64" }
 ];
 
-const variants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: { opacity: 1, scale: 1 },
-};
-
-function Gallery() {
-const [selected, setSelected] = useState(null);
-  const scrollRef = useRef(null);
-  const dimensions = useRef({ clientWidth: 0, scrollWidth: 0 });
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    const updateDimensions = () => {
-      dimensions.current = {
-        clientWidth: el.clientWidth,
-        scrollWidth: el.scrollWidth,
-      };
-    };
-
-    const observer = new ResizeObserver(updateDimensions);
-    observer.observe(el);
-    updateDimensions();
-
-    let timeoutId;
-    const tick = () => {
-      timeoutId = setTimeout(() => {
-        requestAnimationFrame(() => {
-          const container = scrollRef.current;
-          if (!container) return;
-
-          const { scrollLeft } = container;
-          const { clientWidth, scrollWidth } = dimensions.current;
-          // Use a small buffer to account for subpixel differences
-          const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 10;
-
-          if (isAtEnd) {
-            container.scrollTo({ left: 0, behavior: "smooth" });
-          } else {
-            container.scrollBy({ left: 336, behavior: "smooth" });
-          }
-          tick();
-        });
-      }, 3000);
-    };
-
-    tick();
-
-    return () => {
-      observer.disconnect();
-      clearTimeout(timeoutId);
-    };
-  }, []);
-
-  const scroll = (offset) => {
-    scrollRef.current?.scrollBy({ left: offset, behavior: "smooth" });
-  };
+export default function Gallery() {
   return (
-    <Container>
-          <div id="gallery" className="relative scroll-mt-24">
-        <motion.div
-          ref={scrollRef}
-         className="flex gap-4 overflow-x-auto snap-x snap-mandatory mt-8 pb-4 scrollbar-custom"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={{
-            visible: { transition: { staggerChildren: 0.1 } },
-          }}
-        >
-          {images.map((src, i) => (
-            <motion.div
-              key={src}
-              className="relative w-80 h-64 flex-none snap-center rounded-xl overflow-hidden shadow-lg cursor-pointer"
-              variants={variants}
-              onClick={() => setSelected(src)}
-            >
-              <Image
-                src={src}
-                alt={`Фото из бассейна Акулёнок ${i + 1}`}
-                fill
-                className="object-cover rounded-xl"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-        <button
-          type="button"
-          aria-label="Прокрутить влево"
-          onClick={() => scroll(-300)}
-          className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/70  shadow"
-        >
-          <ChevronLeftIcon className="h-6 w-6 text-aqua-dark " />
-        </button>
-        <button
-          type="button"
-          aria-label="Прокрутить вправо"
-          onClick={() => scroll(300)}
-          className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/70  shadow"
-        >
-          <ChevronRightIcon className="h-6 w-6 text-aqua-dark " />
-        </button>
+    <Container className="py-12 pb-24 max-w-6xl mx-auto">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-800 tracking-tight leading-tight mb-4">
+          Атмосфера заботы
+        </h2>
+        <p className="text-xl text-slate-600">Мы продумали каждую мелочь, чтобы вам и малышу было комфортно.</p>
       </div>
-      {selected && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
-          onClick={() => setSelected(null)}
-        >
-          <Image
-            src={selected}
-            alt="Просмотр фото"
-            width={800}
-            height={600}
-            className="object-contain"
-          />
-        </div>
-      )}
+
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 auto-rows-auto">
+        {photos.map((photo, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, scale: 0.9, y: 30 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
+            className={`relative rounded-3xl overflow-hidden group shadow-sm hover:shadow-soft transition-shadow ${photo.size}`}
+          >
+            {/* Fallback color while images load */}
+            <div className="absolute inset-0 bg-slate-200" />
+
+            {/* Overlay Gradient on Hover */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+
+            <p className="absolute bottom-6 left-6 text-white font-bold text-lg z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
+              {photo.alt}
+            </p>
+          </motion.div>
+        ))}
+      </div>
     </Container>
   );
 }
-
-export default React.memo(Gallery);

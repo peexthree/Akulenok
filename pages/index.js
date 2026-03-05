@@ -10,6 +10,7 @@ const Safety = dynamic(() => import("../components/safety"));
 const Services = dynamic(() => import("../components/services"));
 const Benefits = dynamic(() => import("../components/benefits"));
 const Methodology = dynamic(() => import("../components/methodology"));
+const JourneyTimeline = dynamic(() => import("../components/JourneyTimeline"));
 const Checklist = dynamic(() => import("../components/checklist"));
 const Team = dynamic(() => import("../components/team"));
 const Schedule = dynamic(() => import("../components/schedule"));
@@ -66,6 +67,10 @@ export default function Home() {
       </LazyLoad>
 
       <LazyLoad>
+        <JourneyTimeline />
+      </LazyLoad>
+
+      <LazyLoad>
         <Video />
       </LazyLoad>
 
@@ -98,12 +103,10 @@ export default function Home() {
       </LazyLoad>
 
       <LazyLoad>
-        <SectionTitle title="Что говорят наши клиенты" />
         <Testimonials />
       </LazyLoad>
 
       <LazyLoad>
-        <SectionTitle title="Фотогалерея" />
         <Gallery />
       </LazyLoad>
 
@@ -112,7 +115,6 @@ export default function Home() {
       </LazyLoad>
 
       <LazyLoad>
-        <SectionTitle title="Часто задаваемые вопросы" />
         <Faq />
       </LazyLoad>
 
@@ -121,7 +123,6 @@ export default function Home() {
       </LazyLoad>
 
       <LazyLoad>
-        <SectionTitle title="Наш адрес и контакты" />
         <Location />
       </LazyLoad>
 

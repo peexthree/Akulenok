@@ -1,266 +1,92 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Container from "./container";
-import { motion } from "framer-motion";
-
-const MAX_ATTEMPTS_PER_DAY = 5;
+import TrustBar from "./TrustBar";
+import { motion, useScroll, useTransform } from "framer-motion";
+import MultiStepForm from "./MultiStepForm";
 
 export default function Hero() {
-  const [status, setStatus] = useState("idle");
-  const [message, setMessage] = useState("");
-  const [phone, setPhone] = useState("");
-  const [blocked, setBlocked] = useState(false);
-
-  const getAttempts = () => {
-    if (typeof window === "undefined") return { count: 0, date: "" };
-    const saved = localStorage.getItem("leadAttempts");
-    if (saved) return JSON.parse(saved);
-    return { count: 0, date: "" };
-  };
-
-  const saveAttempts = (attempts) => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("leadAttempts", JSON.stringify(attempts));
-    }
-  };
-
-  const incrementAttempts = () => {
-    const attempts = getAttempts();
-    const today = new Date().toDateString();
-
-    if (attempts.date !== today) {
-      attempts.count = 1;
-      attempts.date = today;
-    } else {
-      attempts.count += 1;
-    }
-
-    saveAttempts(attempts);
-    if (attempts.count >= MAX_ATTEMPTS_PER_DAY) {
-      setBlocked(true);
-    }
-  };
-
-  useEffect(() => {
-    const attempts = getAttempts();
-    const today = new Date().toDateString();
-    if (attempts.date !== today) {
-      saveAttempts({ count: 0, date: today });
-      return;
-    }
-    if (attempts.count >= MAX_ATTEMPTS_PER_DAY) {
-      setBlocked(true);
-    }
-  }, []);
-
-  const handlePhoneChange = (e) => {
-    let value = e.target.value.replace(/\D/g, "");
-    if (value.startsWith("7")) value = value.slice(1);
-    value = value.substring(0, 10);
-    let formatted = "+7";
-    if (value.length > 0) formatted += " " + value.slice(0, 3);
-    if (value.length >= 4) formatted += " " + value.slice(3, 6);
-    if (value.length >= 7) formatted += " " + value.slice(6, 8);
-    if (value.length >= 9) formatted += " " + value.slice(8, 10);
-    setPhone(formatted);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (blocked) return;
-    setStatus("loading");
-    setMessage("");
-
-    const form = e.currentTarget;
-    const fd = new FormData(form);
-    const years = fd.get("childAgeYears");
-    const months = fd.get("childAgeMonths");
-    let childAge = "";
-    if (years) childAge += `${years} г`;
-    if (months) childAge += `${childAge ? " " : ""}${months} мес`;
-    const payload = {
-      parentName: fd.get("parentName"),
-      phone: phone,
-      childAge,
-      timePref: fd.get("timePref"),
-      utm: typeof window !== "undefined" ? window.location.search || "" : "",
-    };
-
-    try {
-      const res = await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      if (res.ok) {
-        setStatus("success");
-        setMessage("Заявка отправлена! Мы свяжемся с вами.");
-        form.reset();
-        setPhone("");
-        incrementAttempts();
-      } else {
-        setStatus("error");
-        setMessage("Ошибка при отправке. Пожалуйста, попробуйте позже.");
-      }
-    } catch (err) {
-      setStatus("error");
-      setMessage("Ошибка при отправке. Проверьте подключение к интернету.");
-    }
-  };
+  const [isFormOpen, setFormOpen] = useState(false);
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 500], [0, 150]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -100]);
 
   return (
     <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative pt-12 pb-20 lg:pt-24 overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
+      className="relative min-h-[90vh] flex items-center pt-24 pb-20 overflow-hidden bg-[#F8FAFC]"
     >
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-teal-50/50 to-sky-100/30"></div>
+      {/* Cinematic Background Images / Gradients */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-teal-200/40 rounded-full blur-[120px] mix-blend-multiply animate-pulse" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-sky-200/40 rounded-full blur-[120px] mix-blend-multiply animate-pulse delay-700" />
+      </div>
 
-      <Container className="relative z-10 flex flex-col items-center justify-between lg:flex-row gap-12 lg:gap-8 mb-16">
-        <div className="flex flex-col items-center lg:items-start text-center lg:text-left w-full lg:w-1/2">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-4xl font-extrabold leading-tight tracking-tight text-slate-800 lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight"
-          >
-            Бережное плавание для гармоничного развития вашего малыша
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="mt-6 text-lg leading-relaxed text-slate-600 xl:text-xl"
-          >
-            Многопрофильный семейный центр. Снимаем гипертонус, укрепляем иммунитет и нервную систему через игру и мягкую адаптацию к воде. Без слез и стресса.
-          </motion.p>
-        </div>
+      <Container className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          className="w-full lg:w-1/2 flex justify-center lg:justify-end"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-white/80 shadow-sm mb-8"
         >
-          {blocked ? (
-            <div className="w-full max-w-md p-8 glass-card">
-              Попробуйте завтра — превышен лимит.
-            </div>
-          ) : (
-            <form
-              id="lead-form"
-              className="w-full max-w-md gap-5 p-8 glass-card flex flex-col"
-              onSubmit={handleSubmit}
-            >
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Запишитесь на бережную экскурсию</h3>
-
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="parentName"
-                  className="text-sm font-medium text-slate-600"
-                >
-                  Ваше имя *
-                </label>
-                <input
-                  id="parentName"
-                  name="parentName"
-                  required
-                  placeholder="Имя"
-                  className="w-full border border-slate-200 bg-white/50 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent transition-all"
-                  disabled={status === "loading"}
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="phone"
-                  className="text-sm font-medium text-slate-600"
-                >
-                  Телефон *
-                </label>
-                <input
-                  id="phone"
-                  name="phone"
-                  required
-                  placeholder="+7 000 000 00 00"
-                  className="w-full border border-slate-200 bg-white/50 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent transition-all"
-                  disabled={status === "loading"}
-                  value={phone}
-                  onChange={handlePhoneChange}
-                  pattern="\+7\s\d{3}\s\d{3}\s\d{2}\s\d{2}"
-                  inputMode="numeric"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="childAgeYears"
-                  className="text-sm font-medium text-slate-600"
-                >
-                  Возраст ребенка
-                </label>
-                <div className="flex gap-4">
-                  <input
-                    id="childAgeYears"
-                    name="childAgeYears"
-                    type="number"
-                    min="0"
-                    max="17"
-                    placeholder="Годы"
-                    className="w-1/2 border border-slate-200 bg-white/50 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent transition-all"
-                    disabled={status === "loading"}
-                  />
-                  <input
-                    id="childAgeMonths"
-                    name="childAgeMonths"
-                    type="number"
-                    min="0"
-                    max="11"
-                    placeholder="Месяцы"
-                    className="w-1/2 border border-slate-200 bg-white/50 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent transition-all"
-                    disabled={status === "loading"}
-                  />
-                </div>
-              </div>
-
-              <motion.button
-                type="submit"
-                className="mt-6 inline-flex w-full items-center justify-center rounded-3xl px-6 py-4 text-lg font-bold bg-sky-400 text-white shadow-soft transition-all hover:bg-sky-500 hover:shadow-lg disabled:bg-slate-300 disabled:cursor-not-allowed"
-                disabled={status === "loading"}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {status === "loading" ? "Отправка..." : "Записаться на экскурсию"}
-              </motion.button>
-
-              <div className="flex items-start gap-2 text-xs text-slate-500 mt-2">
-                <input
-                  id="consent"
-                  name="consent"
-                  type="checkbox"
-                  required
-                  disabled={status === "loading"}
-                  className="mt-0.5 rounded text-sky-400 focus:ring-sky-400"
-                />
-                <label htmlFor="consent" className="leading-tight">
-                  Нажимая кнопку, я соглашаюсь с {" "}
-                  <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline text-sky-500">
-                    политикой конфиденциальности
-                  </a>
-                </label>
-              </div>
-
-              {status === "success" && (
-                <p className="text-teal-600 text-center mt-2 font-medium">{message}</p>
-              )}
-              {status === "error" && (
-                <p className="text-red-500 text-center mt-2 font-medium">{message}</p>
-              )}
-            </form>
-          )}
+          <span className="flex h-2 w-2 rounded-full bg-sky-500 animate-pulse"></span>
+          <span className="text-sm font-semibold text-slate-600 tracking-wide uppercase">Первое занятие со скидкой 50%</span>
         </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-800 leading-[1.1] mb-8 text-balance"
+        >
+          Бережное плавание для гармоничного развития
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-sky-500"> вашего малыша</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="text-xl sm:text-2xl text-slate-600 mb-12 max-w-2xl mx-auto leading-relaxed text-balance font-medium"
+        >
+          Снимаем гипертонус, укрепляем иммунитет и нервную систему через игру и мягкую адаптацию к воде. Без слез и стресса.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 0.7, duration: 0.8, type: "spring", stiffness: 100 }}
+          className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+        >
+          <button
+            onClick={() => setFormOpen(true)}
+            className="group relative px-8 py-5 sm:px-10 sm:py-6 bg-slate-900 text-white rounded-[2rem] text-lg sm:text-xl font-bold overflow-hidden shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-sky-500 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 ease-in-out"></div>
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              Записаться на экскурсию
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </span>
+          </button>
+
+          <button className="px-8 py-5 sm:px-10 sm:py-6 bg-white/60 backdrop-blur-md text-slate-800 rounded-[2rem] text-lg sm:text-xl font-bold border border-white/80 shadow-sm hover:bg-white hover:shadow-md transition-all duration-300 w-full sm:w-auto">
+            Узнать цены
+          </button>
+        </motion.div>
+
+        {/* Decorative Floating Elements (optional, if you have assets, otherwise just CSS shapes) */}
+        <motion.div style={{ y: y1 }} className="absolute hidden lg:block left-[5%] top-[20%] w-24 h-24 bg-white/40 backdrop-blur-xl rounded-3xl rotate-12 shadow-glass border border-white/60" />
+        <motion.div style={{ y: y2 }} className="absolute hidden lg:block right-[5%] top-[40%] w-32 h-32 bg-white/40 backdrop-blur-xl rounded-full shadow-glass border border-white/60" />
+
       </Container>
+      <TrustBar />
+
+      <MultiStepForm isOpen={isFormOpen} onClose={() => setFormOpen(false)} />
     </motion.section>
   );
 }

@@ -1,62 +1,89 @@
-"use client";
-
-import { Disclosure } from "@headlessui/react";
-import { ChevronUpIcon } from "@heroicons/react/24/outline";
-import React from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Container from "./container";
 
 const faqs = [
   {
-      question: "Насколько безопасно?",
-    answer: "Вода соответствует санитарным нормам (нет озонирования), а тренер рядом на каждом шаге делают занятия безопасными.",
+    q: "А малыш не простудится?",
+    a: "Нет. Температура воды в бассейне поддерживается на уровне 33-34°C, а воздуха — 35°C. После занятия можно погреться в сауне и спокойно высохнуть в теплой раздевалке."
   },
   {
-     question: "Что делать, если ребёнок боится воды?",
-    answer:
-      "Инструкторы мягко помогают адаптироваться, постепенно знакомя малыша с водой. Для тех, кто боится воды — всегда можно прийти на экскурсию и познакомиться лично со структурой центра изнутри.",
+    q: "Как вы чистите воду? Есть ли хлорка?",
+    a: "Мы не используем жидкий хлор. Вода проходит 3 ступени очистки: песчаные фильтры, ультрафиолетовые лампы и серебро. Вода питьевого качества и не сушит кожу малыша."
   },
   {
-    question: "Что нужно взять с собой?",
-    answer: "Памперс для плавания (можно приобрести у нас), полотенце, любимую игрушку, сланцы/сменную обувь, мочалку и средство для купания (шампунь, мыло).",
+    q: "Нужна ли справка для первого занятия?",
+    a: "Да, для безопасности всех деток мы просим справку от педиатра об отсутствии противопоказаний к бассейну, а для мамы (если это совместное плавание) — справку от гинеколога и дерматолога."
   },
   {
-    question: "Форматы занятий",
-    answer: "Пробное (850 руб) - Для того, чтобы протестировать и понять нужно ли это, ощутить на себе, познакомиться с центром, тренером, с диагностикой воды. Разовое - Полноценное стандартное занятие.",
-  },
-  {
-    question: "Сколько длится занятие?",
-    answer: "Одно занятие длится 30 минут.",
-  },
+    q: "С какого возраста можно начинать?",
+    a: "Мы принимаем малышей с 1 месяца, когда зажила пупочная ранка. Раннее начало помогает сохранить плавательные рефлексы и снимает гипертонус."
+  }
 ];
 
-function FAQ() {
+export default function Faq() {
+  const [openIdx, setOpenIdx] = useState(null);
+
+  const toggleFaq = (idx) => {
+    setOpenIdx(openIdx === idx ? null : idx);
+  };
+
   return (
-    <Container className="p-8">
-      <div id="faq" className="w-full max-w-2xl mx-auto scroll-mt-24">
-        <div className="space-y-4">
-          {faqs.map((faq, idx) => (
-            <Disclosure key={idx}>
-              {({ open }) => (
-                <div className="rounded-lg bg-gray-50 p-4 shadow ">
-                  <Disclosure.Button className="flex w-full justify-between items-center text-left text-gray-900 font-medium ">
-                    {faq.question}
-                    <ChevronUpIcon
-                      className={`h-5 w-5 text-gray-500 transition-transform ${
-                        open ? "rotate-180" : ""
-                      }`}
-                    />
-                  </Disclosure.Button>
-                  <Disclosure.Panel className="mt-2 text-gray-600 ">
-                    {faq.answer}
-                  </Disclosure.Panel>
-                </div>
+    <Container className="py-24 max-w-4xl mx-auto">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-800 tracking-tight leading-tight mb-4 text-balance">
+          Вопросы, которые волнуют мам
+        </h2>
+        <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          Мы знаем, о чем вы переживаете, и готовы развеять ваши сомнения.
+        </p>
+      </div>
+
+      <div className="flex flex-col gap-4">
+        {faqs.map((faq, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: idx * 0.1 }}
+            className={`rounded-[2rem] border transition-all duration-300 overflow-hidden ${
+              openIdx === idx
+                ? "bg-white border-sky-200 shadow-soft"
+                : "bg-white/50 border-white/60 hover:bg-white hover:shadow-sm"
+            }`}
+          >
+            <button
+              onClick={() => toggleFaq(idx)}
+              className="w-full text-left px-6 py-6 sm:px-8 sm:py-8 flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 rounded-[2rem]"
+            >
+              <h3 className={`text-xl sm:text-2xl font-bold transition-colors ${openIdx === idx ? "text-sky-600" : "text-slate-800"}`}>
+                {faq.q}
+              </h3>
+              <div className={`shrink-0 ml-4 p-2 rounded-full transition-transform duration-300 ${openIdx === idx ? "rotate-45 bg-sky-100 text-sky-500" : "bg-slate-100 text-slate-400"}`}>
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+              </div>
+            </button>
+
+            <AnimatePresence>
+              {openIdx === idx && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
+                  <div className="px-6 pb-8 sm:px-8 sm:pb-8 pt-0 text-lg text-slate-600 leading-relaxed font-medium">
+                    {faq.a}
+                  </div>
+                </motion.div>
               )}
-            </Disclosure>
-          ))}
-        </div>
+            </AnimatePresence>
+          </motion.div>
+        ))}
       </div>
     </Container>
   );
 }
-
-export default React.memo(FAQ);

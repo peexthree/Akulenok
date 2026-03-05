@@ -22,7 +22,7 @@ const photos = [
 
 export default function Gallery() {
   return (
-    <Container className="py-12 pb-24 max-w-6xl mx-auto">
+    <Container  className="py-12 pb-24 max-w-6xl mx-auto ">
       <div className="text-center mb-16">
         <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-800 tracking-tight leading-tight mb-4">
           Атмосфера заботы

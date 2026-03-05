@@ -58,7 +58,11 @@ function Navbar() {
               alt="Акулёнок"
               className="h-12 w-auto mr-3 drop-shadow-sm"
             />
-            <span className="text-2xl font-black tracking-tight text-slate-900 group-hover:text-sky-500 transition-colors">
+            <span className={`text-2xl font-black tracking-tight transition-colors ${
+              isScrolled
+                ? "text-slate-900 group-hover:text-sky-500"
+                : "text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]"
+            }`}>
               Акулёнок
             </span>
           </Link>
@@ -74,8 +78,12 @@ function Navbar() {
                 href={item.href}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onFocus={() => setHoveredIndex(index)}
-                className={`relative px-4 py-2 text-sm font-bold leading-6 transition-colors ${
-                  isActive ? "text-sky-600" : "text-slate-600 hover:text-sky-600"
+                className={`relative px-4 py-2 text-sm font-bold leading-6 transition-all ${
+                  isActive
+                    ? "text-sky-600"
+                    : isScrolled
+                      ? "text-slate-600 hover:text-sky-600"
+                      : "text-white/90 hover:text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]"
                 }`}
               >
                 {hoveredIndex === index && (
@@ -104,7 +112,9 @@ function Navbar() {
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-full p-2.5 text-slate-700 bg-white/50 backdrop-blur-sm"
+              className={`-m-2.5 inline-flex items-center justify-center rounded-full p-2.5 backdrop-blur-sm transition-colors ${
+                isScrolled ? "text-slate-700 bg-white/50" : "text-white bg-white/10"
+              }`}
               onClick={() => setMobileMenuOpen(true)}
             >
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />

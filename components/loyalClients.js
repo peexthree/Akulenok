@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function LoyalClients() {
   return (
-    <section id="loyal" className="py-16 bg-aqua-background">
+    <section  className="py-16 bg-aqua-background ">
       <Container>
         <SectionTitle
           pretitle="Программа лояльности"

@@ -13,8 +13,8 @@ export default function Location() {
   return (
     <Container>
        <div
-        id="contacts"
-      className="grid gap-8 lg:grid-cols-[400px_1fr] items-center glass-card p-8 shadow-lg scroll-mt-24 mx-auto"
+
+      className="grid gap-8 lg:grid-cols-[400px_1fr] items-center glass-card p-8 shadow-lg  mx-auto"
       >
         <div className="flex flex-col justify-center h-full space-y-5">
           <div className="text-gray-700  space-y-2">

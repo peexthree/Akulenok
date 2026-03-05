@@ -28,20 +28,51 @@ const variants = {
 function Gallery() {
 const [selected, setSelected] = useState(null);
   const scrollRef = useRef(null);
-useEffect(() => {
-    const interval = setInterval(() => {
-      const el = scrollRef.current;
-      if (!el) return;
-      const { scrollLeft, clientWidth, scrollWidth } = el;
-      const maxScrollLeft = scrollWidth - clientWidth;
-      if (scrollLeft >= maxScrollLeft) {
-        el.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        el.scrollBy({ left: 336, behavior: "smooth" });
-      }
-    }, 3000);
+  const dimensions = useRef({ clientWidth: 0, scrollWidth: 0 });
 
-    return () => clearInterval(interval);
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const updateDimensions = () => {
+      dimensions.current = {
+        clientWidth: el.clientWidth,
+        scrollWidth: el.scrollWidth,
+      };
+    };
+
+    const observer = new ResizeObserver(updateDimensions);
+    observer.observe(el);
+    updateDimensions();
+
+    let timeoutId;
+    const tick = () => {
+      timeoutId = setTimeout(() => {
+        requestAnimationFrame(() => {
+          const container = scrollRef.current;
+          if (!container) return;
+
+          const { scrollLeft } = container;
+          const { clientWidth, scrollWidth } = dimensions.current;
+          // Use a small buffer to account for subpixel differences
+          const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 10;
+
+          if (isAtEnd) {
+            container.scrollTo({ left: 0, behavior: "smooth" });
+          } else {
+            container.scrollBy({ left: 336, behavior: "smooth" });
+          }
+          tick();
+        });
+      }, 3000);
+    };
+
+    tick();
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   const scroll = (offset) => {

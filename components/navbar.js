@@ -50,9 +50,6 @@ function Navbar() {
         </div>
 
         <div className="flex flex-1 items-center justify-end gap-x-4 lg:flex-none">
-          <button className="hidden sm:block px-6 py-2.5 bg-slate-900 text-white rounded-full text-sm font-bold hover:bg-slate-800 transition-all shadow-lg hover:shadow-sky-200">
-            Записаться
-          </button>
           <div className="flex lg:hidden">
             <button
               type="button"

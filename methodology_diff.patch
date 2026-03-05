@@ -1,0 +1,56 @@
+<<<<<<< SEARCH
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Container from "./container";
+=======
+import React, { useRef } from "react";
+import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Container from "./container";
+>>>>>>> REPLACE
+<<<<<<< SEARCH
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: 0.1 }}
+              className="text-xl text-slate-600 mb-10 leading-relaxed font-medium"
+            >
+              Мы используем современные методики для гармоничного развития ребенка, комбинируя работу в зале и воде.
+            </motion.p>
+          </div>
+=======
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: 0.1 }}
+              className="text-xl text-slate-600 mb-10 leading-relaxed font-medium"
+            >
+              Мы используем современные методики для гармоничного развития ребенка, комбинируя работу в зале и воде.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, x: -50, rotate: -5 }}
+              whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+              viewport={{ once: true }}
+              animate={{
+                y: [0, -20, 0],
+              }}
+              transition={{
+                y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                duration: 0.8,
+                ease: "easeOut"
+              }}
+              className="mt-auto hidden lg:block relative w-full aspect-square max-w-[350px]"
+            >
+              <Image
+                src="/img/akulenok-mascot.png"
+                alt="Акулёнок маскот"
+                fill
+                className="object-contain"
+                priority
+              />
+            </motion.div>
+          </div>
+>>>>>>> REPLACE

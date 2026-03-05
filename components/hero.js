@@ -115,13 +115,7 @@ export default function Hero() {
           </button>
         </motion.div>
 
-        {/* Mascot images - Enlarged (approx 2.5x increase) */}
-        <motion.div style={{ y: y1 }} className="absolute hidden lg:block left-[-20%] top-[10%] w-[700px] h-[700px] pointer-events-none opacity-30 mix-blend-screen">
-           <Image src="/img/akulenok-mascot.png" alt="" fill className="object-contain" priority />
-        </motion.div>
-        <motion.div style={{ y: y2 }} className="absolute hidden lg:block right-[-20%] top-[30%] w-[800px] h-[800px] pointer-events-none opacity-30 mix-blend-screen">
-           <Image src="/img/love.png" alt="" fill className="object-contain" priority />
-        </motion.div>
+     
 
       </Container>
 

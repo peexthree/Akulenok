@@ -8,6 +8,23 @@ module.exports = {
 
   theme: {
     extend: {
+      keyframes: {
+        mesh: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+        blob: {
+          "0%": { transform: "translate(0px, 0px) scale(1)" },
+          "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+          "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+          "100%": { transform: "translate(0px, 0px) scale(1)" },
+        }
+      },
+      animation: {
+        mesh: 'mesh 15s ease infinite',
+        blob: 'blob 7s infinite',
+      },
       colors: {
         trueGray: colors.neutral,
         // Soft pastel colors based on prompt
@@ -24,8 +41,10 @@ module.exports = {
         nunito: ["var(--font-nunito)", "sans-serif"],
       },
       boxShadow: {
-        'soft': '0 10px 40px -10px rgba(14, 165, 233, 0.15)',
-        'glass': '0 8px 32px 0 rgba(14, 165, 233, 0.05)',
+        'soft': '0 20px 40px -15px rgba(14, 165, 233, 0.15), 0 10px 20px -10px rgba(45, 212, 191, 0.1)',
+        'glass': '0 8px 32px 0 rgba(14, 165, 233, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.4)',
+
+
       },
       borderRadius: {
         '4xl': '2rem',

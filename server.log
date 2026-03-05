@@ -1,14 +1,10 @@
 
-> akulenok@1.0.0 dev /app
-> next dev
+> akulenok@1.0.0 start /app
+> next start
 
    ▲ Next.js 15.5.9
    - Local:        http://localhost:3000
    - Network:      http://192.168.0.2:3000
 
  ✓ Starting...
- ✓ Ready in 1508ms
- ○ Compiling / ...
- ✓ Compiled / in 7.9s (1116 modules)
-motion() is deprecated. Use motion.create() instead.
- GET / 200 in 9248ms
+ ✓ Ready in 574ms

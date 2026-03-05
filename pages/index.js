@@ -2,6 +2,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import Navbar from "../components/navbar";
 import Hero from "../components/hero";
+import TrustBar from "../components/TrustBar";
 import SectionTitle from "../components/sectionTitle";
 import LazyLoad from "../components/lazy";
 
@@ -57,6 +58,7 @@ export default function Home() {
       <Navbar />
 
       <Hero />
+      <TrustBar />
     
       <LazyLoad>
         <About />

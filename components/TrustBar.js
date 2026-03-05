@@ -1,38 +1,57 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Container from "./container";
+import { ShieldCheckIcon, BeakerIcon, AcademicCapIcon, HeartIcon } from "@heroicons/react/24/outline";
 
-const items = [
-  { title: "Питьевое качество", desc: "Вода проходит 3 ступени очистки" },
-  { title: "Без хлора", desc: "Очистка серебром и УФ-лампами" },
-  { title: "Медицинское", desc: "образование у всех тренеров" },
-  { title: "Одобрено", desc: "педиатрами и неврологами" },
+const trustItems = [
+  { text: "Вода питьевого качества", icon: BeakerIcon },
+  { text: "Тренеры с мед. образованием", icon: AcademicCapIcon },
+  { text: "Без хлора", icon: ShieldCheckIcon },
+  { text: "Одобрено педиатрами", icon: HeartIcon },
 ];
 
 export default function TrustBar() {
   return (
-    <section className="relative z-20 -mt-16 sm:-mt-20 pb-12 w-full px-4 sm:px-6">
-      <Container className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-6 sm:p-8 bg-white/80 backdrop-blur-2xl rounded-[2rem] sm:rounded-[3rem] shadow-[0_20px_60px_-15px_rgba(14,165,233,0.1)] border border-white"
-        >
-          {items.map((item, index) => (
-            <div key={index} className="flex flex-col items-start gap-1 p-2 sm:p-4 hover:bg-slate-50/50 rounded-2xl transition-colors">
-              <div className="w-10 h-10 mb-2 rounded-full bg-sky-50 flex items-center justify-center text-sky-500">
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h4 className="text-sm sm:text-base font-bold text-slate-800 leading-tight">{item.title}</h4>
-              <p className="text-xs sm:text-sm text-slate-500 leading-snug">{item.desc}</p>
-            </div>
-          ))}
-        </motion.div>
-      </Container>
-    </section>
+    <div className="relative -mt-10 sm:-mt-12 z-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.8 }}
+        className="glass-card bg-white/70 py-6 px-4 rounded-3xl sm:rounded-[2.5rem] shadow-soft border border-white"
+      >
+        <div className="flex overflow-hidden">
+          {/* Marquee effect for mobile, grid for desktop */}
+          <div className="flex w-max min-w-full justify-between items-center animate-marquee sm:animate-none sm:w-full sm:grid sm:grid-cols-4 gap-8 px-4">
+             {trustItems.map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3 whitespace-nowrap justify-center">
+                  <div className="p-2 bg-sky-100 rounded-full text-sky-500 shrink-0">
+                    <item.icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <span className="font-semibold text-slate-700 text-sm sm:text-base">{item.text}</span>
+                </div>
+             ))}
+             {/* Duplicate for seamless marquee on mobile */}
+             <div className="flex sm:hidden w-max items-center gap-8 pl-8">
+               {trustItems.map((item, idx) => (
+                  <div key={`dup-${idx}`} className="flex items-center gap-3 whitespace-nowrap justify-center">
+                    <div className="p-2 bg-sky-100 rounded-full text-sky-500 shrink-0">
+                      <item.icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                    </div>
+                    <span className="font-semibold text-slate-700 text-sm sm:text-base">{item.text}</span>
+                  </div>
+               ))}
+             </div>
+          </div>
+        </div>
+      </motion.div>
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee 20s linear infinite;
+        }
+      `}} />
+    </div>
   );
 }

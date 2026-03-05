@@ -45,7 +45,7 @@ export default function Hero() {
           playsInline
           poster="/video/poster.jpg"
         >
-          <source src="/video/Herobg.webm" type="video/webm" />
+          <source src="/video/HB.webm" type="video/webm" />
           <source src="/video/hero_small.mp4" type="video/mp4" />
         </video>
         {/* Dynamic Gradient Overlay for depth and readability */}

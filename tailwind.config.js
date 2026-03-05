@@ -9,29 +9,22 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Нейтральные оттенки
         trueGray: colors.neutral,
-
-          // 🔹 Палитра аквамарина: фон, акцент и тёмный текст
+        // Soft pastel colors based on prompt
         aqua: {
-         background: "#E0F7FA", // очень светлый фон
-          accent: "#0077B6", // основной акцент
-          dark: "#003B46", // тёмный текст
-          DEFAULT: "#0077B6", // значение по умолчанию
+          background: "#F0FDF4", // teal-50 equivalent
+          accent: "#0EA5E9", // sky-500
+          dark: "#0F172A", // slate-900 for texts
+          light: "#E0F2FE", // sky-100
+          warm: "#F8FAFC", // slate-50
+          DEFAULT: "#0EA5E9",
         },
       },
-fontFamily: {
-        inter: ["var(--font-inter)"],
-        fredoka: ["var(--font-fredoka)"],
+      fontFamily: {
+        nunito: ["var(--font-nunito)", "sans-serif"],
       },
- keyframes: {
-        "press-me": {
-          "0%, 100%": { transform: "scale(1)" },
-          "50%": { transform: "scale(1.05)" },
-        },
-      },
-      animation: {
-        "press-me": "press-me 1.5s ease-in-out infinite",
+      boxShadow: {
+        'soft': '0 10px 40px -10px rgba(14, 165, 233, 0.15)',
       },
     },
   },

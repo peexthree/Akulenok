@@ -6,7 +6,7 @@ import SectionTitle from "../components/sectionTitle";
 import LazyLoad from "../components/lazy";
 
 const About = dynamic(() => import("../components/about"));
-const SharkBlock = dynamic(() => import("../components/sharkBlock"));
+const Safety = dynamic(() => import("../components/safety"));
 const Services = dynamic(() => import("../components/services"));
 const Benefits = dynamic(() => import("../components/benefits"));
 const Methodology = dynamic(() => import("../components/methodology"));
@@ -108,7 +108,7 @@ export default function Home() {
       </LazyLoad>
 
       <LazyLoad>
-        <SharkBlock />
+        <Safety />
       </LazyLoad>
 
       <LazyLoad>

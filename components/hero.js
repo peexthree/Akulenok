@@ -70,8 +70,8 @@ export default function Hero() {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="text-5xl sm:text-7xl lg:text-9xl font-extrabold tracking-tighter text-white leading-[0.9] mb-8 text-balance uppercase"
         >
-          Мягкое плавание <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-sky-300">для лучших детей</span>
+          Больше  <br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-sky-300">чем бассейн</span>
         </motion.h1>
 
         <motion.p
@@ -80,7 +80,7 @@ export default function Hero() {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="text-xl sm:text-2xl text-slate-200 mb-12 max-w-3xl mx-auto leading-relaxed text-balance font-medium"
         >
-          Снимаем гипертонус, укрепляем иммунитет и нервную систему через игру и мягкую адаптацию.
+           здоровье для всей семьи.
         </motion.p>
 
         <motion.div

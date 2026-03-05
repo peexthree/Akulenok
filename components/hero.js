@@ -130,30 +130,30 @@ export default function Hero() {
       <Container className="relative z-10 flex flex-wrap lg:flex-nowrap pt-20 lg:pt-32 pb-20 items-center justify-between">
         <div className="flex items-center w-full lg:w-1/2 mb-10 lg:mb-0">
           <div className="max-w-2xl text-center lg:text-left">
-            <h1 className="text-4xl font-bold leading-snug tracking-tight text-aqua-dark lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-aqua-background">
-              Научим малыша любить воду с 3&nbsp;месяцев
+            <h1 className="text-4xl font-bold leading-snug tracking-tight text-aqua-dark lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight ">
+              Больше чем бассейн: здоровье для всей семьи
             </h1>
-            <p className="py-5 text-xl leading-normal text-aqua-dark/80 lg:text-2xl xl:text-2xl dark:text-aqua-background/80">
-              Мягкая адаптация, игра и результат, который видят родители. Закажите обратный звонок:
+            <p className="py-5 text-xl leading-normal text-aqua-dark/80 lg:text-2xl xl:text-2xl ">
+              Многопрофильный семейный центр, укрепим здоровье каждого члена семьи, потому что все услуги центра направлены на физическое и психическое состояние наших гостей. Решаем такие боли как: тонус, отставание в развитии, гиперактивность. Закажите обратный звонок:
             </p>
           </div>
         </div>
 
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
           {blocked ? (
-            <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl dark:bg-trueGray-800">
+            <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl ">
               Попробуйте завтра — превышен лимит.
             </div>
           ) : (
             <motion.form
               id="lead-form"
-              className="w-full max-w-md gap-4 p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl flex flex-col dark:bg-trueGray-800/90"
+              className="w-full max-w-md gap-4 p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl flex flex-col "
               onSubmit={handleSubmit}
             >
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="parentName"
-                  className="text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="text-sm font-medium text-gray-700 "
                 >
                   Ваше имя *
                 </label>
@@ -162,7 +162,7 @@ export default function Hero() {
                   name="parentName"
                   required
                   placeholder="Имя"
-                  className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent dark:border-gray-600 dark:text-white"
+                  className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent  "
                   disabled={status === "loading"}
                   whileFocus={{ scale: 1.01 }}
                 />
@@ -170,7 +170,7 @@ export default function Hero() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="phone"
-                  className="text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="text-sm font-medium text-gray-700 "
                 >
                   Телефон *
                 </label>
@@ -179,7 +179,7 @@ export default function Hero() {
                   name="phone"
                   required
                   placeholder="+7 000 000 00 00"
-                  className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent dark:border-gray-600 dark:text-white"
+                  className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent  "
                   disabled={status === "loading"}
                   value={phone}
                   onChange={handlePhoneChange}
@@ -191,7 +191,7 @@ export default function Hero() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="childAgeYears"
-                  className="text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="text-sm font-medium text-gray-700 "
                 >
                   Возраст ребенка
                 </label>
@@ -203,7 +203,7 @@ export default function Hero() {
                     min="0"
                     max="17"
                     placeholder="Годы"
-                    className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent dark:border-gray-600 dark:text-white w-1/2"
+                    className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent   w-1/2"
                     disabled={status === "loading"}
                     whileFocus={{ scale: 1.01 }}
                   />
@@ -214,7 +214,7 @@ export default function Hero() {
                     min="0"
                     max="11"
                     placeholder="Месяцы"
-                    className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent dark:border-gray-600 dark:text-white w-1/2"
+                    className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent   w-1/2"
                     disabled={status === "loading"}
                     whileFocus={{ scale: 1.01 }}
                   />
@@ -224,7 +224,7 @@ export default function Hero() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="timePref"
-                  className="text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="text-sm font-medium text-gray-700 "
                 >
                   Желаемое время
                 </label>
@@ -232,7 +232,7 @@ export default function Hero() {
                   id="timePref"
                   name="timePref"
                   type="time"
-                  className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent dark:border-gray-600 dark:text-white"
+                  className="border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-aqua-accent  "
                   disabled={status === "loading"}
                   whileFocus={{ scale: 1.01 }}
                 />
@@ -260,7 +260,7 @@ export default function Hero() {
                 <label htmlFor="consent" className="leading-tight">
                   Нажимая кнопку «отправить» я соглашаюсь с {" "}
                   <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline text-aqua-accent">
-                    политикой конфиденциальности
+                    политикой конфиденциальности и офертой
                   </a>
                 </label>
               </div>
@@ -277,7 +277,7 @@ export default function Hero() {
       </Container>
 
       <Container className="relative z-10">
-        <div className="text-xl text-center lg:text-left text-aqua-dark dark:text-aqua-background pb-10">
+        <div className="text-xl text-center lg:text-left text-aqua-dark  pb-10">
           Нам доверяют уже более <span className="text-aqua-accent font-bold">300</span> семей в Туймазах
         </div>
       </Container>

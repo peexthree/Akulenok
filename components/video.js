@@ -25,8 +25,8 @@ export default function Video() {
        poster="/video/poster.jpg"
           aria-label="Ролик о центре «Акулёнок»"
          >
-          <source src="/video/hero_small.webm" type="video/webm" />
-          <source src="/video/hero_small.mp4" type="video/mp4" />
+          <source src="/video/hero_small_new.webm" type="video/webm" />
+          <source src="/video/hero_small_new.mp4" type="video/mp4" />
         </video>
       </div>
     </Container>

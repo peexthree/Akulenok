@@ -1,4 +1,3 @@
-import { ThemeProvider } from "next-themes";
 import "../css/tailwind.css";
 import { Inter, Fredoka } from "next/font/google";
 import Layout from "../components/layout";
@@ -11,12 +10,10 @@ export const fredoka = Fredoka({
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider attribute="class">
-     <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ThemeProvider>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   );
 }
 
- export default MyApp;
+export default MyApp;

@@ -21,6 +21,7 @@ const Cta = dynamic(() => import("../components/cta"));
 const Footer = dynamic(() => import("../components/footer"));
 const Video = dynamic(() => import("../components/video"));
 const Faq = dynamic(() => import("../components/faq"));
+const LoyalClients = dynamic(() => import("../components/loyalClients"));
 
 export default function Home() {
   return (
@@ -113,6 +114,10 @@ export default function Home() {
       <LazyLoad>
         <SectionTitle title="Часто задаваемые вопросы" />
         <Faq />
+      </LazyLoad>
+
+      <LazyLoad>
+        <LoyalClients />
       </LazyLoad>
 
       <LazyLoad>

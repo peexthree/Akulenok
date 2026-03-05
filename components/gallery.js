@@ -81,17 +81,17 @@ useEffect(() => {
           type="button"
           aria-label="Прокрутить влево"
           onClick={() => scroll(-300)}
-          className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/70 dark:bg-gray-800/70 shadow"
+          className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/70  shadow"
         >
-          <ChevronLeftIcon className="h-6 w-6 text-aqua-dark dark:text-aqua-background" />
+          <ChevronLeftIcon className="h-6 w-6 text-aqua-dark " />
         </button>
         <button
           type="button"
           aria-label="Прокрутить вправо"
           onClick={() => scroll(300)}
-          className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/70 dark:bg-gray-800/70 shadow"
+          className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/70  shadow"
         >
-          <ChevronRightIcon className="h-6 w-6 text-aqua-dark dark:text-aqua-background" />
+          <ChevronRightIcon className="h-6 w-6 text-aqua-dark " />
         </button>
       </div>
       {selected && (

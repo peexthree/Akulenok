@@ -17,7 +17,7 @@ export default function Location() {
       className="grid gap-8 lg:grid-cols-[400px_1fr] items-center glass-card p-8 shadow-lg scroll-mt-24 mx-auto"
       >
         <div className="flex flex-col justify-center h-full space-y-5">
-          <div className="text-gray-700 dark:text-gray-300 space-y-2">
+          <div className="text-gray-700  space-y-2">
             <div><span className="font-medium">Адрес:</span> {address}</div>
          <div>
               <span className="font-medium">Телефон:</span>{" "}

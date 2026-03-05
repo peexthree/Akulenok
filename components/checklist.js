@@ -23,10 +23,10 @@ export default function Checklist() {
         />
 
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <h2 className="text-4xl font-bold text-aqua-dark dark:text-aqua-background">
+          <h2 className="text-4xl font-bold text-aqua-dark ">
             Что взять на первое занятие
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p className="text-lg text-gray-600 ">
             Чтобы ваше первое занятие прошло комфортно, подготовьте всё необходимое заранее:
           </p>
         </div>
@@ -35,12 +35,12 @@ export default function Checklist() {
           {items.map(({ emoji, text }) => (
             <div
               key={text}
-              className="bg-white dark:bg-trueGray-800 p-6 rounded-3xl shadow-xl flex flex-col items-center justify-center text-center gap-4 transform transition hover:-translate-y-2 hover:shadow-2xl border-t-4 border-aqua-accent"
+              className="bg-white  p-6 rounded-3xl shadow-xl flex flex-col items-center justify-center text-center gap-4 transform transition hover:-translate-y-2 hover:shadow-2xl border-t-4 border-aqua-accent"
             >
               <div className="text-5xl drop-shadow-md">
                 {emoji}
               </div>
-              <span className="font-semibold text-gray-700 dark:text-gray-200 leading-snug">
+              <span className="font-semibold text-gray-700  leading-snug">
                 {text}
               </span>
             </div>

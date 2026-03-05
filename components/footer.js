@@ -6,7 +6,7 @@ import Image from "next/image"; // Важно: импортируем компо
 
 function Footer() {
   return (
-    <footer className="relative text-aqua-dark dark:text-aqua-background py-10">
+    <footer className="relative text-aqua-dark  py-10">
       <div className="absolute top-0 left-0 w-full -translate-y-full overflow-hidden leading-none">
         <svg
           className="relative block w-full h-8"
@@ -32,7 +32,7 @@ function Footer() {
               className="bg-transparent" // Добавляем класс для прозрачности
             />
             <div className="text-lg font-semibold text-center md:text-left">
-              © 2024 Акулёнок
+              © 2020 Акулёнок
             </div>
           </div>
 

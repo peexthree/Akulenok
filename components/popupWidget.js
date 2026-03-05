@@ -98,14 +98,14 @@ const [hasInteracted, setHasInteracted] = useState(false);
             className={clsx(
               "fixed bottom-24 right-6 z-[50] w-80 max-w-[calc(100vw-2rem)]",
               "rounded-xl bg-white/70 p-4 shadow-lg backdrop-blur-md ring-1 ring-black/10",
-              "dark:bg-gray-800/70 dark:ring-white/10",
+              " ",
               "flex flex-col gap-3"
             )}
           >
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            <h3 className="text-lg font-semibold text-gray-900 ">
               Напишите нам
             </h3>
-           <p className="text-sm text-gray-600 dark:text-gray-100">
+           <p className="text-sm text-gray-600 ">
               Мы ответим на ваш вопрос в ближайшее время.
             </p>
            <div className="flex flex-col gap-2">

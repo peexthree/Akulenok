@@ -25,7 +25,12 @@ module.exports = {
       },
       boxShadow: {
         'soft': '0 10px 40px -10px rgba(14, 165, 233, 0.15)',
+        'glass': '0 8px 32px 0 rgba(14, 165, 233, 0.05)',
       },
+      borderRadius: {
+        '4xl': '2rem',
+        '5xl': '2.5rem',
+      }
     },
   },
   plugins: [

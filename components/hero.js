@@ -51,6 +51,7 @@ export default function Hero() {
           transition={{ delay: 0.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/40 backdrop-blur-xl border border-white/60 shadow-glass mb-8 hover:bg-white/60 transition-colors"
         >
+          <img src="/img/logo-akulenok-social.jpg" className="w-6 h-6 rounded-full" />
           <span className="flex h-2.5 w-2.5 rounded-full bg-sky-500 animate-pulse"></span>
           <span className="text-sm font-bold text-slate-700 tracking-wide uppercase">Первое занятие со скидкой 50%</span>
         </motion.div>
@@ -106,9 +107,13 @@ export default function Hero() {
           </button>
         </motion.div>
 
-        {/* Decorative Floating Elements (optional, if you have assets, otherwise just CSS shapes) */}
-        <motion.div style={{ y: y1 }} className="absolute hidden lg:block left-[5%] top-[20%] w-32 h-32 bg-white/30 backdrop-blur-2xl rounded-3xl rotate-12 shadow-glass border border-white/50" />
-        <motion.div style={{ y: y2 }} className="absolute hidden lg:block right-[5%] top-[40%] w-40 h-40 bg-white/30 backdrop-blur-2xl rounded-full shadow-glass border border-white/50" />
+        {/* Decorative Floating Elements */}
+        <motion.div style={{ y: y1 }} className="absolute hidden lg:block left-[5%] top-[20%] w-32 h-32 bg-white/30 backdrop-blur-2xl rounded-3xl rotate-12 shadow-glass border border-white/50 overflow-hidden">
+           <Image src="/img/akulenok-mascot.png" alt="" fill className="object-contain p-4" />
+        </motion.div>
+        <motion.div style={{ y: y2 }} className="absolute hidden lg:block right-[5%] top-[40%] w-40 h-40 bg-white/30 backdrop-blur-2xl rounded-full shadow-glass border border-white/50 overflow-hidden">
+           <Image src="/img/love.png" alt="" fill className="object-contain p-6" />
+        </motion.div>
 
       </Container>
 

@@ -129,7 +129,7 @@ export default function MultiStepForm({ isOpen, onClose }) {
             <div className="flex-grow relative">
               <AnimatePresence mode="wait">
                 {step === 1 && (
-                  <motion.div key="step1" variants={stepVariants} initial="hidden" animate="visible" exit="exit" className="absolute inset-0">
+                  <motion.div key="step1" variants={stepVariants} initial="hidden" animate="visible" exit="exit" className="relative w-full">
                     <h3 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-6 text-balance">Сколько месяцев или лет вашему малышу?</h3>
                     <div className="space-y-4">
                       {["0-3 месяца", "3-6 месяцев", "6-12 месяцев", "От 1 года до 3 лет", "Старше 3 лет"].map((option) => (
@@ -143,7 +143,7 @@ export default function MultiStepForm({ isOpen, onClose }) {
                 )}
 
                 {step === 2 && (
-                  <motion.div key="step2" variants={stepVariants} initial="hidden" animate="visible" exit="exit" className="absolute inset-0">
+                  <motion.div key="step2" variants={stepVariants} initial="hidden" animate="visible" exit="exit" className="relative w-full">
                     <h3 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-6 text-balance">Какая главная цель занятий?</h3>
                     <div className="space-y-4">
                       {[
@@ -163,7 +163,7 @@ export default function MultiStepForm({ isOpen, onClose }) {
                 )}
 
                 {step === 3 && (
-                  <motion.div key="step3" variants={stepVariants} initial="hidden" animate="visible" exit="exit" className="absolute inset-0">
+                  <motion.div key="step3" variants={stepVariants} initial="hidden" animate="visible" exit="exit" className="relative w-full">
                     <h3 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-6 text-balance">Оставьте контакты для связи</h3>
                     <p className="text-slate-500 mb-6">Наш педиатр перезвонит вам, чтобы обсудить детали и подобрать удобное время.</p>
 

@@ -5,6 +5,7 @@ import Hero from "../components/hero";
 import TrustBar from "../components/TrustBar";
 import SectionTitle from "../components/sectionTitle";
 import LazyLoad from "../components/lazy";
+import WaveDivider from "../components/WaveDivider";
 
 const About = dynamic(() => import("../components/about"));
 const Safety = dynamic(() => import("../components/safety"));
@@ -58,12 +59,14 @@ export default function Home() {
       <Navbar />
 
       <Hero />
+      <WaveDivider color="fill-white" />
       <TrustBar />
     
       <LazyLoad>
         <About />
       </LazyLoad>
 
+      <WaveDivider color="fill-sky-50" flip={true} />
       <LazyLoad>
         <Methodology />
       </LazyLoad>
@@ -72,10 +75,12 @@ export default function Home() {
         <JourneyTimeline />
       </LazyLoad>
 
+      <WaveDivider color="fill-white" />
       <LazyLoad>
         <Video />
       </LazyLoad>
 
+      <WaveDivider color="fill-sky-50" flip={true} />
       <LazyLoad>
         <SectionTitle
           title="С нами удобно"
@@ -92,6 +97,7 @@ export default function Home() {
         <Checklist />
       </LazyLoad>
 
+      <WaveDivider color="fill-white" />
       <LazyLoad>
         <Team />
       </LazyLoad>
@@ -104,6 +110,7 @@ export default function Home() {
         <Pricing />
       </LazyLoad>
 
+      <WaveDivider color="fill-sky-50" flip={true} />
       <LazyLoad>
         <Testimonials />
       </LazyLoad>
@@ -128,6 +135,7 @@ export default function Home() {
         <Location />
       </LazyLoad>
 
+      <WaveDivider color="fill-sky-400" />
       <LazyLoad>
         <Cta />
       </LazyLoad>

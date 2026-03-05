@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "./container";
+import Image from "next/image";
 
 const faqs = [
   {
@@ -29,7 +30,10 @@ export default function Faq() {
   };
 
   return (
-    <Container className="py-24 max-w-4xl mx-auto">
+    <Container className="py-24 max-w-4xl mx-auto relative">
+      <div className="absolute top-10 right-0 w-32 h-32 opacity-20 hidden md:block">
+         <Image src="/img/sad.png" alt="" width={128} height={128} />
+      </div>
       <div className="text-center mb-16">
         <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-800 tracking-tight leading-tight mb-4 text-balance">
           Вопросы, которые волнуют мам

@@ -4,11 +4,20 @@ import { motion } from "framer-motion";
 import Container from "./container";
 
 const photos = [
-  { src: "/img/gallery/gallery-01.jpg", alt: "Малыш в бассейне", size: "col-span-1 row-span-2 h-80 sm:h-96" },
-  { src: "/img/gallery/gallery-02.jpg", alt: "Раздевалка", size: "col-span-1 row-span-1 h-40 sm:h-48" },
-  { src: "/img/gallery/gallery-03.jpg", alt: "Тренер и малыш", size: "col-span-1 row-span-1 h-40 sm:h-48" },
-  { src: "/img/gallery/gallery-04.jpg", alt: "ЛФК", size: "col-span-2 row-span-1 h-48 sm:h-64" },
-  { src: "/img/gallery/gallery-05.jpg", alt: "Счастливая мама", size: "col-span-1 row-span-1 h-48 sm:h-64" }
+  { src: "/img/gallery/pool1.jpg", alt: "Занятие в бассейне", size: "col-span-1 row-span-2 h-80 sm:h-96" },
+  { src: "/img/gallery/pool2.jpg", alt: "Наш тренер", size: "col-span-1 row-span-1 h-40 sm:h-48" },
+  { src: "/img/gallery/pool3.jpg", alt: "Первые успехи", size: "col-span-1 row-span-1 h-40 sm:h-48" },
+  { src: "/img/gallery/pool12.jpg", alt: "Игровая форма", size: "col-span-2 row-span-1 h-48 sm:h-64" },
+  { src: "/img/gallery/pool13.jpg", alt: "Чистая вода", size: "col-span-1 row-span-1 h-48 sm:h-64" },
+  { src: "/img/gallery/pool4.jpg", alt: "Комфорт", size: "col-span-1 row-span-1 h-48 sm:h-64" },
+  { src: "/img/gallery/pool5.jpg", alt: "Улыбки", size: "col-span-1 row-span-1 h-48 sm:h-64" },
+  { src: "/img/gallery/pool6.jpg", alt: "Развитие", size: "col-span-1 row-span-1 h-48 sm:h-64" },
+  { src: "/img/gallery/pool7.jpg", alt: "Безопасность", size: "col-span-1 row-span-1 h-48 sm:h-64" },
+  { src: "/img/gallery/pool14.jpg", alt: "Гармония", size: "col-span-1 row-span-2 h-80 sm:h-96" },
+  { src: "/img/gallery/pool101.jpg", alt: "Здоровье", size: "col-span-1 row-span-1 h-48 sm:h-64" },
+  { src: "/img/gallery/pool111.jpg", alt: "Радость", size: "col-span-1 row-span-1 h-48 sm:h-64" },
+  { src: "/img/gallery/pool81.jpg", alt: "Сила", size: "col-span-1 row-span-1 h-48 sm:h-64" },
+  { src: "/img/gallery/pool91.jpg", alt: "Успех", size: "col-span-1 row-span-1 h-48 sm:h-64" }
 ];
 
 export default function Gallery() {
@@ -31,8 +40,13 @@ export default function Gallery() {
             transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
             className={`relative rounded-3xl overflow-hidden group shadow-sm hover:shadow-soft transition-shadow ${photo.size}`}
           >
-            {/* Fallback color while images load */}
-            <div className="absolute inset-0 bg-slate-200" />
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-110"
+              sizes="(max-width: 768px) 50vw, 33vw"
+            />
 
             {/* Overlay Gradient on Hover */}
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />

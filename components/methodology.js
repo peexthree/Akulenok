@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Container from "./container";
@@ -56,6 +57,30 @@ export default function Methodology() {
             >
               Мы используем современные методики для гармоничного развития ребенка, комбинируя работу в зале и воде.
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              animate={{
+                y: [0, -20, 0],
+              }}
+              transition={{
+                y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                duration: 0.8,
+                ease: "easeOut"
+              }}
+              className="mt-auto hidden lg:block relative w-full max-w-[400px]"
+            >
+              <Image
+                src="/img/akulenok-mascot.png"
+                alt="Акулёнок маскот"
+                width={400}
+                height={400}
+                className="w-full h-auto object-contain"
+                priority
+              />
+            </motion.div>
           </div>
 
           {/* Scrolling Services Cards */}

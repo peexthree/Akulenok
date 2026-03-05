@@ -7,21 +7,21 @@ const testimonials = [
     name: "Марина и Артём (6 мес)",
     role: "Ушел тонус ножек",
     text: "Пришли с сильным гипертонусом, малыш постоянно плакал. После 5 занятий у Артёма расслабились ножки, он стал лучше спать и улыбаться. Тренеры — чудо!",
-    image: "/img/user1.jpg",
+    image: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&q=80&w=300",
     color: "from-teal-50 to-emerald-50"
   },
   {
     name: "Екатерина и София (1 год)",
     role: "Перестали бояться воды",
     text: "Дочка жутко боялась купаться даже дома. В Акулёнке настолько мягкий подход и столько игрушек, что она сама тянется в воду. Спасибо за терпение!",
-    image: "/img/user2.jpg",
+    image: "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80&w=300",
     color: "from-sky-50 to-blue-50"
   },
   {
     name: "Анна и Матвей (3 мес)",
     role: "Первые успехи в нырянии",
     text: "Очень чистая вода, нет запаха хлорки. Тренер Эльвира нашла подход за 5 минут. Матвей уже задерживает дыхание и радостно плещется.",
-    image: "/img/user3.jpg",
+    image: "https://images.unsplash.com/photo-1594911772125-07fc7a2d8d9f?auto=format&fit=crop&q=80&w=300",
     color: "from-indigo-50 to-purple-50"
   }
 ];

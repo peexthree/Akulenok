@@ -16,10 +16,10 @@ export default function Checklist() {
   return (
     <Container className="py-24 relative overflow-hidden bg-white">
       
-      {/* ГИГАНТСКИЙ МАСКОТ - ТЕПЕРЬ РЕАЛЬНО В ЦЕНТРЕ ФОНА */}
+     {/* ГИГАНТСКИЙ МАСКОТ - ТЕПЕРЬ РЕАЛЬНО В ЦЕНТРЕ ФОНА */}
       <motion.div
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 0.7 }} // 0.2 — идеальный баланс между "видно" и "не мешает тексту"
+        whileInView={{ opacity: 0.35 }} // 0.35 — Максимум для фона, чтобы не убить текст
         transition={{ duration: 1 }}
         // Магия центрирования: top-1/2 + -translate-y-1/2
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] z-0 pointer-events-none select-none"
@@ -29,8 +29,8 @@ export default function Checklist() {
           alt="Background Thinking Shark"
           fill
           unoptimized 
-          className="object-contain blur-[1px]" // Уменьшил блюр, чтобы было видно "лицо"
-          sizes="500px"
+          className="object-contain blur-[8px]" // Возвращаем стильный блюр
+          sizes="1000px" // Исправлено под размер контейнера
         />
       </motion.div>
 

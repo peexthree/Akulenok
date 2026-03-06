@@ -118,7 +118,7 @@ export default function LoyalClients() {
 
             {/* Мощный CTA вместо желтой плашки */}
             <button
-              onClick={() => setFormOpen(true)}
+              type="button" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setFormOpen(true); }}
               className="relative z-10 w-full bg-white text-sky-600 px-8 py-5 rounded-2xl font-black text-xl hover:bg-sky-50 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 flex items-center justify-center gap-3 active:scale-95"
             >
               Перейти к онлайн-записи

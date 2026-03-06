@@ -116,7 +116,7 @@ function Schedule() {
 
             <div className="mt-8 pt-8 border-t border-opacity-20 border-current">
               <button
-                onClick={() => setFormOpen(true)}
+                type="button" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setFormOpen(true); }}
                 className={`w-full block text-center py-4 rounded-2xl font-bold text-lg transition-all duration-300 ${
                   item.highlight
                     ? "bg-white text-sky-600 hover:bg-sky-50 shadow-md hover:shadow-lg hover:-translate-y-0.5"

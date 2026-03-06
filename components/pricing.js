@@ -109,7 +109,7 @@ export default function Pricing() {
               </ul>
 
               <button
-                onClick={() => setFormOpen(true)}
+                type="button" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setFormOpen(true); }}
                 className={`w-full py-5 rounded-[2rem] font-black text-center transition-all duration-300 transform active:scale-95 ${
                   item.highlight
                     ? "bg-sky-500 text-white shadow-sky-200 shadow-xl hover:bg-sky-600"

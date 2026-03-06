@@ -4,6 +4,8 @@ import dynamic from "next/dynamic";
 import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import { useShark } from "./SharkProvider";
 
+import CookieBanner from "./CookieBanner";
+
 // Поп-ап не нужен поисковикам, грузим только на клиенте
 const PopupWidget = dynamic(() => import("./popupWidget"), { ssr: false });
 const MultiStepForm = dynamic(() => import("./MultiStepForm"), { ssr: false });
@@ -51,6 +53,7 @@ export default function Layout({ children }) {
           <MultiStepForm isOpen={isFormOpen} onClose={() => setFormOpen(false)} />
         )}
       </AnimatePresence>
+      <CookieBanner />
     </div>
   );
 }

@@ -30,7 +30,7 @@ export default function Checklist() {
           fill
           unoptimized 
           className="object-contain blur-[1px]" // Уменьшил блюр, чтобы было видно "лицо"
-          sizes="1000px"
+          sizes="500px"
         />
       </motion.div>
 

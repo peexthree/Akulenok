@@ -83,9 +83,7 @@ export default function Footer() {
         {/* Копирайт и подпись автора */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 text-slate-400 text-sm font-medium gap-4">
           <p>© {currentYear} Детский центр «Акулёнок». Все права защищены.</p>
-          <p>
-            Разработка — <a href="https://t.me/peexthree" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-sky-500 font-bold transition-colors">Игорь Сычёв</a>
-          </p>
+      
         </div>
       </Container>
     </footer>

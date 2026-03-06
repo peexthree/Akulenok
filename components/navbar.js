@@ -23,24 +23,30 @@ export default function Navbar() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const pathname = usePathname();
 
-  // --- МЕХАНИКА ПАСХАЛКИ (5 кликов по лого -> запускаем egg2) ---
   const { setActiveEgg } = useShark();
   const [clicks, setClicks] = useState(0);
   const timerRef = useRef(null);
 
+  // --- ГЛАВНЫЕ МЕХАНИКИ ПАСХАЛОК ---
   const handleLogoClick = () => {
+    // 1. Если маскот еще гигантский (не проскроллено), открываем egg3 (твое фото)
+    if (!isScrolled) {
+      setActiveEgg("egg3");
+      return;
+    }
+
+    // 2. Если маскот маленький (скролл > 40), считаем 10 кликов для egg1
     setClicks((prev) => prev + 1);
     if (timerRef.current) clearTimeout(timerRef.current);
     
     if (clicks + 1 >= 10) {
-      setActiveEgg("egg2"); // Прямой вызов второй видео-пасхалки
+      setActiveEgg("egg1");
       setClicks(0);
     } else {
       timerRef.current = setTimeout(() => setClicks(0), 1000);
     }
   };
 
-  // --- ЛОГИКА СКРОЛЛА ---
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY > 40;
@@ -56,41 +62,43 @@ export default function Navbar() {
         className={`
           pointer-events-auto flex items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]
           ${isScrolled 
-            ? "w-[95%] max-w-5xl rounded-full bg-white/90 backdrop-blur-xl shadow-glass border border-sky-100/50 px-6 py-2" 
+            ? "w-[95%] max-w-5xl rounded-full bg-white/90 backdrop-blur-xl shadow-lg border border-sky-100/50 px-6 py-2" 
             : "w-full max-w-full rounded-none bg-transparent px-8 lg:px-16 py-8"
           }
         `}
       >
-        {/* ГРУППА ЛОГОТИПА */}
-        <div 
-          className="flex items-center group cursor-pointer shrink-0" 
-          onClick={handleLogoClick}
-        >
-          <div className="relative">
-            {/* ТОЛЬКО МАСКОТ УВЕЛИЧИВАЕТСЯ В 3-4 РАЗА */}
+        {/* ГРУППА ЛОГОТИПА С ИЗОЛИРОВАННЫМ МАСКОТОМ */}
+        <div className="flex items-center shrink-0 w-[180px] sm:w-[240px]">
+          <div className="relative cursor-pointer group h-10 flex items-center" onClick={handleLogoClick}>
+            {/* МАСКОТ: Когда не проскроллено, он получает 'absolute' и вылетает вверх, 
+              не занимая места в разметке навбара.
+            */}
             <motion.img
               whileHover={{ y: -5, rotate: [-1, 2, -1] }}
               src="/img/logo-akulenok.png"
               alt="Акулёнок"
-              className={`transition-all duration-700 ease-in-out object-contain ${
+              className={`transition-all duration-700 ease-in-out object-contain drop-shadow-2xl z-20 ${
                 isScrolled 
                   ? "h-10 w-auto" 
-                  : "h-32 sm:h-40 w-auto drop-shadow-2xl" 
+                  : "h-32 sm:h-40 w-auto absolute -top-12 sm:-top-16 left-0" 
               }`}
             />
+            
+            {/* ТЕКСТ: Всегда стабилен по позиции */}
+            <span className={`
+              font-black tracking-tight transition-all duration-500 z-10
+              ${isScrolled 
+                ? "ml-14 text-xl text-slate-900" 
+                : "ml-0 text-xl sm:text-2xl text-white drop-shadow-lg"
+              }
+            `}>
+              Акулёнок
+            </span>
           </div>
-          
-          {/* ТЕКСТ ВСЕГДА В ОДНОМ ПОЛОЖЕНИИ И РАЗМЕРЕ */}
-          <span className={`
-            ml-4 font-black tracking-tight transition-all duration-500
-            ${isScrolled ? "text-xl text-slate-900" : "text-xl sm:text-2xl text-white drop-shadow-lg"}
-          `}>
-            Акулёнок
-          </span>
         </div>
 
-        {/* ДЕСКТОПНОЕ МЕНЮ (Положение статично) */}
-        <div className="hidden lg:flex items-center gap-x-1 relative">
+        {/* ДЕСКТОПНОЕ МЕНЮ (Стабильно по центру) */}
+        <div className="hidden lg:flex items-center justify-center flex-1 gap-x-1 relative">
           {navigation.map((item, index) => {
             const isActive = pathname === item.href;
             return (
@@ -116,15 +124,15 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* КНОПКА ЗАПИСИ (Положение статично) */}
-        <div className="flex items-center gap-x-4">
+        {/* КНОПКА ЗАПИСИ (Стабильно справа) */}
+        <div className="flex items-center justify-end shrink-0 w-[120px] sm:w-[180px] gap-x-4">
           <Link 
             href="#contacts" 
             className={`
-              hidden sm:block rounded-full font-black text-sm transition-all duration-500 transform active:scale-95
+              hidden sm:block rounded-full font-black transition-all duration-500 transform active:scale-95
               ${isScrolled 
-                ? "bg-sky-500 text-white px-5 py-2.5 shadow-lg shadow-sky-500/20 hover:bg-sky-600" 
-                : "bg-white text-sky-600 px-6 py-3 shadow-2xl hover:bg-sky-50"
+                ? "bg-sky-500 text-white px-5 py-2.5 text-xs sm:text-sm shadow-md" 
+                : "bg-white text-sky-600 px-6 py-3 text-sm sm:text-base shadow-xl hover:bg-sky-50"
               }
             `}
           >
@@ -133,17 +141,16 @@ export default function Navbar() {
 
           <button
             type="button"
-            className={`lg:hidden p-3 rounded-full transition-all ${
+            className={`lg:hidden p-2 rounded-full transition-all ${
               isScrolled ? "text-slate-700 bg-slate-100" : "text-white bg-white/20 backdrop-blur-md"
             }`}
             onClick={() => setMobileMenuOpen(true)}
           >
-            <Bars3Icon className="h-7 w-7" />
+            <Bars3Icon className="h-6 w-6" />
           </button>
         </div>
       </nav>
 
-      {/* МОБИЛЬНОЕ МЕНЮ (Логика сохранена) */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen} static>

@@ -1,77 +1,130 @@
+"use client";
 import React from "react";
 import Container from "./container";
-import SectionTitle from "./sectionTitle";
 import { motion } from "framer-motion";
 
 export default function LoyalClients() {
   return (
-    <section  className="py-16 bg-aqua-background ">
-      <Container>
-        <SectionTitle
-          pretitle="Программа лояльности"
-          title="Для постоянных клиентов"
-        >
-          Мы ценим, что вы выбираете нас для здоровья ваших детей!
-        </SectionTitle>
+    <section className="py-24 relative overflow-hidden bg-sky-50">
+      
+      {/* Декоративные блики для объема */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-200/40 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-200/30 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/4 pointer-events-none" />
 
-        <div className="flex flex-wrap items-center justify-center lg:flex-nowrap gap-12 mt-10">
+      <Container className="relative z-10">
+        <div className="text-center max-w-2xl mx-auto mb-16">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-1.5 rounded-full bg-sky-100 text-sky-600 font-bold text-sm tracking-wider uppercase mb-4"
+          >
+            Программа лояльности
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4"
+          >
+            Для тех, кто с нами
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-slate-600 font-medium"
+          >
+            Ценим ваше доверие и дарим привилегии уже со второго визита.
+          </motion.p>
+        </div>
+
+        <div className="flex flex-col lg:flex-row items-stretch justify-center gap-8 mt-10">
+          
+          {/* Левая карточка: Условия */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="w-full lg:w-1/2 flex flex-col gap-6"
           >
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <h3 className="text-2xl font-bold text-aqua-dark mb-4">Условия программы:</h3>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Статус постоянного клиента присваивается со <strong>2-го посещения</strong> нашего центра.
-              </p>
-              <ul className="mt-4 space-y-2 list-disc list-inside text-gray-700">
-                <li>Постоянная скидка 5% на все абонементы</li>
-                <li>Доступ к специальным предложениям</li>
-                <li>Удобная запись через мобильное приложение</li>
-              </ul>
-            </div>
+            <div className="bg-white/80 backdrop-blur-xl p-10 rounded-[2.5rem] shadow-soft border border-white h-full flex flex-col justify-between group hover:shadow-xl transition-shadow duration-300">
+              <div>
+                <h3 className="text-3xl font-black text-slate-800 mb-6">Привилегии клуба</h3>
+                <p className="text-lg text-slate-600 leading-relaxed font-medium mb-8 bg-sky-50 p-4 rounded-2xl">
+                  Статус постоянного клиента активируется автоматически со <strong>2-го посещения</strong>.
+                </p>
+                
+                <ul className="space-y-4">
+                  {[
+                    "Постоянная скидка 5% на все абонементы",
+                    "Ранний доступ к специальным предложениям",
+                    "Приоритетная запись к ведущим тренерам"
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-4">
+                      <div className="shrink-0 w-7 h-7 rounded-full bg-sky-100 flex items-center justify-center text-sky-500 mt-0.5">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <span className="text-lg text-slate-700 font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            <div className="bg-aqua-accent/10 p-6 rounded-2xl border border-aqua-accent/20">
-              <h4 className="text-xl font-bold text-aqua-dark mb-2">Правила центра</h4>
-              <p className="text-gray-700">
-                Пожалуйста, ознакомьтесь с правилами нашего центра для комфортного и безопасного пребывания.
-              </p>
-              <a href="#" className="mt-3 inline-block text-aqua-accent font-semibold hover:underline">
-                Читать правила
-              </a>
+              {/* Элегантная ссылка на правила */}
+              <div className="mt-10 pt-6 border-t border-slate-100">
+                <a href="#" className="inline-flex items-center gap-2 text-sky-500 font-bold hover:text-sky-600 transition-colors group-hover:translate-x-1 duration-300">
+                  Правила посещения центра
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </motion.div>
 
+          {/* Правая карточка: Приложение / Бот */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="w-full lg:w-1/2 flex flex-col items-center text-center gap-6 bg-white p-8 rounded-2xl shadow-lg"
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            className="w-full lg:w-1/2 flex flex-col items-center text-center bg-gradient-to-br from-sky-500 to-blue-600 p-10 rounded-[2.5rem] shadow-lg relative overflow-hidden"
           >
-            <h3 className="text-2xl font-bold text-aqua-dark">Мобильное приложение</h3>
-            <p className="text-gray-600">
-              Скачайте наше приложение для быстрой записи и управления абонементами
+            {/* Декор внутри синей карточки */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl" />
+            
+            <h3 className="text-3xl font-black text-white mb-4 relative z-10">Запись в 2 клика</h3>
+            <p className="text-sky-100 text-lg font-medium mb-10 relative z-10 max-w-sm">
+              Управляйте абонементами и переносите занятия прямо в вашем смартфоне.
             </p>
 
-            {/* Заглушка для QR кода */}
-            <div className="w-48 h-48 bg-gray-200 rounded-xl flex items-center justify-center border-2 border-dashed border-gray-400">
-              <span className="text-gray-500 font-medium">QR-код приложения</span>
+            {/* Premium QR Placeholder */}
+            <div className="relative p-4 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl mb-10 group cursor-pointer hover:scale-105 transition-transform duration-300 z-10">
+              <div className="w-40 h-40 bg-white rounded-2xl flex items-center justify-center p-3 relative overflow-hidden">
+                {/* Имитация красивого QR */}
+                <div className="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg')] bg-cover opacity-20 group-hover:opacity-100 transition-opacity duration-500" />
+                <span className="text-slate-400 font-bold text-sm text-center relative z-10 group-hover:opacity-0 transition-opacity duration-300">Наведите<br/>камеру</span>
+              </div>
             </div>
 
-            <div className="w-full mt-4 p-4 bg-yellow-50 rounded-xl border border-yellow-200">
-              <p className="font-semibold text-yellow-800 mb-2">Забыли записаться?</p>
-              <a
-                href="#"
-                className="inline-block bg-aqua-accent text-white px-6 py-2 rounded-full font-medium hover:bg-aqua-dark transition-colors"
-              >
-                Ссылка на быструю запись!
-              </a>
-            </div>
+            {/* Мощный CTA вместо желтой плашки */}
+            <a
+              href="#"
+              className="relative z-10 w-full bg-white text-sky-600 px-8 py-5 rounded-2xl font-black text-xl hover:bg-sky-50 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 flex items-center justify-center gap-3 active:scale-95"
+            >
+              Перейти к онлайн-записи
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </a>
           </motion.div>
+
         </div>
       </Container>
     </section>

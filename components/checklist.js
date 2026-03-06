@@ -20,7 +20,7 @@ export default function Checklist() {
       {/* Теперь он ГАРАНТИРОВАННО выше белого фона контейнера */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 0.4 }} // 0.4-0.5 для уверенной видимости
+        whileInView={{ opacity: 1 }} // 0.4-0.5 для уверенной видимости
         transition={{ duration: 1.5, ease: "easeOut" }}
         viewport={{ once: true }}
         className="absolute left-1/2 -translate-x-1/2 -top-10 w-[1200px] h-[1200px] z-[1] pointer-events-none select-none"
@@ -30,7 +30,7 @@ export default function Checklist() {
           alt="Background Thinking Shark"
           fill
           unoptimized 
-          className="object-contain blur-[15px] grayscale-[0.2]" // Немного приглушаем цвета, чтобы не спорил с иконками
+          className="object-contain blur-[1px] grayscale-[0.1]" // Немного приглушаем цвета, чтобы не спорил с иконками
           sizes="1200px"
         />
       </motion.div>

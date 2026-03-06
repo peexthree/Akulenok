@@ -5,18 +5,18 @@ import dynamic from "next/dynamic";
 
 const SharkBlock = dynamic(() => import("./SharkBlock"), { 
   ssr: false,
-  loading: () => <div className="text-white font-black animate-pulse text-center">Синхронизация с S25 Ultra...</div>
+  loading: () => <div className="text-white font-black animate-pulse text-center uppercase tracking-widest">Инициализация S25 Ultra...</div>
 });
 
 const SharkContext = createContext();
 export const useShark = () => useContext(SharkContext);
 
 export const SharkProvider = ({ children }) => {
-  // activeEgg может быть: 'egg1' (video), 'egg2' (video), 'egg3' (image) или null
+  // egg1: 10 кликов (Navbar) | egg2: "IGOR" (Код) | egg3: Гигантский маскот
   const [activeEgg, setActiveEgg] = useState(null);
   const [glitch, setGlitch] = useState(false);
 
-  // --- МЕХАНИКА ЧИТ-КОДА "IGOR" ---
+  // --- МЕХАНИКА ЧИТ-КОДА "IGOR" (Пасхалка №2) ---
   useEffect(() => {
     let keys = [];
     const secret = "igor";
@@ -29,7 +29,7 @@ export const SharkProvider = ({ children }) => {
         setGlitch(true);
         setTimeout(() => {
           setGlitch(false);
-          setActiveEgg("egg1"); // Запускаем первое видео по чит-коду
+          setActiveEgg("egg2"); // По твоему плану: IGOR -> второе видео
         }, 400);
       }
     };
@@ -40,11 +40,11 @@ export const SharkProvider = ({ children }) => {
 
   return (
     <SharkContext.Provider value={{ setActiveEgg }}>
-      {/* Визуальный отклик системы на активацию */}
+      {/* Визуальный глитч при активации кода */}
       <motion.div 
         animate={{ 
-          x: glitch ? [-5, 5, -5, 5, 0] : 0,
-          filter: glitch ? "contrast(1.5) brightness(1.2) hue-rotate(90deg)" : "none" 
+          x: glitch ? [-3, 3, -3, 3, 0] : 0,
+          filter: glitch ? "contrast(1.3) brightness(1.1) hue-rotate(45deg)" : "none" 
         }} 
         className="relative z-0"
       >
@@ -57,30 +57,28 @@ export const SharkProvider = ({ children }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-950/80 backdrop-blur-2xl p-4"
+            // Облегченный фон: почти прозрачный, чтобы не прятать сайт
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-900/10 backdrop-blur-md p-4"
             onClick={() => setActiveEgg(null)}
           >
             <motion.div
-              initial={{ scale: 0.9, y: 20, opacity: 0 }}
-              animate={{ scale: 1, y: 0, opacity: 1 }}
-              exit={{ scale: 0.9, y: 20, opacity: 0 }}
+              initial={{ scale: 0.85, opacity: 0, y: 30 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.85, opacity: 0, y: 30 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full flex justify-center"
+              className="relative"
             >
-              {/* Передаем ID пасхалки в компонент отображения */}
-              <SharkBlock eggId={activeEgg} onClose={() => setActiveEgg(null)} />
-              
+              {/* КНОПКА ЗАКРЫТЬ: Теперь по центру сверху, как ты просил */}
               <button 
                 onClick={() => setActiveEgg(null)}
-                className="absolute -top-16 right-0 text-white/40 hover:text-white transition-colors font-black flex items-center gap-2 group"
+                className="absolute -top-14 left-1/2 -translate-x-1/2 flex items-center gap-2 px-5 py-2 bg-white/20 hover:bg-white/40 backdrop-blur-xl border border-white/20 rounded-full text-white transition-all group"
               >
-                <span className="text-[10px] uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 transition-opacity">Закрыть терминал</span>
-                <div className="bg-white/10 p-2 rounded-full border border-white/20 group-hover:border-sky-500 transition-colors">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </div>
+                <span className="text-[10px] font-black uppercase tracking-[0.2em]">Закрыть</span>
+                <XIcon />
               </button>
+
+              {/* Сам контент пасхалки */}
+              <SharkBlock eggId={activeEgg} onClose={() => setActiveEgg(null)} />
             </motion.div>
           </motion.div>
         )}
@@ -88,3 +86,10 @@ export const SharkProvider = ({ children }) => {
     </SharkContext.Provider>
   );
 };
+
+// Мини-компонент иконки, чтобы не плодить импорты
+const XIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+);

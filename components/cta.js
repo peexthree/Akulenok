@@ -1,42 +1,68 @@
+"use client";
 import React from "react";
 import clsx from "clsx";
 import Container from "./container";
-import Button from "./Button";
+import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 function Cta() {
   return (
-     <Container className="mb-16">
-     <div
+    <Container className="mb-24 relative overflow-visible">
+      {/* Маскот-указатель: Выглядывает сверху справа */}
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="absolute -top-16 right-0 lg:right-12 z-20 hidden md:block"
+      >
+        <Image
+          src="/img/look.png"
+          alt="Указывающий акулёнок"
+          width={220}
+          height={220}
+          className="drop-shadow-2xl rotate-[-10deg]"
+        />
+      </motion.div>
+
+      <div
         className={clsx(
-          "flex flex-wrap items-center justify-between w-full max-w-4xl gap-5 mx-auto text-white bg-aqua-accent px-7 py-7 lg:px-12 lg:py-12 lg:flex-nowrap rounded-xl",
-          "transform transition duration-300 hover:scale-105 hover:shadow-lg animate-press-me"
+          "relative flex flex-wrap items-center justify-between w-full max-w-5xl gap-8 mx-auto text-white",
+          "bg-gradient-to-r from-sky-500 to-aqua-dark p-8 lg:p-16 lg:flex-nowrap rounded-[3rem] shadow-2xl",
+          "overflow-hidden border-4 border-white/20"
         )}
       >
-        <div className="flex-grow text-center lg:text-left">
-         <h2 className="text-2xl font-semibold lg:text-3xl">
-            Готовы на пробное занятие?
-          </h2>
-          <p className="mt-2 font-medium text-white text-opacity-90 lg:text-xl">
-            Оставьте заявку — подберём удобное время и формат.
+        {/* Декоративные пузырьки на фоне */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+          <div className="absolute top-4 left-10 w-20 h-20 bg-white rounded-full blur-xl" />
+          <div className="absolute bottom-10 right-20 w-32 h-32 bg-white rounded-full blur-2xl" />
+        </div>
+
+        <div className="relative z-10 flex-grow text-center lg:text-left">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-4xl lg:text-5xl font-black leading-tight tracking-tight"
+          >
+            Готовы на <br /> пробное занятие?
+          </motion.h2>
+          <p className="mt-4 text-xl font-medium text-sky-50 opacity-90">
+            Оставьте заявку — подберём удобное <br className="hidden lg:block" /> время и формат для вашего малыша.
           </p>
         </div>
-        <div className="flex-shrink-0 w-full text-center lg:w-auto">
-     <div className="flex items-center justify-center">
-            <Button
+
+        <div className="relative z-10 flex-shrink-0 w-full lg:w-auto">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link
               href="#lead-form"
-              className="w-full bg-orange-500 text-white text-lg lg:text-xl px-8 py-4 lg:px-10 lg:py-5 hover:bg-orange-600"
+              className="block text-center bg-orange-500 text-white text-2xl font-black px-12 py-6 rounded-2xl shadow-xl hover:bg-orange-600 transition-all hover:shadow-orange-300/50"
             >
               Записаться
-            </Button>
-            <Image
-              src="/img/look.png"
-              alt="look"
-              width={200}
-              height={200}
-              className="ml-4"
-            />
-          </div>
+            </Link>
+          </motion.div>
         </div>
       </div>
     </Container>

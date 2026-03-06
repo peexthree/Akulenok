@@ -23,7 +23,7 @@ export default function Navbar() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const pathname = usePathname();
 
-  // --- МЕХАНИКА ПАСХАЛКИ (5 кликов) ---
+  // --- МЕХАНИКА ПАСХАЛКИ (5 кликов по лого) ---
   const { setIsOpen } = useShark();
   const [clicks, setClicks] = useState(0);
   const timerRef = useRef(null);
@@ -43,7 +43,7 @@ export default function Navbar() {
   // --- ЛОГИКА СКРОЛЛА ---
   useEffect(() => {
     const handleScroll = () => {
-      const scrolled = window.scrollY > 50;
+      const scrolled = window.scrollY > 40;
       if (scrolled !== isScrolled) setIsScrolled(scrolled);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -56,34 +56,36 @@ export default function Navbar() {
         className={`
           pointer-events-auto flex items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]
           ${isScrolled 
-            ? "w-[95%] max-w-5xl rounded-full bg-white/85 backdrop-blur-xl shadow-glass border border-sky-100/50 px-6 py-2" 
-            : "w-full max-w-full rounded-none bg-transparent px-8 lg:px-16 py-10"
+            ? "w-[95%] max-w-5xl rounded-full bg-white/90 backdrop-blur-xl shadow-glass border border-sky-100/50 px-6 py-2" 
+            : "w-full max-w-full rounded-none bg-transparent px-8 lg:px-16 py-8"
           }
         `}
       >
-        {/* ГРУППА ЛОГОТИПА: Увеличивается в 3 раза при старте */}
+        {/* ГРУППА ЛОГОТИПА */}
         <div 
           className="flex items-center group cursor-pointer shrink-0" 
           onClick={handleLogoClick}
         >
           <div className="relative">
+            {/* ТОЛЬКО ЭТОТ ИМИДЖ УВЕЛИЧИВАЕТСЯ В 3 РАЗА */}
             <motion.img
               whileHover={{ y: -5, rotate: [-1, 2, -1] }}
               src="/img/logo-akulenok.png"
               alt="Акулёнок"
               className={`transition-all duration-700 ease-in-out object-contain ${
                 isScrolled 
-                  ? "h-10 w-auto" 
-                  : "h-32 sm:h-40 w-auto drop-shadow-2xl" 
+                  ? "h-10 w-auto" // Компактный размер в капсуле
+                  : "h-32 sm:h-40 w-auto drop-shadow-2xl" // Гипер-лого на старте
               }`}
             />
           </div>
           
+          {/* ТЕКСТ ОСТАЕТСЯ СТАБИЛЬНЫМ ПО РАЗМЕРУ */}
           <span className={`
-            ml-4 font-black tracking-tighter transition-all duration-700 ease-in-out
+            ml-4 font-black tracking-tight transition-all duration-500
             ${isScrolled 
               ? "text-xl text-slate-900" 
-              : "text-4xl sm:text-6xl text-white drop-shadow-xl mt-2"
+              : "text-2xl text-white drop-shadow-lg"
             }
           `}>
             Акулёнок
@@ -91,7 +93,7 @@ export default function Navbar() {
         </div>
 
         {/* ДЕСКТОПНОЕ МЕНЮ */}
-        <div className={`hidden lg:flex items-center gap-x-1 relative transition-all duration-500 ${!isScrolled && "mt-6"}`} onMouseLeave={() => setHoveredIndex(null)}>
+        <div className={`hidden lg:flex items-center gap-x-1 relative transition-all duration-500`}>
           {navigation.map((item, index) => {
             const isActive = pathname === item.href;
             return (
@@ -117,14 +119,14 @@ export default function Navbar() {
         </div>
 
         {/* КНОПКА ЗАПИСИ И МОБИЛЬНЫЙ ГАМБУРГЕР */}
-        <div className={`flex items-center gap-x-4 transition-all duration-700 ${!isScrolled && "mt-6"}`}>
+        <div className="flex items-center gap-x-4">
           <Link 
             href="#contacts" 
             className={`
-              hidden sm:block rounded-full font-black transition-all duration-500 transform active:scale-95
+              hidden sm:block rounded-full font-black text-sm transition-all duration-500 transform active:scale-95
               ${isScrolled 
-                ? "bg-sky-500 text-white px-5 py-2.5 text-sm shadow-lg shadow-sky-500/20 hover:bg-sky-600" 
-                : "bg-white text-sky-600 px-8 py-4 text-base shadow-2xl hover:bg-sky-50"
+                ? "bg-sky-500 text-white px-5 py-2.5 shadow-lg shadow-sky-500/20 hover:bg-sky-600" 
+                : "bg-white text-sky-600 px-6 py-3 shadow-2xl hover:bg-sky-50"
               }
             `}
           >
@@ -143,7 +145,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* МОБИЛЬНОЕ МЕНЮ */}
+      {/* МОБИЛЬНОЕ МЕНЮ (Без изменений) */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen} static>

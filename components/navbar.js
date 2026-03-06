@@ -74,7 +74,7 @@ export default function Navbar() {
   <div className="relative cursor-pointer group h-10 flex items-center" onClick={handleLogoClick}>
     <motion.img
       whileHover={{ y: -5, rotate: [-1, 2, -1] }}
-      src="/img/logo-akulenok.png"
+      src="/img/top.webp"
       alt="Акулёнок"
       className={`transition-all duration-700 ease-in-out object-contain drop-shadow-2xl z-20 ${
         isScrolled 

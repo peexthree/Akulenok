@@ -17,7 +17,7 @@ export default function ContactButtons({ wide = false, vertical = false }) {
       
       {/* Кнопка Telegram */}
       <motion.a
-        href="https://t.me/akulenok_tmz"
+        href="https://t.me/peexthree" // Твой юзернейм из лора
         target="_blank"
         rel="noopener noreferrer"
         whileHover={{ y: -4, scale: 1.02 }}

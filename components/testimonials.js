@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Container from "./container";
-import SectionTitle from "./SectionTitle"; // Наш глобальный заголовок
+import SectionTitle from "./sectionTitle";// Наш глобальный заголовок
 import { motion } from "framer-motion";
 
 const testimonials = [

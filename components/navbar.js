@@ -23,8 +23,8 @@ export default function Navbar() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const pathname = usePathname();
 
-  // --- МЕХАНИКА ПАСХАЛКИ (5 кликов по лого) ---
-  const { setIsOpen } = useShark();
+  // --- МЕХАНИКА ПАСХАЛКИ (5 кликов по лого -> запускаем egg2) ---
+  const { setActiveEgg } = useShark();
   const [clicks, setClicks] = useState(0);
   const timerRef = useRef(null);
 
@@ -33,7 +33,7 @@ export default function Navbar() {
     if (timerRef.current) clearTimeout(timerRef.current);
     
     if (clicks + 1 >= 5) {
-      setIsOpen(true);
+      setActiveEgg("egg2"); // Прямой вызов второй видео-пасхалки
       setClicks(0);
     } else {
       timerRef.current = setTimeout(() => setClicks(0), 1000);
@@ -67,33 +67,30 @@ export default function Navbar() {
           onClick={handleLogoClick}
         >
           <div className="relative">
-            {/* ТОЛЬКО ЭТОТ ИМИДЖ УВЕЛИЧИВАЕТСЯ В 3 РАЗА */}
+            {/* ТОЛЬКО МАСКОТ УВЕЛИЧИВАЕТСЯ В 3-4 РАЗА */}
             <motion.img
               whileHover={{ y: -5, rotate: [-1, 2, -1] }}
               src="/img/logo-akulenok.png"
               alt="Акулёнок"
               className={`transition-all duration-700 ease-in-out object-contain ${
                 isScrolled 
-                  ? "h-10 w-auto" // Компактный размер в капсуле
-                  : "h-32 sm:h-40 w-auto drop-shadow-2xl" // Гипер-лого на старте
+                  ? "h-10 w-auto" 
+                  : "h-32 sm:h-40 w-auto drop-shadow-2xl" 
               }`}
             />
           </div>
           
-          {/* ТЕКСТ ОСТАЕТСЯ СТАБИЛЬНЫМ ПО РАЗМЕРУ */}
+          {/* ТЕКСТ ВСЕГДА В ОДНОМ ПОЛОЖЕНИИ И РАЗМЕРЕ */}
           <span className={`
             ml-4 font-black tracking-tight transition-all duration-500
-            ${isScrolled 
-              ? "text-xl text-slate-900" 
-              : "text-2xl text-white drop-shadow-lg"
-            }
+            ${isScrolled ? "text-xl text-slate-900" : "text-xl sm:text-2xl text-white drop-shadow-lg"}
           `}>
             Акулёнок
           </span>
         </div>
 
-        {/* ДЕСКТОПНОЕ МЕНЮ */}
-        <div className={`hidden lg:flex items-center gap-x-1 relative transition-all duration-500`}>
+        {/* ДЕСКТОПНОЕ МЕНЮ (Положение статично) */}
+        <div className="hidden lg:flex items-center gap-x-1 relative">
           {navigation.map((item, index) => {
             const isActive = pathname === item.href;
             return (
@@ -101,6 +98,7 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
                 className={`relative px-4 py-2 text-sm font-bold transition-colors duration-500 ${
                   isActive ? "text-sky-600" : (isScrolled ? "text-slate-600" : "text-white")
                 }`}
@@ -118,7 +116,7 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* КНОПКА ЗАПИСИ И МОБИЛЬНЫЙ ГАМБУРГЕР */}
+        {/* КНОПКА ЗАПИСИ (Положение статично) */}
         <div className="flex items-center gap-x-4">
           <Link 
             href="#contacts" 
@@ -145,7 +143,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* МОБИЛЬНОЕ МЕНЮ (Без изменений) */}
+      {/* МОБИЛЬНОЕ МЕНЮ (Логика сохранена) */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen} static>

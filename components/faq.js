@@ -31,7 +31,7 @@ export default function Faq() {
   };
 
   return (
-    <Container className="py-24 max-w-4xl mx-auto relative">
+    <Container className="py-24 max-w-4xl mx-auto relative scroll-mt-24" id="faq">
       
       {/* ТВОЙ МАСКОТ: Грустный акулёнок-эмпат в правом углу */}
       <div className="absolute top-10 right-0 w-32 h-32 opacity-1 hidden md:block pointer-events-none select-none z-0">

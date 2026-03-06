@@ -46,7 +46,7 @@ https://www.akulenok-tmz.ru/
 Имя: ${parentName || '-'}
 Телефон: ${phone || '-'}
 Возраст ребёнка: ${childAge || '-'}
-Удобное время для связи: ${timePref || '-'}`;
+Цель: ${timePref || '-'}`;
 
     const tgUrl = `https://api.telegram.org/bot${tgToken}/sendMessage`;
     const tgResp = await fetch(tgUrl, {

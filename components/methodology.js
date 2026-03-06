@@ -9,25 +9,25 @@ const services = [
     title: "Грудничковое плавание",
     desc: "Для малышей от 1 до 12 месяцев. Адаптация к воде, развитие рефлексов, укрепление мышц и иммунитета в формате игры.",
     color: "from-sky-100 to-teal-50",
-    icon3d: "/img/3d-icons/service-1-mascot.webp" // ИСПРАВЛЕНО ПОД ТВОЙ GITHUB
+    icon3d: "/img/3d-icons/1.webp" // ИСПРАВЛЕНО ПОД ТВОЙ GITHUB
   },
   {
     title: "Гидрореабилитация",
     desc: "Специализированные занятия для детей с особенностями развития (ДЦП, аутизм, задержка речи). Мягкая проработка тонуса и моторики.",
     color: "from-teal-100 to-emerald-50",
-    icon3d: "/img/3d-icons/service-2-mascot.webp"
+    icon3d: "/img/3d-icons/2.webp"
   },
   {
     title: "ЛФК на суше",
     desc: "Гимнастика перед плаванием для разогрева суставов и связок, профилактика плоскостопия и нарушений осанки.",
     color: "from-blue-100 to-indigo-50",
-    icon3d: "/img/3d-icons/service-3-mascot.webp"
+    icon3d: "/img/3d-icons/3.webp"
   },
   {
     title: "Раннее плавание",
     desc: "Для детей от 1 до 3 лет. Обучение базовым навыкам плавания, ныряния и правильного дыхания в воде.",
     color: "from-indigo-100 to-purple-50",
-    icon3d: "/img/3d-icons/service-4-mascot.webp"
+    icon3d: "/img/3d-icons/4.webp"
   }
 ];
 

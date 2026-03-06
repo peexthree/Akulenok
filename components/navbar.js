@@ -23,26 +23,28 @@ export default function Navbar() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const pathname = usePathname();
 
+// --- МЕХАНИКА ПАСХАЛОК (Универсальный счетчик) ---
   const { setActiveEgg } = useShark();
   const [clicks, setClicks] = useState(0);
   const timerRef = useRef(null);
 
-  // --- ГЛАВНЫЕ МЕХАНИКИ ПАСХАЛОК ---
   const handleLogoClick = () => {
-    // 1. Если маскот еще гигантский (не проскроллено), открываем egg3 (твое фото)
-    if (!isScrolled) {
-      setActiveEgg("egg3");
-      return;
-    }
-
-    // 2. Если маскот маленький (скролл > 40), считаем 10 кликов для egg1
     setClicks((prev) => prev + 1);
+    
+    // Сбрасываем таймер при каждом новом клике
     if (timerRef.current) clearTimeout(timerRef.current);
     
     if (clicks + 1 >= 10) {
-      setActiveEgg("egg1");
+      if (!isScrolled) {
+        // 10 кликов по ГИГАНТУ -> Твое фото (egg3)
+        setActiveEgg("egg3");
+      } else {
+        // 10 кликов по КАПСУЛЕ -> Видео (egg1)
+        setActiveEgg("egg1");
+      }
       setClicks(0);
     } else {
+      // Сброс счетчика, если пользователь прекратил кликать на 1 секунду
       timerRef.current = setTimeout(() => setClicks(0), 1000);
     }
   };

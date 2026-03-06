@@ -46,7 +46,7 @@ export default function Footer() {
               <Link href="/" className="hover:text-sky-500 transition-colors">Главная</Link>
               <Link href="/#about" className="hover:text-sky-500 transition-colors">О нас</Link>
               <Link href="/#services" className="hover:text-sky-500 transition-colors">Услуги</Link>
-              <Link href="/#contact" className="hover:text-sky-500 transition-colors">Контакты</Link>
+              <Link href="/#contacts" className="hover:text-sky-500 transition-colors">Контакты</Link>
             </div>
           </div>
 

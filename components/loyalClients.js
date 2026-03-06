@@ -2,8 +2,11 @@
 import React from "react";
 import Container from "./container";
 import { motion } from "framer-motion";
+import { useShark } from "./SharkProvider";
 
 export default function LoyalClients() {
+  const { setFormOpen } = useShark();
+
   return (
     <section className="py-24 relative overflow-hidden bg-sky-50">
       
@@ -78,7 +81,7 @@ export default function LoyalClients() {
 
               {/* Элегантная ссылка на правила */}
               <div className="mt-10 pt-6 border-t border-slate-100">
-                <a href="#" className="inline-flex items-center gap-2 text-sky-500 font-bold hover:text-sky-600 transition-colors group-hover:translate-x-1 duration-300">
+                <a href="/privacy" className="inline-flex items-center gap-2 text-sky-500 font-bold hover:text-sky-600 transition-colors group-hover:translate-x-1 duration-300">
                   Правила посещения центра
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -114,15 +117,15 @@ export default function LoyalClients() {
             </div>
 
             {/* Мощный CTA вместо желтой плашки */}
-            <a
-              href="#"
+            <button
+              onClick={() => setFormOpen(true)}
               className="relative z-10 w-full bg-white text-sky-600 px-8 py-5 rounded-2xl font-black text-xl hover:bg-sky-50 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 flex items-center justify-center gap-3 active:scale-95"
             >
               Перейти к онлайн-записи
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-            </a>
+            </button>
           </motion.div>
 
         </div>

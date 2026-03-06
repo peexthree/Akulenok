@@ -31,28 +31,28 @@ export default function Checklist() {
   return (
     <Container className="py-24 relative overflow-hidden bg-white">
       
-      {/* ГИГАНТСКИЙ ФОНОВЫЙ МАСКОТ - Faded & Lower */}
-      {/* Смещен чуть ниже (top-16), чтобы не мешать меню */}
+      {/* ГИГАНТСКИЙ ФОНОВЫЙ МАСКОТ - Lower & Visible */}
+      {/* top-60 (15rem / 240px) смещает голову ниже, к карточкам */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="absolute left-1/2 -translate-x-1/2 top-16 w-[1100px] h-[1100px] -z-10 pointer-events-none select-none"
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        className="absolute left-1/2 -translate-x-1/2 top-60 w-[1100px] h-[1100px] -z-10 pointer-events-none select-none"
       >
         <Image
           src="/img/think.png"
           alt="Background Thinking Shark"
           fill
           unoptimized // Чтобы GIF анимация не ломалась при скейле
-          className="object-contain opacity-[0.06] blur-[40px]" // Бледный силуэт и размытие
+          className="object-contain opacity-[0.12] blur-[20px]" // Чётко различимый, но бледный силуэт
           sizes="1100px" // Оптимизация для Next.js
         />
       </motion.div>
 
-      {/* Основной контент: теперь заголовок находится в самом верху */}
+      {/* Основной контент */}
       <div className="flex flex-col items-center pt-12 relative z-10">
         
-        {/* Маленького маскота здесь больше нет. Чистота. */}
+        {/* Маленького маскота нет. Чистота. */}
 
         {/* Текстовый блок */}
         <div className="text-center max-w-2xl mx-auto mb-16 relative z-20">
@@ -69,7 +69,7 @@ export default function Checklist() {
         </div>
 
         {/* Сетка карточек с твоими SVG */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 w-full relative z-20">
           {items.map((item, idx) => (
             <motion.div
               key={idx}

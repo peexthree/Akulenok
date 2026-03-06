@@ -44,7 +44,7 @@ export default function Checklist() {
           alt="Background Thinking Shark"
           fill
           unoptimized // Чтобы GIF анимация не ломалась при скейле
-          className="object-contain opacity-[0.12] blur-[20px]" // Чётко различимый, но бледный силуэт
+          className="object-contain opacity-[0.5] blur-[20px]" // Чётко различимый, но бледный силуэт
           sizes="1100px" // Оптимизация для Next.js
         />
       </motion.div>

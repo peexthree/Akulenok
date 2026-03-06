@@ -34,12 +34,12 @@ export default function Faq() {
     <Container className="py-24 max-w-4xl mx-auto relative">
       
       {/* ТВОЙ МАСКОТ: Грустный акулёнок-эмпат в правом углу */}
-      <div className="absolute top-10 right-0 w-32 h-32 opacity-10 hidden md:block pointer-events-none select-none z-0">
+      <div className="absolute top-10 right-0 w-32 h-32 opacity-1 hidden md:block pointer-events-none select-none z-0">
          <Image 
            src="/img/sad.png" 
            alt="Эмпатичный акулёнок" 
-           width={256} 
-           height={256} 
+           width={512} 
+           height={512} 
            className="object-contain"
          />
       </div>

@@ -67,35 +67,32 @@ export default function Navbar() {
           }
         `}
       >
-        {/* ГРУППА ЛОГОТИПА С ИЗОЛИРОВАННЫМ МАСКОТОМ */}
-        <div className="flex items-center shrink-0 w-[180px] sm:w-[240px]">
-          <div className="relative cursor-pointer group h-10 flex items-center" onClick={handleLogoClick}>
-            {/* МАСКОТ: Когда не проскроллено, он получает 'absolute' и вылетает вверх, 
-              не занимая места в разметке навбара.
-            */}
-            <motion.img
-              whileHover={{ y: -5, rotate: [-1, 2, -1] }}
-              src="/img/logo-akulenok.png"
-              className={`transition-all duration-700 ease-in-out object-contain drop-shadow-2xl z-20 ${
-                isScrolled 
-                  ? "h-10 w-auto" 
-                  : "h-32 sm:h-40 w-auto absolute -top-12 sm:-top-16 left-0" 
-              }`}
-            />
-            
-            {/* ТЕКСТ: Всегда стабилен по позиции */}
-            <span className={`
-              font-black tracking-tight transition-all duration-500 z-10
-              ${isScrolled 
-                ? "ml-14 text-xl text-slate-900" 
-                : "ml-0 text-xl sm:text-2xl text-white drop-shadow-lg"
-              }
-            `}>
-              Акулёнок
-            </span>
-          </div>
-        </div>
-
+{/* ГРУППА ЛОГОТИПА */}
+<div className="flex items-center shrink-0 w-[180px] sm:w-[240px]">
+  <div className="relative cursor-pointer group h-10 flex items-center" onClick={handleLogoClick}>
+    <motion.img
+      whileHover={{ y: -5, rotate: [-1, 2, -1] }}
+      src="/img/logo-akulenok.png"
+      alt="Акулёнок"
+      className={`transition-all duration-700 ease-in-out object-contain drop-shadow-2xl z-20 ${
+        isScrolled 
+          ? "h-10 w-auto" 
+          : "h-32 sm:h-40 w-auto absolute -top-12 sm:-top-16 left-0" 
+      }`}
+    />
+    
+    {/* ТЕКСТ: Скрываем (opacity-0), когда маскот гигантский */}
+    <span className={`
+      font-black tracking-tight transition-all duration-500 z-10
+      ${isScrolled 
+        ? "ml-14 text-xl text-slate-900 opacity-100" 
+        : "ml-0 text-xl sm:text-2xl text-white opacity-0 pointer-events-none"
+      }
+    `}>
+      Акулёнок
+    </span>
+  </div>
+</div>
         {/* ДЕСКТОПНОЕ МЕНЮ (Стабильно по центру) */}
         <div className="hidden lg:flex items-center justify-center flex-1 gap-x-1 relative">
           {navigation.map((item, index) => {

@@ -1,38 +1,39 @@
+"use client"; // Важно: раз используем motion и динамику
 import Head from "next/head";
 import dynamic from "next/dynamic";
+
+// Обычный импорт для первого экрана (КРИТИЧНО для LCP и SEO)
 import Navbar from "../components/navbar";
 import Hero from "../components/hero";
 import TrustBar from "../components/TrustBar";
-import SectionTitle from "../components/sectionTitle";
-import LazyLoad from "../components/lazy";
+import About from "../components/about";
 import WaveDivider from "../components/WaveDivider";
 
-const About = dynamic(() => import("../components/about"));
-const Safety = dynamic(() => import("../components/safety"));
-const Services = dynamic(() => import("../components/services"));
-const Benefits = dynamic(() => import("../components/benefits"));
+// Ленивый импорт только для того, что не видно сразу
 const Methodology = dynamic(() => import("../components/methodology"));
 const JourneyTimeline = dynamic(() => import("../components/JourneyTimeline"));
+const Video = dynamic(() => import("../components/video"));
+const Benefits = dynamic(() => import("../components/benefits"));
+const Services = dynamic(() => import("../components/services"));
 const Checklist = dynamic(() => import("../components/checklist"));
 const Team = dynamic(() => import("../components/team"));
 const Schedule = dynamic(() => import("../components/schedule"));
 const Pricing = dynamic(() => import("../components/pricing"));
 const Testimonials = dynamic(() => import("../components/testimonials"));
 const Gallery = dynamic(() => import("../components/gallery"));
-const Location = dynamic(() => import("../components/location"));
-const Cta = dynamic(() => import("../components/cta"));
-const Footer = dynamic(() => import("../components/footer"));
-const Video = dynamic(() => import("../components/video"));
+const Safety = dynamic(() => import("../components/safety"));
 const Faq = dynamic(() => import("../components/faq"));
 const LoyalClients = dynamic(() => import("../components/loyalClients"));
+const Location = dynamic(() => import("../components/location")); // Тяжелая карта!
+const Cta = dynamic(() => import("../components/cta"));
+const Footer = dynamic(() => import("../components/footer"));
 
 export default function Home() {
   return (
-    // ГЛАВНЫЙ ФИКС: main контейнер с overflow-x-hidden блокирует горизонтальный скролл
     <main className="flex flex-col min-h-screen relative overflow-x-hidden bg-slate-50">
       <Head>
-        <title>Акулёнок • Центр грудничкового плавания • Детский бассейн • ЛФК в Туймазах</title>
-        <meta name="description" content="Детский бассейн «Акулёнок» в Туймазах: грудничковое плавание, ЛФК, гидрореабилитация. Занятия для детей от 3 месяцев." />
+        <title>Акулёнок • Центр грудничкового плавания • ЛФК в Туймазах</title>
+        <meta name="description" content="Детский бассейн «Акулёнок» в Туймазах: грудничковое плавание, ЛФК, гидрореабилитация. Занятия для детей от 1 месяца." />
         <link rel="icon" href="/favicon.ico" />
         <script
           type="application/ld+json"
@@ -41,7 +42,7 @@ export default function Home() {
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "name": "Акулёнок",
-              "image": "https://akulenok.tmz/img/hero.png", // Если домен .tmz тестовый, не забудь сменить на проде
+              "image": "https://akulenok.tmz/img/hero.png", // Не забудь поменять домен перед релизом!
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "ул. Столярова, 1",
@@ -58,94 +59,65 @@ export default function Home() {
       </Head>
 
       <Navbar />
+      
+      {/* ПЕРВЫЙ ЭКРАН (Грузится сразу) */}
       <Hero />
       
-      {/* Актуальный пропс для белой волны */}
+      {/* Переход от темного Hero к белому TrustBar */}
       <WaveDivider waveColor="text-white" />
       <TrustBar />
       
-      <LazyLoad>
-        <About />
-      </LazyLoad>
+      {/* About обычно идет на белом или светло-сером фоне */}
+      <About />
 
-      {/* Голубая волна */}
+      {/* ОСТАЛЬНОЕ (Грузится лениво по мере скролла) */}
       <WaveDivider waveColor="text-sky-50" />
-      <LazyLoad>
-        <Methodology />
-      </LazyLoad>
-
-      <LazyLoad>
-        <JourneyTimeline />
-      </LazyLoad>
+      <Methodology />
+      <JourneyTimeline />
 
       <WaveDivider waveColor="text-white" />
-      <LazyLoad>
-        <Video />
-      </LazyLoad>
+      <Video />
 
-      <WaveDivider waveColor="text-sky-50" />
-      <LazyLoad>
-        <SectionTitle
-          title="С нами удобно"
-          className="text-white opacity-80"
-        />
-        <Benefits />
-      </LazyLoad>
-
-      <LazyLoad id="services" className="scroll-mt-32">
+      <Benefits />
+      
+      <div id="services" className="scroll-mt-24">
         <Services />
-      </LazyLoad>
+      </div>
 
-      <LazyLoad>
-        <Checklist />
-      </LazyLoad>
-
-      <WaveDivider waveColor="text-white" />
-      <LazyLoad>
-        <Team />
-      </LazyLoad>
-
-      <LazyLoad>
-        <Schedule />
-      </LazyLoad>
-
-      <LazyLoad id="pricing" className="scroll-mt-32">
-        <Pricing />
-      </LazyLoad>
+      <Checklist />
 
       <WaveDivider waveColor="text-sky-50" />
-      <LazyLoad>
-        <Testimonials />
-      </LazyLoad>
+      <Team />
 
-      <LazyLoad id="gallery" className="scroll-mt-32">
+      <Schedule />
+
+      <div id="pricing" className="scroll-mt-24">
+        <Pricing />
+      </div>
+
+      <WaveDivider waveColor="text-white" />
+      <Testimonials />
+
+      <div id="gallery" className="scroll-mt-24">
         <Gallery />
-      </LazyLoad>
+      </div>
 
-      <LazyLoad>
-        <Safety />
-      </LazyLoad>
+      <Safety />
 
-      <LazyLoad id="faq" className="scroll-mt-32">
+      <div id="faq" className="scroll-mt-24">
         <Faq />
-      </LazyLoad>
+      </div>
 
-      <LazyLoad id="loyal" className="scroll-mt-32">
+      <div id="loyal" className="scroll-mt-24">
         <LoyalClients />
-      </LazyLoad>
+      </div>
 
-      <LazyLoad id="contacts" className="scroll-mt-32">
+      <div id="contacts" className="scroll-mt-24">
         <Location />
-      </LazyLoad>
+      </div>
 
-      <WaveDivider waveColor="text-sky-400" />
-      <LazyLoad>
-        <Cta />
-      </LazyLoad>
-
-      <LazyLoad>
-        <Footer />
-      </LazyLoad>
+      <Cta />
+      <Footer />
     </main>
   );
 }

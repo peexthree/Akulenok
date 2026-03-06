@@ -27,11 +27,11 @@ export default function PopupWidget() {
   const [showHint, setShowHint] = useState(false);
   const panelRef = useRef(null);
 
-  // Показываем подсказку, если пользователь затупил на 10 секунд
+  // Показываем подсказку, если пользователь затупил на 150 секунд
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!open) setShowHint(true);
-    }, 10000);
+    }, 150000);
     return () => clearTimeout(timer);
   }, [open]);
 
@@ -85,7 +85,7 @@ export default function PopupWidget() {
         onClick={toggle}
         className={clsx(
           "h-14 w-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300",
-          "bg-gradient-to-br from-orange-400 via-orange-500 to-red-500 text-white",
+          "bg-gradient-to-br from-blue-400 via-sky-500 to-white-500 text-white",
           open ? "rotate-90 scale-90" : "hover:scale-110 active:scale-90"
         )}
       >

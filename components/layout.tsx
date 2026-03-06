@@ -1,16 +1,13 @@
 "use client";
 import React from "react";
 import dynamic from "next/dynamic";
-import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
-import { useShark } from "./SharkProvider";
+import { motion, useScroll, useSpring } from "framer-motion";
 
 // Поп-ап не нужен поисковикам, грузим только на клиенте
 const PopupWidget = dynamic(() => import("./popupWidget"), { ssr: false });
-const MultiStepForm = dynamic(() => import("./MultiStepForm"), { ssr: false });
 
 export default function Layout({ children }) {
   const { scrollYProgress } = useScroll();
-  const { isFormOpen, setFormOpen } = useShark();
   
   // Плавность "как по маслу"
   const scaleX = useSpring(scrollYProgress, {
@@ -44,13 +41,6 @@ export default function Layout({ children }) {
 
       {/* Виджет обратной связи */}
       <PopupWidget />
-
-      {/* Глобальная форма записи */}
-      <AnimatePresence>
-        {isFormOpen && (
-          <MultiStepForm isOpen={isFormOpen} onClose={() => setFormOpen(false)} />
-        )}
-      </AnimatePresence>
     </div>
   );
 }

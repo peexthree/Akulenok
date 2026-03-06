@@ -1,8 +1,18 @@
+/** @type {import('next').NextConfig} */
+
 const securityHeaders = [
   {
     key: "Content-Security-Policy",
     value:
-      "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'",
+      // Добавляем разрешения для Unsplash и будущих скриптов
+      "default-src 'self'; " +
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.yandex.ru; " +
+      "style-src 'self' 'unsafe-inline'; " +
+      "img-src 'self' data: https://images.unsplash.com https://*.yandex.net; " +
+      "font-src 'self' data: https://fonts.gstatic.com; " +
+      "object-src 'none'; " +
+      "frame-ancestors 'none'; " +
+      "base-uri 'self'",
   },
   {
     key: "Referrer-Policy",
@@ -26,11 +36,27 @@ const securityHeaders = [
   },
 ];
 
-module.exports = {
+const nextConfig = {
+  // 1. Исправляем SEO: теперь роботы знают, что мы в RU-сегменте
   i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
+    locales: ["ru"],
+    defaultLocale: "ru",
   },
+
+  // 2. Разрешаем внешние изображения для компонента <Image />
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+      },
+    ],
+  },
+
   async headers() {
     return [
       {
@@ -39,6 +65,8 @@ module.exports = {
       },
     ];
   },
+
+  // Оптимизация сборки
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
@@ -50,3 +78,5 @@ module.exports = {
     return config;
   },
 };
+
+export default nextConfig;

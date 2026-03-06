@@ -20,11 +20,11 @@ export default function Checklist() {
       {/* Теперь он ГАРАНТИРОВАННО выше белого фона контейнера */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1 }} // 0.4-0.5 для уверенной видимости
+        whileInView={{ opacity: 0.8 }} // 0.4-0.5 для уверенной видимости
         transition={{ duration: 1.5, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="absolute left-1/2 -translate-x-1/2 -top-10 w-[1200px] h-[1200px] z-[1] pointer-events-none select-none"
-      >
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] z-0 pointer-events-none select-none"
+       >
         <Image
           src="/img/think.png"
           alt="Background Thinking Shark"

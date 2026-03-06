@@ -1,10 +1,10 @@
 "use client";
-import React from "react";
+import React, { memo } from "react"; // Явный импорт memo
 import clsx from "clsx";
 import { motion } from "framer-motion";
 
-function SectionTitle(props) {
-  // Определяем выравнивание (по умолчанию - по центру)
+// 1. Объявляем компонент как обычную функцию
+const SectionTitle = (props) => {
   const isLeft = props.align === "left";
 
   const wrapperClasses = clsx(
@@ -22,7 +22,6 @@ function SectionTitle(props) {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={wrapperClasses}
     >
-      {/* Pretitle в виде стильной плашки */}
       {props.pretitle && (
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
@@ -35,22 +34,24 @@ function SectionTitle(props) {
         </motion.div>
       )}
 
-      {/* Главный заголовок */}
       {props.title && (
         <h2 className="max-w-3xl mt-2 text-4xl sm:text-5xl font-black leading-tight tracking-tight text-slate-900 text-balance">
           {props.title}
         </h2>
       )}
 
-      {/* Подзаголовок / Описание */}
       {props.children && (
-        <p className="max-w-2xl py-4 text-xl font-medium leading-relaxed text-slate-600 text-balance">
+        <div className="max-w-2xl py-4 text-xl font-medium leading-relaxed text-slate-600 text-balance">
           {props.children}
-        </p>
+        </div>
       )}
     </motion.div>
   );
-}
+};
 
-// React.memo защищает от лишних перерисовок
-export default React.memo(SectionTitle);
+// 2. Указываем displayName для отладки (Next.js это любит)
+SectionTitle.displayName = "SectionTitle";
+
+// 3. Экспортируем мемоизированную версию
+const MemoizedSectionTitle = memo(SectionTitle);
+export default MemoizedSectionTitle;

@@ -19,7 +19,7 @@ const LoadingScreen = () => (
   <motion.div
     key="loader"
     initial={{ opacity: 1 }}
-    exit={{ opacity: 0, scale: 1.1 }}
+    exit={{ opacity: 0, scale: 1.0 }}
     transition={{ duration: 0.8, ease: "easeInOut" }}
     className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white"
   >
@@ -31,7 +31,7 @@ const LoadingScreen = () => (
       className="flex flex-col items-center"
     >
       <h1 className="text-5xl sm:text-7xl font-black text-sky-500 tracking-tighter mb-2">
-        АКУЛЁНОК
+        Акулёнок
       </h1>
       <div className="h-1.5 w-12 bg-sky-200 rounded-full animate-pulse" />
     </motion.div>
@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }) {
     // Ждем 2 секунды или до полной загрузки страницы
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1200);
 
     return () => clearTimeout(timer);
   }, []);

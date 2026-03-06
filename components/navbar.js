@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react"; // Добавил useRef
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
+import { useShark } from "./SharkProvider"; // ИМПОРТ ПРОВАЙДЕРА
 
 const navigation = [
   { name: "Главная", href: "/" },
@@ -23,7 +24,26 @@ function Navbar() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const pathname = usePathname();
 
-  // Оптимизированный скролл: обновляем стейт только при переходе границы
+  // --- МЕХАНИКА ПАСХАЛКИ (Пункт 3) ---
+  const { setIsOpen } = useShark();
+  const [clicks, setClicks] = useState(0);
+  const timerRef = useRef(null);
+
+  const handleLogoClick = () => {
+    setClicks((prev) => prev + 1);
+    
+    if (timerRef.current) clearTimeout(timerRef.current);
+    
+    if (clicks + 1 >= 5) {
+      setIsOpen(true); // Открываем визитку на 5-й клик
+      setClicks(0);
+    } else {
+      // Сброс счетчика, если пользователь кликает слишком медленно
+      timerRef.current = setTimeout(() => setClicks(0), 1000);
+    }
+  };
+  // ---------------------------------
+
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY > 20;
@@ -51,7 +71,9 @@ function Navbar() {
 
       <nav className="relative mx-auto flex max-w-7xl items-center justify-between px-4 lg:px-8" aria-label="Global">
         <div className="flex flex-1 items-center gap-x-4">
-          <Link href="/" className="-m-1.5 p-1.5 flex items-center group">
+          
+          {/* ОБЕРТКА ДЛЯ ЛОГОТИПА С ПАСХАЛКОЙ */}
+          <div className="flex items-center group cursor-pointer" onClick={handleLogoClick}>
             <motion.img
               whileHover={{ y: -5, rotate: [-2, 2, -2], transition: { repeat: Infinity, duration: 1.5 } }}
               src="/img/logo-akulenok.png"
@@ -65,10 +87,10 @@ function Navbar() {
             }`}>
               Акулёнок
             </span>
-          </Link>
+          </div>
+          
         </div>
 
-        {/* Десктопное меню: добавлена поддержка клавиатуры и активный стейт */}
         <div className="hidden lg:flex lg:gap-x-2 relative" onMouseLeave={() => setHoveredIndex(null)}>
           {navigation.map((item, index) => {
             const isActive = pathname === item.href;
@@ -123,7 +145,6 @@ function Navbar() {
         </div>
       </nav>
 
-      {/* Мобильное меню: чистый Framer Motion + Headless UI Dialog */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen} static>
@@ -143,10 +164,10 @@ function Navbar() {
             >
               <Dialog.Panel>
                 <div className="flex items-center justify-between">
-                  <Link href="/" className="-m-1.5 p-1.5 flex items-center">
+                  <div className="flex items-center cursor-pointer" onClick={handleLogoClick}>
                     <img src="/img/logo-akulenok.png" alt="Акулёнок" className="h-10 w-auto mr-3" />
                     <span className="text-2xl font-black text-slate-800">Акулёнок</span>
-                  </Link>
+                  </div>
                   <button
                     type="button"
                     className="-m-2.5 rounded-full p-2.5 text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors"

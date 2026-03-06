@@ -57,7 +57,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/forms"),
-    require("@tailwindcss/typography"),
+
     // aspect-ratio удален, так как он встроен в ядро
   ],
 };

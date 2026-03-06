@@ -3,20 +3,28 @@ import React from "react";
 import Image from "next/image";
 import Container from "./container";
 import { motion } from "framer-motion";
-import { 
-  CheckBadgeIcon, 
-  SparklesIcon, 
-  BriefcaseIcon, 
-  BeakerIcon, 
-  HeartIcon 
-} from "@heroicons/react/24/outline";
 
 const items = [
-  { icon: BriefcaseIcon, text: "Смена одежды для ребёнка" },
-  { icon: BeakerIcon, text: "Подгузник для бассейна" },
-  { icon: CheckBadgeIcon, text: "Полотенце или пелёнка" },
-  { icon: SparklesIcon, text: "Шапочка и резиновая обувь" },
-  { icon: HeartIcon, text: "Любимая игрушка для воды" },
+  { 
+    src: "/img/3d-icons/BriefcaseIcon.svg", 
+    text: "Смена одежды для ребёнка" 
+  },
+  { 
+    src: "/img/3d-icons/pod.svg", 
+    text: "Подгузник для бассейна" 
+  },
+  { 
+    src: "/img/3d-icons/pol.svg", 
+    text: "Полотенце или пелёнка" 
+  },
+  { 
+    src: "/img/3d-icons/pol (1).svg", 
+    text: "Шапочка и резиновая обувь" 
+  },
+  { 
+    src: "/img/3d-icons/utk.svg", 
+    text: "Любимая игрушка для воды" 
+  },
 ];
 
 export default function Checklist() {
@@ -24,13 +32,14 @@ export default function Checklist() {
     <Container className="py-24 relative overflow-hidden">
       <div className="flex flex-col items-center">
         
-        {/* Единственное место для think.png */}
+        {/* Анимация маскота: легкое покачивание */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          animate={{ rotate: [0, -5, 5, 0] }}
+          animate={{ rotate: [0, -3, 3, 0], y: [0, -5, 0] }}
           transition={{ 
-            rotate: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+            rotate: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+            y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
             opacity: { duration: 0.8 }
           }}
           className="mb-12 relative"
@@ -41,6 +50,7 @@ export default function Checklist() {
             width={180}
             height={180}
             className="w-36 h-auto md:w-44 drop-shadow-2xl"
+            priority
           />
         </motion.div>
 
@@ -48,7 +58,7 @@ export default function Checklist() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl sm:text-5xl font-black text-slate-900 mb-6"
+            className="text-4xl sm:text-5xl font-black text-slate-900 mb-6 tracking-tight"
           >
             Что взять на занятие?
           </motion.h2>
@@ -57,26 +67,35 @@ export default function Checklist() {
           </p>
         </div>
 
+        {/* Сетка карточек с твоими SVG */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 w-full">
-          {items.map(({ icon: Icon, text }, idx) => (
+          {items.map((item, idx) => (
             <motion.div
-              key={text}
+              key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
-              whileHover={{ y: -8 }}
-              className="bg-white/80 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-soft border border-slate-100 flex flex-col items-center text-center gap-6"
+              whileHover={{ y: -10 }}
+              className="bg-white/80 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-soft border border-slate-100 flex flex-col items-center text-center gap-6 group"
             >
-              <div className="p-4 bg-sky-50 rounded-2xl text-sky-500">
-                <Icon className="w-8 h-8" />
+              <div className="w-20 h-20 relative transition-transform duration-500 group-hover:scale-110">
+                <Image
+                  src={item.src}
+                  alt={item.text}
+                  fill
+                  className="object-contain"
+                />
               </div>
               <span className="font-bold text-slate-700 leading-tight">
-                {text}
+                {item.text}
               </span>
             </motion.div>
           ))}
         </div>
       </div>
+      
+      {/* Декоративное пятно для акцента на контенте */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-sky-50 rounded-full blur-[140px] opacity-40 -z-10" />
     </Container>
   );
 }

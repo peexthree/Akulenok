@@ -4,9 +4,11 @@ import clsx from "clsx";
 import Container from "./container";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
+import { useShark } from "./SharkProvider";
 
 function Cta() {
+  const { setFormOpen } = useShark();
+
   return (
     <Container className="mb-24 relative overflow-visible">
       {/* Маскот-указатель: Выглядывает сверху справа */}
@@ -56,12 +58,12 @@ function Cta() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link
-              href="#lead-form"
-              className="block text-center bg-orange-500 text-white text-2xl font-black px-12 py-6 rounded-2xl shadow-xl hover:bg-orange-600 transition-all hover:shadow-orange-300/50"
+            <button
+              onClick={() => setFormOpen(true)}
+              className="w-full lg:w-auto block text-center bg-orange-500 text-white text-2xl font-black px-12 py-6 rounded-2xl shadow-xl hover:bg-orange-600 transition-all hover:shadow-orange-300/50"
             >
               Записаться
-            </Link>
+            </button>
           </motion.div>
         </div>
       </div>

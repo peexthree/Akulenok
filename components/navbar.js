@@ -24,7 +24,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
 // --- МЕХАНИКА ПАСХАЛОК (Универсальный счетчик) ---
-  const { setActiveEgg } = useShark();
+  const { setActiveEgg, setFormOpen } = useShark();
   const [clicks, setClicks] = useState(0);
   const timerRef = useRef(null);
 
@@ -124,8 +124,8 @@ export default function Navbar() {
 
         {/* КНОПКА ЗАПИСИ (Стабильно справа) */}
         <div className="flex items-center justify-end shrink-0 w-[120px] sm:w-[180px] gap-x-4">
-          <Link 
-            href="#contacts" 
+          <button
+            onClick={() => setFormOpen(true)}
             className={`
               hidden sm:block rounded-full font-black transition-all duration-500 transform active:scale-95
               ${isScrolled 
@@ -135,7 +135,7 @@ export default function Navbar() {
             `}
           >
             Записаться
-          </Link>
+          </button>
 
           <button
             type="button"
@@ -178,6 +178,16 @@ export default function Navbar() {
                       {item.name}
                     </Link>
                   ))}
+                  {/* Добавим кнопку записи в мобильное меню */}
+                  <button
+                    onClick={() => {
+                      setFormOpen(true);
+                      setMobileMenuOpen(false);
+                    }}
+                    className="w-full mt-4 block rounded-2xl bg-sky-500 px-4 py-4 text-lg font-black text-white shadow-md active:bg-sky-600"
+                  >
+                    Записаться
+                  </button>
                 </div>
               </Dialog.Panel>
             </motion.div>

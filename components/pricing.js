@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
 import Container from "./container";
-import SectionTitle from "./sectionTitle"; // Исправил регистр для Vercel
+import SectionTitle from "./sectionTitle";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
 import { CheckCircleIcon, StarIcon } from "@heroicons/react/24/solid";
+import { useShark } from "./SharkProvider";
 
 const pricingData = [
   {
@@ -53,6 +53,8 @@ const pricingData = [
 ];
 
 export default function Pricing() {
+  const { setFormOpen } = useShark();
+
   return (
     <section className="py-24 bg-slate-50 relative overflow-hidden" id="pricing">
       <Container>
@@ -106,8 +108,8 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              <Link
-                href="#contacts"
+              <button
+                onClick={() => setFormOpen(true)}
                 className={`w-full py-5 rounded-[2rem] font-black text-center transition-all duration-300 transform active:scale-95 ${
                   item.highlight
                     ? "bg-sky-500 text-white shadow-sky-200 shadow-xl hover:bg-sky-600"
@@ -115,7 +117,7 @@ export default function Pricing() {
                 }`}
               >
                 Начать заниматься
-              </Link>
+              </button>
             </motion.div>
           ))}
         </div>

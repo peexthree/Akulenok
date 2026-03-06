@@ -15,6 +15,7 @@ export const SharkProvider = ({ children }) => {
   // egg1: 10 кликов (Navbar) | egg2: "IGOR" (Код) | egg3: Гигантский маскот
   const [activeEgg, setActiveEgg] = useState(null);
   const [glitch, setGlitch] = useState(false);
+  const [isFormOpen, setFormOpen] = useState(false);
 
   // --- МЕХАНИКА ЧИТ-КОДА "IGOR" (Пасхалка №2) ---
   useEffect(() => {
@@ -39,7 +40,7 @@ export const SharkProvider = ({ children }) => {
   }, []);
 
   return (
-    <SharkContext.Provider value={{ setActiveEgg }}>
+    <SharkContext.Provider value={{ setActiveEgg, isFormOpen, setFormOpen }}>
       {/* Визуальный глитч при активации кода */}
       <motion.div 
         animate={{ 

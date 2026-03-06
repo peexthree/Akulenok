@@ -52,7 +52,7 @@ export default function PopupWidget() {
     {
       name: "Telegram",
       icon: PaperAirplaneIcon,
-      href: "https://t.me/+79273039977",
+      href: "https://t.me/akulenok_tmz",
       color: "bg-sky-500/10 text-sky-600 border-sky-200 hover:bg-sky-500 hover:text-white",
     },
     {

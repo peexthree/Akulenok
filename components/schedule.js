@@ -2,7 +2,7 @@
 import React from "react";
 import Container from "./container";
 import { motion } from "framer-motion";
-import Link from "next/link"; // Используем Link вместо кастомного Button для надежности
+import { useShark } from "./SharkProvider";
 
 const scheduleData = [
   {
@@ -39,11 +39,13 @@ const scheduleData = [
 ];
 
 function Schedule() {
+  const { setFormOpen } = useShark();
+
   return (
-    <Container className="py-24 relative z-10">
+    <Container className="py-24 relative z-10 scroll-mt-24" id="schedule">
       
       {/* Заголовок */}
-      <div id="schedule" className="text-center max-w-2xl mx-auto mb-16 scroll-mt-24">
+      <div className="text-center max-w-2xl mx-auto mb-16">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -113,8 +115,8 @@ function Schedule() {
             </div>
 
             <div className="mt-8 pt-8 border-t border-opacity-20 border-current">
-              <Link 
-                href="#lead-form"
+              <button
+                onClick={() => setFormOpen(true)}
                 className={`w-full block text-center py-4 rounded-2xl font-bold text-lg transition-all duration-300 ${
                   item.highlight
                     ? "bg-white text-sky-600 hover:bg-sky-50 shadow-md hover:shadow-lg hover:-translate-y-0.5"
@@ -122,7 +124,7 @@ function Schedule() {
                 }`}
               >
                 Записаться
-              </Link>
+              </button>
             </div>
           </motion.div>
         ))}

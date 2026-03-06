@@ -1,13 +1,12 @@
 "use client";
-import React, { useState, useRef } from "react";
-import Image from "next/image";
-import Link from "next/link"; // Добавил Link для второй кнопки
+import React, { useRef } from "react";
+import Link from "next/link";
 import Container from "./container";
 import { motion, useScroll, useTransform } from "framer-motion";
-import MultiStepForm from "./MultiStepForm";
+import { useShark } from "./SharkProvider";
 
 export default function Hero() {
-  const [isFormOpen, setFormOpen] = useState(false);
+  const { setFormOpen } = useShark();
   const { scrollY } = useScroll();
   
   // Оживляем Parallax: текст и кнопки будут двигаться с разной скоростью
@@ -40,7 +39,7 @@ export default function Hero() {
       {/* Cinematic Background Video */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
-          className="absolute inset-0 w-full h-full object-cover scale-105" // Оптимизировал классы
+          className="absolute inset-0 w-full h-full object-cover scale-105"
           autoPlay
           muted
           loop
@@ -132,8 +131,6 @@ export default function Hero() {
         </motion.div>
 
       </Container>
-
-      <MultiStepForm isOpen={isFormOpen} onClose={() => setFormOpen(false)} />
     </motion.section>
   );
 }

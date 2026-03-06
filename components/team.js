@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Container from "./container";
-import SectionTitle from "./SectionTitle"; // Используем наш прокачанный заголовок
+import SectionTitle from "./sectionTitle"; // Используем наш прокачанный заголовок
 import { motion } from "framer-motion";
 
 const team = [

@@ -76,7 +76,6 @@ export default function Navbar() {
             <motion.img
               whileHover={{ y: -5, rotate: [-1, 2, -1] }}
               src="/img/logo-akulenok.png"
-              alt="Акулёнок"
               className={`transition-all duration-700 ease-in-out object-contain drop-shadow-2xl z-20 ${
                 isScrolled 
                   ? "h-10 w-auto" 

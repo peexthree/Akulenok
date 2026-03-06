@@ -32,7 +32,7 @@ export default function Navbar() {
     setClicks((prev) => prev + 1);
     if (timerRef.current) clearTimeout(timerRef.current);
     
-    if (clicks + 1 >= 5) {
+    if (clicks + 1 >= 10) {
       setActiveEgg("egg2"); // Прямой вызов второй видео-пасхалки
       setClicks(0);
     } else {

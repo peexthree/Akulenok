@@ -125,7 +125,7 @@ export default function Navbar() {
         {/* КНОПКА ЗАПИСИ (Стабильно справа) */}
         <div className="flex items-center justify-end shrink-0 w-[120px] sm:w-[180px] gap-x-4">
           <button
-            onClick={() => setFormOpen(true)}
+            type="button" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setFormOpen(true); }}
             className={`
               hidden sm:block rounded-full font-black transition-all duration-500 transform active:scale-95
               ${isScrolled 
@@ -180,7 +180,7 @@ export default function Navbar() {
                   ))}
                   {/* Добавим кнопку записи в мобильное меню */}
                   <button
-                    onClick={() => {
+                    type="button" onClick={(e) => { e.preventDefault(); e.stopPropagation();
                       setFormOpen(true);
                       setMobileMenuOpen(false);
                     }}

@@ -59,7 +59,7 @@ function Cta() {
             whileTap={{ scale: 0.95 }}
           >
             <button
-              onClick={() => setFormOpen(true)}
+              type="button" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setFormOpen(true); }}
               className="w-full lg:w-auto block text-center bg-orange-500 text-white text-2xl font-black px-12 py-6 rounded-2xl shadow-xl hover:bg-orange-600 transition-all hover:shadow-orange-300/50"
             >
               Записаться

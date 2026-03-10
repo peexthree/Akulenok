@@ -12,7 +12,7 @@ const team = [
     specialty: "Грудничковое плавание (0+)",
     experience: "Стаж 12 лет",
     education: "Медицинское образование (АГМУ). Курсы ВОЗ по ГВ и сну.",
-    image: "/img/team/elvira.jpg",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600&h=800",
   },
   {
     name: "Анастасия Иванова",
@@ -20,7 +20,7 @@ const team = [
     specialty: "Гидрореабилитация",
     experience: "Стаж 8 лет",
     education: "Высшее физкультурное (БГУ). Сертификат по гидрокинезиотерапии.",
-    image: "/img/team/anastasia.jpg",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=600&h=800",
   },
   {
     name: "Елена Смирнова",
@@ -28,7 +28,7 @@ const team = [
     specialty: "Мягкая адаптация (1-3 года)",
     experience: "Стаж 15 лет",
     education: "Педагогическое образование. Психолог раннего развития.",
-    image: "/img/team/elena.jpg",
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=600&h=800",
   }
 ];
 

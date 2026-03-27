@@ -50,7 +50,7 @@ function Schedule() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4"
+          className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4 drop-shadow-sm"
         >
           Выберите свое время
         </motion.h2>
@@ -59,7 +59,7 @@ function Schedule() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-xl text-slate-600 font-medium"
+          className="text-xl text-slate-600 font-medium leading-relaxed tracking-wide"
         >
           Ежедневно открыты до 21:00. Подберём комфортный формат для вас и малыша.
         </motion.p>
@@ -115,7 +115,7 @@ function Schedule() {
             </div>
 
             <div className="mt-8 pt-8 border-t border-opacity-20 border-current">
-              <button
+              {/* <button
                 type="button" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setFormOpen(true); }}
                 className={`w-full block text-center py-4 rounded-2xl font-bold text-lg transition-all duration-300 ${
                   item.highlight
@@ -124,7 +124,20 @@ function Schedule() {
                 }`}
               >
                 Записаться
-              </button>
+              </button> */}
+              <a
+                href="tel:+79273039977"
+                className={`w-full block text-center py-4 rounded-2xl font-bold text-lg tracking-wide leading-snug transition-all duration-300 flex items-center justify-center gap-2 ${
+                  item.highlight
+                    ? "bg-white/90 backdrop-blur-md text-sky-600 shadow-[0_0_15px_rgba(255,255,255,0.4)] hover:shadow-[0_0_25px_rgba(255,255,255,0.8)] hover:bg-white hover:-translate-y-0.5"
+                    : "bg-gradient-to-r from-sky-400 to-blue-500 text-white shadow-md hover:shadow-lg hover:shadow-sky-200/50 hover:-translate-y-0.5"
+                }`}
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                Позвонить
+              </a>
             </div>
           </motion.div>
         ))}

@@ -29,7 +29,7 @@ export default function LoyalClients() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4"
+            className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tighter leading-tight mb-4 drop-shadow-sm"
           >
             Для тех, кто с нами
           </motion.h2>
@@ -38,7 +38,7 @@ export default function LoyalClients() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-slate-600 font-medium"
+            className="text-xl text-slate-600 font-medium leading-relaxed tracking-wide"
           >
             Ценим ваше доверие и дарим привилегии уже со второго визита.
           </motion.p>
@@ -57,7 +57,7 @@ export default function LoyalClients() {
             <div className="bg-white/80 backdrop-blur-xl p-10 rounded-[2.5rem] shadow-soft border border-white h-full flex flex-col justify-between group hover:shadow-xl transition-shadow duration-300">
               <div>
                 <h3 className="text-3xl font-black text-slate-800 mb-6">Привилегии клуба</h3>
-                <p className="text-lg text-slate-600 leading-relaxed font-medium mb-8 bg-sky-50 p-4 rounded-2xl">
+                <p className="text-lg text-slate-600 leading-relaxed tracking-wide font-medium mb-8 bg-sky-50/80 backdrop-blur-sm border border-sky-100 p-4 rounded-2xl shadow-inner">
                   Статус постоянного клиента активируется автоматически со <strong>2-го посещения</strong>.
                 </p>
                 
@@ -117,7 +117,7 @@ export default function LoyalClients() {
             </div>
 
             {/* Мощный CTA вместо желтой плашки */}
-            <button
+            {/* <button
               type="button" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setFormOpen(true); }}
               className="relative z-10 w-full bg-white text-sky-600 px-8 py-5 rounded-2xl font-black text-xl hover:bg-sky-50 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 flex items-center justify-center gap-3 active:scale-95"
             >
@@ -125,7 +125,16 @@ export default function LoyalClients() {
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-            </button>
+            </button> */}
+            <a
+              href="tel:+79273039977"
+              className="relative z-10 w-full bg-white/95 backdrop-blur-md text-sky-600 px-8 py-5 rounded-2xl font-black text-xl tracking-wide leading-snug hover:bg-white hover:shadow-[0_0_40px_rgba(255,255,255,0.5)] transition-all duration-300 flex items-center justify-center gap-3 active:scale-95 border border-white"
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Позвонить
+            </a>
           </motion.div>
 
         </div>

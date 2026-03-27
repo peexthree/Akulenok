@@ -44,11 +44,11 @@ function Cta() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl lg:text-5xl font-black leading-tight tracking-tight"
+            className="text-4xl lg:text-5xl font-black leading-tight tracking-tighter drop-shadow-md"
           >
             Готовы на <br /> пробное занятие?
           </motion.h2>
-          <p className="mt-4 text-xl font-medium text-sky-50 opacity-90">
+          <p className="mt-4 text-xl font-medium leading-relaxed tracking-wide text-sky-50 opacity-95">
             Оставьте заявку — подберём удобное <br className="hidden lg:block" /> время и формат для вашего малыша.
           </p>
         </div>
@@ -58,12 +58,21 @@ function Cta() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <button
+            {/* <button
               type="button" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setFormOpen(true); }}
               className="w-full lg:w-auto block text-center bg-orange-500 text-white text-2xl font-black px-12 py-6 rounded-2xl shadow-xl hover:bg-orange-600 transition-all hover:shadow-orange-300/50"
             >
               Записаться
-            </button>
+            </button> */}
+            <a
+              href="tel:+79273039977"
+              className="w-full lg:w-auto flex items-center justify-center gap-3 bg-gradient-to-r from-orange-400 to-orange-500 text-white text-2xl font-black tracking-wide leading-snug px-12 py-6 rounded-2xl shadow-[0_10px_30px_rgba(249,115,22,0.4)] hover:shadow-[0_15px_40px_rgba(249,115,22,0.6)] hover:-translate-y-1 transition-all duration-300 border border-orange-300/50"
+            >
+              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Позвонить
+            </a>
           </motion.div>
         </div>
       </div>

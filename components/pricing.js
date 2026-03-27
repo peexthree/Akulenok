@@ -93,7 +93,7 @@ export default function Pricing() {
 
               <div className="text-center mb-8">
                 <h3 className="text-sm uppercase font-black text-slate-400 tracking-widest mb-2">{item.title}</h3>
-                <div className="text-5xl font-black text-slate-900 mb-2">{item.price}</div>
+                <div className="text-5xl font-black text-slate-900 mb-2 tracking-tight leading-none">{item.price}</div>
                 <p className="text-sm text-sky-600 font-bold bg-sky-50 py-1 px-3 rounded-full inline-block">
                   {item.description}
                 </p>
@@ -103,12 +103,12 @@ export default function Pricing() {
                 {item.features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <CheckCircleIcon className="h-5 w-5 text-sky-500 shrink-0" />
-                    <span className="text-slate-600 text-sm font-bold leading-tight">{feature}</span>
+                    <span className="text-slate-600 text-sm font-bold leading-snug tracking-wide">{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <button
+              {/* <button
                 type="button" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setFormOpen(true); }}
                 className={`w-full py-5 rounded-[2rem] font-black text-center transition-all duration-300 transform active:scale-95 ${
                   item.highlight
@@ -117,7 +117,20 @@ export default function Pricing() {
                 }`}
               >
                 Начать заниматься
-              </button>
+              </button> */}
+              <a
+                href="tel:+79273039977"
+                className={`w-full py-5 rounded-[2rem] font-black tracking-wide leading-snug text-center transition-all duration-300 transform active:scale-95 flex items-center justify-center gap-2 ${
+                  item.highlight
+                    ? "bg-gradient-to-r from-sky-400 to-blue-500 text-white shadow-[0_0_20px_rgba(56,189,248,0.5)] hover:shadow-[0_0_30px_rgba(56,189,248,0.7)]"
+                    : "bg-slate-100/80 backdrop-blur-sm text-slate-800 shadow-soft border border-slate-200 hover:bg-white hover:shadow-[0_0_15px_rgba(0,0,0,0.05)]"
+                }`}
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                Позвонить
+              </a>
             </motion.div>
           ))}
         </div>

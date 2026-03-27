@@ -73,7 +73,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-5xl sm:text-7xl lg:text-9xl font-extrabold tracking-tighter text-white leading-[0.9] mb-6 text-balance uppercase drop-shadow-lg"
+            className="text-5xl sm:text-7xl lg:text-9xl font-extrabold tracking-tighter text-white leading-tight mb-6 text-balance uppercase drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]"
           >
             Больше <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-sky-300">
@@ -85,7 +85,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-xl sm:text-2xl text-slate-200 mb-12 max-w-3xl mx-auto leading-relaxed text-balance font-medium drop-shadow-md"
+            className="text-xl sm:text-2xl text-slate-200 mb-12 max-w-3xl mx-auto leading-relaxed tracking-wide text-balance font-medium drop-shadow-md"
           >
             Забота, развитие и здоровье для всей семьи с первых дней жизни.
           </motion.p>
@@ -107,7 +107,7 @@ export default function Hero() {
             ref={buttonRef}
             style={{ transition: 'transform 0.1s ease-out' }}
           >
-            <button
+            {/* <button
               onClick={() => setFormOpen(true)}
               className="group relative px-10 py-5 bg-white text-slate-900 rounded-full text-xl font-black overflow-hidden transition-all duration-300 w-full sm:w-auto hover:shadow-[0_0_40px_rgba(56,189,248,0.4)]"
             >
@@ -118,7 +118,19 @@ export default function Hero() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </span>
-            </button>
+            </button> */}
+            <a
+              href="tel:+79273039977"
+              className="group relative px-10 py-5 bg-white/90 backdrop-blur-md text-slate-900 rounded-full text-xl font-black overflow-hidden transition-all duration-300 w-full sm:w-auto hover:shadow-[0_0_40px_rgba(56,189,248,0.6)] flex items-center justify-center tracking-wide leading-snug"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-sky-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="relative z-10 flex items-center justify-center gap-3 group-hover:text-white transition-colors duration-300">
+                Позвонить
+                <svg className="w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </span>
+            </a>
           </div>
 
           {/* Рабочая вторая кнопка */}

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const cleanPhone = (str) => str.replace(/\D/g, "");
+
 export default function MultiStepForm({ isOpen, onClose }) {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -38,7 +40,7 @@ export default function MultiStepForm({ isOpen, onClose }) {
 
   // Более стабильная маска (рекомендую заменить на react-imask в будущем)
   const handlePhoneChange = (e) => {
-    const input = e.target.value.replace(/\D/g, "");
+    const input = cleanPhone(e.target.value);
     let formatted = "+7";
     
     // Если вводят 8, меняем на 7
@@ -53,7 +55,7 @@ export default function MultiStepForm({ isOpen, onClose }) {
   };
 
   // Проверка валидности телефона (минимум 11 цифр включая +7)
-  const isPhoneValid = formData.phone.replace(/\D/g, "").length === 11;
+  const isPhoneValid = cleanPhone(formData.phone).length === 11;
   const isStep3Valid = formData.name.trim().length > 1 && isPhoneValid;
 
   const handleSubmit = async (e) => {

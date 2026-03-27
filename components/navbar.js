@@ -147,18 +147,6 @@ export default function Navbar() {
             `}
           >
             Позвонить
-          </a> */}
-          <a
-            href="tel:+79273039977"
-            className={`
-              hidden sm:block rounded-full font-black tracking-wide leading-snug transition-all duration-500 transform active:scale-95 text-center
-              ${isScrolled
-                ? "bg-gradient-to-r from-sky-400 to-blue-500 text-white px-5 py-2.5 text-xs sm:text-sm shadow-[0_0_15px_rgba(56,189,248,0.4)]"
-                : "bg-white/90 backdrop-blur-md text-sky-600 px-6 py-3 text-sm sm:text-base shadow-[0_0_20px_rgba(255,255,255,0.5)] hover:bg-white hover:shadow-[0_0_25px_rgba(255,255,255,0.7)]"
-              }
-            `}
-          >
-            Позвонить
           </a>
 
           <button
@@ -212,13 +200,6 @@ export default function Navbar() {
                   >
                     Записаться
                   </button> */}
-                  <a
-                    href="tel:+79273039977"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="w-full mt-4 block text-center rounded-2xl bg-gradient-to-r from-sky-400 to-blue-500 px-4 py-4 text-lg font-black tracking-wide leading-snug text-white shadow-[0_0_20px_rgba(56,189,248,0.5)] active:scale-95 transition-transform"
-                  >
-                    Позвонить
-                  </a> */}
                   <a
                     href="tel:+79273039977"
                     onClick={() => setMobileMenuOpen(false)}

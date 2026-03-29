@@ -1,8 +1,8 @@
 
-> akulenok@1.1.0 dev /app
+> akulenok@1.1.0 dev
 > next dev
 
-(node:7500) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///app/next.config.js is not specified and it doesn't parse as CommonJS.
+(node:2703) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///app/next.config.js is not specified and it doesn't parse as CommonJS.
 Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
 To eliminate this warning, add "type": "module" to /app/package.json.
 (Use `node --trace-warnings ...` to show where the warning was created)
@@ -16,20 +16,84 @@ This information is used to shape Next.js' roadmap and prioritize features.
 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
 https://nextjs.org/telemetry
 
-(node:7540) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///app/next.config.js is not specified and it doesn't parse as CommonJS.
+(node:2726) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///app/next.config.js is not specified and it doesn't parse as CommonJS.
 Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
 To eliminate this warning, add "type": "module" to /app/package.json.
 (Use `node --trace-warnings ...` to show where the warning was created)
- ✓ Ready in 1639ms
+ ✓ Ready in 1501ms
  ○ Compiling / ...
- ✓ Compiled / in 8.5s (1037 modules)
+Browserslist: browsers data (caniuse-lite) is 7 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+ ✓ Compiled / in 9.2s (1036 modules)
 Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
 See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
- GET / 200 in 9711ms
+ GET / 200 in 10613ms
+ GET / 200 in 567ms
+ GET / 200 in 523ms
+ GET / 200 in 540ms
+ GET / 200 in 539ms
+ GET / 200 in 511ms
+ GET / 200 in 512ms
+ GET / 200 in 512ms
+ GET / 200 in 512ms
+ GET / 200 in 511ms
+ GET / 200 in 512ms
+ GET / 200 in 529ms
+ GET / 200 in 509ms
+ GET / 200 in 514ms
+ GET / 200 in 510ms
+ GET / 200 in 517ms
+ GET / 200 in 518ms
+ GET / 200 in 521ms
  ○ Compiling /_error ...
- ✓ Compiled /_error in 5.6s (1214 modules)
+ ✓ Compiled /_error in 2.6s (1213 modules)
 Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
 See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
- GET /img/video-poster.jpg 404 in 6476ms
- GET / 200 in 835ms
+ GET /img/video-poster.jpg 404 in 3234ms
+ GET / 200 in 838ms
+ GET /img/video-poster.jpg 404 in 441ms
+ GET / 200 in 555ms
+ GET /img/video-poster.jpg 404 in 431ms
+ ✓ Compiled in 714ms (1213 modules)
+Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
+See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
+ GET / 200 in 830ms
  GET /img/video-poster.jpg 404 in 438ms
+ ✓ Compiled in 576ms (1213 modules)
+Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
+See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
+ GET / 200 in 799ms
+ GET /img/video-poster.jpg 404 in 450ms
+ ✓ Compiled in 721ms (1213 modules)
+Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
+See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
+ GET / 200 in 799ms
+ GET /img/video-poster.jpg 404 in 430ms
+ ✓ Compiled in 1791ms (1213 modules)
+Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
+See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
+ GET / 200 in 1663ms
+ GET /img/video-poster.jpg 404 in 627ms
+ ✓ Compiled in 1129ms (1036 modules)
+ ✓ Compiled in 636ms (1036 modules)
+Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
+See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
+ GET / 200 in 998ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 761ms (1213 modules)
+Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
+See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
+ GET /img/video-poster.jpg 404 in 1367ms
+ GET / 200 in 930ms
+ ✓ Compiled in 11.7s (1036 modules)
+Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
+See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
+ GET / 200 in 900ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 885ms (1213 modules)
+Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
+See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
+ GET /img/video-poster.jpg 404 in 1565ms
+ GET / 200 in 774ms
+ GET /img/video-poster.jpg 404 in 432ms

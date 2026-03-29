@@ -43,8 +43,10 @@ export default function Services() {
   );
 
   return (
-    <Container id="services" className="py-24 relative z-10 scroll-mt-24">
+    <Container id="services" className="py-24 relative z-10 scroll-mt-24 overflow-hidden">
       
+
+
       {/* Декоративный фон для объема */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-gradient-to-tr from-sky-100/40 to-blue-50/40 rounded-full blur-[120px] -z-10" />
 
@@ -60,7 +62,7 @@ export default function Services() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
+        viewport={{ once: true, amount: 0.1 }}
         className="grid gap-6 md:grid-cols-2 lg:gap-8 mt-12"
       >
         <Item

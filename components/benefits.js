@@ -63,7 +63,7 @@ export default function Benefits() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, amount: 0.1 }}
         className="grid gap-10 md:grid-cols-3 pb-12 relative z-10"
       >
         {items.map((item, index) => (

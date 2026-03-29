@@ -60,7 +60,7 @@ export default function Methodology() {
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, amount: 0.1 }}
               className="text-4xl sm:text-5xl font-extrabold text-slate-800 tracking-tight leading-[1.1] mb-6 text-balance"
             >
               Комплексный подход
@@ -68,7 +68,7 @@ export default function Methodology() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: 0.1 }}
               className="text-xl text-slate-600 leading-relaxed font-medium"
             >
@@ -83,7 +83,7 @@ export default function Methodology() {
                 key={service.title}
                 initial={{ opacity: 0, y: 50, scale: 0.98 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-10%" }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
                 style={{ top: `calc(120px + ${idx * 25}px)` }}
                 className={`sticky flex flex-col p-8 sm:p-12 rounded-[2rem] sm:rounded-[3rem] bg-gradient-to-br ${service.color} shadow-xl border border-white/60 hover:shadow-2xl transition-all duration-300 overflow-hidden group`}

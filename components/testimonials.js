@@ -43,7 +43,7 @@ export default function Testimonials() {
             key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
             className="flex flex-col p-8 rounded-[3rem] bg-white/80 backdrop-blur-xl border border-white shadow-soft hover:shadow-xl hover:-translate-y-2 transition-all duration-500 relative group h-full"
           >

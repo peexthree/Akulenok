@@ -18,7 +18,7 @@ const SectionTitle = (props) => {
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={wrapperClasses}
     >
@@ -26,7 +26,7 @@ const SectionTitle = (props) => {
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ delay: 0.2, duration: 0.4 }}
           className="inline-block px-5 py-2 rounded-full bg-sky-100 text-sky-600 font-bold text-sm tracking-widest uppercase mb-4 shadow-sm"
         >

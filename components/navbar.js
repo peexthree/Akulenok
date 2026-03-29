@@ -70,7 +70,7 @@ export default function Navbar() {
         `}
       >
 {/* ГРУППА ЛОГОТИПА */}
-<div className="flex items-center shrink-0 w-[180px] sm:w-[240px]">
+<div className="flex items-center shrink-0 w-[260px] sm:w-[320px]">
   <div className="relative cursor-pointer group h-10 flex items-center" onClick={handleLogoClick}>
     <motion.img
       whileHover={{ y: -5, rotate: [-1, 2, -1] }}
@@ -84,15 +84,28 @@ export default function Navbar() {
     />
     
     {/* ТЕКСТ: Скрываем (opacity-0), когда маскот гигантский */}
-    <span className={`
-      font-black tracking-tight transition-all duration-500 z-10 whitespace-nowrap
+    <div className={`
+      transition-all duration-500 z-10 flex flex-col justify-center
       ${isScrolled 
-        ? "ml-14 text-xl text-slate-900 opacity-100" 
-        : "ml-32 sm:ml-36 text-sm sm:text-lg text-white opacity-100 tracking-wider whitespace-normal leading-tight w-[150px] sm:w-[200px]"
+        ? "ml-14"
+        : "ml-[110px] sm:ml-[140px] mt-2"
       }
     `}>
-      {isScrolled ? "Акулёнок" : "Семейный аква-центр Акуленок"}
-    </span>
+      {isScrolled ? (
+        <span className="font-black tracking-tight text-xl text-slate-900 opacity-100 whitespace-nowrap">
+          Акулёнок
+        </span>
+      ) : (
+        <>
+          <span className="font-bold tracking-wide text-xs sm:text-sm text-white opacity-100 whitespace-nowrap leading-tight">
+            Семейный аква-центр
+          </span>
+          <span className="font-black tracking-tight text-lg sm:text-xl text-white opacity-100 whitespace-nowrap leading-tight">
+            Акулёнок
+          </span>
+        </>
+      )}
+    </div>
   </div>
 </div>
         {/* ДЕСКТОПНОЕ МЕНЮ (Стабильно по центру) */}

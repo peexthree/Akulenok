@@ -31,3 +31,12 @@ See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-comp
 Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
 See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
  GET /img/video-poster.jpg 404 in 6206ms
+ ✓ Compiled in 8.1s (1035 modules)
+Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
+See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
+ GET / 200 in 1285ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1537ms (1212 modules)
+Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
+See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
+ GET /img/video-poster.jpg 404 in 2239ms

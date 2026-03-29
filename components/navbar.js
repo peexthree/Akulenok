@@ -106,7 +106,6 @@ export default function Navbar() {
     </div>
   </div>
 </div>
-</div>
         {/* ДЕСКТОПНОЕ МЕНЮ (Стабильно по центру) */}
         <div className="hidden lg:flex items-center justify-center flex-1 gap-x-1 relative">
           {navigation.map((item, index) => {

@@ -118,3 +118,4 @@ Import trace for requested module:
 ./components/navbar.js
  ○ Compiling /_error ...
  GET / 500 in 4227ms
+ ✓ Compiled /_error in 8.9s (1212 modules)

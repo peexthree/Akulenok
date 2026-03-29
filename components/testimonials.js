@@ -28,7 +28,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <Container className="py-24 relative z-10" id="testimonials">
+    <Container id="testimonials" className="py-24 relative z-10 scroll-mt-24">
       
       <SectionTitle
         pretitle="Отзывы"

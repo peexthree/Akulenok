@@ -55,7 +55,7 @@ export default function Pricing() {
   const [showPromo, setShowPromo] = useState(false);
 
   return (
-    <section className="py-24 bg-slate-50 relative overflow-hidden" id="pricing">
+    <section id="pricing" className="py-24 bg-slate-50 relative overflow-hidden scroll-mt-24">
       <Container>
         <SectionTitle
           pretitle="Стоимость"

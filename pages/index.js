@@ -70,9 +70,7 @@ export default function Home() {
         <Video />
         <Benefits />
         
-        <div id="services" className="scroll-mt-24">
-          <Services />
-        </div>
+        <Services />
 
         <Checklist />
 
@@ -80,24 +78,18 @@ export default function Home() {
         <Team />
         <Schedule />
 
-        <div id="pricing" className="scroll-mt-24">
-          <Pricing />
-        </div>
+        <Pricing />
 
         <WaveDivider waveColor="text-white" />
         <Testimonials />
 
-        <div id="gallery" className="scroll-mt-24">
-          <Gallery />
-        </div>
+        <Gallery />
 
         <Safety />
         <Faq />
         <LoyalClients />
 
-        <div id="contacts" className="scroll-mt-24">
-          <Location />
-        </div>
+        <Location />
 
         <Cta />
         <Footer />

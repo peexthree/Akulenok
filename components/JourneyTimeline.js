@@ -47,7 +47,7 @@ export default function JourneyTimeline() {
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, amount: 0.1 }}
               className="text-4xl sm:text-5xl font-extrabold text-slate-800 tracking-tight leading-[1.1] mb-6 text-balance"
             >
               Как проходит первое занятие
@@ -55,7 +55,7 @@ export default function JourneyTimeline() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: 0.1 }}
               className="text-xl text-slate-600 mb-10 leading-relaxed font-medium"
             >
@@ -78,7 +78,7 @@ export default function JourneyTimeline() {
                 key={step.num}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-20%" }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.7, delay: idx * 0.1, ease: "easeOut" }}
                 className="flex flex-col sm:flex-row gap-6 sm:gap-10 relative z-10 items-start group"
               >

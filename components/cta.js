@@ -49,7 +49,7 @@ function Cta() {
             Готовы на <br /> пробное занятие?
           </motion.h2>
           <p className="mt-4 text-xl font-medium leading-relaxed tracking-wide text-sky-50 opacity-95">
-            Оставьте заявку — подберём удобное <br className="hidden lg:block" /> время и формат для вашего малыша.
+            Оставьте заявку - подберём удобное <br className="hidden lg:block" /> время и формат для вашего малыша.
           </p>
         </div>
 

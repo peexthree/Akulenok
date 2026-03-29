@@ -13,7 +13,7 @@ const navigation = [
   { name: "Услуги", href: "#services" },
   { name: "Цены", href: "#pricing" },
   { name: "Галерея", href: "#gallery" },
-  { name: "FAQ", href: "#faq" },
+  { name: "Отзывы", href: "#testimonials" },
   { name: "Контакты", href: "#contacts" },
 ];
 

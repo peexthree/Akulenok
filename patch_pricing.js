@@ -1,4 +1,6 @@
-"use client";
+const fs = require('fs');
+
+const fileContent = `"use client";
 import React, { useState } from "react";
 import Container from "./container";
 import SectionTitle from "./sectionTitle";
@@ -72,11 +74,11 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -12 }}
-              className={`relative flex flex-col p-8 rounded-[3.5rem] transition-all duration-500 bg-white/80 backdrop-blur-xl border-2 ${
-                item.highlight 
-                ? "border-sky-400 shadow-2xl scale-105 z-10 bg-white" 
+              className={\`relative flex flex-col p-8 rounded-[3.5rem] transition-all duration-500 bg-white/80 backdrop-blur-xl border-2 \${
+                item.highlight
+                ? "border-sky-400 shadow-2xl scale-105 z-10 bg-white"
                 : "border-white shadow-soft hover:shadow-xl"
-              }`}
+              }\`}
             >
               {item.highlight && (
                 <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-sky-500 to-blue-600 text-white px-6 py-1.5 rounded-full text-xs font-black uppercase tracking-widest shadow-lg flex items-center gap-2">
@@ -109,11 +111,11 @@ export default function Pricing() {
 
               <a
                 href="tel:+79273039977"
-                className={`w-full py-5 rounded-[2rem] font-black tracking-wide leading-snug text-center transition-all duration-300 transform active:scale-95 flex items-center justify-center gap-2 ${
+                className={\`w-full py-5 rounded-[2rem] font-black tracking-wide leading-snug text-center transition-all duration-300 transform active:scale-95 flex items-center justify-center gap-2 \${
                   item.highlight
                     ? "bg-gradient-to-r from-sky-400 to-blue-500 text-white shadow-[0_0_20px_rgba(56,189,248,0.5)] hover:shadow-[0_0_30px_rgba(56,189,248,0.7)]"
                     : "bg-slate-100/80 backdrop-blur-sm text-slate-800 shadow-soft border border-slate-200 hover:bg-white hover:shadow-[0_0_15px_rgba(0,0,0,0.05)]"
-                }`}
+                }\`}
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -126,7 +128,7 @@ export default function Pricing() {
 
         {/* Секция лояльности */}
         <div className="mt-20 grid md:grid-cols-3 gap-8">
-          <motion.div 
+          <motion.div
             whileHover={{ scale: 1.02 }}
             className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft flex flex-col gap-4"
           >
@@ -139,7 +141,7 @@ export default function Pricing() {
             <p className="text-slate-500 font-medium text-sm leading-relaxed">При продлении абонемента до его завершения.</p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             whileHover={{ scale: 1.02 }}
             className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft flex flex-col gap-4"
           >
@@ -210,3 +212,7 @@ export default function Pricing() {
     </section>
   );
 }
+`;
+
+fs.writeFileSync('components/pricing.js', fileContent);
+console.log('pricing.js updated');

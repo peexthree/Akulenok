@@ -1,4 +1,6 @@
-import React, { useRef } from "react";
+const fs = require('fs');
+
+const fileContent = `import React, { useRef } from "react";
 import { motion, useScroll } from "framer-motion";
 import Container from "./container";
 import Image from "next/image";
@@ -120,3 +122,7 @@ export default function JourneyTimeline() {
     </section>
   );
 }
+`;
+
+fs.writeFileSync('components/JourneyTimeline.js', fileContent);
+console.log('JourneyTimeline.js updated');

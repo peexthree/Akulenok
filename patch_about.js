@@ -1,28 +1,22 @@
 const fs = require('fs');
-const path = 'components/about.js';
-let content = fs.readFileSync(path, 'utf8');
 
-const oldTitle = `          <motion.h2 variants={itemVariants} className="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-6 tracking-tight">
-            О центре «Акулёнок»
-          </motion.h2>`;
+let fileContent = fs.readFileSync('components/about.js', 'utf8');
 
-const newTitle = `          <motion.h2 variants={itemVariants} className="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-6 tracking-tight">
-            Про нас
-          </motion.h2>`;
+const oldReasons = `const reasons = [
+    "Наши инструкторы имеют педагогическое, медицинское или спортивное образование и постоянно повышают квалификацию.",
+    "Мы используем современные технологии очистки воды: многоступенчатую фильтрацию, вода соответствует санитарным нормам (нет озонирования).",
+    "У нас безопасно и комфортно: для каждого малыша отдельный инвентарь и чистые пеленальные столы и зона отдыха.",
+    "Персональный подход: составляем индивидуальную программу тренировок с учётом возраста и физических данных ребёнка."
+  ];`;
 
-content = content.replace(oldTitle, newTitle);
+const newReasons = `const reasons = [
+    "Наши специалисты имеют педагогическое / медицинское образование и постоянно повышают квалификацию.",
+    "Мы используем современные технологии, многоступенчатую систему очистки воды, соответствующую требованиям санитарных правил.",
+    "Комфорт и безопасность для детей и взрослых.",
+    "Индивидуальный подход к каждому и персональная программа тренировок."
+  ];`;
 
-const oldDesc = `          <motion.p variants={itemVariants} className="text-lg text-slate-600 leading-relaxed z-10 relative">
-            Специализированный детский аквацентр в Туймазах: грудничковое плавание и ЛФК.
-            Создаём безопасную среду для здоровья и развития малышей — тёплая стерильная вода,
-            небольшой формат групп, внимательные инструкторы.
-          </motion.p>`;
+fileContent = fileContent.replace(oldReasons, newReasons);
 
-const newDesc = `          <motion.p variants={itemVariants} className="text-lg text-slate-600 leading-relaxed z-10 relative">
-            Семейный аквацентр в г. Туймазы: грудничковое плавание и АФК. Создаём безопасную среду для здоровья всей семьи.
-          </motion.p>`;
-
-content = content.replace(oldDesc, newDesc);
-
-fs.writeFileSync(path, content);
-console.log("About patched");
+fs.writeFileSync('components/about.js', fileContent);
+console.log('about.js updated');

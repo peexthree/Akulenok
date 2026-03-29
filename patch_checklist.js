@@ -1,4 +1,6 @@
-"use client";
+const fs = require('fs');
+
+const fileContent = `"use client";
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Container from "./container";
@@ -78,9 +80,9 @@ export default function Checklist() {
 
   return (
     <Container className="py-24 relative overflow-hidden bg-white">
-      
+
       {/* ИНТЕРАКТИВНЫЙ МАСКОТ-ПАСХАЛКА */}
-      <div 
+      <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] z-0 cursor-crosshair"
         onMouseDown={startPress}
         onMouseUp={cancelPress}
@@ -110,9 +112,9 @@ export default function Checklist() {
             src="/img/think.png"
             alt="Background Thinking Shark"
             fill
-            unoptimized 
+            unoptimized
             className="object-contain blur-[8px] pointer-events-none select-none"
-            sizes="1000px" 
+            sizes="1000px"
           />
         </motion.div>
       </div>
@@ -120,7 +122,7 @@ export default function Checklist() {
       {/* ОСНОВНОЙ КОНТЕНТ */}
       <div className="flex flex-col items-center pt-12 relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-12 relative pointer-events-none">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-4xl sm:text-5xl font-black text-slate-900 mb-6 tracking-tight drop-shadow-sm pointer-events-auto"
@@ -137,21 +139,21 @@ export default function Checklist() {
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <button
               onClick={() => { setActiveTab(activeTab === 'gym' ? null : 'gym'); setPoolAge(null); }}
-              className={`px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 ${
+              className={\`px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 \${
                 activeTab === 'gym'
                 ? 'bg-sky-500 text-white shadow-lg shadow-sky-200 scale-105'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
+              }\`}
             >
               Зал
             </button>
             <button
               onClick={() => { setActiveTab(activeTab === 'pool' ? null : 'pool'); setPoolAge(null); }}
-              className={`px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 ${
+              className={\`px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 \${
                 activeTab === 'pool'
                 ? 'bg-sky-500 text-white shadow-lg shadow-sky-200 scale-105'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
+              }\`}
             >
               Бассейн
             </button>
@@ -169,21 +171,21 @@ export default function Checklist() {
                 <div className="flex justify-center gap-4 mb-6">
                   <button
                     onClick={() => setPoolAge('under3')}
-                    className={`px-6 py-2 rounded-xl font-semibold transition-all duration-300 ${
+                    className={\`px-6 py-2 rounded-xl font-semibold transition-all duration-300 \${
                       poolAge === 'under3'
                       ? 'bg-sky-100 text-sky-600 border-2 border-sky-300'
                       : 'bg-white border-2 border-slate-200 text-slate-500 hover:border-sky-200'
-                    }`}
+                    }\`}
                   >
                     до 3 лет
                   </button>
                   <button
                     onClick={() => setPoolAge('3to7')}
-                    className={`px-6 py-2 rounded-xl font-semibold transition-all duration-300 ${
+                    className={\`px-6 py-2 rounded-xl font-semibold transition-all duration-300 \${
                       poolAge === '3to7'
                       ? 'bg-sky-100 text-sky-600 border-2 border-sky-300'
                       : 'bg-white border-2 border-slate-200 text-slate-500 hover:border-sky-200'
-                    }`}
+                    }\`}
                   >
                     от 3 до 7 лет
                   </button>
@@ -202,3 +204,7 @@ export default function Checklist() {
     </Container>
   );
 }
+`;
+
+fs.writeFileSync('components/checklist.js', fileContent);
+console.log('checklist.js updated');

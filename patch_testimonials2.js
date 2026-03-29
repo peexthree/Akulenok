@@ -1,4 +1,6 @@
-"use client";
+const fs = require('fs');
+
+const fileContent = `"use client";
 import React from "react";
 import Image from "next/image";
 import Container from "./container";
@@ -29,7 +31,7 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <Container className="py-24 relative z-10" id="testimonials">
-      
+
       <SectionTitle
         pretitle="Отзывы"
         title="Истории наших маленьких чемпионов"
@@ -55,10 +57,10 @@ export default function Testimonials() {
 
             <div className="flex items-center gap-4 mb-8 relative z-10">
               <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-md">
-                <Image 
-                  src={item.image} 
-                  alt={item.name} 
-                  fill 
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  fill
                   className="object-cover"
                 />
               </div>
@@ -87,14 +89,14 @@ export default function Testimonials() {
         ))}
       </div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         className="mt-16 text-center"
       >
-        <a 
-          href="https://yandex.ru/maps/org/akulenok/125018811972/reviews/" 
-          target="_blank" 
+        <a
+          href="https://yandex.ru/maps/org/akulenok/125018811972/reviews/"
+          target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-slate-500 font-bold hover:text-sky-500 transition-colors mb-4 block"
         >
@@ -120,3 +122,7 @@ export default function Testimonials() {
     </Container>
   );
 }
+`;
+
+fs.writeFileSync('components/testimonials.js', fileContent);
+console.log('testimonials.js fixed');

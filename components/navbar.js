@@ -85,13 +85,13 @@ export default function Navbar() {
     
     {/* ТЕКСТ: Скрываем (opacity-0), когда маскот гигантский */}
     <span className={`
-      font-black tracking-tight transition-all duration-500 z-10
+      font-black tracking-tight transition-all duration-500 z-10 whitespace-nowrap
       ${isScrolled 
         ? "ml-14 text-xl text-slate-900 opacity-100" 
-        : "ml-0 text-xl sm:text-2xl text-white opacity-0 pointer-events-none"
+        : "ml-32 sm:ml-36 text-sm sm:text-lg text-white opacity-100 tracking-wider whitespace-normal leading-tight w-[150px] sm:w-[200px]"
       }
     `}>
-      Акулёнок
+      {isScrolled ? "Акулёнок" : "Семейный аква-центр Акуленок"}
     </span>
   </div>
 </div>

@@ -14,11 +14,9 @@ import {
 // Расширенный список для длинного "паровоза"
 const trustItems = [
   { text: "Вода лучшего качества", icon: BeakerIcon },
-  { text: "Тренеры с мед. образованием", icon: AcademicCapIcon },
-  { text: "Без хлора", icon: ShieldCheckIcon },
-  { text: "Одобрено педиатрами", icon: HeartIcon },
-  { text: "Температура воды 33-34°C", icon: SunIcon },
-  { text: "Многоступенчатая очистка", icon: SparklesIcon },
+  { text: "Сотрудники с медицинским и педагогическим образованием", icon: AcademicCapIcon },
+  { text: "Температура воды 32-33°C", icon: SunIcon },
+  { text: "Многоступенчатая очистка воды - вода питьевого качества", icon: SparklesIcon },
   { text: "Игровой подход без слез", icon: FaceSmileIcon },
   { text: "Теплые пеленальные зоны", icon: HomeModernIcon },
 ];

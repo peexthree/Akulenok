@@ -116,7 +116,7 @@ export default function Services() {
         <ul className="text-slate-600 space-y-4 list-none text-lg font-medium relative z-10">
           {[
             "Форматы занятий: мини‑группы, индивидуально, с участием родителя или без.",
-            "Длительность — обычно 30 минут (по показаниям индивидуально).",
+            "Длительность — от 30 минут (по показаниям индивидуально).",
             "Первая встреча — знакомство с тренером и подбор программы под ребёнка."
           ].map((text, idx) => (
             <li key={idx} className="flex items-start gap-4">

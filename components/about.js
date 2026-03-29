@@ -7,9 +7,9 @@ import { CheckCircleIcon } from "@heroicons/react/24/solid";
 
 const About = () => {
   const stats = [
-    { k: "3м+", v: "возраст начала" },
+    { k: "0+", v: "возраст начала" },
     { k: "4.7★", v: "рейтинг по отзывам" },
-    { k: "30 мин", v: "длительность занятия" },
+    { k: "от 30 мин", v: "длительность занятия" },
   ];
 
   const reasons = [
@@ -47,12 +47,10 @@ const About = () => {
           </div>
 
           <motion.h2 variants={itemVariants} className="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-6 tracking-tight">
-            О центре «Акулёнок»
+            Про нас
           </motion.h2>
           <motion.p variants={itemVariants} className="text-lg text-slate-600 leading-relaxed z-10 relative">
-            Специализированный детский аквацентр в Туймазах: грудничковое плавание и ЛФК.
-            Создаём безопасную среду для здоровья и развития малышей — тёплая стерильная вода,
-            небольшой формат групп, внимательные инструкторы.
+            Семейный аквацентр в г. Туймазы: грудничковое плавание и АФК. Создаём безопасную среду для здоровья всей семьи.
           </motion.p>
           
           <motion.div variants={containerVariants} className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 z-10 relative">

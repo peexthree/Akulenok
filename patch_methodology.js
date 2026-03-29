@@ -1,4 +1,6 @@
-"use client";
+const fs = require('fs');
+
+const fileContent = `"use client";
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
@@ -85,12 +87,12 @@ export default function Methodology() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: "-10%" }}
                 transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
-                style={{ top: `calc(120px + ${idx * 25}px)` }}
-                className={`sticky flex flex-col p-8 sm:p-12 rounded-[2rem] sm:rounded-[3rem] bg-gradient-to-br ${service.color} shadow-xl border border-white/60 hover:shadow-2xl transition-all duration-300 overflow-hidden group`}
+                style={{ top: \`calc(120px + \${idx * 25}px)\` }}
+                className={\`sticky flex flex-col p-8 sm:p-12 rounded-[2rem] sm:rounded-[3rem] bg-gradient-to-br \${service.color} shadow-xl border border-white/60 hover:shadow-2xl transition-all duration-300 overflow-hidden group\`}
               >
-                
+
                 {/* 3D ИКОНКА */}
-                <motion.div 
+                <motion.div
                   className="absolute top-0 right-0 p-4 opacity-80 group-hover:opacity-100 transition-all duration-700 pointer-events-none -z-10 group-hover:scale-110"
                   animate={{ y: [0, -8, 0], rotate: [0, 2, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: idx * 0.5 }}
@@ -120,3 +122,7 @@ export default function Methodology() {
     </section>
   );
 }
+`;
+
+fs.writeFileSync('components/methodology.js', fileContent);
+console.log('methodology.js updated');

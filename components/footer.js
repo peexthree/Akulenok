@@ -7,7 +7,7 @@ import { FaTelegramPlane, FaWhatsapp, FaPhoneAlt, FaInstagram } from "react-icon
 import { motion } from "framer-motion";
 
 export default function Footer() {
-  // Динамический год — код профессионала
+  // Динамический год - код профессионала
   const currentYear = new Date().getFullYear();
 
   return (

@@ -37,19 +37,19 @@ export default async function handler(req, res) {
       "🦈 Привет! Я бот центра «Акулёнок».\n\n" +
       "Плавание с 3 месяцев в Казани.\n" +
       "Команды:\n" +
-      "• /trial — пробное занятие\n" +
-      "• /prices — цены\n" +
-      "• /schedule — расписание и адрес\n" +
-      "• /contacts — как связаться";
+      "• /trial - пробное занятие\n" +
+      "• /prices - цены\n" +
+      "• /schedule - расписание и адрес\n" +
+      "• /contacts - как связаться";
   } else if (text === "/trial") {
     msg =
       "Запись на пробное: akulenok.vercel.app  \nИли напишите администратору: @akulenok_tmz";
   } else if (text === "/prices") {
     msg =
-      "Цены: пробное — 500 ₽, абонементы 4/8 занятий — смотрите на сайте: akulenok.vercel.app";
+      "Цены: пробное - 500 ₽, абонементы 4/8 занятий - смотрите на сайте: akulenok.vercel.app";
   } else if (text === "/schedule") {
     msg =
-      "Расписание и адрес есть на сайте: akulenok.vercel.app  \nЕсли нужен ближайший слот — пишите администратору.";
+      "Расписание и адрес есть на сайте: akulenok.vercel.app  \nЕсли нужен ближайший слот - пишите администратору.";
   } else if (text === "/contacts") {
     msg =
       "Контакты: +7 927 303-99-77, WhatsApp/Telegram: @akulenok_tmz  \nСайт: akulenok.vercel.app";

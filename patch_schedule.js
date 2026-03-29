@@ -1,4 +1,6 @@
-"use client";
+const fs = require('fs');
+
+const fileContent = `"use client";
 import React from "react";
 import Container from "./container";
 import { motion } from "framer-motion";
@@ -9,10 +11,10 @@ function Schedule() {
 
   return (
     <Container className="py-24 relative z-10 scroll-mt-24" id="schedule">
-      
+
       {/* Заголовок */}
       <div className="text-center max-w-2xl mx-auto mb-16">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -20,7 +22,7 @@ function Schedule() {
         >
           Выберите свое время
         </motion.h2>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -109,3 +111,7 @@ function Schedule() {
 }
 
 export default React.memo(Schedule);
+`;
+
+fs.writeFileSync('components/schedule.js', fileContent);
+console.log('schedule.js updated');

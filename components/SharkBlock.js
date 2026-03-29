@@ -76,7 +76,7 @@ function SharkBlock({ eggId }) {
           
           <h3 className="text-xl font-black text-slate-800 mb-2 tracking-tighter uppercase">Архитектор Системы</h3>
           <p className="text-slate-500 text-sm mb-6 font-medium leading-tight">
-            Игорь — Python-разработчик. <br/> Готов обсудить ваш проект.
+            Игорь - Python-разработчик. <br/> Готов обсудить ваш проект.
           </p>
           
           {/* КНОПКИ СВЯЗИ */}

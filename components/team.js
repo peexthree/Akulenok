@@ -40,7 +40,7 @@ export default function Team() {
         pretitle="Наши эксперты"
         title="Профессионалы, влюбленные в свое дело"
       >
-        Каждый тренер нашего центра проходит строгий отбор и регулярную сертификацию. Мы не просто учим плавать — мы заботимся о гармоничном развитии вашего малыша.
+        Каждый специалист нашего центра проходит строгий отбор и регулярную сертификацию. Мы не просто учим плавать - мы заботимся о гармоничном развитии вашего малыша.
       </SectionTitle>
 
       <div className="grid gap-8 md:gap-12 sm:grid-cols-2 lg:grid-cols-3 mt-16">
@@ -64,7 +64,7 @@ export default function Team() {
               />
               {/* Бейдж стажа */}
               <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-2xl shadow-sm">
-                <span className="text-sky-600 font-bold text-sm">{member.experience}</span>
+                <span className="text-sky-600 font-bold text-sm">{member.role}</span>
               </div>
               
               {/* Оверлей при наведении */}

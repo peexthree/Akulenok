@@ -2,7 +2,7 @@
 > akulenok@1.1.0 dev /app
 > next dev
 
-(node:12577) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///app/next.config.js is not specified and it doesn't parse as CommonJS.
+(node:12787) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///app/next.config.js is not specified and it doesn't parse as CommonJS.
 Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
 To eliminate this warning, add "type": "module" to /app/package.json.
 (Use `node --trace-warnings ...` to show where the warning was created)
@@ -16,33 +16,55 @@ This information is used to shape Next.js' roadmap and prioritize features.
 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
 https://nextjs.org/telemetry
 
-(node:12603) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///app/next.config.js is not specified and it doesn't parse as CommonJS.
+(node:12822) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///app/next.config.js is not specified and it doesn't parse as CommonJS.
 Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
 To eliminate this warning, add "type": "module" to /app/package.json.
 (Use `node --trace-warnings ...` to show where the warning was created)
- ✓ Ready in 1586ms
+ ✓ Ready in 1589ms
  ○ Compiling / ...
- ✓ Compiled / in 8.7s (1008 modules)
- GET / 200 in 10127ms
- ○ Compiling /_error ...
- ✓ Compiled /_error in 5.2s (1140 modules)
- GET /img/video-poster.jpg 404 in 5830ms
- GET / 200 in 1094ms
- GET /img/video-poster.jpg 404 in 442ms
- GET /img/team/elena.jpg 404 in 494ms
- GET /img/team/elvira.jpg 404 in 517ms
- ⨯ The requested resource isn't a valid image for /img/team/elena.jpg received null
- ⨯ The requested resource isn't a valid image for /img/team/elvira.jpg received null
- GET /img/team/anastasia.jpg 404 in 528ms
- ⨯ The requested resource isn't a valid image for /img/team/anastasia.jpg received null
- ✓ Compiled in 662ms (1140 modules)
- GET / 200 in 828ms
- GET /img/video-poster.jpg 404 in 431ms
- GET / 200 in 582ms
- GET /img/video-poster.jpg 404 in 437ms
- GET /img/team/elvira.jpg 404 in 462ms
- GET /img/team/anastasia.jpg 404 in 490ms
- GET /img/team/elena.jpg 404 in 509ms
- ⨯ The requested resource isn't a valid image for /img/team/elvira.jpg received null
- ⨯ The requested resource isn't a valid image for /img/team/anastasia.jpg received null
- ⨯ The requested resource isn't a valid image for /img/team/elena.jpg received null
+ ⨯ ./components/testimonials.js
+Error:   [31mx[0m Unterminated regexp literal
+    ,-[[36;1;4m/app/components/testimonials.js[0m:73:1]
+ [2m70[0m |         </a>
+ [2m71[0m |       </motion.div>
+ [2m72[0m |
+ [2m73[0m |     </Container>
+    : [35;1m     ^^^^^^^^^^^[0m
+ [2m74[0m |   );
+ [2m75[0m | }
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/testimonials.js
+ ⨯ ./components/testimonials.js
+Error:   [31mx[0m Unterminated regexp literal
+    ,-[[36;1;4m/app/components/testimonials.js[0m:73:1]
+ [2m70[0m |         </a>
+ [2m71[0m |       </motion.div>
+ [2m72[0m |
+ [2m73[0m |     </Container>
+    : [35;1m     ^^^^^^^^^^^[0m
+ [2m74[0m |   );
+ [2m75[0m | }
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/testimonials.js
+ GET / 500 in 16612ms
+ GET / 500 in 26ms
+ ✓ Compiled /_error in 841ms (956 modules)
+ ✓ Compiled / in 488ms (1214 modules)
+Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
+See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
+ GET / 200 in 1732ms
+ GET /img/video-poster.jpg 404 in 582ms
+ GET / 200 in 28ms
+ GET /img/video-poster.jpg 404 in 56ms
+ GET / 200 in 12ms
+ GET /img/video-poster.jpg 404 in 35ms

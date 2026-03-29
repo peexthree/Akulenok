@@ -43,7 +43,7 @@ export default function Services() {
   );
 
   return (
-    <Container className="py-24 relative z-10">
+    <Container id="services" className="py-24 relative z-10 scroll-mt-24">
       
       {/* Декоративный фон для объема */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-gradient-to-tr from-sky-100/40 to-blue-50/40 rounded-full blur-[120px] -z-10" />

@@ -14,7 +14,7 @@ export default function Location() {
     "inline-flex items-center justify-center gap-3 rounded-2xl px-6 py-4 font-bold transition-all duration-300 focus:outline-none w-full text-white shadow-md hover:shadow-lg hover:-translate-y-1";
 
   return (
-    <Container className="py-24 relative z-10">
+    <Container id="contacts" className="py-24 relative z-10 scroll-mt-24">
       
       <div className="text-center mb-16 relative">
         <motion.h2 

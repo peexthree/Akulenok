@@ -23,7 +23,7 @@ const photos = [
 
 export default function Gallery() {
   return (
-    <Container className="py-12 pb-24 max-w-6xl mx-auto relative">
+    <Container id="gallery" className="py-12 pb-24 max-w-6xl mx-auto relative scroll-mt-24">
       <div className="text-center mb-16 relative z-10">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}

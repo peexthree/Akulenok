@@ -1,0 +1,121 @@
+
+> akulenok@1.1.0 dev
+> next dev
+
+(node:6054) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///app/next.config.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+   ▲ Next.js 15.5.9
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.2:3000
+
+ ✓ Starting...
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+(node:6071) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///app/next.config.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ Ready in 1525ms
+ ○ Compiling / ...
+ ✓ Compiled / in 7.9s (1035 modules)
+Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
+See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
+ GET / 200 in 9030ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 5.5s (1212 modules)
+Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
+See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
+ GET /img/video-poster.jpg 404 in 6206ms
+ ✓ Compiled in 8.1s (1035 modules)
+Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
+See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
+ GET / 200 in 1285ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1537ms (1212 modules)
+Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
+See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
+ GET /img/video-poster.jpg 404 in 2239ms
+ ⨯ ./components/navbar.js
+Error:   [31mx[0m Expected '</', got 'jsx text (
+  [31m|[0m         )'
+     ,-[[36;1;4m/app/components/navbar.js[0m:111:1]
+ [2m108[0m |         </div>
+ [2m109[0m |       </div>
+ [2m110[0m |     </div>
+ [2m111[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m </div>
+ [2m112[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m         {/* ДЕСКТОПНОЕ МЕНЮ (Стабильно по центру) */}
+ [2m113[0m |             <div className="hidden lg:flex items-center justify-center flex-1 gap-x-1 relative">
+ [2m114[0m |               {navigation.map((item, index) => {
+ [2m115[0m |                 const isActive = pathname === item.href;
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/navbar.js
+ ⨯ ./components/navbar.js
+Error:   [31mx[0m Expected '</', got 'jsx text (
+  [31m|[0m         )'
+     ,-[[36;1;4m/app/components/navbar.js[0m:111:1]
+ [2m108[0m |         </div>
+ [2m109[0m |       </div>
+ [2m110[0m |     </div>
+ [2m111[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m </div>
+ [2m112[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m         {/* ДЕСКТОПНОЕ МЕНЮ (Стабильно по центру) */}
+ [2m113[0m |             <div className="hidden lg:flex items-center justify-center flex-1 gap-x-1 relative">
+ [2m114[0m |               {navigation.map((item, index) => {
+ [2m115[0m |                 const isActive = pathname === item.href;
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/navbar.js
+ ⨯ ./components/navbar.js
+Error:   [31mx[0m Expected '</', got 'jsx text (
+  [31m|[0m         )'
+     ,-[[36;1;4m/app/components/navbar.js[0m:109:1]
+ [2m106[0m |         </div>
+ [2m107[0m |       </div>
+ [2m108[0m |     </div>
+ [2m109[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m </div>
+ [2m110[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m         {/* ДЕСКТОПНОЕ МЕНЮ (Стабильно по центру) */}
+ [2m111[0m |             <div className="hidden lg:flex items-center justify-center flex-1 gap-x-1 relative">
+ [2m112[0m |               {navigation.map((item, index) => {
+ [2m113[0m |                 const isActive = pathname === item.href;
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/navbar.js
+ ⨯ ./components/navbar.js
+Error:   [31mx[0m Expected '</', got 'jsx text (
+  [31m|[0m         )'
+     ,-[[36;1;4m/app/components/navbar.js[0m:109:1]
+ [2m106[0m |         </div>
+ [2m107[0m |       </div>
+ [2m108[0m |     </div>
+ [2m109[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m </div>
+ [2m110[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m         {/* ДЕСКТОПНОЕ МЕНЮ (Стабильно по центру) */}
+ [2m111[0m |             <div className="hidden lg:flex items-center justify-center flex-1 gap-x-1 relative">
+ [2m112[0m |               {navigation.map((item, index) => {
+ [2m113[0m |                 const isActive = pathname === item.href;
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/navbar.js
+ ○ Compiling /_error ...
+ GET / 500 in 4227ms
+ ✓ Compiled /_error in 8.9s (1212 modules)

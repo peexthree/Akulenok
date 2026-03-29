@@ -1,0 +1,19 @@
+
+> akulenok@1.1.0 dev
+> next dev
+
+(node:13774) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///app/next.config.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ⚠ Port 3000 is in use by an unknown process, using available port 3002 instead.
+   ▲ Next.js 15.5.9
+   - Local:        http://localhost:3002
+   - Network:      http://192.168.0.2:3002
+
+ ✓ Starting...
+(node:13791) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///app/next.config.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ Ready in 2.8s

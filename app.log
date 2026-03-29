@@ -40,3 +40,81 @@ See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-comp
 Do not add <script> tags using next/head (see inline <script>). Use next/script instead.
 See more info here: https://nextjs.org/docs/messages/no-script-tags-in-head-component
  GET /img/video-poster.jpg 404 in 2239ms
+ ⨯ ./components/navbar.js
+Error:   [31mx[0m Expected '</', got 'jsx text (
+  [31m|[0m         )'
+     ,-[[36;1;4m/app/components/navbar.js[0m:111:1]
+ [2m108[0m |         </div>
+ [2m109[0m |       </div>
+ [2m110[0m |     </div>
+ [2m111[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m </div>
+ [2m112[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m         {/* ДЕСКТОПНОЕ МЕНЮ (Стабильно по центру) */}
+ [2m113[0m |             <div className="hidden lg:flex items-center justify-center flex-1 gap-x-1 relative">
+ [2m114[0m |               {navigation.map((item, index) => {
+ [2m115[0m |                 const isActive = pathname === item.href;
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/navbar.js
+ ⨯ ./components/navbar.js
+Error:   [31mx[0m Expected '</', got 'jsx text (
+  [31m|[0m         )'
+     ,-[[36;1;4m/app/components/navbar.js[0m:111:1]
+ [2m108[0m |         </div>
+ [2m109[0m |       </div>
+ [2m110[0m |     </div>
+ [2m111[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m </div>
+ [2m112[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m         {/* ДЕСКТОПНОЕ МЕНЮ (Стабильно по центру) */}
+ [2m113[0m |             <div className="hidden lg:flex items-center justify-center flex-1 gap-x-1 relative">
+ [2m114[0m |               {navigation.map((item, index) => {
+ [2m115[0m |                 const isActive = pathname === item.href;
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/navbar.js
+ ⨯ ./components/navbar.js
+Error:   [31mx[0m Expected '</', got 'jsx text (
+  [31m|[0m         )'
+     ,-[[36;1;4m/app/components/navbar.js[0m:109:1]
+ [2m106[0m |         </div>
+ [2m107[0m |       </div>
+ [2m108[0m |     </div>
+ [2m109[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m </div>
+ [2m110[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m         {/* ДЕСКТОПНОЕ МЕНЮ (Стабильно по центру) */}
+ [2m111[0m |             <div className="hidden lg:flex items-center justify-center flex-1 gap-x-1 relative">
+ [2m112[0m |               {navigation.map((item, index) => {
+ [2m113[0m |                 const isActive = pathname === item.href;
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/navbar.js
+ ⨯ ./components/navbar.js
+Error:   [31mx[0m Expected '</', got 'jsx text (
+  [31m|[0m         )'
+     ,-[[36;1;4m/app/components/navbar.js[0m:109:1]
+ [2m106[0m |         </div>
+ [2m107[0m |       </div>
+ [2m108[0m |     </div>
+ [2m109[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m </div>
+ [2m110[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m         {/* ДЕСКТОПНОЕ МЕНЮ (Стабильно по центру) */}
+ [2m111[0m |             <div className="hidden lg:flex items-center justify-center flex-1 gap-x-1 relative">
+ [2m112[0m |               {navigation.map((item, index) => {
+ [2m113[0m |                 const isActive = pathname === item.href;
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/navbar.js
+ ○ Compiling /_error ...
+ GET / 500 in 4227ms

@@ -44,7 +44,7 @@ export default function Safety() {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.1 }}
+        viewport={{ once: true }}
         className="bg-white/90 backdrop-blur-xl p-10 lg:p-14 rounded-[3rem] border border-white shadow-xl max-w-5xl mx-auto flex flex-col items-center"
       >
         {/* Главная иконка щита */}

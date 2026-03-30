@@ -37,7 +37,7 @@ const About = () => {
         <motion.div 
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true }}
           variants={containerVariants}
           className="relative p-2"
         >
@@ -71,7 +71,7 @@ const About = () => {
         <motion.div 
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="relative group h-full"
         >

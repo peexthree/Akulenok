@@ -44,7 +44,7 @@ export default function Gallery() {
             key={idx}
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5, delay: (idx % 3) * 0.1, ease: "easeOut" }} // Оптимизировал задержку
             className={`relative rounded-3xl overflow-hidden group shadow-md hover:shadow-xl transition-all duration-300 ${photo.size}`}
           >

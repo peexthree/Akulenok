@@ -49,7 +49,7 @@ export default function Team() {
             key={idx}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: idx * 0.1 }}
             className="group relative flex flex-col bg-white/80 backdrop-blur-xl p-6 rounded-[3rem] border border-white shadow-soft hover:shadow-xl transition-all duration-500 h-full"
           >

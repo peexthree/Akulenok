@@ -62,7 +62,7 @@ export default function Services() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
+        viewport={{ once: true }}
         className="grid gap-6 md:grid-cols-2 lg:gap-8 mt-12"
       >
         <Item

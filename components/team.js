@@ -125,45 +125,47 @@ const AquaCard = ({ member, idx, teamLength }) => {
       <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-[shimmer_1.5s_infinite] skew-x-12 z-20 pointer-events-none" />
 
       {/* Фото с обтравкой или легким фоном */}
-      <div className="relative h-64 w-full rounded-3xl overflow-hidden mb-6 bg-gradient-to-b from-sky-100 to-sky-50 shadow-inner">
+      <div className="relative aspect-[3/4] w-full rounded-3xl overflow-hidden mb-6 bg-gradient-to-b from-sky-100 to-sky-50 shadow-inner">
         <Image
           src={member.image}
           alt={member.name}
           fill
           sizes="320px"
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          className="object-contain bg-white/20 transition-transform duration-700 group-hover:scale-105"
         />
         {/* Бейдж стажа */}
         {member.role && (
-          <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-2xl shadow-sm z-10">
-            <span className="text-sky-600 font-bold text-xs whitespace-nowrap">{member.role}</span>
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%] bg-white/80 backdrop-blur-md px-3 py-2 rounded-2xl shadow-sm z-10 flex items-center justify-center">
+            <span className="text-sky-700 font-bold text-sm text-center leading-tight">{member.role}</span>
           </div>
         )}
       </div>
 
-      <div className="relative z-10 text-center flex flex-col items-center flex-grow h-[calc(100%-18rem)]">
-        <h3 className="text-xl font-bold text-slate-800 mb-1 leading-tight">{member.name}</h3>
+      <div className="relative z-10 flex flex-col items-center flex-grow h-auto w-full">
+        <h3 className="text-[1.15rem] font-bold text-slate-800 mb-2 leading-tight text-center">{member.name}</h3>
 
         {/* Стеклянная плашка для специальности */}
         {member.specialty && (
-          <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-3 border border-white/30 text-slate-600 text-xs font-medium mb-3 mt-auto">
+          <div className="bg-sky-50/60 backdrop-blur-sm rounded-2xl p-3 border border-sky-100/50 text-sky-800 text-xs font-semibold mb-4 w-full text-center shadow-sm">
             {member.specialty}
           </div>
         )}
 
-        <div className="space-y-2 w-full mt-auto">
-          {(member.education || member.experience) && (
-             <div className="bg-slate-50/40 p-3 rounded-[1.5rem] border border-slate-100/50">
-               {member.experience && (
-                 <p className="text-slate-600 text-[11px] font-medium leading-relaxed italic mb-1">
-                   {member.experience}
-                 </p>
-               )}
-               {member.education && (
-                 <p className="text-slate-600 text-[11px] font-medium leading-relaxed italic">
-                   «{member.education}»
-                 </p>
-               )}
+        <div className="space-y-2 w-full mt-auto flex flex-col">
+          {member.experience && (
+             <div className="bg-white/60 p-2.5 rounded-xl border border-white/50 flex items-start text-left gap-2 shadow-sm">
+               <span className="text-sky-400 mt-0.5 text-sm shrink-0 leading-none">✦</span>
+               <p className="text-slate-600 text-[11px] font-medium leading-relaxed">
+                 {member.experience}
+               </p>
+             </div>
+          )}
+          {member.education && (
+             <div className="bg-white/60 p-2.5 rounded-xl border border-white/50 flex items-start text-left gap-2 shadow-sm">
+               <span className="text-sky-400 mt-0.5 text-sm shrink-0 leading-none">🎓</span>
+               <p className="text-slate-600 text-[11px] font-medium leading-relaxed">
+                 {member.education}
+               </p>
              </div>
           )}
         </div>

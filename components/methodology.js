@@ -51,7 +51,7 @@ const services = [
 
 export default function Methodology() {
   return (
-    <section className="py-24 lg:py-32 relative bg-slate-50 overflow-visible z-10">
+    <section id="methodology" className="py-24 lg:py-32 relative bg-slate-50 overflow-visible z-10 scroll-mt-24">
       <Container>
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 relative items-start">
 

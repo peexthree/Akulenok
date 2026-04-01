@@ -58,9 +58,8 @@ export default function Hero() {
         
         {/* Привязываем Parallax к контенту */}
         <motion.div style={{ y: textY }} className="flex flex-col items-center">
-          <motion.button
-            onClick={(e) => { e.preventDefault(); e.stopPropagation(); setFormOpen(true); }}
-            type="button"
+          <motion.a
+            href="#discounts"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -69,7 +68,7 @@ export default function Hero() {
             <span className="text-xs sm:text-sm font-bold text-white tracking-[0.2em] uppercase cursor-pointer">
               Ваша персональная скидка
             </span>
-          </motion.button>
+          </motion.a>
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}

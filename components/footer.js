@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Container from "./container";
-import { FaTelegramPlane, FaWhatsapp, FaPhoneAlt, FaInstagram } from "react-icons/fa";
+import { FaTelegramPlane, FaWhatsapp, FaPhoneAlt, FaInstagram, FaVk } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 export default function Footer() {
@@ -45,7 +45,7 @@ export default function Footer() {
             <div className="flex flex-col gap-3 font-medium text-slate-600">
               <Link href="/" className="hover:text-sky-500 transition-colors">Главная</Link>
               <Link href="/#about" className="hover:text-sky-500 transition-colors">О нас</Link>
-              <Link href="/#services" className="hover:text-sky-500 transition-colors">Услуги</Link>
+              <Link href="/#methodology" className="hover:text-sky-500 transition-colors">Услуги</Link>
               <Link href="/#contacts" className="hover:text-sky-500 transition-colors">Контакты</Link>
             </div>
           </div>
@@ -54,7 +54,11 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <h4 className="text-lg font-bold text-slate-800 mb-4">Мы на связи</h4>
             
-            <div className="flex gap-3 mb-6">
+            <div className="flex flex-wrap gap-3 mb-6">
+              <a href="https://max.ru/u/f9LHodD0cOLix6wKTmAPpks04OM0FPm0sPc02InwwDsdZrqzGNbjCZHOKjY" target="_blank" rel="noopener noreferrer" aria-label="Max Messenger"
+                 className="p-3 bg-white text-purple-600 font-bold rounded-2xl shadow-sm hover:shadow-md hover:bg-purple-50 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center min-w-[46px] min-h-[46px]">
+                MAX
+              </a>
               <a href="https://t.me/akulenok_tmz" target="_blank" rel="noopener noreferrer" aria-label="Telegram" 
                  className="p-3 bg-white text-sky-500 rounded-2xl shadow-sm hover:shadow-md hover:bg-sky-50 hover:-translate-y-1 transition-all duration-300">
                 <FaTelegramPlane size={22} />
@@ -62,6 +66,10 @@ export default function Footer() {
               <a href="https://wa.me/79273039977" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" 
                  className="p-3 bg-white text-emerald-500 rounded-2xl shadow-sm hover:shadow-md hover:bg-emerald-50 hover:-translate-y-1 transition-all duration-300">
                 <FaWhatsapp size={22} />
+              </a>
+              <a href="https://vk.com/akulenok_tuymazy" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте"
+                 className="p-3 bg-white text-blue-600 rounded-2xl shadow-sm hover:shadow-md hover:bg-blue-50 hover:-translate-y-1 transition-all duration-300">
+                <FaVk size={22} />
               </a>
               <a href="https://www.instagram.com/akulenok_tmz" target="_blank" rel="noopener noreferrer" aria-label="Instagram" 
                  className="p-3 bg-white text-pink-500 rounded-2xl shadow-sm hover:shadow-md hover:bg-pink-50 hover:-translate-y-1 transition-all duration-300">
@@ -83,6 +91,7 @@ export default function Footer() {
         {/* Копирайт и подпись автора */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 text-slate-400 text-sm font-medium gap-4">
           <p>© {currentYear} Детский центр «Акулёнок». Все права защищены.</p>
+          <a href="/Оферта.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-sky-500 transition-colors">Публичная оферта: Правила посещения центра</a>
       
         </div>
       </Container>

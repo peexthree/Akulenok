@@ -16,9 +16,9 @@ const trustItems = [
   { text: "Вода лучшего качества", icon: BeakerIcon },
   { text: "Сотрудники с медицинским и педагогическим образованием", icon: AcademicCapIcon },
   { text: "Температура воды 32-33°C", icon: SunIcon },
-  { text: "Многоступенчатая очистка воды - вода питьевого качества", icon: SparklesIcon },
-  { text: "Игровой подход без слез", icon: FaceSmileIcon },
-  { text: "Теплые пеленальные зоны", icon: HomeModernIcon },
+  { text: "Многоступенчатая система очистки воды - вода питьевого качества", icon: SparklesIcon },
+  { text: "Игровой формат", icon: FaceSmileIcon },
+  { text: "Удобная зона отдыха и ожидания", icon: HomeModernIcon },
 ];
 
 export default function TrustBar() {

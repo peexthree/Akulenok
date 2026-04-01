@@ -51,58 +51,7 @@ export default function Services() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-gradient-to-tr from-sky-100/40 to-blue-50/40 rounded-full blur-[120px] -z-10" />
 
       {/* Используем наш новый смарт-компонент */}
-      <SectionTitle
-        pretitle="Что мы предлагаем"
-        title="Многопрофильный центр для здоровья всей семьи"
-      >
 
-      </SectionTitle>
-
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="grid gap-6 md:grid-cols-2 lg:gap-8 mt-12"
-      >
-        <Item
-          title="Адаптивное плавание"
-          desc="Только мягкое знакомство с водой в индивидуальном темпе, формирование крепкого мышечного корсета и правильного дыхания."
-          icon={
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A4 4 0 002 9.859V15a2 2 0 002 2h14a2 2 0 002-2v-3.836a4 4 0 00-5.248-3.996z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          }
-        />
-        <Item
-          title="Аквааэробика для беременных"
-          desc="Ваше тело скажет «спасибо». Бережно снимаем напряжение со спины, убираем отечность и готовим организм к легким родам"
-          icon={
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
-          }
-        />
-        <Item
-          title="Массаж (0+)"
-          desc="профессиональный массаж от специалиста с медицинским образованием и большим опытом работы"
-          icon={
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
-            </svg>
-          }
-        />
-        <Item
-          title="Женское здоровье (Фитнес)"
-          desc="Возвращаем телу легкость, подвижность и энергию. Укрепление мышечного корсета и тазового дна в комфортной, поддерживающей атмосфере."
-          icon={
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-            </svg>
-          }
-        />
-      </motion.div>
 
       {/* Информационный блок */}
       <motion.div

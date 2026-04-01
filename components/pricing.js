@@ -125,7 +125,7 @@ export default function Pricing() {
         </div>
 
         {/* Секция лояльности */}
-        <div className="mt-20 grid md:grid-cols-3 gap-8">
+        <div id="discounts" className="mt-20 grid md:grid-cols-3 gap-8 scroll-mt-24">
           <motion.div 
             whileHover={{ scale: 1.02 }}
             className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft flex flex-col gap-4"

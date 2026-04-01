@@ -10,6 +10,9 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
+        shimmer: {
+          '100%': { transform: 'translateX(100%)' }
+        },
         mesh: {
           '0%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
@@ -23,6 +26,7 @@ module.exports = {
         }
       },
       animation: {
+        shimmer: 'shimmer 1.5s infinite',
         mesh: 'mesh 15s ease infinite',
         blob: 'blob 7s infinite',
       },

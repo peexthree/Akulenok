@@ -55,7 +55,7 @@ export default function Services() {
         pretitle="Что мы предлагаем"
         title="Многопрофильный центр для здоровья всей семьи"
       >
-        мы создали идеальные условия для бережного развития.
+
       </SectionTitle>
 
       <motion.div
@@ -117,7 +117,7 @@ export default function Services() {
         <h4 className="text-xl font-bold text-slate-800 mb-6">Важно знать о занятиях:</h4>
         <ul className="text-slate-600 space-y-4 list-none text-lg font-medium relative z-10">
           {[
-            "Форматы занятий: мини‑группы, индивидуально, с участием родителя или без.",
+            "Форматы занятий: индивидуальный, мини группы, семейное.",
             "Длительность - от 30 минут (по показаниям индивидуально).",
             "Первая встреча - знакомство с тренером и подбор программы под ребёнка."
           ].map((text, idx) => (

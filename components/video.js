@@ -48,7 +48,7 @@ export default function Video() {
             playsInline
             preload="metadata"
             controls
-            poster="/img/video-poster.jpg" // ОБЯЗАТЕЛЬНО: добавь заглушку
+            poster="/video/poster.jpg" // ОБЯЗАТЕЛЬНО: добавь заглушку
           >
             <source src="/video/hero_small.mp4" type="video/mp4" />
             Ваш браузер не поддерживает видео.

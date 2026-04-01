@@ -104,7 +104,76 @@ const team = [
   }
 ];
 
+
+const AquaCard = ({ member, idx, teamLength }) => {
+  return (
+    <motion.div
+      // Эффект левитации (дыхание воды)
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: [0, -8, 0] }}
+      viewport={{ once: true }}
+      transition={{
+        opacity: { duration: 0.6, delay: (idx % teamLength) * 0.1 },
+        y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: (idx % teamLength) * 0.1 }
+      }}
+      whileHover={{ scale: 1.02, y: -12 }}
+      className="relative group w-[320px] shrink-0 rounded-[2.5rem] p-6 overflow-hidden
+                 bg-white/30 backdrop-blur-xl border border-white/40
+                 shadow-[0_8px_32px_rgba(31,38,135,0.07)]"
+    >
+      {/* Анимированный блик при наведении */}
+      <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-[shimmer_1.5s_infinite] skew-x-12 z-20 pointer-events-none" />
+
+      {/* Фото с обтравкой или легким фоном */}
+      <div className="relative h-64 w-full rounded-3xl overflow-hidden mb-6 bg-gradient-to-b from-sky-100 to-sky-50 shadow-inner">
+        <Image
+          src={member.image}
+          alt={member.name}
+          fill
+          sizes="320px"
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        {/* Бейдж стажа */}
+        {member.role && (
+          <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-2xl shadow-sm z-10">
+            <span className="text-sky-600 font-bold text-xs whitespace-nowrap">{member.role}</span>
+          </div>
+        )}
+      </div>
+
+      <div className="relative z-10 text-center flex flex-col items-center flex-grow h-[calc(100%-18rem)]">
+        <h3 className="text-xl font-bold text-slate-800 mb-1 leading-tight">{member.name}</h3>
+
+        {/* Стеклянная плашка для специальности */}
+        {member.specialty && (
+          <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-3 border border-white/30 text-slate-600 text-xs font-medium mb-3 mt-auto">
+            {member.specialty}
+          </div>
+        )}
+
+        <div className="space-y-2 w-full mt-auto">
+          {(member.education || member.experience) && (
+             <div className="bg-slate-50/40 p-3 rounded-[1.5rem] border border-slate-100/50">
+               {member.experience && (
+                 <p className="text-slate-600 text-[11px] font-medium leading-relaxed italic mb-1">
+                   {member.experience}
+                 </p>
+               )}
+               {member.education && (
+                 <p className="text-slate-600 text-[11px] font-medium leading-relaxed italic">
+                   «{member.education}»
+                 </p>
+               )}
+             </div>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 export default function Team() {
+
   return (
     <Container className="py-24 relative z-10" id="team">
       
@@ -119,62 +188,7 @@ export default function Team() {
       <div className="mt-16 overflow-hidden w-full relative mask-image-fade group">
         <div className="flex w-max animate-marquee gap-8 pr-8 group-hover:[animation-play-state:paused]">
           {[...team, ...team].map((member, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: (idx % team.length) * 0.1 }}
-              className="relative flex flex-col bg-white/70 backdrop-blur-md p-6 rounded-3xl border border-white shadow-soft hover:shadow-xl transition-all duration-500 h-full w-[300px] shrink-0"
-            >
-              {/* Фото тренера с эффектом глубины */}
-              <div className="relative w-full aspect-[4/5] rounded-2xl mb-8 overflow-hidden bg-sky-50 shadow-inner">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="300px"
-                />
-                {/* Бейдж стажа */}
-                {member.role && (
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-2xl shadow-sm">
-                    <span className="text-sky-600 font-bold text-sm whitespace-nowrap">{member.role}</span>
-                  </div>
-                )}
-                
-                {/* Оверлей при наведении */}
-                <div className="absolute inset-0 bg-gradient-to-t from-sky-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-
-              <div className="flex-grow flex flex-col items-center text-center">
-                <h3 className="text-2xl font-black text-slate-800 mb-2 leading-tight">
-                  {member.name}
-                </h3>
-                {member.specialty && (
-                  <div className="text-sky-500 font-bold mb-4 px-4 py-1 bg-sky-50 rounded-full text-sm">
-                    {member.specialty}
-                  </div>
-                )}
-                
-                <div className="space-y-4 w-full">
-                  {(member.education || member.experience) && (
-                    <div className="bg-slate-50/50 p-5 rounded-[2rem] border border-slate-100/50">
-                      {member.experience && (
-                        <p className="text-slate-600 text-sm font-medium leading-relaxed italic mb-2">
-                          {member.experience}
-                        </p>
-                      )}
-                      {member.education && (
-                        <p className="text-slate-600 text-sm font-medium leading-relaxed italic">
-                          «{member.education}»
-                        </p>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </motion.div>
+            <AquaCard key={idx} member={member} idx={idx} teamLength={team.length} />
           ))}
         </div>
       </div>

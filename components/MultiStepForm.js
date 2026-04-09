@@ -1,6 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const DIGITS_ONLY = /\D/g;
+const PHONE_PATTERN = /^(\d{1,3})(\d{0,3})(\d{0,2})(\d{0,2})/;
+
+/**
+ * Форматирует номер телефона в формат +7 XXX XXX XX XX
+ * @param {string} value - Входная строка
+ * @returns {string} - Отформатированный номер
+ */
+const formatPhoneNumber = (value) => {
+  const input = value.replace(DIGITS_ONLY, "");
+  // Если вводят 8 или 7 в начале, отрезаем
+  const digits = (input[0] === "7" || input[0] === "8") ? input.substring(1, 11) : input.substring(0, 10);
+
+  if (!digits) return "+7";
+
+  const match = digits.match(PHONE_PATTERN);
+  if (!match) return "+7";
+
+  return `+7 ${match[1]}${match[2] ? " " + match[2] : ""}${match[3] ? " " + match[3] : ""}${match[4] ? " " + match[4] : ""}`;
+};
+
 export default function MultiStepForm({ isOpen, onClose }) {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -36,20 +57,8 @@ export default function MultiStepForm({ isOpen, onClose }) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Более стабильная маска (рекомендую заменить на react-imask в будущем)
   const handlePhoneChange = (e) => {
-    const input = e.target.value.replace(/\D/g, "");
-    let formatted = "+7";
-    
-    // Если вводят 8, меняем на 7
-    const digits = input.startsWith("8") || input.startsWith("7") ? input.slice(1) : input;
-    
-    if (digits.length > 0) formatted += " " + digits.substring(0, 3);
-    if (digits.length >= 4) formatted += " " + digits.substring(3, 6);
-    if (digits.length >= 7) formatted += " " + digits.substring(6, 8);
-    if (digits.length >= 9) formatted += " " + digits.substring(8, 10);
-    
-    setFormData((prev) => ({ ...prev, phone: formatted }));
+    setFormData((prev) => ({ ...prev, phone: formatPhoneNumber(e.target.value) }));
   };
 
   // Проверка валидности телефона (минимум 11 цифр включая +7)

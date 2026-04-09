@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import Container from "./container";
 import SectionTitle from "./sectionTitle"; // Подключаем наш новый глобальный заголовок
 import { motion } from "framer-motion";

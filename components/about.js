@@ -42,7 +42,7 @@ const About = () => {
           className="relative p-2"
         >
        {/* ФИКС МАСКОТА: По центру, но выше */}
-         <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/4 w-64 h-64 sm:w-80 sm:h-80 opacity-15 rotate-12 pointer-events-none -z-10">
+         <div className="absolute top-1/8 left-1/2 transform -translate-x-1/2 -translate-y-1/8 w-64 h-64 sm:w-80 sm:h-80 opacity-15 rotate-12 pointer-events-none -z-10">
          <Image src="/img/play.png" alt="" fill className="object-contain" sizes="(max-width: 768px) 256px, 320px" />
           </div>
 

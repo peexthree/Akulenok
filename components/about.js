@@ -41,10 +41,10 @@ const About = () => {
           variants={containerVariants}
           className="relative p-2"
         >
-        {/* ФИКС МАСКОТА: По центру блока */}
-         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 opacity-15 rotate-12 pointer-events-none -z-10">
+       {/* ФИКС МАСКОТА: По центру, но выше */}
+         <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/4 w-64 h-64 sm:w-80 sm:h-80 opacity-15 rotate-12 pointer-events-none -z-10">
          <Image src="/img/play.png" alt="" fill className="object-contain" sizes="(max-width: 768px) 256px, 320px" />
-         </div>
+          </div>
 
           <motion.h2 variants={itemVariants} className="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-6 tracking-tight">
             Про нас

@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useShark } from "./SharkProvider";
 
 export default function Hero() {
-  const { setFormOpen } = useShark();
+
   const { scrollY } = useScroll();
   
   // Оживляем Parallax: текст и кнопки будут двигаться с разной скоростью
@@ -109,7 +109,7 @@ export default function Hero() {
             style={{ transition: 'transform 0.1s ease-out' }}
           >
             {/* <button
-              onClick={() => setFormOpen(true)}
+
               className="group relative px-10 py-5 bg-white text-slate-900 rounded-full text-xl font-black overflow-hidden transition-all duration-300 w-full sm:w-auto hover:shadow-[0_0_40px_rgba(56,189,248,0.4)]"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-sky-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

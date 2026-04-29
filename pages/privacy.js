@@ -43,42 +43,65 @@ export default function Privacy() {
                 Настоящая Политика определяет порядок обработки и защиты персональных данных пользователей сайта «Акулёнок».
               </p>
 
-              <section className="space-y-6">
+              <section className="space-y-8">
                 <div>
                   <h2 className="text-2xl font-bold text-slate-800 mb-3 flex items-center gap-3">
-                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-sky-100 text-sky-600 text-sm">1</span>
-                    Какие данные мы собираем
-                  </h2>
-                  <p>Имя и номер телефона, которые вы добровольно указываете при заполнении формы записи или при обращении через мессенджеры.</p>
-                </div>
-
-                <div>
-                  <h2 className="text-2xl font-bold text-slate-800 mb-3 flex items-center gap-3">
-                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-sky-100 text-sky-600 text-sm">2</span>
-                    Цель обработки
-                  </h2>
-                  <p>Мы используем данные исключительно для обратной связи: подтверждения записи на занятия, уточнения расписания и информирования об услугах центра.</p>
-                </div>
-
-                <div>
-                  <h2 className="text-2xl font-bold text-slate-800 mb-3 flex items-center gap-3">
-                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-sky-100 text-sky-600 text-sm">3</span>
-                    Хранение и защита
+                    <span className="flex items-center justify-center min-w-[2rem] w-8 h-8 rounded-full bg-sky-100 text-sky-600 text-sm">1</span>
+                    Общие положения
                   </h2>
                   <p>
-                    Данные передаются по защищенным протоколам через Telegram Bot API и хранятся в закрытой системе администрирования. 
-                    Мы принимаем все необходимые меры для защиты информации от несанкционированного доступа.
+                    Настоящая Политика обработки персональных данных (далее — Политика) разработана в соответствии с требованиями Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению их безопасности.
                   </p>
                 </div>
 
                 <div>
                   <h2 className="text-2xl font-bold text-slate-800 mb-3 flex items-center gap-3">
-                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-sky-100 text-sky-600 text-sm">4</span>
-                    Передача третьим лицам
+                    <span className="flex items-center justify-center min-w-[2rem] w-8 h-8 rounded-full bg-sky-100 text-sky-600 text-sm">2</span>
+                    Собираемые данные и цели обработки
                   </h2>
-                  <p>Мы не продаем и не передаем ваши данные третьим лицам. Доступ возможен только в случаях, прямо предусмотренных законодательством РФ.</p>
+                  <p className="mb-2">Мы можем собирать следующие данные:</p>
+                  <ul className="list-disc pl-6 space-y-2 mb-4">
+                    <li>Сведения об использовании сайта (файлы cookie, IP-адрес, данные аналитики), если вы дали на это согласие. Цель: улучшение работы сайта и аналитика.</li>
+                    <li>Имя и номер телефона при обращении через мессенджеры. Цель: обратная связь, подтверждение записи и консультация.</li>
+                  </ul>
+                  <p>
+                    Обработка специальных категорий персональных данных, касающихся расовой, национальной принадлежности, политических взглядов, религиозных или философских убеждений, интимной жизни, не осуществляется.
+                  </p>
+                </div>
+
+                <div>
+                  <h2 className="text-2xl font-bold text-slate-800 mb-3 flex items-center gap-3">
+                    <span className="flex items-center justify-center min-w-[2rem] w-8 h-8 rounded-full bg-sky-100 text-sky-600 text-sm">3</span>
+                    Персональные данные сотрудников
+                  </h2>
+                  <p>
+                    В разделе «О нас» и других разделах сайта размещены фотографии, имена и сведения об образовании и квалификации сотрудников нашего центра. Данная информация размещена с письменного согласия каждого сотрудника в соответствии с требованиями законодательства РФ.
+                  </p>
+                </div>
+
+                <div>
+                  <h2 className="text-2xl font-bold text-slate-800 mb-3 flex items-center gap-3">
+                    <span className="flex items-center justify-center min-w-[2rem] w-8 h-8 rounded-full bg-sky-100 text-sky-600 text-sm">4</span>
+                    Порядок сбора, хранения, передачи и защиты
+                  </h2>
+                  <p className="mb-4">
+                    Безопасность персональных данных обеспечивается путем реализации правовых, организационных и технических мер. Оператор обеспечивает сохранность персональных данных и принимает все возможные меры, исключающие доступ к персональным данным неуполномоченных лиц.
+                  </p>
+                  <p className="mb-4">
+                    Передача данных третьим лицам не осуществляется, за исключением случаев, прямо предусмотренных законодательством РФ. В случае выявления неточностей в персональных данных, пользователь может актуализировать их самостоятельно, путем направления уведомления Оператору.
+                  </p>
                 </div>
                 
+                <div>
+                  <h2 className="text-2xl font-bold text-slate-800 mb-3 flex items-center gap-3">
+                    <span className="flex items-center justify-center min-w-[2rem] w-8 h-8 rounded-full bg-sky-100 text-sky-600 text-sm">5</span>
+                    Права пользователя
+                  </h2>
+                  <p>
+                    Вы имеете право на получение информации, касающейся обработки ваших персональных данных. Вы можете отозвать согласие на обработку персональных данных в любой момент, направив нам уведомление по контактам, указанным ниже. Срок обработки данных прекращается по достижении целей обработки или после отзыва согласия.
+                  </p>
+                </div>
+
                 <div className="pt-8 border-t border-slate-100 mt-12">
                   <p className="text-sm">
                     По любым вопросам удаления или изменения данных вы можете связаться с нами:

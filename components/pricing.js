@@ -51,7 +51,7 @@ const pricingData = [
 ];
 
 export default function Pricing() {
-  const { setFormOpen } = useShark();
+
   const [showPromo, setShowPromo] = useState(false);
 
   return (

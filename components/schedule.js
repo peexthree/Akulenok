@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useShark } from "./SharkProvider";
 
 function Schedule() {
-  const { setFormOpen } = useShark();
+
 
   return (
     <Container className="py-24 relative z-10 scroll-mt-24" id="schedule">

@@ -43,6 +43,7 @@ const LoadingScreen = () => (
 
 function MyApp({ Component, pageProps }) {
   const [isLoading, setIsLoading] = useState(true);
+  const [isConsentGiven, setIsConsentGiven] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -55,8 +56,21 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   useEffect(() => {
+    // Check initial consent status
+    if (typeof window !== "undefined" && window.localStorage.getItem("cookieConsent") === "true") {
+      setIsConsentGiven(true);
+    }
+
+    // Listen for custom event from CookieBanner
+    const handleConsentEvent = () => setIsConsentGiven(true);
+    window.addEventListener("cookieConsentGiven", handleConsentEvent);
+
+    return () => window.removeEventListener("cookieConsentGiven", handleConsentEvent);
+  }, []);
+
+  useEffect(() => {
     const handleRouteChange = (url) => {
-      if (typeof window !== 'undefined' && window.ym) {
+      if (typeof window !== 'undefined' && window.ym && isConsentGiven) {
         window.ym(108276956, 'hit', url);
       }
     };
@@ -65,7 +79,7 @@ function MyApp({ Component, pageProps }) {
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
-  }, [router.events]);
+  }, [router.events, isConsentGiven]);
 
   return (
     <>
@@ -78,32 +92,36 @@ function MyApp({ Component, pageProps }) {
 
       </Head>
 
+      {isConsentGiven && (
+        <Script id="yandex-metrika" strategy="afterInteractive">
+          {`
+            (function(m,e,t,r,i,k,a){
+                m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                m[i].l=1*new Date();
+                for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+                k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+            })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
 
-      <Script id="yandex-metrika" strategy="afterInteractive">
-        {`
-          (function(m,e,t,r,i,k,a){
-              m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-              m[i].l=1*new Date();
-              for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-              k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-          })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+            ym(108276956, 'init', {
+              clickmap:true,
+              trackLinks:true,
+              accurateTrackBounce:true,
+              webvisor:true
+            });
+          `}
+        </Script>
+      )}
 
-          ym(108276956, 'init', {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true
-          });
-        `}
-      </Script>
       <SharkProvider>
         <div className={`${nunito.variable} font-nunito antialiased text-slate-900`}>
 
-        <noscript>
-          <div>
-            <img src="https://mc.yandex.ru/watch/108276956" style={{ position: "absolute", left: "-9999px" }} alt="" />
-          </div>
-        </noscript>
+        {isConsentGiven && (
+          <noscript>
+            <div>
+              <img src="https://mc.yandex.ru/watch/108276956" style={{ position: "absolute", left: "-9999px" }} alt="" />
+            </div>
+          </noscript>
+        )}
           {/* AnimatePresence отвечает за плавное исчезновение лоадера */}
           <AnimatePresence mode="wait">
             {isLoading && <LoadingScreen />}

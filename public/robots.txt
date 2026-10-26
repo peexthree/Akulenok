@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://akulenok-tmz.ru/sitemap.xml
+Host: https://akulenok-tmz.ru

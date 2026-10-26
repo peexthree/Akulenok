@@ -91,7 +91,7 @@ export default function Footer() {
         {/* Копирайт и подпись автора */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 text-slate-400 text-sm font-medium gap-4">
           <p>© {currentYear} Детский центр «Акулёнок». Все права защищены.</p>
-          <a href="/Оферта.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-sky-500 transition-colors">Публичная оферта: Правила посещения центра</a>
+          <a href="/oferta.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-sky-500 transition-colors">Публичная оферта: Правила посещения центра</a>
       
         </div>
       </Container>

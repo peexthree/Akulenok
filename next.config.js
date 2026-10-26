@@ -4,12 +4,14 @@ const securityHeaders = [
   {
     key: "Content-Security-Policy",
     value:
-      // Добавляем разрешения для Unsplash и будущих скриптов
+      // Разрешения для Yandex Metrika, Yandex Maps и внешних шрифтов
       "default-src 'self'; " +
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.yandex.ru; " +
-      "style-src 'self' 'unsafe-inline'; " +
-      "img-src 'self' data: https://images.unsplash.com https://*.yandex.net; " +
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.yandex.ru https://mc.yandex.ru; " +
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+      "img-src 'self' data: blob: https://images.unsplash.com https://*.yandex.net https://mc.yandex.ru; " +
       "font-src 'self' data: https://fonts.gstatic.com; " +
+      "connect-src 'self' https://mc.yandex.ru https://mc.yandex.com https://api.telegram.org; " +
+      "frame-src 'self' https://yandex.ru; " +
       "object-src 'none'; " +
       "frame-ancestors 'none'; " +
       "base-uri 'self'",

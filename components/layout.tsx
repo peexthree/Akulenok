@@ -33,14 +33,14 @@ export default function Layout({ children }) {
       {/* ОСНОВНОЙ КОНТЕНТ: 
           Добавил 'will-change-opacity' для оптимизации GPU на твоем S25 Ultra
       */}
-      <motion.main
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
         className="relative z-10 flex flex-col min-h-screen will-change-[opacity]"
       >
         {children}
-      </motion.main>
+      </motion.div>
 
       {/* Виджет обратной связи */}
       <PopupWidget />

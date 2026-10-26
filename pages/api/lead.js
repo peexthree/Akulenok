@@ -21,7 +21,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Missing or invalid required fields (parentName, phone)' });
     }
 
-    // Check if original values were too long (optional, but good for reporting 400)
+    // Check if original values were too long
     if (
       (body.parentName && String(body.parentName).length > 100) ||
       (body.phone && String(body.phone).length > 30) ||
@@ -32,16 +32,17 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Input too long' });
     }
 
-    const tgToken = process.env.TG_BOT_TOKEN;
+    const tgToken = process.env.TG_BOT_TOKEN || process.env.TELEGRAM_TOKEN;
     const chatId = process.env.TG_CHAT_ID;
 
     if (!tgToken || !chatId) {
-      return res.status(500).json({ error: 'Missing TG_BOT_TOKEN or TG_CHAT_ID envs' });
+      console.error('Missing TG_BOT_TOKEN / TG_CHAT_ID environment variables');
+      return res.status(500).json({ error: 'Telegram notification service is not configured' });
     }
 
     const text =
 `🦈 Новая заявка с лендинга
-https://www.akulenok-tmz.ru/
+https://akulenok-tmz.ru/
 
 Имя: ${parentName || '-'}
 Телефон: ${phone || '-'}
@@ -57,11 +58,13 @@ https://www.akulenok-tmz.ru/
 
     if (!tgResp.ok) {
       const details = await tgResp.text();
-      return res.status(502).json({ error: 'Telegram API error', details });
+      console.error('Telegram API error:', details);
+      return res.status(502).json({ error: 'Failed to deliver notification to Telegram' });
     }
 
     return res.status(200).json({ ok: true });
   } catch (e) {
-    return res.status(500).json({ error: e?.message || 'unknown' });
+    console.error('Lead submission error:', e);
+    return res.status(500).json({ error: 'Internal server error' });
   }
 }

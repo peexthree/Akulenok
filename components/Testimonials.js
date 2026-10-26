@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import Container from "./container";
-import SectionTitle from "./sectionTitle";
+import Container from "./Container";
+import SectionTitle from "./SectionTitle";
 import { motion } from "framer-motion";
 
 const testimonials = [

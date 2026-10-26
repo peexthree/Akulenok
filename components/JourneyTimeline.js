@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useScroll } from "framer-motion";
-import Container from "./container";
+import Container from "./Container";
 import Image from "next/image";
 
 const steps = [

@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import Link from "next/link";
-import Container from "./container";
+import Container from "./Container";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useShark } from "./SharkProvider";
 

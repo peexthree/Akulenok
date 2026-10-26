@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Container from "./container";
+import Container from "./Container";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";

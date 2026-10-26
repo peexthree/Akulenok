@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Container from "./container";
+import Container from "./Container";
 import clsx from "clsx";
 import { FaMapMarkerAlt, FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";

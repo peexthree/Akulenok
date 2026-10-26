@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import Container from "./container";
-import SectionTitle from "./sectionTitle";
+import Container from "./Container";
+import SectionTitle from "./SectionTitle";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { CheckCircleIcon, StarIcon, GiftIcon } from "@heroicons/react/24/solid";
 import { useShark } from "./SharkProvider";
+import { COMPANY_DETAILS } from "../config/company";
 
 const pricingData = [
   {
@@ -205,6 +206,11 @@ export default function Pricing() {
             </div>
           </motion.div>
         </div>
+
+        {/* Сноска о публичной оферте */}
+        <p className="mt-12 text-center text-xs text-slate-400 font-medium">
+          {COMPANY_DETAILS.offerDisclaimer}
+        </p>
 
       </Container>
     </section>

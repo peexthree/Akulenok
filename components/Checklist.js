@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
 import Image from "next/image";
-import Container from "./container";
+import Container from "./Container";
 import { motion, AnimatePresence } from "framer-motion";
 import { useShark } from "./SharkProvider";
 

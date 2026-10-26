@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Container from "./container";
+import Container from "./Container";
 
 const photos = [
   { src: "/img/gallery/pool1.jpg", alt: "Занятие в бассейне", size: "col-span-1 row-span-2 h-80 sm:h-96" },

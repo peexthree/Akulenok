@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import Container from "./container";
-import SectionTitle from "./sectionTitle"; // Используем наш прокачанный заголовок
+import Container from "./Container";
+import SectionTitle from "./SectionTitle"; // Используем наш прокачанный заголовок
 import { motion } from "framer-motion";
 
 const team = [

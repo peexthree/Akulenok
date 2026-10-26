@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import "../css/tailwind.css";
 import { Nunito } from "next/font/google";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 import { SharkProvider } from "../components/SharkProvider"; 
 import Head from "next/head";
 import Script from "next/script";

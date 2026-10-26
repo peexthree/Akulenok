@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
-import Container from "./container";
+import Container from "./Container";
 
 const services = [
   {

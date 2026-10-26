@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import Container from "./container";
-import SectionTitle from "./sectionTitle"; // Используем обновленный компонент
+import Container from "./Container";
+import SectionTitle from "./SectionTitle"; // Используем обновленный компонент
 import { motion } from "framer-motion";
 
 export default function Video() {

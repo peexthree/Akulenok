@@ -10,8 +10,8 @@ import {
 } from "@heroicons/react/24/outline";
 import { FaWhatsapp } from "react-icons/fa";
 import Image from "next/image";
-import Link from "next/link";
 import clsx from "clsx";
+import { COMPANY_DETAILS } from "../config/company";
 
 function useClickOutside(ref, onClose) {
   useEffect(() => {
@@ -27,12 +27,6 @@ export default function PopupWidget() {
   const [open, setOpen] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [hasConsent, setHasConsent] = useState(true);
-  const [activeTab, setActiveTab] = useState("links"); // links | form
-  const [parentName, setParentName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [agreed, setAgreed] = useState(false);
-  const [status, setStatus] = useState("idle");
-  const [errorMsg, setErrorMsg] = useState("");
   const panelRef = useRef(null);
 
   useEffect(() => {
@@ -60,57 +54,23 @@ export default function PopupWidget() {
 
   useClickOutside(panelRef, () => setOpen(false));
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    if (!agreed) return;
-    if (!parentName.trim() || !phone.trim()) {
-      setErrorMsg("Заполните имя и телефон");
-      return;
-    }
-
-    setStatus("loading");
-    setErrorMsg("");
-
-    try {
-      const res = await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          parentName: parentName.trim(),
-          phone: phone.trim(),
-        }),
-      });
-
-      const data = await res.json();
-      if (res.ok && data.ok) {
-        setStatus("success");
-      } else {
-        setStatus("error");
-        setErrorMsg(data.error || "Ошибка при отправке.");
-      }
-    } catch (err) {
-      setStatus("error");
-      setErrorMsg("Ошибка сети.");
-    }
-  };
-
   const actionLinks = [
     {
       name: "WhatsApp",
       icon: FaWhatsapp,
-      href: "https://wa.me/79273039977",
+      href: COMPANY_DETAILS.whatsapp,
       color: "bg-green-500/10 text-green-600 border-green-200 hover:bg-green-500 hover:text-white",
     },
     {
       name: "Telegram",
       icon: PaperAirplaneIcon,
-      href: "https://t.me/akulenok_tmz",
+      href: COMPANY_DETAILS.telegram,
       color: "bg-sky-500/10 text-sky-600 border-sky-200 hover:bg-sky-500 hover:text-white",
     },
     {
       name: "Позвонить",
       icon: PhoneIcon,
-      href: "tel:+79273039977",
+      href: `tel:${COMPANY_DETAILS.phoneRaw}`,
       color: "bg-orange-500/10 text-orange-600 border-orange-200 hover:bg-orange-500 hover:text-white",
     },
   ];
@@ -131,7 +91,7 @@ export default function PopupWidget() {
             exit={{ opacity: 0, scale: 0.8 }}
             className="absolute bottom-16 right-0 mb-4 w-48 bg-white p-3 rounded-2xl shadow-xl border border-sky-100 text-sm font-bold text-slate-700 pointer-events-none"
           >
-            Привет! 👋 <br />Нужна помощь?
+            Привет! 👋 <br />Связаться с нами:
             <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-r border-b border-sky-100 rotate-45" />
           </motion.div>
         )}
@@ -140,7 +100,7 @@ export default function PopupWidget() {
       {/* Основная кнопка (FAB) */}
       <button
         onClick={toggle}
-        aria-label="Задать вопрос"
+        aria-label="Связаться с нами"
         className={clsx(
           "h-14 w-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300",
           "bg-gradient-to-br from-blue-400 via-sky-500 to-white-500 text-white",
@@ -170,7 +130,7 @@ export default function PopupWidget() {
         </AnimatePresence>
       </button>
 
-      {/* Панель с маскотом */}
+      {/* Панель мессенджеров */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -199,109 +159,27 @@ export default function PopupWidget() {
               </div>
             </div>
 
-            {/* Табы: Мессенджеры / Заказать звонок */}
-            <div className="flex bg-slate-100 p-1 rounded-xl text-xs font-bold text-slate-600">
-              <button
-                type="button"
-                onClick={() => setActiveTab("links")}
-                className={clsx(
-                  "flex-1 py-1.5 rounded-lg transition-all text-center",
-                  activeTab === "links" ? "bg-white text-sky-600 shadow-sm" : "hover:text-slate-900"
-                )}
-              >
-                Мессенджеры
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveTab("form")}
-                className={clsx(
-                  "flex-1 py-1.5 rounded-lg transition-all text-center",
-                  activeTab === "form" ? "bg-white text-sky-600 shadow-sm" : "hover:text-slate-900"
-                )}
-              >
-                Заказать звонок
-              </button>
+            <p className="text-sm text-slate-600 font-medium">
+              Выберите удобный способ связи, чтобы позвонить или написать нам:
+            </p>
+
+            <div className="flex flex-col gap-2.5">
+              {actionLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={clsx(
+                    "flex items-center gap-3 p-3.5 rounded-2xl border transition-all duration-300 font-bold text-sm",
+                    link.color
+                  )}
+                >
+                  <link.icon className="h-5 w-5" />
+                  {link.name}
+                </a>
+              ))}
             </div>
-
-            {activeTab === "links" ? (
-              <div className="flex flex-col gap-2.5">
-                {actionLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={clsx(
-                      "flex items-center gap-3 p-3.5 rounded-2xl border transition-all duration-300 font-bold text-sm",
-                      link.color
-                    )}
-                  >
-                    <link.icon className="h-5 w-5" />
-                    {link.name}
-                  </a>
-                ))}
-              </div>
-            ) : (
-              <div className="flex flex-col gap-3">
-                {status === "success" ? (
-                  <div className="text-center py-4 space-y-2">
-                    <p className="font-bold text-emerald-600 text-sm">✓ Заявка отправлена!</p>
-                    <p className="text-xs text-slate-500">Скоро перезвоним.</p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleFormSubmit} className="space-y-3">
-                    <input
-                      type="text"
-                      required
-                      value={parentName}
-                      onChange={(e) => setParentName(e.target.value)}
-                      placeholder="Ваше имя *"
-                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 font-medium"
-                    />
-                    <input
-                      type="tel"
-                      required
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      placeholder="Номер телефона *"
-                      className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 font-medium"
-                    />
-
-                    {/* Обязательный чекбокс согласия */}
-                    <label className="flex items-start gap-2 cursor-pointer text-[10px] font-medium text-slate-500 leading-tight">
-                      <input
-                        type="checkbox"
-                        checked={agreed}
-                        onChange={(e) => setAgreed(e.target.checked)}
-                        className="mt-0.5 rounded border-slate-300 text-sky-500 focus:ring-sky-500 w-3.5 h-3.5 shrink-0"
-                      />
-                      <span>
-                        Соглашаюсь с{" "}
-                        <Link href="/privacy" target="_blank" className="text-sky-500 underline">
-                          Политикой
-                        </Link>{" "}
-                        и даю согласие на обработку ПДн.
-                      </span>
-                    </label>
-
-                    {errorMsg && <p className="text-[10px] font-bold text-red-500">{errorMsg}</p>}
-
-                    <button
-                      type="submit"
-                      disabled={!agreed || status === "loading"}
-                      className={clsx(
-                        "w-full py-2.5 rounded-xl font-bold text-xs text-white transition-all shadow-sm",
-                        agreed && status !== "loading"
-                          ? "bg-sky-500 hover:bg-sky-600 cursor-pointer"
-                          : "bg-slate-300 cursor-not-allowed opacity-70"
-                      )}
-                    >
-                      {status === "loading" ? "Отправка..." : "Перезвоните мне"}
-                    </button>
-                  </form>
-                )}
-              </div>
-            )}
           </motion.div>
         )}
       </AnimatePresence>

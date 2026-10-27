@@ -1,13 +1,11 @@
 "use client";
-import React from "react";
 import dynamic from "next/dynamic";
-import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
-import { useShark } from "./SharkProvider";
+import { motion, useScroll, useSpring } from "framer-motion";
 
 import CookieBanner from "./CookieBanner";
 
 // Поп-ап не нужен поисковикам, грузим только на клиенте
-const PopupWidget = dynamic(() => import("./popupWidget"), { ssr: false });
+const PopupWidget = dynamic(() => import("./PopupWidget"), { ssr: false });
 
 export default function Layout({ children }) {
   const { scrollYProgress } = useScroll();

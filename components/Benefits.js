@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Container from "./container";
+import Container from "./Container";
 import { motion } from "framer-motion";
 
 const items = [

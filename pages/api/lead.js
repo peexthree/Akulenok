@@ -1,10 +1,52 @@
+const rateLimitMap = new Map();
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 минут
+const MAX_REQUESTS_PER_WINDOW = 5;
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  const record = rateLimitMap.get(ip);
+
+  if (!record) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+
+  if (now > record.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+
+  if (record.count >= MAX_REQUESTS_PER_WINDOW) {
+    return true;
+  }
+
+  record.count += 1;
+  return false;
+}
+
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+  if (req?.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
 
   try {
+    const clientIp =
+      req.headers['x-forwarded-for']?.split(',')[0]?.trim() ||
+      req.socket?.remoteAddress ||
+      '127.0.0.1';
+
+    if (isRateLimited(clientIp)) {
+      return res.status(429).json({ error: 'Too many requests. Please try again later.' });
+    }
+
     const body = req.body || {};
 
-    // 🛡️ Input Validation & Sanitization
+    // 🛡️ Honeypot check (скрытое поле от спам-ботов)
+    if (body.website || body.honeypot || body.fax) {
+      return res.status(200).json({ ok: true });
+    }
+
+    // Input Sanitization
     const sanitize = (val, maxLen) => {
       if (typeof val !== 'string') return '';
       return val.trim().substring(0, maxLen);
@@ -14,37 +56,32 @@ export default async function handler(req, res) {
     const phone = sanitize(body.phone, 30);
     const childAge = sanitize(body.childAge, 100);
     const timePref = sanitize(body.timePref, 100);
-    const utm = sanitize(body.utm, 1000);
 
-    // Basic validation: name and phone are required
+    // Валидация обязательных полей
     if (!parentName || !phone) {
       return res.status(400).json({ error: 'Missing or invalid required fields (parentName, phone)' });
     }
 
-    // Check if original values were too long (optional, but good for reporting 400)
-    if (
-      (body.parentName && String(body.parentName).length > 100) ||
-      (body.phone && String(body.phone).length > 30) ||
-      (body.childAge && String(body.childAge).length > 100) ||
-      (body.timePref && String(body.timePref).length > 100) ||
-      (body.utm && String(body.utm).length > 1000)
-    ) {
-      return res.status(400).json({ error: 'Input too long' });
+    // Проверка формата телефона
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length < 7 || phoneDigits.length > 15) {
+      return res.status(400).json({ error: 'Invalid phone format' });
     }
 
     const tgToken = process.env.TG_BOT_TOKEN;
     const chatId = process.env.TG_CHAT_ID;
 
     if (!tgToken || !chatId) {
-      return res.status(500).json({ error: 'Missing TG_BOT_TOKEN or TG_CHAT_ID envs' });
+      console.error('Missing TG_BOT_TOKEN or TG_CHAT_ID envs');
+      return res.status(500).json({ error: 'Internal server error' });
     }
 
     const text =
 `🦈 Новая заявка с лендинга
 https://www.akulenok-tmz.ru/
 
-Имя: ${parentName || '-'}
-Телефон: ${phone || '-'}
+Имя: ${parentName}
+Телефон: ${phone}
 Возраст ребёнка: ${childAge || '-'}
 Цель: ${timePref || '-'}`;
 
@@ -57,11 +94,13 @@ https://www.akulenok-tmz.ru/
 
     if (!tgResp.ok) {
       const details = await tgResp.text();
-      return res.status(502).json({ error: 'Telegram API error', details });
+      console.error('Telegram API error:', details);
+      return res.status(502).json({ error: 'Service temporarily unavailable' });
     }
 
     return res.status(200).json({ ok: true });
   } catch (e) {
-    return res.status(500).json({ error: e?.message || 'unknown' });
+    console.error('Lead submission error:', e?.message);
+    return res.status(500).json({ error: 'Internal server error' });
   }
 }

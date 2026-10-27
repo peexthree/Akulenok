@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import ContactButtons from "./contactButtons"; 
+import ContactButtons from "./ContactButtons";
 import { motion } from "framer-motion";
 
 function SharkBlock({ eggId }) {
@@ -23,6 +23,7 @@ function SharkBlock({ eggId }) {
           loop 
           muted 
           playsInline 
+          preload="metadata"
           className="w-full h-full object-cover"
         />
         {/* Индикатор записи/цикла в стиле S25 Ultra */}

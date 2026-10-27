@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Container from "./container";
+import Container from "./Container";
 import { motion } from "framer-motion";
 
 const safetyFacts = [

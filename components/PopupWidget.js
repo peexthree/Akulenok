@@ -11,6 +11,7 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 import Image from "next/image";
 import clsx from "clsx";
+import { COMPANY_DETAILS } from "../config/company";
 
 function useClickOutside(ref, onClose) {
   useEffect(() => {
@@ -25,9 +26,20 @@ function useClickOutside(ref, onClose) {
 export default function PopupWidget() {
   const [open, setOpen] = useState(false);
   const [showHint, setShowHint] = useState(false);
+  const [hasConsent, setHasConsent] = useState(true);
   const panelRef = useRef(null);
 
-  // Показываем подсказку, если пользователь затупил на 150 секунд
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const consent = localStorage.getItem("cookieConsent");
+      setHasConsent(Boolean(consent));
+
+      const handleConsent = () => setHasConsent(true);
+      window.addEventListener("cookieConsentGiven", handleConsent);
+      return () => window.removeEventListener("cookieConsentGiven", handleConsent);
+    }
+  }, []);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!open) setShowHint(true);
@@ -46,25 +58,30 @@ export default function PopupWidget() {
     {
       name: "WhatsApp",
       icon: FaWhatsapp,
-      href: "https://wa.me/79273039977",
+      href: COMPANY_DETAILS.whatsapp,
       color: "bg-green-500/10 text-green-600 border-green-200 hover:bg-green-500 hover:text-white",
     },
     {
       name: "Telegram",
       icon: PaperAirplaneIcon,
-      href: "https://t.me/akulenok_tmz",
+      href: COMPANY_DETAILS.telegram,
       color: "bg-sky-500/10 text-sky-600 border-sky-200 hover:bg-sky-500 hover:text-white",
     },
     {
       name: "Позвонить",
       icon: PhoneIcon,
-      href: "tel:+79273039977",
+      href: `tel:${COMPANY_DETAILS.phoneRaw}`,
       color: "bg-orange-500/10 text-orange-600 border-orange-200 hover:bg-orange-500 hover:text-white",
     },
   ];
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100]">
+    <div
+      className={clsx(
+        "fixed right-6 z-[100] transition-all duration-300",
+        hasConsent ? "bottom-6" : "bottom-36 sm:bottom-36"
+      )}
+    >
       {/* Облачко-подсказка */}
       <AnimatePresence>
         {showHint && !open && (
@@ -74,7 +91,7 @@ export default function PopupWidget() {
             exit={{ opacity: 0, scale: 0.8 }}
             className="absolute bottom-16 right-0 mb-4 w-48 bg-white p-3 rounded-2xl shadow-xl border border-sky-100 text-sm font-bold text-slate-700 pointer-events-none"
           >
-            Привет! 👋 <br />Нужна помощь?
+            Привет! 👋 <br />Связаться с нами:
             <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-r border-b border-sky-100 rotate-45" />
           </motion.div>
         )}
@@ -83,6 +100,7 @@ export default function PopupWidget() {
       {/* Основная кнопка (FAB) */}
       <button
         onClick={toggle}
+        aria-label="Связаться с нами"
         className={clsx(
           "h-14 w-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300",
           "bg-gradient-to-br from-blue-400 via-sky-500 to-white-500 text-white",
@@ -112,7 +130,7 @@ export default function PopupWidget() {
         </AnimatePresence>
       </button>
 
-      {/* Панель с GIF маскотом */}
+      {/* Панель мессенджеров */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -120,30 +138,29 @@ export default function PopupWidget() {
             initial={{ opacity: 0, y: 20, scale: 0.95, transformOrigin: "bottom right" }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="absolute bottom-20 right-0 w-80 bg-white/90 backdrop-blur-xl rounded-[2.5rem] p-6 shadow-2xl border border-white flex flex-col gap-4"
+            className="absolute bottom-20 right-0 w-80 bg-white/95 backdrop-blur-xl rounded-[2.5rem] p-6 shadow-2xl border border-white flex flex-col gap-4"
           >
-            {/* Тот самый GIF: Акула-кодер в шапке */}
-            <div className="flex items-center gap-4 mb-2">
-              <div className="relative w-16 h-16 shrink-0 bg-slate-50 rounded-2xl overflow-hidden border border-slate-100">
-                <Image 
-                  src="/img/shark-code.gif" 
-                  alt="Shark typing" 
-                  fill 
-                  unoptimized // Важно для GIF!
-                  className="object-contain scale-110" 
+            <div className="flex items-center gap-4 mb-1">
+              <div className="relative w-14 h-14 shrink-0 bg-slate-50 rounded-2xl overflow-hidden border border-slate-100">
+                <Image
+                  src="/img/shark-code.gif"
+                  alt="Shark typing"
+                  fill
+                  unoptimized
+                  className="object-contain scale-110"
                 />
               </div>
               <div className="flex flex-col">
                 <h3 className="font-black text-slate-800 leading-tight">Акулёнок</h3>
                 <div className="flex items-center gap-1.5">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                  <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Печатает ответ...</p>
+                  <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">На связи</p>
                 </div>
               </div>
             </div>
 
-            <p className="text-sm text-slate-600 font-medium px-1">
-              Напишите нам, и мы поможем подобрать удобное время для занятия!
+            <p className="text-sm text-slate-600 font-medium">
+              Выберите удобный способ связи, чтобы позвонить или написать нам:
             </p>
 
             <div className="flex flex-col gap-2.5">

@@ -33,7 +33,7 @@ export default function Home() {
     <>
       <Head>
         <title>Акулёнок • Центр грудничкового плавания • Туймазы</title>
-        <meta name="description" content="Детский бассейн Акулёнок: грудничковое плавание, ЛФК, гидрореабилитация в Туймазах." />
+        <meta name="description" content="Детский бассейн Акулёнок: грудничковое, раннее и семейное плавание в Туймазах." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

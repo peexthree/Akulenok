@@ -31,28 +31,12 @@ const team = [
     image: "/img/personal/3.png",
   },
   {
-    name: "Пурецкая Виктория",
-    role: "Администратор",
-    specialty: "Администратор",
-    experience: "",
-    education: "",
-    image: "/img/personal/4.png",
-  },
-  {
     name: "Нугаева Регина",
     role: "Инструктор",
     specialty: "Инструктор по раннему и грудничковому плаванию",
     experience: "",
     education: "Экономическое образование",
     image: "/img/personal/6.png",
-  },
-  {
-    name: "Шабиева Нелли",
-    role: "Инструктор",
-    specialty: "Инструктор по грудничковому и раннему плаванию",
-    experience: "",
-    education: "Высшее образование",
-    image: "/img/personal/7.png",
   },
   {
     name: "Рахматуллина Арина",
@@ -69,14 +53,6 @@ const team = [
     experience: "Разряд по плаванию",
     education: "Высшее образование",
     image: "/img/personal/10.png",
-  },
-  {
-    name: "Нурметова Эльвина",
-    role: "Инструктор",
-    specialty: "Инструктор по детскому фитнесу",
-    experience: "",
-    education: "Педагогическое образование",
-    image: "/img/personal/11.png",
   },
   {
     name: "Игнатьева Виктория Николаевна",

@@ -11,6 +11,7 @@ import { useShark } from "./SharkProvider";
 const navigation = [
   { name: "Главная", href: "/" },
   { name: "Услуги", href: "#methodology" },
+  { name: "Фитнес", href: "#fitness" },
   { name: "Цены", href: "#pricing" },
   { name: "Галерея", href: "#gallery" },
   { name: "Отзывы", href: "#testimonials" },

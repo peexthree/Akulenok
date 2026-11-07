@@ -15,6 +15,7 @@ const JourneyTimeline = dynamic(() => import("../components/JourneyTimeline").th
 const Video = dynamic(() => import("../components/Video").then(m => m.default));
 const Benefits = dynamic(() => import("../components/Benefits").then(m => m.default));
 const Services = dynamic(() => import("../components/Services").then(m => m.default));
+const Fitness = dynamic(() => import("../components/Fitness").then(m => m.default));
 const Checklist = dynamic(() => import("../components/Checklist").then(m => m.default));
 const Team = dynamic(() => import("../components/Team").then(m => m.default));
 const Schedule = dynamic(() => import("../components/Schedule").then(m => m.default));
@@ -71,6 +72,8 @@ export default function Home() {
         <Benefits />
         
         <Services />
+
+        <Fitness />
 
         <Checklist />
 

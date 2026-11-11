@@ -1,122 +1,223 @@
-import React from "react";
-import Image from "next/image";
+import React, { useState } from "react";
 import Container from "./Container";
 import SectionTitle from "./SectionTitle";
 import { motion } from "framer-motion";
+import { StarIcon, CheckBadgeIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
 import { COMPANY_DETAILS } from "../config/company";
 
-const testimonials = [
+const yandexReviews = [
   {
-    name: "Марина и Артём (6 мес)",
-    result: "Ушёл тонус ножек",
-    text: "Пришли с сильным гипертонусом, малыш постоянно плакал. После 5 занятий у Артёма расслабились ножки, он стал лучше спать и улыбаться. Тренеры — чудо!",
-    image: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&q=80&w=300",
+    author: "Татьяна Галиева",
+    initials: "ТГ",
+    avatarColor: "from-sky-400 to-blue-600",
+    date: "23 июля · Яндекс.Карты",
+    tag: "Тренеры Регина и Любовь",
+    text: "Очень приятно и радостно видеть замечательный персонал, который любит детей. Тренер Регина и Любовь — вам отдельная благодарность. Успехов вам всем и здоровья.",
   },
   {
-    name: "Екатерина и София (1 год)",
-    result: "Перестали бояться воды",
-    text: "Дочка жутко боялась купаться даже дома. В Акулёнке настолько мягкий подход и столько игрушек, что она сама тянется в воду. Спасибо за терпение!",
-    image: "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80&w=300",
+    author: "Ксения Жернакова",
+    initials: "КЖ",
+    avatarColor: "from-teal-400 to-emerald-600",
+    date: "26 июля 2025 · Яндекс.Карты",
+    tag: "Преодолели страх воды · Арина",
+    text: "Супер место. Приятные администраторы, отличный тренер Арина. Буквально за пару занятий моя дочь перестала бояться воды, стала держаться на плаву и даже немного поплыла. Спасибо большое.",
   },
   {
-    name: "Анна и Матвей (3 мес)",
-    result: "Первые успехи в нырянии",
-    text: "Очень чистая вода, нет запаха хлорки. Тренер нашла подход за 5 минут. Матвей уже задерживает дыхание и радостно плещется.",
-    image: "https://images.unsplash.com/photo-1594911772125-07fc7a2d8d9f?auto=format&fit=crop&q=80&w=300",
+    author: "Евгений",
+    initials: "Е",
+    avatarColor: "from-indigo-400 to-sky-600",
+    date: "14 июля 2024 · Яндекс.Карты",
+    tag: "Ходим уже 4 месяца",
+    text: "Детский центр «Акулёнок» вообще отличный, возим ребёнка 4 месяца — ему нравится. Специалисты хорошие, добрые, умеют обращаться с детьми, и с такими маленькими в том числе. Советую!",
+  },
+  {
+    author: "Фотолюкс",
+    initials: "Ф",
+    avatarColor: "from-amber-400 to-orange-500",
+    date: "1 мая 2023 · Яндекс.Карты",
+    tag: "Бассейн, уют и монитор для родителей",
+    text: "Единственный в своём роде, уникальный водный комплекс для маленьких детей. Добрые администраторы, большой бассейн, опытные тренеры, уютная зона ожидания и монитор для наблюдения за тем, как плавает ваш маленький пловец.",
   },
 ];
 
 export default function Testimonials() {
+  const [showMobileWidget, setShowMobileWidget] = useState(false);
+
   return (
-    <Container id="testimonials" className="py-24 relative z-10 scroll-mt-24">
-      <SectionTitle
-        pretitle="Отзывы"
-        title="Истории наших маленьких чемпионов"
-      >
-        Настоящие результаты и искренние эмоции мам, которые доверили нам здоровье своих детей.
-      </SectionTitle>
+    <section id="testimonials" className="py-24 relative z-10 scroll-mt-24 overflow-hidden">
+      <div className="absolute top-24 right-0 w-96 h-96 bg-sky-100/60 rounded-full blur-[120px] -z-10 pointer-events-none" />
+      <div className="absolute bottom-12 left-0 w-80 h-80 bg-amber-100/40 rounded-full blur-[110px] -z-10 pointer-events-none" />
 
-      <div className="grid gap-8 lg:grid-cols-3 mt-16">
-        {testimonials.map((item, index) => (
-          <motion.div
-            key={item.name}
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55, delay: index * 0.08 }}
-            className="flex flex-col p-8 rounded-[2.5rem] sm:rounded-[3rem] bg-white/90 backdrop-blur-xl border border-white shadow-soft hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 relative group h-full"
-          >
-            <div className="absolute top-6 right-8 text-sky-200 group-hover:text-sky-300 transition-colors duration-300" aria-hidden="true">
-              <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 32 32">
-                <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H6c0-2.2 1.8-4 4-4V8zm14 0c-3.3 0-6 2.7-6 6v10h10V14h-8c0-2.2 1.8-4 4-4V8z" />
-              </svg>
-            </div>
+      <Container>
+        <SectionTitle
+          pretitle="Реальные отзывы"
+          title="Истории наших маленьких чемпионов"
+        >
+          Проверенные отзывы родителей с Яндекс.Карт о наших тренерах, тёплой воде и атмосфере центра.
+        </SectionTitle>
 
-            <div className="flex items-center gap-4 mb-8 relative z-10">
-              <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-md shrink-0 bg-sky-50">
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  fill
-                  sizes="64px"
-                  className="object-cover"
-                />
-              </div>
-              <div>
-                <h4 className="text-lg font-black text-slate-900 leading-tight">{item.name}</h4>
-                <div className="flex text-amber-400 mt-1" aria-label="Оценка 5 из 5">
+        {/* Плашка рейтинга Яндекс.Карт */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-10 bg-white/95 backdrop-blur-xl border border-sky-100 rounded-[2rem] p-5 sm:p-6 shadow-soft flex flex-col md:flex-row items-center justify-between gap-5"
+        >
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+            <div className="flex items-center gap-3 bg-amber-50 border border-amber-200/80 px-4 py-2.5 rounded-2xl">
+              <span className="text-3xl font-black text-slate-900 leading-none">
+                {COMPANY_DETAILS.rating}
+              </span>
+              <div className="flex flex-col">
+                <div className="flex text-amber-400" aria-label={`Рейтинг ${COMPANY_DETAILS.rating} из 5`}>
                   {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
+                    <StarIcon key={i} className="w-4 h-4" aria-hidden="true" />
                   ))}
                 </div>
+                <span className="text-xs font-bold text-slate-600 mt-0.5">Яндекс.Карты</span>
               </div>
             </div>
 
-            <div className="mb-4">
-              <span className="inline-block text-xs font-black uppercase tracking-wider text-sky-700 bg-sky-50 px-4 py-1.5 rounded-xl border border-sky-100">
-                Результат: {item.result}
-              </span>
+            <div className="text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start gap-1.5 text-slate-900 font-black text-base sm:text-lg">
+                <CheckBadgeIcon className="w-5 h-5 text-sky-500 shrink-0" aria-hidden="true" />
+                <span>Подтверждённые отзывы посетителей</span>
+              </div>
+              <p className="text-sm text-slate-600 font-medium">
+                {COMPANY_DETAILS.reviewsCountText} · г. Туймазы, ул. Столярова, 1
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <button
+              type="button"
+              onClick={() => setShowMobileWidget((v) => !v)}
+              className="lg:hidden inline-flex items-center justify-center gap-2 bg-sky-50 text-sky-700 border border-sky-200 font-bold py-2.5 px-5 rounded-xl text-sm hover:bg-sky-100 transition-colors"
+            >
+              {showMobileWidget ? "Скрыть живую ленту Яндекса" : "Открыть живую ленту Яндекса"}
+            </button>
+
+            <a
+              href={COMPANY_DETAILS.yandexReviews}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold py-3 px-6 rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all text-sm sm:text-base"
+            >
+              Оставить отзыв
+              <ArrowTopRightOnSquareIcon className="w-4 h-4" aria-hidden="true" />
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Основная сетка: слева 4 живых отзыва, справа официальный виджет Яндекс.Карт */}
+        <div className="grid gap-8 lg:grid-cols-12 items-stretch">
+          <div className="lg:col-span-7 grid gap-5 sm:grid-cols-2">
+            {yandexReviews.map((item, index) => (
+              <motion.article
+                key={item.author}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.06 }}
+                className="flex flex-col p-6 sm:p-7 rounded-[2.25rem] bg-white/95 backdrop-blur-xl border border-white shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative group"
+              >
+                <div className="flex items-center gap-3.5 mb-4">
+                  <div
+                    aria-hidden="true"
+                    className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.avatarColor} text-white font-black text-base flex items-center justify-center shrink-0 shadow-md`}
+                  >
+                    {item.initials}
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="text-base sm:text-lg font-black text-slate-900 leading-tight truncate">
+                      {item.author}
+                    </h3>
+                    <p className="text-xs font-semibold text-slate-500 mt-0.5">{item.date}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <span className="inline-block text-[11px] font-extrabold uppercase tracking-wider text-sky-700 bg-sky-50 px-3 py-1 rounded-xl border border-sky-100">
+                    {item.tag}
+                  </span>
+                  <div className="flex text-amber-400 shrink-0" aria-label="Оценка 5 из 5">
+                    {[...Array(5)].map((_, i) => (
+                      <StarIcon key={i} className="w-3.5 h-3.5" aria-hidden="true" />
+                    ))}
+                  </div>
+                </div>
+
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium flex-grow">
+                  «{item.text}»
+                </p>
+              </motion.article>
+            ))}
+          </div>
+
+          {/* Живой официальный виджет Яндекс.Карт */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.12 }}
+            className={`lg:col-span-5 flex-col bg-white/95 backdrop-blur-xl border border-sky-100 rounded-[2.5rem] p-4 sm:p-5 shadow-soft ${
+              showMobileWidget ? "flex" : "hidden lg:flex"
+            }`}
+          >
+            <div className="flex items-center justify-between gap-2 px-2 pb-3 mb-3 border-b border-slate-100">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500" aria-hidden="true" />
+                <span className="text-sm font-black text-slate-900">Лента Яндекс.Карт</span>
+              </div>
+              <a
+                href={COMPANY_DETAILS.yandexReviews}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-bold text-sky-600 hover:text-sky-700 inline-flex items-center gap-1"
+              >
+                Открыть в Картах
+                <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5" aria-hidden="true" />
+              </a>
             </div>
 
-            <p className="text-lg text-slate-700 leading-relaxed font-medium relative z-10 flex-grow italic">
-              «{item.text}»
-            </p>
+            <div className="relative w-full h-[520px] lg:h-full lg:min-h-[540px] rounded-[1.75rem] overflow-hidden bg-slate-50 border border-slate-100">
+              <iframe
+                src={COMPANY_DETAILS.yandexReviewsWidget}
+                title="Живые отзывы о центре Акулёнок на Яндекс.Картах"
+                loading="lazy"
+                className="w-full h-full border-0"
+              />
+            </div>
           </motion.div>
-        ))}
-      </div>
+        </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4"
-      >
-        <a
-          href={COMPANY_DETAILS.yandexReviews}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 bg-white text-slate-700 font-bold py-3.5 px-7 rounded-2xl shadow-md border border-slate-200 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto"
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          Читать 59+ отзывов на Яндекс.Картах
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
-        </a>
+          <a
+            href={COMPANY_DETAILS.yandexReviews}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 bg-white text-slate-800 font-bold py-3.5 px-7 rounded-2xl shadow-md border border-slate-200 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto"
+          >
+            Все {COMPANY_DETAILS.reviewsCountText} на Яндекс.Картах
+            <ArrowTopRightOnSquareIcon className="w-4 h-4" aria-hidden="true" />
+          </a>
 
-        <a
-          href={COMPANY_DETAILS.yandexReviews}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold py-3.5 px-7 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto"
-        >
-          Оставить отзыв о нашей работе
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-          </svg>
-        </a>
-      </motion.div>
-    </Container>
+          <a
+            href={COMPANY_DETAILS.yandexReviews}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold py-3.5 px-7 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto"
+          >
+            Написать свой отзыв на Яндексе
+          </a>
+        </motion.div>
+      </Container>
+    </section>
   );
 }

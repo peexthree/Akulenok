@@ -98,7 +98,7 @@ export default function Navbar() {
         className={`
           pointer-events-auto flex items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]
           ${isScrolled
-            ? "w-[95%] max-w-5xl rounded-full bg-white/92 backdrop-blur-xl shadow-lg border border-sky-100/70 px-5 sm:px-6 py-2"
+            ? "w-[95%] max-w-5xl rounded-full bg-white/95 backdrop-blur-xl shadow-[0_12px_36px_-10px_rgba(14,165,233,0.22)] border border-sky-100/80 px-5 sm:px-6 py-2"
             : "w-full max-w-full rounded-none bg-transparent px-6 sm:px-8 lg:px-16 py-6 sm:py-8"
           }
         `}
@@ -167,15 +167,24 @@ export default function Navbar() {
                 className={`relative px-3 xl:px-4 py-2 text-sm font-bold whitespace-nowrap transition-colors duration-300 rounded-full ${
                   isActive
                     ? isScrolled
-                      ? "text-sky-600 bg-sky-50"
-                      : "text-white bg-white/15"
+                      ? "text-sky-700"
+                      : "text-white"
                     : isScrolled
                       ? "text-slate-600 hover:text-sky-600"
                       : "text-white/90 hover:text-white"
                 }`}
               >
                 <span className="relative z-10">{item.name}</span>
-                {hoveredIndex === index && (
+                {isActive && (
+                  <motion.div
+                    layoutId="navActive"
+                    className={`absolute inset-0 rounded-full -z-0 ${
+                      isScrolled ? "bg-sky-100/90" : "bg-white/20 backdrop-blur-sm"
+                    }`}
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                {hoveredIndex === index && !isActive && (
                   <motion.div
                     layoutId="navHover"
                     className={`absolute inset-0 rounded-full -z-0 ${

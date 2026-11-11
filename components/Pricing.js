@@ -51,6 +51,19 @@ const pricingData = [
 
 export default function Pricing() {
   const [showPromo, setShowPromo] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyPromo = async () => {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText("АКУЛА");
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }
+    } catch {
+      // Ignore clipboard failures in restricted environments
+    }
+  };
 
   return (
     <section id="pricing" className="py-24 bg-slate-50 relative overflow-hidden scroll-mt-24">
@@ -210,17 +223,19 @@ export default function Pricing() {
                     </svg>
                   </motion.button>
                 ) : (
-                  <motion.div
+                  <motion.button
                     key="visible"
+                    type="button"
+                    onClick={handleCopyPromo}
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="w-full py-3 bg-indigo-600 text-white rounded-2xl text-center shadow-lg"
+                    className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl text-center shadow-lg transition-colors"
                   >
                     <span className="text-xs font-medium opacity-90 uppercase tracking-widest block mb-1">
-                      Ваш промокод:
+                      {copied ? "Скопировано ✓" : "Ваш промокод (нажмите, чтобы скопировать):"}
                     </span>
                     <span className="font-black text-2xl tracking-widest">АКУЛА</span>
-                  </motion.div>
+                  </motion.button>
                 )}
               </AnimatePresence>
             </div>

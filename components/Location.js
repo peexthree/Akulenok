@@ -61,8 +61,8 @@ export default function Location() {
 
             <div className="inline-flex items-center gap-2 bg-amber-50 px-4 py-2 rounded-xl border border-amber-200/70 self-start">
               <span className="text-amber-500 text-xl" aria-hidden="true">★</span>
-              <span className="font-bold text-slate-900">4.7</span>
-              <span className="text-slate-600 text-sm font-medium">(На основе 59 отзывов)</span>
+              <span className="font-bold text-slate-900">{COMPANY_DETAILS.rating}</span>
+              <span className="text-slate-600 text-sm font-medium">({COMPANY_DETAILS.reviewsCountText})</span>
             </div>
           </div>
 

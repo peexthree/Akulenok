@@ -7,7 +7,7 @@ const securityHeaders = [
       "default-src 'self'; " +
       "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://mc.yandex.ru https://*.yandex.ru https://yastatic.net; " +
       "style-src 'self' 'unsafe-inline' https://yastatic.net; " +
-      "img-src 'self' data: blob: https://images.unsplash.com https://mc.yandex.ru https://mc.yandex.com https://*.yandex.net https://*.yandex.ru; " +
+      "img-src 'self' data: blob: https://mc.yandex.ru https://mc.yandex.com https://*.yandex.net https://*.yandex.ru; " +
       "font-src 'self' data: https://fonts.gstatic.com; " +
       "connect-src 'self' https://mc.yandex.ru https://mc.yandex.com wss://mc.yandex.ru wss://mc.yandex.com; " +
       "frame-src 'self' https://yandex.ru https://*.yandex.ru; " +
@@ -37,12 +37,7 @@ const nextConfig = {
   },
 
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-    ],
+    unoptimized: false,
   },
 
   async headers() {

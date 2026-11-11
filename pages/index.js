@@ -11,6 +11,7 @@ import JourneyTimeline from "../components/JourneyTimeline";
 import Video from "../components/Video";
 import Benefits from "../components/Benefits";
 import Services from "../components/Services";
+import Fitness from "../components/Fitness";
 import Checklist from "../components/Checklist";
 import Team from "../components/Team";
 import Schedule from "../components/Schedule";
@@ -24,9 +25,9 @@ import Location from "../components/Location";
 import Cta from "../components/CTA";
 import Footer from "../components/Footer";
 
-const pageTitle = "Акулёнок — центр грудничкового и раннего плавания в Туймазах";
+const pageTitle = "Акулёнок — детский бассейн, женский и детский фитнес в Туймазах";
 const pageDescription =
-  "Детский бассейн «Акулёнок» в г. Туймазы: грудничковое плавание с 3 месяцев, раннее плавание от 1 до 7 лет, семейное плавание и умный фитнес. Тёплая вода 32–33 °C и тройная очистка.";
+  "Семейный аквацентр «Акулёнок» в г. Туймазы: грудничковое и раннее плавание от 3 месяцев, женский фитнес и стретчинг, детская группа 3–7 лет (ритмика, ОФП, гимнастика) параллельно в соседних залах. Запись: +7 (927) 303-99-77.";
 const ogImage = `${COMPANY_DETAILS.siteUrl}/img/logo-akulenok-social.jpg`;
 
 const structuredData = {
@@ -114,6 +115,8 @@ export default function Home() {
         <Benefits />
 
         <Services />
+
+        <Fitness />
 
         <Checklist />
 

@@ -76,7 +76,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg sm:text-2xl text-slate-100 mb-12 max-w-3xl mx-auto leading-relaxed tracking-wide text-balance font-semibold drop-shadow-md">
-            Грудничковое и раннее плавание для детей с 3 месяцев в г. Туймазы · Здоровье для всей семьи
+            Грудничковое и раннее плавание от 3 месяцев, женский и детский фитнес в г. Туймазы · Здоровье для всей семьи
           </p>
         </motion.div>
 

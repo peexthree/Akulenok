@@ -10,6 +10,7 @@ import { COMPANY_DETAILS } from "../config/company";
 const navigation = [
   { name: "Главная", href: "/" },
   { name: "Услуги", href: "#methodology" },
+  { name: "Фитнес", href: "#fitness" },
   { name: "Цены", href: "#pricing" },
   { name: "Галерея", href: "#gallery" },
   { name: "Отзывы", href: "#testimonials" },
@@ -103,7 +104,7 @@ export default function Navbar() {
         `}
       >
         {/* Логотип (10 кликов открывают пасхалку) */}
-        <div className="flex items-center shrink-0 w-[230px] sm:w-[300px]">
+        <div className="flex items-center shrink-0 w-[215px] sm:w-[250px] xl:w-[280px]">
           <button
             type="button"
             onClick={handleLogoClick}
@@ -154,7 +155,7 @@ export default function Navbar() {
         </div>
 
         {/* Десктопное меню */}
-        <div className="hidden lg:flex items-center justify-center flex-1 gap-x-1 relative">
+        <div className="hidden lg:flex items-center justify-center flex-1 gap-x-0.5 xl:gap-x-1 relative">
           {navigation.map((item, index) => {
             const isActive = activeHref === item.href;
             return (
@@ -163,7 +164,7 @@ export default function Navbar() {
                 href={item.href}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className={`relative px-4 py-2 text-sm font-bold transition-colors duration-300 rounded-full ${
+                className={`relative px-3 xl:px-4 py-2 text-sm font-bold whitespace-nowrap transition-colors duration-300 rounded-full ${
                   isActive
                     ? isScrolled
                       ? "text-sky-600 bg-sky-50"

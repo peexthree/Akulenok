@@ -54,7 +54,7 @@ const About = () => {
             Про нас
           </motion.h2>
           <motion.p variants={itemVariants} className="text-lg sm:text-xl text-slate-600 leading-relaxed z-10 relative font-medium">
-            Семейный аквацентр в г. Туймазы: грудничковое плавание, раннее плавание, семейное плавание, умный фитнес. Комфортные условия для здоровья всей семьи.
+            Семейный аквацентр в г. Туймазы: грудничковое плавание, раннее и семейное плавание, а также женский и детский фитнес (ритмика, ОФП, гимнастика, стретчинг). Комфортные условия для здоровья всей семьи.
           </motion.p>
 
           <motion.div variants={containerVariants} className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 z-10 relative">

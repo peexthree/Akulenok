@@ -33,12 +33,21 @@ const services = [
   },
   {
     num: "04",
-    title: "Умный фитнес",
-    age: "для женщин",
-    desc: "Возвращаем телу лёгкость, подвижность и энергию. Укрепление мышечного корсета и тазового дна в комфортной, поддерживающей атмосфере.",
+    title: "Женский фитнес",
+    age: "для мам и женщин · ПН / СР / ПТ",
+    desc: "Фитнес, стретчинг и отличное самочувствие: утренние группы (09:00, 10:00) и вечерние (18:30, 19:30) параллельно с детскими занятиями.",
     color: "from-fuchsia-100 via-pink-50 to-rose-50",
     badge: "bg-fuchsia-500/10 text-fuchsia-700",
     icon3d: "/img/3d-icons/2.webp",
+  },
+  {
+    num: "05",
+    title: "Детский фитнес",
+    age: "от 3 до 7 лет · ПН / СР / ПТ",
+    desc: "Ритмика, ОФП и гимнастика в соседнем зале в 18:30 и 19:30 — ребёнок развивается, пока мама спокойно занимается рядом.",
+    color: "from-teal-100 via-emerald-50 to-sky-50",
+    badge: "bg-teal-500/10 text-teal-700",
+    icon3d: "/img/3d-icons/service-4-mascot.webp",
   },
 ];
 
@@ -80,7 +89,7 @@ export default function Methodology() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.55, delay: idx * 0.08, ease: "easeOut" }}
-                style={{ top: `calc(104px + ${idx * 22}px)` }}
+                style={{ top: `calc(92px + ${idx * 18}px)` }}
                 className={`lg:sticky flex flex-col p-8 sm:p-12 rounded-[2.25rem] sm:rounded-[3rem] bg-gradient-to-br ${service.color} shadow-xl border border-white hover:shadow-2xl transition-shadow duration-300 overflow-hidden group`}
               >
                 <div className="absolute top-0 right-0 p-4 opacity-85 group-hover:opacity-100 transition-transform duration-700 pointer-events-none z-0 group-hover:scale-105">

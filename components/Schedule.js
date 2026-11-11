@@ -85,9 +85,16 @@ function Schedule() {
               Работаем по предварительной записи в любое время года
             </h3>
 
-            <p className="text-slate-600 font-medium mb-8 leading-relaxed">
+            <p className="text-slate-600 font-medium mb-5 leading-relaxed">
               Свяжитесь с нами, чтобы забронировать удобное время для вашего малыша. Количество мест в мини-группах ограничено.
             </p>
+
+            <a
+              href="#fitness"
+              className="text-sm font-bold text-sky-600 hover:text-sky-700 mb-6 inline-flex items-center gap-1.5 transition-colors"
+            >
+              Групповой фитнес для мам и детей (ПН / СР / ПТ) →
+            </a>
 
             <a
               href={`tel:${COMPANY_DETAILS.phoneRaw}`}

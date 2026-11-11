@@ -98,6 +98,57 @@
   .shadow-soft {
     box-shadow: 0 20px 40px -15px rgba(14, 165, 233, 0.12), 0 8px 20px -12px rgba(12, 26, 46, 0.06);
   }
+
+  /* Единый первичный CTA (розовый) */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-2xl px-8 py-4 text-lg font-extrabold text-white bg-gradient-to-r from-rose-500 to-pink-500 shadow-heavy transition-all duration-300 hover:shadow-lg hover:shadow-rose-500/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98];
+  }
+
+  .btn-primary-lg {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-2xl px-10 py-5 text-xl font-extrabold text-white bg-gradient-to-r from-rose-500 to-pink-500 shadow-heavy transition-all duration-300 hover:shadow-lg hover:shadow-rose-500/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98];
+  }
+
+  .btn-primary-sm {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-extrabold text-white bg-gradient-to-r from-rose-500 to-pink-500 shadow-md shadow-rose-500/25 transition-all duration-300 hover:shadow-lg hover:shadow-rose-500/35 active:scale-95;
+  }
+
+  /* Вторичный CTA (голубой) */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-sky-500 to-cyan-500 shadow-md shadow-sky-500/25 transition-all duration-300 hover:shadow-lg hover:shadow-sky-500/35 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98];
+  }
+
+  /* Преглотитл-плашка над H2 */
+  .badge-pretitle {
+    @apply inline-block rounded-full bg-sky-100/80 backdrop-blur px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.2em] text-sky-700;
+  }
+}
+
+/* Бегущая строка (общая для TrustBar и Team) */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee {
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+/* На мобильных бегущая строка быстрее вдвое */
+@media (max-width: 640px) {
+  .marquee {
+    animation-duration: calc(var(--marquee-duration, 40s) / 2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+  }
 }
 
 /* Анимированный Aqua-Rose Mesh Gradient */

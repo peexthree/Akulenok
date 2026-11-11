@@ -45,7 +45,7 @@ const LoadingScreen = () => (
       <span className="text-xs font-extrabold uppercase tracking-[0.35em] text-sky-600 mb-3">
         Семейный аквацентр
       </span>
-      <div className="font-display text-5xl sm:text-7xl font-extrabold bg-gradient-to-r from-sky-500 via-indigo-400 to-rose-500 bg-clip-text text-transparent tracking-tight mb-5">
+      <div className="font-display text-5xl sm:text-7xl font-extrabold bg-gradient-to-r from-sky-500 to-rose-500 bg-clip-text text-transparent tracking-tight mb-5">
         Акулёнок
       </div>
       <div className="w-40 h-1.5 bg-sky-100 rounded-full overflow-hidden shadow-inner">
@@ -53,7 +53,7 @@ const LoadingScreen = () => (
           initial={{ x: "-100%" }}
           animate={{ x: "0%" }}
           transition={{ duration: 1.15, ease: "easeInOut" }}
-          className="h-full w-full bg-gradient-to-r from-sky-500 via-indigo-400 to-rose-500 rounded-full"
+          className="h-full w-full bg-gradient-to-r from-sky-500 to-rose-500 rounded-full"
         />
       </div>
     </motion.div>

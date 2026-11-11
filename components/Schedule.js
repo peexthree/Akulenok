@@ -10,14 +10,14 @@ function Schedule() {
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 h-80 bg-rose-300/20 rounded-full blur-3xl -z-10 pointer-events-none" />
 
       <div className="text-center max-w-2xl mx-auto mb-16">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100/80 border border-sky-200/60 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
+        <span className="badge-pretitle mb-4">
           Режим работы
         </span>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] tracking-tight leading-tight mb-4"
+          className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] tracking-tight leading-[1.1] mb-4"
         >
           Выберите своё время
         </motion.h2>
@@ -48,7 +48,7 @@ function Schedule() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-[#0C1A2E] mb-2">с понедельника по пятницу</h3>
+                <h3 className="text-xl font-bold text-[#0C1A2E] mb-2">С понедельника по пятницу</h3>
                 <p className="font-display text-3xl sm:text-4xl font-extrabold text-sky-600 tracking-tight leading-none">
                   {COMPANY_DETAILS.hoursWeekdays}
                 </p>
@@ -64,7 +64,7 @@ function Schedule() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-[#0C1A2E] mb-2">суббота / воскресенье</h3>
+                <h3 className="text-xl font-bold text-[#0C1A2E] mb-2">Суббота и воскресенье</h3>
                 <p className="font-display text-3xl sm:text-4xl font-extrabold text-rose-500 tracking-tight leading-none">
                   {COMPANY_DETAILS.hoursWeekend}
                 </p>
@@ -98,7 +98,7 @@ function Schedule() {
 
             <a
               href={`tel:${COMPANY_DETAILS.phoneRaw}`}
-              className="w-full sm:w-auto px-9 py-4 rounded-2xl font-extrabold text-lg tracking-wide leading-snug transition-all duration-300 hover:scale-[1.02] active:scale-95 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white shadow-lg shadow-rose-500/25 flex items-center justify-center gap-3"
+              className="btn-primary w-full sm:w-auto"
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />

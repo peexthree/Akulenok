@@ -70,7 +70,7 @@ function SharkBlock({ eggId }) {
             Архитектор Системы
           </h3>
           <p className="text-slate-600 text-sm mb-6 font-medium leading-tight">
-            Игорь — Python-разработчик. <br /> Готов обсудить ваш проект.
+            Игорь - Python-разработчик. <br /> Готов обсудить ваш проект.
           </p>
 
           <div className="w-full">

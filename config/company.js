@@ -18,8 +18,8 @@ export const COMPANY_DETAILS = {
   yandexReviewsWidget: "https://yandex.ru/maps-reviews-widget/125018811972?comments",
   rating: "4.8",
   reviewsCountText: "64 оценки · 20+ отзывов",
-  hoursWeekdays: "9:00 – 21:00",
-  hoursWeekend: "10:00 – 18:00",
+  hoursWeekdays: "9:00 - 21:00",
+  hoursWeekend: "10:00 - 18:00",
   metaDisclaimer: "*Социальная сеть Instagram принадлежит компании Meta, признанной экстремистской и запрещенной на территории РФ.",
   offerDisclaimer: "Указанные цены носят информационный характер и не являются публичной офертой (ст. 437 ГК РФ).",
 };

@@ -10,7 +10,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-gradient-to-b from-[#ECF8FF] to-sky-100/70 pt-16 pb-8 mt-12 rounded-t-[3rem] sm:rounded-t-[4rem] overflow-hidden border-t border-white">
+    <footer className="relative bg-gradient-to-b from-[#ECF8FF] to-sky-100/70 pt-16 pb-8 mt-12 rounded-t-[3rem] sm:rounded-t-[5rem] overflow-hidden border-t border-white">
       <div className="absolute top-0 left-1/3 w-96 h-96 bg-white/70 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-rose-200/20 rounded-full blur-3xl pointer-events-none" />
 
@@ -42,7 +42,7 @@ export default function Footer() {
 
           {/* Блок 2: Навигация */}
           <div className="flex flex-col items-center md:items-start">
-            <h4 className="text-lg font-bold text-slate-900 mb-4">Навигация</h4>
+            <h4 className="text-lg font-bold text-ocean mb-4">Навигация</h4>
             <div className="flex flex-col gap-3 font-medium text-slate-600 items-center md:items-start">
               <Link href="/" className="hover:text-sky-600 transition-colors">Главная</Link>
               <Link href="/#about" className="hover:text-sky-600 transition-colors">О нас</Link>
@@ -54,7 +54,7 @@ export default function Footer() {
 
           {/* Блок 3: Контакты */}
           <div className="flex flex-col items-center md:items-start">
-            <h4 className="text-lg font-bold text-slate-900 mb-4">Мы на связи</h4>
+            <h4 className="text-lg font-bold text-ocean mb-4">Мы на связи</h4>
 
             <div className="flex flex-wrap justify-center md:justify-start gap-3 mb-6">
               <a
@@ -80,7 +80,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
-                className="p-3 bg-white text-emerald-500 rounded-2xl shadow-sm hover:shadow-md hover:bg-emerald-50 hover:-translate-y-1 transition-all duration-300"
+                className="p-3 bg-white text-[#25D366] rounded-2xl shadow-sm hover:shadow-md hover:bg-[#25D366]/10 hover:-translate-y-1 transition-all duration-300"
               >
                 <FaWhatsapp size={22} aria-hidden="true" />
               </a>

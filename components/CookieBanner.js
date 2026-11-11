@@ -35,12 +35,12 @@ export default function CookieBanner() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
-          className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-96 z-[9999] bg-white/85 backdrop-blur-xl border border-white/90 p-6 rounded-3xl shadow-soft"
+          className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-80 z-[9999] bg-white/85 backdrop-blur-xl border border-white/90 p-5 rounded-3xl shadow-soft"
         >
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-3">
             <div className="flex-1">
-              <h3 className="text-lg font-extrabold text-[#0C1A2E] mb-2">Мы используем файлы cookie 🍪</h3>
-              <p className="text-sm text-slate-600 mb-4 leading-relaxed font-medium">
+              <h3 className="text-base font-extrabold text-[#0C1A2E] mb-1.5">Мы используем файлы cookie 🍪</h3>
+              <p className="text-sm text-slate-600 mb-3 leading-snug font-medium">
                 Нажимая «Хорошо», вы соглашаетесь на работу аналитики согласно{" "}
                 <Link href="/privacy" className="text-sky-600 hover:text-sky-700 underline underline-offset-2 transition-colors">
                   политике конфиденциальности
@@ -51,7 +51,7 @@ export default function CookieBanner() {
                 <button
                   type="button"
                   onClick={acceptCookies}
-                  className="w-full bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-600 hover:to-cyan-600 text-white font-bold py-2.5 px-4 rounded-2xl transition-all shadow-md shadow-sky-500/20 active:scale-95"
+                  className="w-full bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-600 hover:to-cyan-600 text-white font-bold py-2.5 px-4 rounded-xl transition-all shadow-md shadow-sky-500/20 active:scale-95"
                 >
                   Хорошо
                 </button>
@@ -60,7 +60,7 @@ export default function CookieBanner() {
             <button
               type="button"
               onClick={dismissBanner}
-              className="text-slate-500 hover:text-slate-700 transition-colors p-1 rounded-lg"
+              className="text-slate-500 hover:text-slate-700 transition-colors p-2.5 -m-1 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Отказаться и закрыть"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

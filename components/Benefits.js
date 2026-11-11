@@ -10,12 +10,12 @@ const items = [
   },
   {
     title: "Доказанная методология",
-    desc: "Мы не просто плаваем — мы изучаем. Каждое движение основано на рекомендациях педиатров и современной базе знаний о развитии.",
+    desc: "Мы не просто плаваем - мы изучаем. Каждое движение основано на рекомендациях педиатров и современной базе знаний о развитии.",
     img: "/img/benefit-two.webp",
   },
   {
     title: "Эмоциональный интеллект",
-    desc: "Результат занятий — это не только мышцы, но и комфорт. Спокойный сон, отсутствие стресса и уверенность в каждом движении.",
+    desc: "Результат занятий - это не только мышцы, но и комфорт. Спокойный сон, отсутствие стресса и уверенность в каждом движении.",
     img: "/img/hero.webp",
   },
 ];
@@ -46,7 +46,7 @@ export default function Benefits() {
   return (
     <Container className="relative">
       <div className="text-center mb-16 relative z-10">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100/80 border border-sky-200/60 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
+        <span className="badge-pretitle mb-4">
           Преимущества
         </span>
         <motion.h2
@@ -54,11 +54,11 @@ export default function Benefits() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] tracking-tight text-balance"
+          className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] tracking-tight leading-[1.1] text-balance"
         >
-          Почему «Акулёнок» — это верный выбор?
+          Почему «Акулёнок» - это верный выбор?
         </motion.h2>
-        <div className="w-24 h-1.5 bg-gradient-to-r from-sky-500 via-indigo-400 to-rose-500 mx-auto mt-6 rounded-full" />
+        <div className="w-24 h-1.5 bg-gradient-to-r from-sky-500 to-rose-500 mx-auto mt-6 rounded-full" />
       </div>
 
       <motion.div
@@ -76,7 +76,7 @@ export default function Benefits() {
             className={`backdrop-blur-xl p-8 rounded-3xl border border-white/90 shadow-soft hover:shadow-xl transition-all duration-300 group flex flex-col items-center text-center ${
               index === 1
                 ? "bg-gradient-to-b from-white/95 to-sky-50/85 ring-1 ring-sky-200/60"
-                : "bg-white/80"
+                : "glass-card"
             }`}
           >
             <div className="w-36 h-36 sm:w-40 sm:h-40 mb-7 relative flex items-center justify-center bg-[#ECF8FF] rounded-3xl overflow-hidden border-2 border-white shadow-inner group-hover:scale-105 transition-transform duration-500">

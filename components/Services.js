@@ -2,6 +2,7 @@ import Container from "./Container";
 import SectionTitle from "./SectionTitle";
 import { motion } from "framer-motion";
 import { UserIcon, UserGroupIcon, SparklesIcon } from "@heroicons/react/24/outline";
+import { CheckCircleIcon } from "@heroicons/react/24/solid";
 
 const formats = [
   {
@@ -68,7 +69,7 @@ export default function Services() {
             key={item.title}
             variants={itemVariants}
             whileHover={{ y: -4 }}
-            className="bg-white/80 backdrop-blur-xl p-8 rounded-3xl border border-white/90 shadow-soft flex flex-col h-full justify-start transition-all duration-300 hover:shadow-xl group"
+            className="glass-card p-8 flex flex-col h-full justify-start transition-all duration-300 hover:shadow-xl group"
           >
             <div
               className={`w-14 h-14 mb-6 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-sm ${
@@ -99,16 +100,12 @@ export default function Services() {
         <h4 className="text-xl font-extrabold text-[#0C1A2E] mb-6">Важно знать о занятиях:</h4>
         <ul className="text-slate-600 space-y-4 list-none text-lg font-medium relative z-10">
           {[
-            "Форматы занятий: индивидуальный, мини-группы, семейное.",
-            "Длительность — от 30 минут (по показаниям индивидуально).",
-            "Первая встреча — знакомство с тренером и подбор программы под ребёнка.",
+            "Форматы занятий: индивидуальные, в мини-группах, семейные.",
+            "Длительность - от 30 минут (по показаниям индивидуально).",
+            "Первая встреча - знакомство с тренером и подбор программы под ребёнка.",
           ].map((text, idx) => (
             <li key={idx} className="flex items-start gap-4">
-              <div className="shrink-0 w-6 h-6 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 mt-1">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
+              <CheckCircleIcon className="shrink-0 w-6 h-6 text-sky-500 mt-1" aria-hidden="true" />
               <span className="leading-relaxed">{text}</span>
             </li>
           ))}

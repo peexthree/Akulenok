@@ -6,7 +6,7 @@ export default function Container(props) {
     <div
       id={props.id}
       className={clsx(
-            "container p-4 mx-auto sm:p-8",
+        "container mx-auto px-4 sm:px-6 lg:px-8",
         props.className
       )}
     >

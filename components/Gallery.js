@@ -179,18 +179,18 @@ export default function Gallery() {
       <div className="absolute bottom-24 right-1/4 w-96 h-96 bg-rose-300/20 rounded-full blur-3xl -z-10 pointer-events-none" />
 
       <div className="text-center mb-10 relative z-10">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100/80 border border-sky-200/60 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
+        <span className="badge-pretitle mb-4">
           Фотогалерея
         </span>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] tracking-tight leading-tight mb-4"
+          className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] tracking-tight leading-[1.1] mb-4"
         >
           Атмосфера заботы
         </motion.h2>
-        <p className="text-lg sm:text-xl text-slate-600 font-medium max-w-2xl mx-auto mb-8">
+        <p className="text-lg sm:text-xl text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto mb-8">
           Нажмите на любое фото, чтобы рассмотреть детали бассейна, сухого зала и зоны ожидания.
         </p>
 
@@ -221,7 +221,7 @@ export default function Gallery() {
                     : "bg-white/80 backdrop-blur-md text-slate-600 border border-white/90 hover:border-sky-300 hover:text-sky-700"
                 }`}
               >
-                {cat} <span className={active ? "text-sky-100" : "text-slate-400"}>({count})</span>
+                {cat} <span className={active ? "text-sky-100" : "text-slate-500"}>({count})</span>
               </button>
             );
           })}
@@ -240,7 +240,7 @@ export default function Gallery() {
             transition={{ duration: 0.35 }}
             onClick={() => openLightbox(idx)}
             aria-label={`Открыть фото: ${photo.alt}`}
-            className={`relative rounded-[1.75rem] sm:rounded-3xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-300 bg-slate-100 text-left cursor-zoom-in ${
+            className={`relative rounded-[1.75rem] sm:rounded-3xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-300 bg-[#F6FBFF] text-left cursor-zoom-in ${
               activeCategory === "Все фото" ? photo.span : "col-span-1 row-span-1"
             }`}
           >
@@ -252,19 +252,19 @@ export default function Gallery() {
               sizes="(max-width: 768px) 50vw, 25vw"
             />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-900/15 to-transparent opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ocean/75 via-ocean/10 to-transparent opacity-0 sm:opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300 z-10" />
 
-            <div className="absolute top-3.5 right-3.5 z-20 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md text-slate-800 flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100">
+            <div className="absolute top-3.5 right-3.5 z-20 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md text-ocean flex items-center justify-center shadow-md opacity-100 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100 transition-all duration-300 sm:scale-90 sm:group-hover:scale-100">
               <MagnifyingGlassPlusIcon className="w-5 h-5" aria-hidden="true" />
             </div>
 
-            <div className="absolute top-3.5 left-3.5 z-20 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
-              <span className="inline-block px-2.5 py-1 rounded-full bg-slate-900/55 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider">
+            <div className="absolute top-3.5 left-3.5 z-20 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100 transition-opacity duration-300">
+              <span className="inline-block px-2.5 py-1 rounded-full bg-ocean/55 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider">
                 {photo.category}
               </span>
             </div>
 
-            <div className="absolute bottom-0 left-0 w-full p-4 sm:p-5 z-20 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+            <div className="absolute bottom-0 left-0 w-full p-4 sm:p-5 z-20 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100 transition-all duration-300 transform sm:translate-y-2 sm:group-hover:translate-y-0">
               <p className="text-white font-bold text-xs sm:text-sm leading-snug drop-shadow-md line-clamp-2">
                 {photo.alt}
               </p>
@@ -281,7 +281,7 @@ export default function Gallery() {
           if (e.target === dialogRef.current) closeLightbox();
         }}
         aria-label="Просмотр фотографии"
-        className="m-0 p-0 max-w-none max-h-none w-screen h-screen bg-transparent backdrop:bg-slate-950/90 backdrop:backdrop-blur-xl"
+        className="m-0 p-0 max-w-none max-h-none w-screen h-screen bg-transparent backdrop:bg-ocean/90 backdrop:backdrop-blur-xl"
       >
         {currentPhoto && (
           <div
@@ -357,7 +357,7 @@ export default function Gallery() {
                     type="button"
                     onClick={() => setSelectedIdx(idx)}
                     aria-label={`Выбрать фото ${idx + 1}: ${thumb.alt}`}
-                    className={`relative w-14 h-10 sm:w-16 sm:h-12 rounded-xl overflow-hidden shrink-0 border-2 transition-all ${
+                    className={`relative w-14 h-11 sm:w-16 sm:h-12 rounded-xl overflow-hidden shrink-0 border-2 transition-all ${
                       idx === selectedIdx
                         ? "border-sky-400 scale-105 shadow-lg"
                         : "border-transparent opacity-55 hover:opacity-90"

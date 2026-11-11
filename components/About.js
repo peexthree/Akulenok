@@ -34,7 +34,7 @@ const About = () => {
       <div className="absolute top-12 left-10 w-80 h-80 bg-sky-300/30 rounded-full blur-3xl -z-10 pointer-events-none" />
       <div className="absolute bottom-12 right-10 w-80 h-80 bg-rose-300/20 rounded-full blur-3xl -z-10 pointer-events-none" />
 
-      <div id="about" className="grid gap-12 lg:gap-12 lg:grid-cols-2 items-center relative z-10 py-12 lg:py-20 scroll-mt-24">
+      <div id="about" className="grid gap-12 lg:gap-12 lg:grid-cols-2 items-center relative z-10 py-24 scroll-mt-24">
         {/* Левая колонка */}
         <motion.div
           initial="hidden"
@@ -54,24 +54,24 @@ const About = () => {
             О центре
           </motion.div>
 
-          <motion.h2 variants={itemVariants} className="text-3xl sm:text-5xl font-extrabold text-[#0C1A2E] mb-6 tracking-tight">
+          <motion.h2 variants={itemVariants} className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] mb-6 leading-[1.1] tracking-tight">
             Про нас
           </motion.h2>
           <motion.p variants={itemVariants} className="text-lg sm:text-xl text-slate-600 leading-relaxed z-10 relative font-medium">
             Семейный аквацентр в г. Туймазы: грудничковое плавание, раннее и семейное плавание, а также женский и детский фитнес (ритмика, ОФП, гимнастика, стретчинг). Комфортные условия для здоровья всей семьи.
           </motion.p>
 
-          <motion.div variants={containerVariants} className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 z-10 relative">
+          <motion.div variants={containerVariants} className="mt-8 grid grid-cols-3 gap-3 sm:gap-4 z-10 relative">
             {stats.map((s) => (
               <motion.div
                 key={s.k}
                 variants={itemVariants}
-                className="bg-white/80 backdrop-blur-xl border border-white/90 p-5 rounded-3xl text-center shadow-soft hover:-translate-y-1 transition-all duration-300"
+                className="glass-card p-3 sm:p-5 text-center hover:-translate-y-1 transition-all duration-300"
               >
-                <div className={`font-display text-3xl font-extrabold mb-1 tracking-tight ${s.accent}`}>
+                <div className={`font-display text-xl sm:text-3xl font-extrabold mb-1 tracking-tight ${s.accent}`}>
                   {s.k}
                 </div>
-                <div className="text-sm font-semibold text-slate-600">{s.v}</div>
+                <div className="text-xs sm:text-sm font-semibold text-slate-600">{s.v}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -85,7 +85,7 @@ const About = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="relative group h-full"
         >
-          <div className="bg-white/80 backdrop-blur-xl border border-white/90 rounded-3xl p-8 sm:p-10 pb-28 sm:pb-32 shadow-soft relative overflow-hidden h-full flex flex-col justify-center">
+          <div className="glass-card p-8 sm:p-10 pb-28 sm:pb-32 relative overflow-hidden h-full flex flex-col justify-center">
             <div className="absolute inset-0 bg-gradient-to-br from-sky-50/60 via-transparent to-rose-50/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
 
             <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0C1A2E] mb-6 relative z-10">

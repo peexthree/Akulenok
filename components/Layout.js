@@ -26,7 +26,7 @@ export default function Layout({ children }) {
       {/* Индикатор прогресса чтения (Aqua → Rose) */}
       <motion.div
         aria-hidden="true"
-        className="fixed top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-sky-500 via-indigo-400 to-rose-500 origin-left z-[100] rounded-r-full shadow-[0_0_15px_rgba(14,165,233,0.45)]"
+        className="fixed top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-sky-500 to-rose-500 origin-left z-[100] rounded-r-full shadow-[0_0_15px_rgba(14,165,233,0.45)]"
         style={{ scaleX }}
       />
 

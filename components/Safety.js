@@ -22,7 +22,7 @@ const safetyFacts = [
     ),
   },
   {
-    title: "Идеальные 32–33 °C",
+    title: "Идеальные 32-33 °C",
     desc: "Строго поддерживаем температуру воды и воздуха. Тепло и комфортно, как в маминых объятиях.",
     icon: (
       <svg className="w-8 h-8 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -34,7 +34,7 @@ const safetyFacts = [
 
 export default function Safety() {
   return (
-    <Container className="py-16 lg:py-24 relative">
+    <Container className="py-24 relative">
       <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sky-300/30 rounded-full blur-3xl -z-10 pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 h-80 bg-rose-300/20 rounded-full blur-3xl -z-10 pointer-events-none" />
 
@@ -43,7 +43,7 @@ export default function Safety() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="bg-white/80 backdrop-blur-xl p-8 sm:p-10 lg:p-14 rounded-3xl sm:rounded-[2.5rem] border border-white/90 shadow-soft max-w-5xl mx-auto flex flex-col items-center"
+        className="glass-card p-8 sm:p-10 lg:p-14 sm:rounded-[2.5rem] max-w-5xl mx-auto flex flex-col items-center"
       >
         <motion.div
           initial={{ scale: 0.8, rotate: -10 }}
@@ -57,10 +57,10 @@ export default function Safety() {
           </svg>
         </motion.div>
 
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0C1A2E] mb-4 text-center tracking-tight">
+        <h2 className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] mb-4 text-center leading-[1.1] tracking-tight">
           Чистота, которой доверяют
         </h2>
-        <p className="text-lg sm:text-xl text-slate-600 font-medium mb-12 text-center max-w-2xl">
+        <p className="text-lg sm:text-xl text-slate-600 font-medium leading-relaxed mb-12 text-center max-w-2xl">
           Бескомпромиссный подход к качеству воды и здоровью вашего ребёнка.
         </p>
 

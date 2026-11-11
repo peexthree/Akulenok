@@ -3,6 +3,7 @@ import Image from "next/image";
 import Container from "./Container";
 import SectionTitle from "./SectionTitle";
 import { motion } from "framer-motion";
+import { PlayIcon, PauseIcon } from "@heroicons/react/24/outline";
 
 const team = [
   {
@@ -70,8 +71,7 @@ const AquaCard = ({ member, isDuplicate }) => {
       whileHover={{ scale: 1.02, y: -4 }}
       transition={{ duration: 0.25 }}
       className="relative group w-[300px] sm:w-[320px] shrink-0 rounded-3xl p-6 overflow-hidden
-                 bg-white/80 backdrop-blur-xl border border-white/90
-                 shadow-soft hover:shadow-xl flex flex-col"
+                 glass-card hover:shadow-xl flex flex-col"
     >
       <div className="relative aspect-[3/4] w-full rounded-3xl overflow-hidden mb-5 bg-gradient-to-b from-sky-100 to-sky-50 shadow-inner">
         <Image
@@ -89,7 +89,7 @@ const AquaCard = ({ member, isDuplicate }) => {
       </div>
 
       <div className="relative z-10 flex flex-col items-center flex-grow w-full">
-        <h3 className="text-[1.15rem] font-bold text-slate-900 mb-2 leading-tight text-center">
+        <h3 className="text-[1.15rem] font-bold text-ocean mb-2 leading-tight text-center">
           {member.name}
         </h3>
 
@@ -127,62 +127,36 @@ export default function Team() {
         pretitle="Наши эксперты"
         title="Профессионалы, влюблённые в своё дело"
       >
-        Каждый специалист нашего центра проходит строгий отбор и регулярную сертификацию. Мы не просто учим плавать — мы заботимся о гармоничном развитии вашего малыша.
+        Каждый специалист нашего центра проходит строгий отбор и регулярную сертификацию. Мы не просто учим плавать - мы заботимся о гармоничном развитии вашего малыша.
       </SectionTitle>
 
       <div className="flex justify-end mb-4">
         <button
           type="button"
           onClick={() => setPaused((p) => !p)}
-          className="px-4 py-2 rounded-full bg-white border border-sky-100 shadow-sm text-xs font-bold text-slate-600 hover:text-sky-600 hover:border-sky-200 transition-colors"
+          className="inline-flex items-center gap-1.5 px-5 py-3 rounded-full bg-white border border-sky-100 shadow-sm text-xs font-bold text-slate-600 hover:text-sky-600 hover:border-sky-200 transition-colors"
         >
-          {paused ? "▶ Продолжить карусель" : "❚❚ Остановить карусель"}
+          {paused ? (
+            <PlayIcon className="w-4 h-4" aria-hidden="true" />
+          ) : (
+            <PauseIcon className="w-4 h-4" aria-hidden="true" />
+          )}
+          {paused ? "Продолжить карусель" : "Остановить карусель"}
         </button>
       </div>
 
-      <div className="overflow-hidden w-full relative mask-image-fade group py-2">
+      <div className="overflow-hidden w-full relative marquee-mask group py-2">
         <div
-          className={`flex w-max animate-marquee gap-7 pr-7 group-hover:[animation-play-state:paused] ${
+          className={`flex w-max marquee gap-7 pr-7 group-hover:[animation-play-state:paused] ${
             paused ? "[animation-play-state:paused]" : ""
           }`}
+          style={{ "--marquee-duration": "70s" }}
         >
           {[...team, ...team].map((member, idx) => (
             <AquaCard key={idx} member={member} isDuplicate={idx >= team.length} />
           ))}
         </div>
       </div>
-
-      <style jsx>{`
-        .animate-marquee {
-          animation: marquee 70s linear infinite;
-        }
-
-        @media (max-width: 640px) {
-          .animate-marquee {
-            animation: marquee 40s linear infinite;
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .animate-marquee {
-            animation-play-state: paused;
-          }
-        }
-
-        @keyframes marquee {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
-        .mask-image-fade {
-          mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
-          -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
-        }
-      `}</style>
     </Container>
   );
 }

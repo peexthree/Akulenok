@@ -25,9 +25,9 @@ import Location from "../components/Location";
 import Cta from "../components/CTA";
 import Footer from "../components/Footer";
 
-const pageTitle = "Акулёнок — детский бассейн, женский и детский фитнес в Туймазах";
+const pageTitle = "Акулёнок - детский бассейн, женский и детский фитнес в Туймазах";
 const pageDescription =
-  "Семейный аквацентр «Акулёнок» в г. Туймазы: грудничковое и раннее плавание от 3 месяцев, женский фитнес и стретчинг, детская группа 3–7 лет (ритмика, ОФП, гимнастика) параллельно в соседних залах. Запись: +7 (927) 303-99-77.";
+  "Семейный аквацентр «Акулёнок» в г. Туймазы: грудничковое и раннее плавание от 3 месяцев, женский фитнес и стретчинг, детская группа 3-7 лет (ритмика, ОФП, гимнастика) параллельно в соседних залах. Запись: +7 (927) 303-99-77.";
 const ogImage = `${COMPANY_DETAILS.siteUrl}/img/logo-akulenok-social.jpg`;
 
 const structuredData = {
@@ -38,7 +38,7 @@ const structuredData = {
   url: `${COMPANY_DETAILS.siteUrl}/`,
   image: ogImage,
   telephone: COMPANY_DETAILS.phone,
-  priceRange: "800–27120 ₽",
+  priceRange: "800-27120 ₽",
   address: {
     "@type": "PostalAddress",
     streetAddress: "ул. Столярова, 1",

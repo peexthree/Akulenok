@@ -45,7 +45,7 @@ const programs = [
       { time: "18:30", period: "Вечерняя группа", parallel: true },
       { time: "19:30", period: "Вечерняя группа", parallel: true },
     ],
-    note: "Будь в форме — чувствуй себя прекрасно! Вечерние группы в 18:30 и 19:30 проходят параллельно с детской группой в соседнем зале.",
+    note: "Будь в форме - чувствуй себя прекрасно! Вечерние группы в 18:30 и 19:30 проходят параллельно с детской группой в соседнем зале.",
   },
   {
     id: "kids",
@@ -101,10 +101,10 @@ export default function Fitness() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] tracking-tight leading-[1.12] mb-4 text-balance"
+            className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] tracking-tight leading-[1.1] mb-4 text-balance"
           >
-            Мама занимается —{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-indigo-400 to-rose-500">
+            Мама занимается -{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-rose-500">
               ребёнок развивается!
             </span>
           </motion.h2>
@@ -156,7 +156,7 @@ export default function Fitness() {
             {[
               { id: "all", label: "Оба зала рядом" },
               { id: "women", label: "Женский фитнес" },
-              { id: "kids", label: "Детская группа 3–7 лет" },
+              { id: "kids", label: "Детская группа 3-7 лет" },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -187,7 +187,7 @@ export default function Fitness() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="bg-white/80 backdrop-blur-xl rounded-3xl border border-white/90 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col"
+              className="glass-card hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col"
             >
               <div className="relative aspect-video w-full bg-sky-50 overflow-hidden">
                 <Image
@@ -253,7 +253,7 @@ export default function Fitness() {
                           {slot.time}
                         </div>
                         <div
-                          className={`text-[11px] font-bold uppercase tracking-wider mt-0.5 ${
+                          className={`text-xs font-bold uppercase tracking-wider mt-0.5 ${
                             slot.parallel ? prog.slotLabel : "text-slate-500"
                           }`}
                         >
@@ -277,7 +277,7 @@ export default function Fitness() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-10 bg-gradient-to-br from-sky-500 via-indigo-400 to-rose-500 rounded-3xl p-7 sm:p-10 text-white shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6 border border-white/30"
+          className="mt-10 bg-gradient-to-br from-sky-500 to-rose-500 rounded-3xl p-7 sm:p-10 text-white shadow-heavy flex flex-col lg:flex-row items-center justify-between gap-6 border border-white/30"
         >
           <div className="text-center lg:text-left space-y-2">
             <div className="inline-flex items-center gap-2 text-white/90 font-bold text-sm sm:text-base">

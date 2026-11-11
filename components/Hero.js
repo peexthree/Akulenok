@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { COMPANY_DETAILS } from "../config/company";
 
 const heroHighlights = [
-  { value: "32–33 °C", label: "тёплая вода" },
+  { value: "32-33 °C", label: "тёплая вода" },
   { value: "3 ступени", label: "очистка воды 24/7" },
   { value: `${COMPANY_DETAILS.rating} ★`, label: "рейтинг Яндекс" },
   { value: "с 3 мес", label: "плавание и фитнес" },
@@ -83,7 +83,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg sm:text-2xl text-sky-50/95 mb-10 max-w-3xl mx-auto leading-relaxed tracking-wide text-balance font-semibold drop-shadow-md">
-            Грудничковое и раннее плавание от 3 месяцев, женский и детский фитнес в г. Туймазы · Здоровье для всей семьи
+            Грудничковое и раннее плавание от 3 месяцев, женский и детский фитнес в г. Туймазы · здоровье для всей семьи
           </p>
         </motion.div>
 
@@ -91,7 +91,7 @@ export default function Hero() {
           style={{ y: buttonsY }}
           className="flex flex-col sm:flex-row gap-4 sm:gap-5 items-center w-full sm:w-auto justify-center"
         >
-          {/* Горячая CTA — Розовый импульс */}
+          {/* Горячая CTA - Розовый импульс */}
           <div
             className="relative inline-block w-full sm:w-auto"
             onMouseMove={handleMouseMove}
@@ -101,7 +101,7 @@ export default function Hero() {
           >
             <a
               href={`tel:${COMPANY_DETAILS.phoneRaw}`}
-              className="group relative px-10 py-5 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white rounded-full text-xl font-extrabold overflow-hidden transition-all duration-300 w-full sm:w-auto shadow-lg shadow-rose-500/35 hover:shadow-xl hover:shadow-rose-500/50 flex items-center justify-center tracking-wide leading-snug border border-white/25"
+              className="btn-primary-lg group relative overflow-hidden w-full sm:w-auto rounded-full tracking-wide leading-snug border border-white/25"
             >
               <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/35 to-transparent group-hover:translate-x-full transition-transform duration-700 skew-x-12" />
               <span className="relative z-10 flex items-center justify-center gap-3">
@@ -113,26 +113,26 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Вторичная CTA — Стеклянная аква */}
+          {/* Вторичная CTA - Стеклянная аква */}
           <Link
             href="#fitness"
-            className="px-9 py-5 bg-white/15 text-white rounded-full text-lg sm:text-xl font-bold border border-white/40 backdrop-blur-xl hover:bg-white/25 hover:border-white/70 transition-all duration-300 w-full sm:w-auto text-center shadow-lg"
+            className="px-10 py-5 bg-white/15 text-white rounded-full text-lg sm:text-xl font-bold border border-white/40 backdrop-blur-xl hover:bg-white/25 hover:border-white/70 transition-all duration-300 w-full sm:w-auto text-center shadow-lg"
           >
             Фитнес и услуги
           </Link>
         </motion.div>
 
         {/* Стеклянные мини-плашки */}
-        <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-3xl">
+        <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-4xl">
           {heroHighlights.map((item) => (
             <div
               key={item.label}
-              className="rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 px-4 py-3.5 text-center shadow-lg"
+              className="rounded-3xl bg-ocean/35 backdrop-blur-xl border border-white/25 px-4 py-3.5 text-center shadow-lg"
             >
               <div className="font-display text-base sm:text-lg font-extrabold text-white leading-tight">
                 {item.value}
               </div>
-              <div className="text-[11px] sm:text-xs font-semibold text-sky-100/90 mt-0.5">
+              <div className="text-xs font-semibold text-white/90 mt-0.5">
                 {item.label}
               </div>
             </div>

@@ -19,7 +19,7 @@ const steps = [
   {
     num: "03",
     title: "Бережное плавание",
-    desc: "Погружение в воду температурой 32–33 °C в ритме ребёнка — через игры и осознанное погружение.",
+    desc: "Погружение в воду температурой 32-33 °C в ритме ребёнка - через игры и осознанное погружение.",
     img: "/img/gallery/q (5).webp",
   },
   {
@@ -46,7 +46,7 @@ export default function JourneyTimeline() {
         <div className="flex flex-col lg:flex-row gap-14 lg:gap-20 relative">
           {/* Липкий заголовок */}
           <div className="w-full lg:w-1/3 flex flex-col items-start lg:sticky lg:top-32 lg:self-start">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100/80 border border-sky-200/60 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
+            <span className="badge-pretitle mb-4">
               Первый визит
             </span>
             <motion.h2
@@ -64,7 +64,7 @@ export default function JourneyTimeline() {
               transition={{ delay: 0.1 }}
               className="text-xl text-slate-600 mb-6 leading-relaxed font-medium"
             >
-              Мягкая адаптация шаг за шагом. Вы поймёте, что плавать с грудничком — это полезно, приятно и весело.
+              Мягкая адаптация шаг за шагом. Вы поймёте, что плавать с грудничком - это полезно, приятно и весело.
             </motion.p>
           </div>
 
@@ -72,7 +72,7 @@ export default function JourneyTimeline() {
           <div className="w-full lg:w-2/3 flex flex-col gap-12 sm:gap-16 relative">
             <div className="absolute left-[2.25rem] sm:left-[3.25rem] top-0 bottom-0 w-1 bg-sky-100 rounded-full z-0 hidden sm:block overflow-hidden">
               <motion.div
-                className="w-full h-full bg-gradient-to-b from-sky-500 via-indigo-400 to-rose-500 origin-top"
+                className="w-full h-full bg-gradient-to-b from-sky-500 to-rose-500 origin-top"
                 style={{ scaleY: scrollYProgress }}
               />
             </div>
@@ -100,7 +100,7 @@ export default function JourneyTimeline() {
                     {step.desc}
                   </p>
 
-                  <div className="relative w-full h-48 sm:h-64 rounded-3xl overflow-hidden shadow-sm bg-slate-100 z-10">
+                  <div className="relative w-full h-48 sm:h-64 rounded-3xl overflow-hidden shadow-sm bg-[#F6FBFF] z-10">
                     <Image
                       src={step.img}
                       alt={step.title}

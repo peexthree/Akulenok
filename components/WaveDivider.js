@@ -1,26 +1,33 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function WaveDivider({
   waveColor = "text-white",
 }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <div
       aria-hidden="true"
       className="w-full m-0 p-0 leading-[0] border-none overflow-hidden bg-transparent pointer-events-none select-none"
     >
-      
+
       {/* Обертка Framer Motion: ширина 200%, чтобы вместить две SVG.
         Бесконечный сдвиг от 0 до -50% для бесшовного зацикливания.
+        При prefers-reduced-motion волна статична.
       */}
-      <motion.div 
+      <motion.div
         className="flex w-[200%] items-end"
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{
-          repeat: Infinity,
-          ease: "linear",
-          duration: 15, // Скорость течения. Увеличь для более спокойной волны
-        }}
+        animate={shouldReduceMotion ? undefined : { x: ["0%", "-50%"] }}
+        transition={
+          shouldReduceMotion
+            ? undefined
+            : {
+                repeat: Infinity,
+                ease: "linear",
+                duration: 15, // Скорость течения. Увеличь для более спокойной волны
+              }
+        }
       >
         
         {/* SVG 1 - Основная волна */}

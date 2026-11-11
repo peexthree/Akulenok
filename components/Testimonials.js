@@ -12,7 +12,7 @@ const yandexReviews = [
     avatarColor: "from-sky-500 to-cyan-400",
     date: "23 июля · Яндекс.Карты",
     tag: "Тренеры Регина и Любовь",
-    text: "Очень приятно и радостно видеть замечательный персонал, который любит детей. Тренер Регина и Любовь — вам отдельная благодарность. Успехов вам всем и здоровья.",
+    text: "Очень приятно и радостно видеть замечательный персонал, который любит детей. Тренер Регина и Любовь - вам отдельная благодарность. Успехов вам всем и здоровья.",
   },
   {
     author: "Ксения Жернакова",
@@ -25,15 +25,15 @@ const yandexReviews = [
   {
     author: "Евгений",
     initials: "Е",
-    avatarColor: "from-sky-500 via-indigo-400 to-rose-400",
+    avatarColor: "from-sky-500 to-rose-400",
     date: "14 июля 2024 · Яндекс.Карты",
     tag: "Ходим уже 4 месяца",
-    text: "Детский центр «Акулёнок» вообще отличный, возим ребёнка 4 месяца — ему нравится. Специалисты хорошие, добрые, умеют обращаться с детьми, и с такими маленькими в том числе. Советую!",
+    text: "Детский центр «Акулёнок» вообще отличный, возим ребёнка 4 месяца - ему нравится. Специалисты хорошие, добрые, умеют обращаться с детьми, и с такими маленькими в том числе. Советую!",
   },
   {
     author: "Фотолюкс",
     initials: "Ф",
-    avatarColor: "from-sky-500 to-blue-600",
+    avatarColor: "from-sky-500 to-sky-600",
     date: "1 мая 2023 · Яндекс.Карты",
     tag: "Бассейн, уют и монитор для родителей",
     text: "Единственный в своём роде, уникальный водный комплекс для маленьких детей. Добрые администраторы, большой бассейн, опытные тренеры, уютная зона ожидания и монитор для наблюдения за тем, как плавает ваш маленький пловец.",
@@ -61,7 +61,7 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-10 bg-white/80 backdrop-blur-xl border border-white/90 rounded-3xl p-5 sm:p-6 shadow-soft flex flex-col md:flex-row items-center justify-between gap-5"
+          className="mb-10 glass-card p-5 sm:p-6 flex flex-col md:flex-row items-center justify-between gap-5"
         >
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
             <div className="flex items-center gap-3 bg-[#F6FBFF] border border-sky-200/70 px-4 py-2.5 rounded-2xl">
@@ -93,9 +93,9 @@ export default function Testimonials() {
             <button
               type="button"
               onClick={() => setShowMobileWidget((v) => !v)}
-              className="lg:hidden inline-flex items-center justify-center gap-2 bg-sky-50 text-sky-700 border border-sky-200 font-bold py-2.5 px-5 rounded-xl text-sm hover:bg-sky-100 transition-colors"
+              className="lg:hidden inline-flex items-center justify-center gap-2 bg-sky-50 text-sky-700 border border-sky-200 font-bold py-3 px-5 rounded-xl text-sm hover:bg-sky-100 transition-colors"
             >
-              {showMobileWidget ? "Скрыть живую ленту Яндекса" : "Открыть живую ленту Яндекса"}
+              {showMobileWidget ? "Скрыть ленту отзывов" : "Живая лента отзывов"}
             </button>
 
             <a
@@ -120,7 +120,7 @@ export default function Testimonials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: index * 0.06 }}
-                className="flex flex-col p-6 sm:p-7 rounded-3xl bg-white/80 backdrop-blur-xl border border-white/90 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative group"
+                className="glass-card flex flex-col p-6 sm:p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative group"
               >
                 <div className="flex items-center gap-3.5 mb-4">
                   <div
@@ -138,7 +138,7 @@ export default function Testimonials() {
                 </div>
 
                 <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="inline-block text-[11px] font-extrabold uppercase tracking-wider text-sky-700 bg-sky-50 px-3 py-1 rounded-xl border border-sky-100">
+                  <span className="inline-block text-xs font-extrabold uppercase tracking-wider text-sky-700 bg-sky-50 px-3 py-1 rounded-xl border border-sky-100">
                     {item.tag}
                   </span>
                   <div className="flex text-amber-400 shrink-0" aria-label="Оценка 5 из 5">
@@ -161,7 +161,7 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.12 }}
-            className={`lg:col-span-5 flex-col bg-white/80 backdrop-blur-xl border border-white/90 rounded-3xl p-4 sm:p-5 shadow-soft ${
+            className={`lg:col-span-5 flex-col glass-card p-4 sm:p-5 ${
               showMobileWidget ? "flex" : "hidden lg:flex"
             }`}
           >
@@ -181,7 +181,7 @@ export default function Testimonials() {
               </a>
             </div>
 
-            <div className="relative w-full h-[520px] lg:h-full lg:min-h-[540px] rounded-2xl overflow-hidden bg-[#F6FBFF] border border-sky-100/70">
+            <div className="relative w-full h-[480px] lg:h-full lg:min-h-[540px] rounded-2xl overflow-hidden bg-[#F6FBFF] border border-sky-100/70">
               <iframe
                 src={COMPANY_DETAILS.yandexReviewsWidget}
                 title="Живые отзывы о центре Акулёнок на Яндекс.Картах"
@@ -212,9 +212,10 @@ export default function Testimonials() {
             href={COMPANY_DETAILS.yandexReviews}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-600 hover:to-cyan-600 text-white font-bold py-3.5 px-7 rounded-2xl shadow-lg shadow-sky-500/20 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto"
+            className="text-sm font-bold text-sky-600 hover:text-rose-600 inline-flex items-center gap-1.5 transition-colors"
           >
             Написать свой отзыв на Яндексе
+            <ArrowTopRightOnSquareIcon className="w-4 h-4" aria-hidden="true" />
           </a>
         </motion.div>
       </Container>

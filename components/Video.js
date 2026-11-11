@@ -82,7 +82,7 @@ export default function Video() {
           transition={{ delay: 0.3 }}
           className="mt-6 md:mt-0 md:absolute md:-bottom-6 md:-left-6 bg-white/95 backdrop-blur-lg p-6 rounded-3xl shadow-xl border border-sky-100 max-w-sm mx-auto md:mx-0"
         >
-          <p className="text-slate-800 font-bold text-sm leading-relaxed">
+          <p className="text-ocean font-bold text-sm leading-relaxed">
             «Мы создали место, где каждый ребёнок чувствует себя в безопасности с первых секунд в воде»
           </p>
           <div className="mt-2 text-sky-600 text-xs font-black uppercase tracking-widest">

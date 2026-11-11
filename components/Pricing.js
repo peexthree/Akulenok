@@ -35,7 +35,7 @@ const pricingData = [
     features: [
       "Индивидуальный подбор расписания",
       "Приоритетная запись к тренеру",
-      "Срок действия — 45 дней (24 зан. — 105 дней)",
+      "Срок действия - 45 дней (24 зан. - 105 дней)",
       "Продление по болезни при наличии справки",
     ],
     highlight: true,
@@ -78,10 +78,10 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -4 }}
-              className={`relative flex flex-col p-8 rounded-3xl transition-all duration-300 backdrop-blur-xl border ${
+              className={`relative flex flex-col p-8 rounded-3xl transition-all duration-300 ${
                 item.highlight
-                  ? "border-sky-300 shadow-xl md:scale-[1.03] z-10 bg-white/95 ring-2 ring-sky-200/70"
-                  : "border-white/90 shadow-soft hover:shadow-xl bg-white/80"
+                  ? "glass-card border-sky-300 shadow-heavy md:scale-[1.03] z-10 bg-white/95 ring-2 ring-sky-200/70"
+                  : "glass-card hover:shadow-xl"
               }`}
             >
               {item.highlight && (
@@ -122,7 +122,7 @@ export default function Pricing() {
                       <div className="text-right">
                         <span className="font-display font-extrabold text-[#0C1A2E]">{pkg.total}</span>
                         <span
-                          className={`block text-[11px] font-bold ${
+                          className={`block text-xs font-bold ${
                             pkg.best ? "text-rose-600" : "text-slate-500"
                           }`}
                         >
@@ -141,7 +141,7 @@ export default function Pricing() {
                       className={`h-5 w-5 shrink-0 mt-0.5 ${item.highlight ? "text-rose-500" : "text-sky-500"}`}
                       aria-hidden="true"
                     />
-                    <span className="text-slate-600 text-sm font-bold leading-snug tracking-wide">
+                    <span className="text-slate-600 text-sm font-medium leading-snug">
                       {feature}
                     </span>
                   </li>
@@ -150,11 +150,7 @@ export default function Pricing() {
 
               <a
                 href={`tel:${COMPANY_DETAILS.phoneRaw}`}
-                className={`w-full py-4 rounded-2xl font-extrabold tracking-wide leading-snug text-center transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 ${
-                  item.highlight
-                    ? "bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white shadow-lg shadow-rose-500/25"
-                    : "bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-600 hover:to-cyan-600 text-white shadow-md shadow-sky-500/20"
-                }`}
+                className={`w-full ${item.highlight ? "btn-primary" : "btn-secondary"}`}
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -169,7 +165,7 @@ export default function Pricing() {
         <div id="discounts" className="mt-20 grid md:grid-cols-3 gap-6 sm:gap-8 scroll-mt-24">
           <motion.div
             whileHover={{ y: -3 }}
-            className="p-8 rounded-3xl bg-white/80 backdrop-blur-xl border border-white/90 shadow-soft flex flex-col gap-4 transition-all duration-300"
+            className="glass-card p-8 flex flex-col gap-4 transition-all duration-300"
           >
             <div className="flex items-center gap-4">
               <div className="font-display w-14 h-14 bg-sky-100 text-sky-700 rounded-2xl flex items-center justify-center text-xl font-extrabold shrink-0">
@@ -182,10 +178,10 @@ export default function Pricing() {
               </h4>
             </div>
             <p className="text-slate-600 font-medium text-sm leading-relaxed flex-grow">
-              Постоянная скидка при покупке от 3 абонементов — ценим вашу регулярность и доверие.
+              Постоянная скидка при покупке от 3 абонементов - ценим вашу регулярность и доверие.
             </p>
             <div className="mt-auto">
-              <span className="text-sky-700 font-extrabold text-[11px] uppercase bg-sky-50 px-3 py-1 rounded-full border border-sky-200/70 inline-block">
+              <span className="text-sky-700 font-extrabold text-xs uppercase bg-sky-50 px-3 py-1 rounded-full border border-sky-200/70 inline-block">
                 От 3 абонементов
               </span>
             </div>
@@ -193,7 +189,7 @@ export default function Pricing() {
 
           <motion.div
             whileHover={{ y: -3 }}
-            className="p-8 rounded-3xl bg-white/80 backdrop-blur-xl border border-white/90 shadow-soft flex flex-col gap-4 transition-all duration-300"
+            className="glass-card p-8 flex flex-col gap-4 transition-all duration-300"
           >
             <div className="flex items-center gap-4">
               <div className="font-display w-14 h-14 bg-rose-50 border border-rose-200/70 text-rose-600 rounded-2xl flex items-center justify-center text-xl font-extrabold shrink-0">
@@ -206,10 +202,10 @@ export default function Pricing() {
               </h4>
             </div>
             <p className="text-slate-600 font-medium text-sm leading-relaxed flex-grow">
-              Дополнительная скидка при оплате наличными в центре — суммируется со скидкой 5%.
+              Дополнительная скидка при оплате наличными в центре - суммируется со скидкой 5%.
             </p>
             <div className="mt-auto">
-              <span className="text-rose-700 font-extrabold text-[11px] uppercase bg-rose-50 px-3 py-1 rounded-full border border-rose-200/70 inline-block">
+              <span className="text-rose-700 font-extrabold text-xs uppercase bg-rose-50 px-3 py-1 rounded-full border border-rose-200/70 inline-block">
                 Суммируется до 7%
               </span>
             </div>
@@ -222,7 +218,7 @@ export default function Pricing() {
             <div className="absolute top-0 right-0 w-36 h-36 bg-rose-300/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
             <div className="flex items-center gap-4 relative z-10">
-              <div className="w-14 h-14 bg-gradient-to-br from-sky-400 via-indigo-400 to-rose-400 text-white rounded-2xl flex items-center justify-center shrink-0 shadow-md">
+              <div className="w-14 h-14 bg-gradient-to-br from-sky-400 to-rose-400 text-white rounded-2xl flex items-center justify-center shrink-0 shadow-md">
                 <SparklesIcon className="w-6 h-6" aria-hidden="true" />
               </div>
               <h4 className="font-extrabold text-xl text-[#0C1A2E] leading-tight text-balance">
@@ -238,10 +234,10 @@ export default function Pricing() {
             <div className="mt-auto relative z-10">
               <a
                 href={`tel:${COMPANY_DETAILS.phoneRaw}`}
-                className="w-full py-3 bg-gradient-to-br from-sky-500 via-indigo-400 to-rose-500 text-white rounded-2xl text-center font-extrabold text-sm shadow-lg transition-all hover:brightness-105 flex items-center justify-center gap-2"
+                className="w-full py-3 bg-gradient-to-br from-sky-500 to-rose-500 text-white rounded-2xl text-center font-extrabold text-sm shadow-lg transition-all hover:brightness-105 flex items-center justify-center gap-2"
               >
                 <span>Подобрать абонемент</span>
-                <span className="font-display bg-white/20 px-2.5 py-0.5 rounded-full text-xs">до −31%</span>
+                <span className="font-display bg-white/20 px-2.5 py-0.5 rounded-full text-xs">до -31%</span>
               </a>
             </div>
           </motion.div>

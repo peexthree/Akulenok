@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -22,13 +23,20 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [activeHref, setActiveHref] = useState("/");
+  const router = useRouter();
 
   // Механика пасхалок (10 кликов по большому или маленькому логотипу)
   const { setActiveEgg } = useShark();
   const clicksRef = useRef(0);
   const timerRef = useRef(null);
 
-  const handleLogoClick = () => {
+  const handleLogoClick = (e) => {
+    // На главной логотип не должен «уводить» со страницы - там живёт пасхалка
+    if (router.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
     clicksRef.current += 1;
 
     if (timerRef.current) clearTimeout(timerRef.current);
@@ -98,17 +106,17 @@ export default function Navbar() {
         className={`
           pointer-events-auto flex items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]
           ${isScrolled
-            ? "w-[95%] max-w-5xl rounded-full bg-white/85 backdrop-blur-xl shadow-[0_12px_36px_-10px_rgba(14,165,233,0.22)] border border-white/90 px-5 sm:px-6 py-2"
+            ? "w-[95%] max-w-5xl rounded-full bg-white/85 backdrop-blur-xl shadow-soft border border-white/90 px-5 sm:px-6 py-2"
             : "w-full max-w-full rounded-none bg-transparent px-6 sm:px-8 lg:px-16 py-6 sm:py-8"
           }
         `}
       >
-        {/* Логотип (10 кликов открывают пасхалку) */}
+        {/* Логотип: ведёт на главную, 10 кликов открывают пасхалку */}
         <div className="flex items-center shrink-0 w-[215px] sm:w-[250px] xl:w-[280px]">
-          <button
-            type="button"
+          <Link
+            href="/"
             onClick={handleLogoClick}
-            aria-label="Акулёнок — семейный аквацентр"
+            aria-label="Акулёнок - на главную"
             className="flex items-center gap-3 sm:gap-4 cursor-pointer group h-10 text-left rounded-2xl focus-visible:ring-sky-400"
           >
             <motion.div
@@ -151,7 +159,7 @@ export default function Navbar() {
                 </>
               )}
             </div>
-          </button>
+          </Link>
         </div>
 
         {/* Десктопное меню */}
@@ -206,7 +214,7 @@ export default function Navbar() {
               hidden sm:inline-flex items-center justify-center rounded-full font-extrabold tracking-wide leading-snug transition-all duration-500 active:scale-95
               ${isScrolled
                 ? "bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-5 py-2.5 text-xs sm:text-sm shadow-lg shadow-rose-500/25"
-                : "bg-white/95 backdrop-blur-md text-rose-600 px-6 py-3 text-sm sm:text-base shadow-[0_0_25px_rgba(255,255,255,0.45)] hover:bg-white hover:shadow-[0_0_30px_rgba(244,63,94,0.35)]"
+                : "bg-white/95 backdrop-blur-md text-rose-600 px-6 py-3 text-sm sm:text-base shadow-lg shadow-white/40 hover:bg-white hover:shadow-xl hover:shadow-rose-500/25"
               }
             `}
           >
@@ -258,7 +266,7 @@ export default function Navbar() {
                       height={40}
                       className="h-10 w-auto object-contain"
                     />
-                    <span className="text-2xl font-black text-slate-800">Акулёнок</span>
+                    <span className="text-2xl font-black text-ocean">Акулёнок</span>
                   </button>
                   <button
                     type="button"

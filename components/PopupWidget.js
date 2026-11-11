@@ -36,7 +36,7 @@ const actionLinks = [
     icon: FaWhatsapp,
     href: COMPANY_DETAILS.whatsapp,
     external: true,
-    color: "bg-green-500/10 text-green-700 border-green-200 hover:bg-green-500 hover:text-white",
+    color: "bg-[#25D366]/10 text-[#128C7E] border-[#25D366]/30 hover:bg-[#25D366] hover:text-white",
   },
   {
     name: "Telegram",
@@ -94,7 +94,7 @@ export default function PopupWidget() {
       data-ym-section="popup-widget"
       className={clsx(
         "fixed right-6 z-[100] transition-all duration-300",
-        isBannerClosed ? "bottom-6" : "bottom-40 sm:bottom-36"
+        isBannerClosed ? "bottom-6" : "bottom-72 sm:bottom-60"
       )}
     >
       {/* Облачко-подсказка */}
@@ -170,10 +170,10 @@ export default function PopupWidget() {
                 />
               </div>
               <div className="flex flex-col">
-                <h3 className="font-black text-slate-900 leading-tight">Акулёнок</h3>
+                <h3 className="font-black text-ocean leading-tight">Акулёнок</h3>
                 <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true" />
-                  <p className="text-[11px] uppercase tracking-wider text-slate-600 font-bold">На связи</p>
+                  <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" aria-hidden="true" />
+                  <p className="text-xs uppercase tracking-wider text-slate-600 font-bold">На связи</p>
                 </div>
               </div>
             </div>

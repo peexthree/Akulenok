@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import Container from "./Container";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -10,11 +9,11 @@ const gymItems = [
 ];
 
 const poolUnder3Items = [
-  "многоразовые подгузники для плавания (до 3 лет — есть у нас в продаже)",
+  "многоразовые подгузники для плавания (до 3 лет - есть у нас в продаже)",
   "пелёнка (для грудничков)",
   "полотенце (для ребёнка и мамы на занятии «мама и малыш»)",
   "мыло или гель для душа и мочалка",
-  "тканевая шапочка (от 1 года обязательно; до года — при длинных волосах)",
+  "тканевая шапочка (от 1 года обязательно; до года - при длинных волосах)",
   "сланцы (для взрослого и ребёнка)",
   "очки для плавания (по желанию от 2 лет)",
 ];
@@ -44,10 +43,10 @@ const certificateRules = [
 ];
 
 const centerRules = [
-  "Приходить за 10 минут до начала; предварительно сводить ребёнка в туалет или на горшок (писать в душе запрещено)",
+  "Приходить за 10 минут до начала; предварительно сводить ребёнка в туалет или на горшок (мочиться в душевой запрещено)",
   "Обязательно принять душ с мылом и мочалкой без купальника; входить в воду только с тренером и по времени",
-  "Отмена занятия — за день до 18:00 (при неявке или отмене день в день занятие списывается с абонемента)",
-  "Срок абонемента — 45 дней (24 занятия — 105 дней); при болезни продлевается и списанное занятие восстанавливается по справке",
+  "Отмена занятия - за день до 18:00 (при неявке или отмене день в день занятие списывается с абонемента)",
+  "Срок абонемента - 45 дней (24 занятия - 105 дней); при болезни продлевается и списанное занятие восстанавливается по справке",
 ];
 
 const forbiddenRules = [
@@ -73,7 +72,7 @@ export default function Checklist() {
       {items.map((item, idx) => (
         <li
           key={item}
-          className="flex items-center gap-3.5 text-slate-700 font-semibold bg-slate-50/80 px-4 py-3 rounded-2xl border border-slate-100"
+          className="flex items-center gap-3.5 text-slate-600 font-medium bg-[#F6FBFF] px-4 py-3 rounded-2xl border border-sky-100"
         >
           <span className="w-6 h-6 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center text-xs font-black shrink-0">
             {idx + 1}
@@ -85,34 +84,30 @@ export default function Checklist() {
   );
 
   return (
-    <Container className="py-24 relative overflow-hidden bg-white/80 backdrop-blur-xl rounded-3xl my-6 shadow-soft border border-white/90">
+    <Container className="py-24 relative overflow-hidden bg-white/80 backdrop-blur-xl rounded-3xl shadow-soft border border-white/90">
       <div
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] z-0 pointer-events-none select-none opacity-20"
-      >
-        <Image
-          src="/img/think.webp"
-          alt=""
-          fill
-          className="object-contain blur-[6px]"
-          sizes="700px"
-        />
-      </div>
+        className="absolute top-1/2 left-1/4 w-96 h-96 bg-sky-300/20 rounded-full blur-3xl z-0 pointer-events-none"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute bottom-10 right-1/4 w-80 h-80 bg-rose-300/15 rounded-full blur-3xl z-0 pointer-events-none"
+      />
 
       <div className="flex flex-col items-center pt-4 relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100/80 border border-sky-200/60 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
+          <span className="badge-pretitle mb-4">
             Памятка
           </span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] mb-5 tracking-tight"
+            className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] mb-5 leading-[1.1] tracking-tight"
           >
             Что взять на занятие?
           </motion.h2>
-          <p className="text-xl text-slate-600 font-medium text-balance">
+          <p className="text-xl text-slate-600 font-medium leading-relaxed text-balance">
             Всё необходимое для плавания можно приобрести в нашем аквацентре. С собой понадобится:
           </p>
         </div>
@@ -149,7 +144,7 @@ export default function Checklist() {
               onClick={() => setActiveTab("rules")}
               className={`px-6 sm:px-7 py-3 rounded-2xl font-bold text-base sm:text-lg transition-all duration-300 ${
                 activeTab === "rules"
-                  ? "bg-gradient-to-r from-sky-500 via-indigo-400 to-rose-500 text-white shadow-lg scale-[1.02]"
+                  ? "bg-gradient-to-r from-sky-500 to-rose-500 text-white shadow-lg scale-[1.02]"
                   : "bg-[#F6FBFF] text-slate-600 border border-sky-100 hover:bg-sky-50"
               }`}
             >
@@ -239,7 +234,7 @@ export default function Checklist() {
                         key={item.badge}
                         className="rounded-2xl bg-[#F6FBFF] border border-sky-100 p-3.5"
                       >
-                        <span className="inline-block text-[11px] font-extrabold uppercase tracking-wider text-sky-700 bg-sky-100 px-2.5 py-0.5 rounded-full mb-1.5">
+                        <span className="inline-block text-xs font-extrabold uppercase tracking-wider text-sky-700 bg-sky-100 px-2.5 py-0.5 rounded-full mb-1.5">
                           {item.badge}
                         </span>
                         <p className="text-xs sm:text-sm font-semibold text-slate-700 leading-snug">
@@ -258,7 +253,7 @@ export default function Checklist() {
                     {centerRules.map((rule, idx) => (
                       <li
                         key={rule}
-                        className="flex items-start gap-3 text-slate-700 text-sm font-semibold bg-slate-50/80 px-4 py-2.5 rounded-2xl border border-slate-100"
+                        className="flex items-start gap-3 text-slate-600 text-sm font-medium bg-[#F6FBFF] px-4 py-2.5 rounded-2xl border border-sky-100"
                       >
                         <span className="w-6 h-6 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center text-xs font-black shrink-0 mt-0.5">
                           {idx + 1}

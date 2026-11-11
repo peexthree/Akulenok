@@ -6,7 +6,7 @@ import { COMPANY_DETAILS } from "../config/company";
 
 export default function Privacy() {
   const lastUpdate = "11.11.2026";
-  const pageTitle = "Политика конфиденциальности — Аквацентр «Акулёнок» Туймазы";
+  const pageTitle = "Политика конфиденциальности - Аквацентр «Акулёнок» Туймазы";
   const pageDescription =
     "Порядок работы с техническими данными и файлами cookie на сайте детского аквацентра «Акулёнок» в г. Туймазы.";
 
@@ -39,7 +39,7 @@ export default function Privacy() {
             </Link>
 
             <div className="bg-white/80 backdrop-blur-xl border border-white/90 p-8 md:p-16 rounded-3xl shadow-soft overflow-hidden relative">
-              <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-sky-500 via-indigo-400 to-rose-500" />
+              <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-sky-500 to-rose-500" />
 
               <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0C1A2E] mb-8 tracking-tight">
                 Политика конфиденциальности
@@ -69,7 +69,7 @@ export default function Privacy() {
                     <p className="mb-2">Сайт не хранит базы персональных данных пользователей и обрабатывает минимум технических сведений:</p>
                     <ul className="list-disc pl-6 space-y-2 mb-4">
                       <li>
-                        Файлы cookie и обезличенная статистика посещений (через сервис Яндекс.Метрика — исключительно после явного согласия пользователя в cookie-баннере). Эти данные применяются только для анализа посещаемости и улучшения удобства сайта.
+                        Файлы cookie и обезличенная статистика посещений (через сервис Яндекс.Метрика - исключительно после явного согласия пользователя в cookie-баннере). Эти данные применяются только для анализа посещаемости и улучшения удобства сайта.
                       </li>
                       <li>
                         Состояние выбора cookie-баннера сохраняется локально в вашем браузере (`localStorage`) и не передаётся третьим лицам.

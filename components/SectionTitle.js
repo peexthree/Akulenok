@@ -33,7 +33,7 @@ const SectionTitle = (props) => {
       )}
 
       {props.title && (
-        <h2 className="max-w-3xl mt-2 text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight text-[#0C1A2E] text-balance">
+        <h2 className="max-w-3xl mt-2 text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight text-[#0C1A2E] text-balance">
           {props.title}
         </h2>
       )}

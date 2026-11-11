@@ -15,18 +15,18 @@ export default function Location() {
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 h-80 bg-rose-300/20 rounded-full blur-3xl -z-10 pointer-events-none" />
 
       <div className="text-center mb-16 relative">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100/80 border border-sky-200/60 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
+        <span className="badge-pretitle mb-4">
           Контакты
         </span>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] tracking-tight leading-tight mb-4"
+          className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] tracking-tight leading-[1.1] mb-4"
         >
           Ждём вас в гости
         </motion.h2>
-        <p className="text-xl text-slate-600 font-medium max-w-2xl mx-auto">
+        <p className="text-xl text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto">
           Удобное расположение, парковка и уютная атмосфера.
         </p>
       </div>
@@ -36,7 +36,7 @@ export default function Location() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.55 }}
-        className="grid gap-8 lg:grid-cols-[450px_1fr] items-center bg-white/80 backdrop-blur-xl border border-white/90 p-6 sm:p-10 rounded-3xl shadow-soft mx-auto"
+        className="grid gap-8 lg:grid-cols-[450px_1fr] items-center glass-card p-6 sm:p-10 mx-auto"
       >
         <div className="flex flex-col justify-center h-full space-y-8">
           <div className="space-y-6 text-lg">
@@ -57,8 +57,8 @@ export default function Location() {
 
             <div className="flex flex-col gap-1">
               <span className="text-sm font-bold text-sky-600 uppercase tracking-wider">Режим работы</span>
-              <span className="font-semibold text-slate-700">
-                Пн–Пт: {COMPANY_DETAILS.hoursWeekdays} · Сб–Вс: {COMPANY_DETAILS.hoursWeekend}
+              <span className="font-semibold text-slate-600">
+                Пн-Пт: {COMPANY_DETAILS.hoursWeekdays} · Сб-Вс: {COMPANY_DETAILS.hoursWeekend}
               </span>
             </div>
 
@@ -69,12 +69,12 @@ export default function Location() {
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2">
             <a
               href={COMPANY_DETAILS.yandexMaps}
               target="_blank"
               rel="noopener noreferrer"
-              className={clsx(commonButtonClasses, "bg-[#0C1A2E] hover:bg-slate-800 xl:col-span-2")}
+              className={clsx(commonButtonClasses, "bg-[#0C1A2E] hover:bg-ocean/90 sm:col-span-2")}
             >
               <FaMapMarkerAlt size={20} aria-hidden="true" />
               <span>Построить маршрут</span>
@@ -100,7 +100,7 @@ export default function Location() {
           </div>
         </div>
 
-        <div className="relative rounded-[2rem] overflow-hidden h-[450px] shadow-inner bg-slate-100">
+        <div className="relative rounded-[2rem] overflow-hidden h-[320px] sm:h-[450px] shadow-inner bg-[#F6FBFF]">
           <iframe
             src="https://yandex.ru/map-widget/v1/?um=constructor%3A3bc8364469f998d48316e3069ad02bfec23d4cf2a256c4d1fece1f5daac7dfca&source=constructor"
             width="100%"

@@ -24,7 +24,7 @@ export default function ContactButtons({ wide = false, vertical = false }) {
         whileTap={{ scale: 0.98 }}
         className={clsx(
           buttonBase,
-          "bg-gradient-to-br from-sky-400 to-blue-600 border border-white/20",
+          "bg-[#2AABEE] hover:bg-[#1d95d4] border border-white/20",
           wide && "w-full"
         )}
       >
@@ -42,7 +42,7 @@ export default function ContactButtons({ wide = false, vertical = false }) {
         whileTap={{ scale: 0.98 }}
         className={clsx(
           buttonBase,
-          "bg-gradient-to-br from-green-400 to-emerald-600 border border-white/20",
+          "bg-[#25D366] hover:bg-[#1eb857] border border-white/20",
           wide && "w-full"
         )}
       >
@@ -60,7 +60,7 @@ export default function ContactButtons({ wide = false, vertical = false }) {
         whileTap={{ scale: 0.98 }}
         className={clsx(
           buttonBase,
-          "bg-gradient-to-br from-sky-500 via-indigo-400 to-rose-500 border border-white/20",
+          "bg-gradient-to-br from-violet-500 to-purple-600 border border-white/20",
           wide && "w-full"
         )}
       >

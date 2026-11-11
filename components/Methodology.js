@@ -44,7 +44,7 @@ const services = [
     num: "05",
     title: "Детский фитнес",
     age: "от 3 до 7 лет · ПН / СР / ПТ",
-    desc: "Ритмика, ОФП и гимнастика в соседнем зале в 18:30 и 19:30 — ребёнок развивается, пока мама спокойно занимается рядом.",
+    desc: "Ритмика, ОФП и гимнастика в соседнем зале в 18:30 и 19:30 - ребёнок развивается, пока мама спокойно занимается рядом.",
     color: "from-cyan-50 via-white to-sky-100/70",
     badge: "bg-sky-100 text-sky-700",
     icon3d: "/img/3d-icons/service-4-mascot.webp",
@@ -61,7 +61,7 @@ export default function Methodology() {
         <div className="flex flex-col lg:flex-row gap-14 lg:gap-20 relative items-start">
           {/* Левая липкая колонка */}
           <div className="w-full lg:w-1/3 flex flex-col items-start lg:sticky lg:top-32 self-start z-10">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-white/90 border border-sky-200/70 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4 shadow-sm">
+            <span className="badge-pretitle mb-4">
               Направления
             </span>
             <motion.h2

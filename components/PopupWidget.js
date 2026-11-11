@@ -161,7 +161,7 @@ export default function PopupWidget() {
             <div className="flex items-center gap-4 mb-1">
               <div className="relative w-14 h-14 shrink-0 bg-slate-50 rounded-2xl overflow-hidden border border-slate-100">
                 <Image
-                  src="/img/shark-code.gif"
+                  src="/img/shark-code.webp"
                   alt="Акулёнок на связи"
                   fill
                   sizes="56px"

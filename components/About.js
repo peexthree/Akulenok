@@ -44,7 +44,7 @@ const About = () => {
           className="relative p-2"
         >
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-64 h-64 sm:w-80 sm:h-80 opacity-15 rotate-12 pointer-events-none -z-10">
-            <Image src="/img/play.png" alt="" fill className="object-contain" sizes="(max-width: 768px) 256px, 320px" />
+            <Image src="/img/play.webp" alt="" fill className="object-contain" sizes="(max-width: 768px) 256px, 320px" />
           </div>
 
           <motion.div
@@ -107,7 +107,7 @@ const About = () => {
           </div>
 
           <div className="absolute -bottom-8 -right-4 sm:-bottom-12 sm:-right-8 w-44 h-44 sm:w-56 sm:h-56 pointer-events-none transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-6 z-20 drop-shadow-xl">
-            <Image src="/img/love.png" alt="Акулёнок" fill className="object-contain" sizes="(max-width: 768px) 176px, 224px" />
+            <Image src="/img/love.webp" alt="Акулёнок" fill className="object-contain" sizes="(max-width: 768px) 176px, 224px" />
           </div>
         </motion.div>
       </div>

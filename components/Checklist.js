@@ -60,7 +60,7 @@ export default function Checklist() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] z-0 pointer-events-none select-none opacity-20"
       >
         <Image
-          src="/img/think.png"
+          src="/img/think.webp"
           alt=""
           fill
           className="object-contain blur-[6px]"

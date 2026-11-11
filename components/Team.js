@@ -11,7 +11,7 @@ const team = [
     specialty: "Инструктор грудничкового и раннего плавания",
     experience: "Социальный предприниматель",
     education: "Высшее образование",
-    image: "/img/personal/1.png",
+    image: "/img/personal/1.webp",
   },
   {
     name: "Фазлиахметова Алия",
@@ -19,7 +19,7 @@ const team = [
     specialty: "Инструктор по раннему и грудничковому плаванию",
     experience: "Разряд по плаванию",
     education: "Педагогическое образование",
-    image: "/img/personal/2.png",
+    image: "/img/personal/2.webp",
   },
   {
     name: "Луганцева Александра",
@@ -27,7 +27,7 @@ const team = [
     specialty: "Администратор",
     experience: "",
     education: "",
-    image: "/img/personal/3.png",
+    image: "/img/personal/3.webp",
   },
   {
     name: "Нугаева Регина",
@@ -35,7 +35,7 @@ const team = [
     specialty: "Инструктор по раннему и грудничковому плаванию",
     experience: "",
     education: "Экономическое образование",
-    image: "/img/personal/6.png",
+    image: "/img/personal/6.webp",
   },
   {
     name: "Рахматуллина Арина",
@@ -43,7 +43,7 @@ const team = [
     specialty: "Инструктор по раннему и грудничковому плаванию",
     experience: "",
     education: "Высшее образование",
-    image: "/img/personal/8.png",
+    image: "/img/personal/8.webp",
   },
   {
     name: "Точилкина Любовь",
@@ -51,7 +51,7 @@ const team = [
     specialty: "Инструктор по раннему и грудничковому плаванию",
     experience: "Разряд по плаванию",
     education: "Высшее образование",
-    image: "/img/personal/10.png",
+    image: "/img/personal/10.webp",
   },
   {
     name: "Игнатьева Виктория Николаевна",
@@ -59,7 +59,7 @@ const team = [
     specialty: "Администратор",
     experience: "",
     education: "",
-    image: "/img/personal/13.png",
+    image: "/img/personal/13.webp",
   },
 ];
 

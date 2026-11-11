@@ -57,7 +57,7 @@ function SharkBlock({ eggId }) {
             className="relative w-24 h-24 mx-auto mb-4"
           >
             <Image
-              src="/img/shark-code.gif"
+              src="/img/shark-code.webp"
               alt="Акулёнок печатает"
               fill
               sizes="96px"

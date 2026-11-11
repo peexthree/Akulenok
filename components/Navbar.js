@@ -252,7 +252,7 @@ export default function Navbar() {
                     aria-label="Акулёнок"
                   >
                     <Image
-                      src="/img/logo-akulenok.png"
+                      src="/img/logo-akulenok.webp"
                       alt="Акулёнок"
                       width={40}
                       height={40}

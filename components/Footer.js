@@ -20,7 +20,7 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start max-w-sm text-center md:text-left">
             <motion.div whileHover={{ scale: 1.05, rotate: -5 }} className="mb-4">
               <Image
-                src="/img/love2.png"
+                src="/img/love2.webp"
                 alt="Акулёнок"
                 width={90}
                 height={90}

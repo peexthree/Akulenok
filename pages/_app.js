@@ -145,6 +145,7 @@ function MyApp({ Component, pageProps }) {
             {isConsentGiven && (
               <noscript>
                 <div>
+                  {/* eslint-disable-next-line @next/next/no-img-element -- noscript tracking pixel requires raw img */}
                   <img
                     src={`https://mc.yandex.ru/watch/${YM_COUNTER_ID}`}
                     style={{ position: "absolute", left: "-9999px" }}

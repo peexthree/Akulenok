@@ -36,7 +36,7 @@ export default function Faq() {
         className="absolute top-6 right-0 w-32 h-32 opacity-15 hidden md:block pointer-events-none select-none z-0"
       >
         <Image
-          src="/img/sad.png"
+          src="/img/sad.webp"
           alt=""
           width={128}
           height={128}

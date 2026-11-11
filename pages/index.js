@@ -38,7 +38,7 @@ const structuredData = {
   url: `${COMPANY_DETAILS.siteUrl}/`,
   image: ogImage,
   telephone: COMPANY_DETAILS.phone,
-  priceRange: "800–4928 ₽",
+  priceRange: "800–27120 ₽",
   address: {
     "@type": "PostalAddress",
     streetAddress: "ул. Столярова, 1",

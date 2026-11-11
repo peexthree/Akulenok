@@ -35,7 +35,7 @@ export default function LoyalClients() {
             transition={{ delay: 0.14 }}
             className="text-xl text-slate-600 font-medium leading-relaxed tracking-wide"
           >
-            Ценим ваше доверие и дарим привилегии уже со второго визита.
+            Ценим ваше доверие и сохраняем выгодные условия для постоянных семей.
           </motion.p>
         </div>
 
@@ -52,13 +52,13 @@ export default function LoyalClients() {
               <div>
                 <h3 className="text-3xl font-extrabold text-[#0C1A2E] mb-6">Привилегии центра</h3>
                 <p className="text-lg text-slate-600 leading-relaxed tracking-wide font-medium mb-8 bg-rose-50/70 border border-rose-200/60 p-4 rounded-2xl">
-                  Статус постоянного клиента активируется автоматически со <strong className="text-rose-700">2-го посещения</strong>.
+                  Скидка постоянного клиента <strong className="text-rose-700">5%</strong> действует при покупке <strong className="text-rose-700">от 3 абонементов</strong>.
                 </p>
 
                 <ul className="space-y-4">
                   {[
-                    "Постоянная скидка 5% на все абонементы",
-                    "Ранний доступ к специальным предложениям",
+                    "Скидка постоянным клиентам 5% (от 3 абонементов)",
+                    "+2% дополнительная скидка за наличный расчёт",
                     "Приоритетная запись к ведущим тренерам",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-4">

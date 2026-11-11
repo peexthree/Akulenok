@@ -71,7 +71,7 @@ export default function Hero() {
           >
             <span className="w-2.5 h-2.5 rounded-full bg-rose-400 animate-pulse shadow-[0_0_10px_rgba(244,63,94,0.8)]" aria-hidden="true" />
             <span className="text-xs sm:text-sm font-bold text-white tracking-[0.18em] uppercase">
-              Ваша персональная скидка
+              Выгодные абонементы и скидки
             </span>
           </a>
 

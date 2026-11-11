@@ -9,8 +9,6 @@ export const YM_GOALS = {
   GOOGLE_PLAY: "click_googleplay",
   YANDEX_MAPS: "click_yandex_maps",
   VK: "click_vk",
-  OPEN_PROMO: "open_promo",
-  COPY_PROMO: "copy_promo",
 };
 
 const LINK_GOAL_MATCHERS = [

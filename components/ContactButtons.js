@@ -1,9 +1,8 @@
-"use client";
 import React from "react";
 import clsx from "clsx";
-import { motion } from "framer-motion"; // Добавляем динамику
-import { FaTelegramPlane, FaWhatsapp, FaVk } from "react-icons/fa";
-import { FaCommentDots } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FaTelegramPlane, FaWhatsapp, FaCommentDots } from "react-icons/fa";
+import { COMPANY_DETAILS } from "../config/company";
 
 export default function ContactButtons({ wide = false, vertical = false }) {
   const containerClasses = clsx(
@@ -11,17 +10,17 @@ export default function ContactButtons({ wide = false, vertical = false }) {
     vertical ? "grid-cols-1" : wide ? "grid-cols-1 md:grid-cols-3" : "grid-cols-1 sm:grid-cols-3"
   );
 
-  const buttonBase = "relative flex items-center justify-center gap-3 py-4 px-6 rounded-2xl font-bold text-white transition-all duration-300 overflow-hidden group shadow-lg";
+  const buttonBase =
+    "relative flex items-center justify-center gap-3 py-4 px-6 rounded-2xl font-bold text-white transition-all duration-300 overflow-hidden group shadow-lg";
 
   return (
     <div className={containerClasses}>
-      
       {/* Кнопка Telegram */}
       <motion.a
-        href="https://t.me/akulenok_tmz"
+        href={COMPANY_DETAILS.telegram}
         target="_blank"
         rel="noopener noreferrer"
-        whileHover={{ y: -4, scale: 1.02 }}
+        whileHover={{ y: -3, scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className={clsx(
           buttonBase,
@@ -29,18 +28,17 @@ export default function ContactButtons({ wide = false, vertical = false }) {
           wide && "w-full"
         )}
       >
-        <FaTelegramPlane size={22} className="relative z-10 group-hover:rotate-12 transition-transform duration-300" />
+        <FaTelegramPlane size={22} className="relative z-10 group-hover:rotate-12 transition-transform duration-300" aria-hidden="true" />
         <span className="relative z-10 uppercase tracking-wider text-sm">Telegram</span>
-        {/* Эффект блика */}
         <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12" />
       </motion.a>
 
       {/* Кнопка WhatsApp */}
       <motion.a
-        href="https://wa.me/79273039977" // Чистый номер без +
+        href={COMPANY_DETAILS.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
-        whileHover={{ y: -4, scale: 1.02 }}
+        whileHover={{ y: -3, scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className={clsx(
           buttonBase,
@@ -48,29 +46,26 @@ export default function ContactButtons({ wide = false, vertical = false }) {
           wide && "w-full"
         )}
       >
-        <FaWhatsapp size={22} className="relative z-10 group-hover:scale-110 transition-transform duration-300" />
+        <FaWhatsapp size={22} className="relative z-10 group-hover:scale-110 transition-transform duration-300" aria-hidden="true" />
         <span className="relative z-10 uppercase tracking-wider text-sm">WhatsApp</span>
-        {/* Эффект блика */}
         <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12" />
       </motion.a>
-      
 
-      {/* Кнопка Viber */}
+      {/* Кнопка MAX */}
       <motion.a
-        href="https://max.ru/u/f9LHodD0cOLix6wKTmAPpks04OM0FPm0sPc02InwwDsdZrqzGNbjCZHOKjY"
+        href={COMPANY_DETAILS.max}
         target="_blank"
         rel="noopener noreferrer"
-        whileHover={{ y: -4, scale: 1.02 }}
+        whileHover={{ y: -3, scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className={clsx(
           buttonBase,
-          "bg-gradient-to-br from-purple-400 to-fuchsia-600 border border-white/20",
+          "bg-gradient-to-br from-purple-500 to-fuchsia-600 border border-white/20",
           wide && "w-full"
         )}
       >
-        <FaCommentDots size={22} className="relative z-10 group-hover:scale-110 transition-transform duration-300" />
+        <FaCommentDots size={22} className="relative z-10 group-hover:scale-110 transition-transform duration-300" aria-hidden="true" />
         <span className="relative z-10 uppercase tracking-wider text-sm">MAX</span>
-        {/* Эффект блика */}
         <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12" />
       </motion.a>
     </div>

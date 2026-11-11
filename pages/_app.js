@@ -1,10 +1,9 @@
-"use client";
 import React, { useState, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import "../css/tailwind.css";
 import { Nunito } from "next/font/google";
 import Layout from "../components/Layout";
-import { SharkProvider } from "../components/SharkProvider"; 
+import { SharkProvider } from "../components/SharkProvider";
 import Head from "next/head";
 import Script from "next/script";
 import { useRouter } from "next/router";
@@ -13,33 +12,42 @@ export const nunito = Nunito({
   subsets: ["cyrillic", "latin"],
   variable: "--font-nunito",
   weight: ["400", "500", "600", "700", "800", "900"],
-  display: 'swap',
+  display: "swap",
 });
 
-// 1. Компонент заставки
+// Премиальная стартовая заставка (SEO-безопасная: без <h1> и aria-hidden)
 const LoadingScreen = () => (
   <motion.div
     key="loader"
+    aria-hidden="true"
     initial={{ opacity: 1 }}
-    exit={{ opacity: 0, scale: 1.0 }}
-    transition={{ duration: 0.8, ease: "easeInOut" }}
-    className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white"
+    exit={{ opacity: 0, scale: 1.02 }}
+    transition={{ duration: 0.65, ease: "easeInOut" }}
+    className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-gradient-to-b from-sky-50 via-white to-sky-50 pointer-events-none select-none"
   >
-    {/* Анимированный текст АКУЛЁНОК */}
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
+      transition={{ duration: 0.55, delay: 0.1 }}
       className="flex flex-col items-center"
     >
-      <h1 className="text-5xl sm:text-7xl font-black text-sky-500 tracking-tighter mb-2">
+      <span className="text-xs font-extrabold uppercase tracking-[0.35em] text-sky-400 mb-3">
+        Семейный аквацентр
+      </span>
+      <div className="text-5xl sm:text-7xl font-black bg-gradient-to-r from-sky-500 via-blue-500 to-teal-400 bg-clip-text text-transparent tracking-tighter mb-4">
         Акулёнок
-      </h1>
-      <div className="h-1.5 w-12 bg-sky-200 rounded-full animate-pulse" />
+      </div>
+      <div className="w-36 h-1.5 bg-sky-100 rounded-full overflow-hidden">
+        <motion.div
+          initial={{ x: "-100%" }}
+          animate={{ x: "0%" }}
+          transition={{ duration: 1.15, ease: "easeInOut" }}
+          className="h-full w-full bg-gradient-to-r from-sky-400 to-teal-400 rounded-full"
+        />
+      </div>
     </motion.div>
   </motion.div>
 );
-
 
 function MyApp({ Component, pageProps }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -47,21 +55,18 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    // Ждем 2 секунды или до полной загрузки страницы
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1200);
+    }, 1250);
 
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-    // Check initial consent status
     if (typeof window !== "undefined" && window.localStorage.getItem("cookieConsent") === "true") {
       setIsConsentGiven(true);
     }
 
-    // Listen for custom event from CookieBanner
     const handleConsentEvent = () => setIsConsentGiven(true);
     window.addEventListener("cookieConsentGiven", handleConsentEvent);
 
@@ -70,14 +75,14 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const handleRouteChange = (url) => {
-      if (typeof window !== 'undefined' && window.ym && isConsentGiven) {
-        window.ym(108276956, 'hit', url);
+      if (typeof window !== "undefined" && window.ym && isConsentGiven) {
+        window.ym(108276956, "hit", url);
       }
     };
 
-    router.events.on('routeChangeComplete', handleRouteChange);
+    router.events.on("routeChangeComplete", handleRouteChange);
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
+      router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events, isConsentGiven]);
 
@@ -85,12 +90,15 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <meta name="theme-color" content="#7dd3fc" />
+        <meta name="theme-color" content="#0ea5e9" />
         <meta name="robots" content="index, follow" />
-
-        {/* Yandex.Metrika counter */}
-
       </Head>
+
+      <style jsx global>{`
+        :root {
+          --font-nunito: ${nunito.style.fontFamily};
+        }
+      `}</style>
 
       {isConsentGiven && (
         <Script id="yandex-metrika" strategy="afterInteractive">
@@ -112,26 +120,31 @@ function MyApp({ Component, pageProps }) {
         </Script>
       )}
 
-      <SharkProvider>
-        <div className={`${nunito.variable} font-nunito antialiased text-slate-900`}>
+      <MotionConfig reducedMotion="user">
+        <SharkProvider>
+          <div className={`${nunito.variable} font-nunito antialiased text-slate-900`}>
+            {isConsentGiven && (
+              <noscript>
+                <div>
+                  <img
+                    src="https://mc.yandex.ru/watch/108276956"
+                    style={{ position: "absolute", left: "-9999px" }}
+                    alt=""
+                  />
+                </div>
+              </noscript>
+            )}
 
-        {isConsentGiven && (
-          <noscript>
-            <div>
-              <img src="https://mc.yandex.ru/watch/108276956" style={{ position: "absolute", left: "-9999px" }} alt="" />
-            </div>
-          </noscript>
-        )}
-          {/* AnimatePresence отвечает за плавное исчезновение лоадера */}
-          <AnimatePresence mode="wait">
-            {isLoading && <LoadingScreen />}
-          </AnimatePresence>
+            <AnimatePresence mode="wait">
+              {isLoading && <LoadingScreen />}
+            </AnimatePresence>
 
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </div>
-      </SharkProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </div>
+        </SharkProvider>
+      </MotionConfig>
     </>
   );
 }

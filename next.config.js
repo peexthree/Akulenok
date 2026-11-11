@@ -4,14 +4,16 @@ const securityHeaders = [
   {
     key: "Content-Security-Policy",
     value:
-      // Добавляем разрешения для Unsplash и будущих скриптов
       "default-src 'self'; " +
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.yandex.ru; " +
-      "style-src 'self' 'unsafe-inline'; " +
-      "img-src 'self' data: https://images.unsplash.com https://*.yandex.net; " +
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://mc.yandex.ru https://*.yandex.ru https://yastatic.net; " +
+      "style-src 'self' 'unsafe-inline' https://yastatic.net; " +
+      "img-src 'self' data: blob: https://images.unsplash.com https://mc.yandex.ru https://mc.yandex.com https://*.yandex.net https://*.yandex.ru; " +
       "font-src 'self' data: https://fonts.gstatic.com; " +
+      "connect-src 'self' https://mc.yandex.ru https://mc.yandex.com wss://mc.yandex.ru wss://mc.yandex.com; " +
+      "frame-src 'self' https://yandex.ru https://*.yandex.ru; " +
+      "media-src 'self'; " +
       "object-src 'none'; " +
-      "frame-ancestors 'none'; " +
+      "frame-ancestors 'self' https://metrika.yandex.ru https://*.metrika.yandex.ru https://metrika.yandex.by https://metrika.yandex.kz https://webvisor.com https://*.webvisor.com; " +
       "base-uri 'self'",
   },
   {
@@ -23,36 +25,22 @@ const securityHeaders = [
     value: "nosniff",
   },
   {
-    key: "X-Frame-Options",
-    value: "DENY",
-  },
-  {
-    key: "X-XSS-Protection",
-    value: "1; mode=block",
-  },
-  {
     key: "Strict-Transport-Security",
     value: "max-age=63072000; includeSubDomains; preload",
   },
 ];
 
 const nextConfig = {
-  // 1. Исправляем SEO: теперь роботы знают, что мы в RU-сегменте
   i18n: {
     locales: ["ru"],
     defaultLocale: "ru",
   },
 
-  // 2. Разрешаем внешние изображения для компонента <Image />
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'avatars.githubusercontent.com',
+        protocol: "https",
+        hostname: "images.unsplash.com",
       },
     ],
   },
@@ -61,22 +49,11 @@ const nextConfig = {
     return [
       {
         source: "/(.*)",
+        locale: false,
         headers: securityHeaders,
       },
     ];
   },
-
-  // Оптимизация сборки
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        fs: false,
-        path: false,
-        crypto: false,
-      };
-    }
-    return config;
-  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

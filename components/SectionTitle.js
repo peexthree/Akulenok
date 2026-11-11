@@ -1,9 +1,7 @@
-"use client";
-import React, { memo } from "react"; // Явный импорт memo
+import React, { memo } from "react";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 
-// 1. Объявляем компонент как обычную функцию
 const SectionTitle = (props) => {
   const isLeft = props.align === "left";
 
@@ -15,7 +13,7 @@ const SectionTitle = (props) => {
   );
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -23,12 +21,12 @@ const SectionTitle = (props) => {
       className={wrapperClasses}
     >
       {props.pretitle && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.4 }}
-          className="inline-block px-5 py-2 rounded-full bg-sky-100 text-sky-600 font-bold text-sm tracking-widest uppercase mb-4 shadow-sm"
+          transition={{ delay: 0.15, duration: 0.4 }}
+          className="inline-block px-4 py-1.5 rounded-full bg-sky-100 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4 shadow-sm"
         >
           {props.pretitle}
         </motion.div>

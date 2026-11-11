@@ -1,51 +1,71 @@
-"use client";
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
-const SharkBlock = dynamic(() => import("./SharkBlock"), { 
+const SharkBlock = dynamic(() => import("./SharkBlock"), {
   ssr: false,
-  loading: () => <div className="text-white font-black animate-pulse text-center uppercase tracking-widest">Инициализация S25 Ultra...</div>
+  loading: () => (
+    <div className="text-white font-black animate-pulse text-center uppercase tracking-widest">
+      Загрузка...
+    </div>
+  ),
 });
 
-const SharkContext = createContext();
+const SharkContext = createContext({ setActiveEgg: () => {} });
 export const useShark = () => useContext(SharkContext);
 
 export const SharkProvider = ({ children }) => {
-  // egg1: 10 кликов (Navbar) | egg2: "IGOR" (Код) | egg3: Гигантский маскот
+  // egg1: 10 кликов (свернутое лого) | egg2: "IGOR" (клавиатура) | egg3: 10 кликов (большое лого)
   const [activeEgg, setActiveEgg] = useState(null);
   const [glitch, setGlitch] = useState(false);
 
-  // --- МЕХАНИКА ЧИТ-КОДА "IGOR" (Пасхалка №2) ---
+  // Пасхалка №2: чит-код "IGOR" с клавиатуры
   useEffect(() => {
     let keys = [];
     const secret = "igor";
-    
+    let glitchTimer = null;
+
     const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setActiveEgg(null);
+        return;
+      }
+
+      if (!e.key || e.key.length !== 1) return;
+
+      const targetTag = e.target?.tagName;
+      if (targetTag === "INPUT" || targetTag === "TEXTAREA" || e.target?.isContentEditable) {
+        return;
+      }
+
       keys.push(e.key.toLowerCase());
       if (keys.length > secret.length) keys.shift();
-      
+
       if (keys.join("") === secret) {
+        keys = [];
         setGlitch(true);
-        setTimeout(() => {
+        if (glitchTimer) clearTimeout(glitchTimer);
+        glitchTimer = setTimeout(() => {
           setGlitch(false);
-          setActiveEgg("egg2"); // По твоему плану: IGOR -> второе видео
+          setActiveEgg("egg2");
         }, 400);
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      if (glitchTimer) clearTimeout(glitchTimer);
+    };
   }, []);
 
   return (
     <SharkContext.Provider value={{ setActiveEgg }}>
-      {/* Визуальный глитч при активации кода */}
-      <motion.div 
-        animate={{ 
+      <motion.div
+        animate={{
           x: glitch ? [-3, 3, -3, 3, 0] : 0,
-          filter: glitch ? "contrast(1.3) brightness(1.1) hue-rotate(45deg)" : "none" 
-        }} 
+          filter: glitch ? "contrast(1.3) brightness(1.1) hue-rotate(45deg)" : "none",
+        }}
         className="relative z-0"
       >
         {children}
@@ -54,11 +74,13 @@ export const SharkProvider = ({ children }) => {
       <AnimatePresence>
         {activeEgg && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Секретный блок"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            // Облегченный фон: почти прозрачный, чтобы не прятать сайт
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-900/10 backdrop-blur-md p-4"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-900/25 backdrop-blur-md p-4"
             onClick={() => setActiveEgg(null)}
           >
             <motion.div
@@ -68,17 +90,17 @@ export const SharkProvider = ({ children }) => {
               onClick={(e) => e.stopPropagation()}
               className="relative"
             >
-              {/* КНОПКА ЗАКРЫТЬ: Теперь по центру сверху, как ты просил */}
-              <button 
+              <button
+                type="button"
+                aria-label="Закрыть секретное окно"
                 onClick={() => setActiveEgg(null)}
-                className="absolute -top-14 left-1/2 -translate-x-1/2 flex items-center gap-2 px-5 py-2 bg-white/20 hover:bg-white/40 backdrop-blur-xl border border-white/20 rounded-full text-white transition-all group"
+                className="absolute -top-14 left-1/2 -translate-x-1/2 flex items-center gap-2 px-5 py-2 bg-slate-900/70 hover:bg-slate-900/90 backdrop-blur-xl border border-white/25 rounded-full text-white transition-all shadow-lg"
               >
                 <span className="text-[10px] font-black uppercase tracking-[0.2em]">Закрыть</span>
                 <XIcon />
               </button>
 
-              {/* Сам контент пасхалки */}
-              <SharkBlock eggId={activeEgg} onClose={() => setActiveEgg(null)} />
+              <SharkBlock eggId={activeEgg} />
             </motion.div>
           </motion.div>
         )}
@@ -87,9 +109,8 @@ export const SharkProvider = ({ children }) => {
   );
 };
 
-// Мини-компонент иконки, чтобы не плодить импорты
 const XIcon = () => (
-  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12" />
   </svg>
 );

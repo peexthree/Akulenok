@@ -1,62 +1,105 @@
-"use client";
 import Head from "next/head";
-import dynamic from "next/dynamic";
+import { COMPANY_DETAILS } from "../config/company";
 
-// 1. Статические импорты (LCP - первый экран должен быть мгновенным)
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import TrustBar from "../components/TrustBar";
 import About from "../components/About";
 import WaveDivider from "../components/WaveDivider";
+import Methodology from "../components/Methodology";
+import JourneyTimeline from "../components/JourneyTimeline";
+import Video from "../components/Video";
+import Benefits from "../components/Benefits";
+import Services from "../components/Services";
+import Checklist from "../components/Checklist";
+import Team from "../components/Team";
+import Schedule from "../components/Schedule";
+import Pricing from "../components/Pricing";
+import Testimonials from "../components/Testimonials";
+import Gallery from "../components/Gallery";
+import Safety from "../components/Safety";
+import Faq from "../components/FAQ";
+import LoyalClients from "../components/LoyalClients";
+import Location from "../components/Location";
+import Cta from "../components/CTA";
+import Footer from "../components/Footer";
 
-// 2. Исправленные динамические импорты (явно берем .default)
-const Methodology = dynamic(() => import("../components/Methodology").then(m => m.default));
-const JourneyTimeline = dynamic(() => import("../components/JourneyTimeline").then(m => m.default));
-const Video = dynamic(() => import("../components/Video").then(m => m.default));
-const Benefits = dynamic(() => import("../components/Benefits").then(m => m.default));
-const Services = dynamic(() => import("../components/Services").then(m => m.default));
-const Checklist = dynamic(() => import("../components/Checklist").then(m => m.default));
-const Team = dynamic(() => import("../components/Team").then(m => m.default));
-const Schedule = dynamic(() => import("../components/Schedule").then(m => m.default));
-const Pricing = dynamic(() => import("../components/Pricing").then(m => m.default));
-const Testimonials = dynamic(() => import("../components/Testimonials").then(m => m.default));
-const Gallery = dynamic(() => import("../components/Gallery").then(m => m.default));
-const Safety = dynamic(() => import("../components/Safety").then(m => m.default));
-const Faq = dynamic(() => import("../components/FAQ").then(m => m.default));
-const LoyalClients = dynamic(() => import("../components/LoyalClients").then(m => m.default));
-const Location = dynamic(() => import("../components/Location").then(m => m.default));
-const Cta = dynamic(() => import("../components/CTA").then(m => m.default));
-const Footer = dynamic(() => import("../components/Footer").then(m => m.default));
+const pageTitle = "Акулёнок — центр грудничкового и раннего плавания в Туймазах";
+const pageDescription =
+  "Детский бассейн «Акулёнок» в г. Туймазы: грудничковое плавание с 3 месяцев, раннее плавание от 1 до 7 лет, семейное плавание и умный фитнес. Тёплая вода 32–33 °C и тройная очистка.";
+const ogImage = `${COMPANY_DETAILS.siteUrl}/img/logo-akulenok-social.jpg`;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  name: COMPANY_DETAILS.name,
+  description: pageDescription,
+  url: `${COMPANY_DETAILS.siteUrl}/`,
+  image: ogImage,
+  telephone: COMPANY_DETAILS.phone,
+  priceRange: "800–4928 ₽",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "ул. Столярова, 1",
+    addressLocality: "Туймазы",
+    addressRegion: "Республика Башкортостан",
+    addressCountry: "RU",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 54.600103,
+    longitude: 53.72839,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "21:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday", "Sunday"],
+      opens: "10:00",
+      closes: "18:00",
+    },
+  ],
+  sameAs: [COMPANY_DETAILS.vk, COMPANY_DETAILS.telegram],
+};
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Акулёнок • Центр грудничкового плавания • Туймазы</title>
-        <meta name="description" content="Детский бассейн Акулёнок: грудничковое, раннее и семейное плавание в Туймазах." />
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={`${COMPANY_DETAILS.siteUrl}/`} />
+        <link rel="preload" as="image" href="/video/poster.jpg" fetchPriority="high" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="ru_RU" />
+        <meta property="og:site_name" content="Акулёнок" />
+        <meta property="og:url" content={`${COMPANY_DETAILS.siteUrl}/`} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={ogImage} />
+
+        {/* Twitter / X */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={ogImage} />
+
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "name": "Акулёнок",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "ул. Столярова, 1",
-                "addressLocality": "Туймазы",
-                "addressCountry": "RU"
-              },
-              "telephone": "+7 927 303-99-77",
-              "url": "https://akulenok.vercel.app"
-            })
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </Head>
 
-      <main className="flex flex-col min-h-screen relative overflow-x-hidden bg-slate-50">
+      <div className="flex flex-col min-h-screen relative overflow-x-clip bg-slate-50">
         <Navbar />
-        
+
         <Hero />
         <WaveDivider waveColor="text-white" />
         <TrustBar />
@@ -69,7 +112,7 @@ export default function Home() {
         <WaveDivider waveColor="text-white" />
         <Video />
         <Benefits />
-        
+
         <Services />
 
         <Checklist />
@@ -93,7 +136,7 @@ export default function Home() {
 
         <Cta />
         <Footer />
-      </main>
+      </div>
     </>
   );
 }

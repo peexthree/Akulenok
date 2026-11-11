@@ -1,13 +1,14 @@
-"use client";
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function WaveDivider({ 
-  waveColor = "text-white" // Цвет самой воды
+export default function WaveDivider({
+  waveColor = "text-white",
 }) {
   return (
-    // Главный контейнер: обрезает всё, что выходит за рамки
-    <div className="w-full m-0 p-0 leading-[0] border-none overflow-hidden bg-transparent">
+    <div
+      aria-hidden="true"
+      className="w-full m-0 p-0 leading-[0] border-none overflow-hidden bg-transparent pointer-events-none select-none"
+    >
       
       {/* Обертка Framer Motion: ширина 200%, чтобы вместить две SVG.
         Бесконечный сдвиг от 0 до -50% для бесшовного зацикливания.

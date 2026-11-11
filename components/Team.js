@@ -1,5 +1,4 @@
-"use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Container from "./Container";
 import SectionTitle from "./SectionTitle";
@@ -61,66 +60,57 @@ const team = [
     experience: "",
     education: "",
     image: "/img/personal/13.png",
-  }
+  },
 ];
 
-const AquaCard = ({ member, idx, teamLength }) => {
+const AquaCard = ({ member, isDuplicate }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: [0, -8, 0] }}
-      viewport={{ once: true }}
-      transition={{
-        opacity: { duration: 0.6, delay: (idx % teamLength) * 0.1 },
-        y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: (idx % teamLength) * 0.1 }
-      }}
-      whileHover={{ scale: 1.02, y: -12 }}
-      className="relative group w-[320px] shrink-0 rounded-[2.5rem] p-6 overflow-hidden
-                 bg-white/30 backdrop-blur-xl border border-white/40
-                 shadow-[0_8px_32px_rgba(31,38,135,0.07)]"
+      aria-hidden={isDuplicate}
+      whileHover={{ scale: 1.02, y: -8 }}
+      transition={{ duration: 0.25 }}
+      className="relative group w-[300px] sm:w-[320px] shrink-0 rounded-[2.5rem] p-6 overflow-hidden
+                 bg-white/75 backdrop-blur-md border border-white
+                 shadow-[0_10px_30px_rgba(14,165,233,0.08)] hover:shadow-xl flex flex-col"
     >
-      <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-[shimmer_1.5s_infinite] skew-x-12 z-20 pointer-events-none" />
-
-      <div className="relative aspect-[3/4] w-full rounded-3xl overflow-hidden mb-6 bg-gradient-to-b from-sky-100 to-sky-50 shadow-inner">
+      <div className="relative aspect-[3/4] w-full rounded-3xl overflow-hidden mb-5 bg-gradient-to-b from-sky-100 to-sky-50 shadow-inner">
         <Image
           src={member.image}
-          alt={member.name}
+          alt={isDuplicate ? "" : member.name}
           fill
           sizes="320px"
-          className="object-contain bg-white/20 transition-transform duration-700 group-hover:scale-105"
+          className="object-contain bg-white/25 transition-transform duration-700 group-hover:scale-105"
         />
         {member.role && (
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%] bg-white/80 backdrop-blur-md px-3 py-2 rounded-2xl shadow-sm z-10 flex items-center justify-center">
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[90%] bg-white/90 backdrop-blur-md px-3 py-2 rounded-2xl shadow-sm z-10 flex items-center justify-center">
             <span className="text-sky-700 font-bold text-sm text-center leading-tight">{member.role}</span>
           </div>
         )}
       </div>
 
-      <div className="relative z-10 flex flex-col items-center flex-grow h-auto w-full">
-        <h3 className="text-[1.15rem] font-bold text-slate-800 mb-2 leading-tight text-center">{member.name}</h3>
+      <div className="relative z-10 flex flex-col items-center flex-grow w-full">
+        <h3 className="text-[1.15rem] font-bold text-slate-900 mb-2 leading-tight text-center">
+          {member.name}
+        </h3>
 
         {member.specialty && (
-          <div className="bg-sky-50/60 backdrop-blur-sm rounded-2xl p-3 border border-sky-100/50 text-sky-800 text-xs font-semibold mb-4 w-full text-center shadow-sm">
+          <div className="bg-sky-50 rounded-2xl p-3 border border-sky-100 text-sky-800 text-xs font-semibold mb-3 w-full text-center">
             {member.specialty}
           </div>
         )}
 
         <div className="space-y-2 w-full mt-auto flex flex-col">
           {member.experience && (
-             <div className="bg-white/60 p-2.5 rounded-xl border border-white/50 flex items-start text-left gap-2 shadow-sm">
-               <span className="text-sky-400 mt-0.5 text-sm shrink-0 leading-none">✦</span>
-               <p className="text-slate-600 text-[11px] font-medium leading-relaxed">
-                 {member.experience}
-               </p>
-             </div>
+            <div className="bg-slate-50/90 p-2.5 rounded-xl border border-slate-100 flex items-start text-left gap-2">
+              <span className="text-sky-500 mt-0.5 text-sm shrink-0 leading-none" aria-hidden="true">✦</span>
+              <p className="text-slate-600 text-xs font-medium leading-relaxed">{member.experience}</p>
+            </div>
           )}
           {member.education && (
-             <div className="bg-white/60 p-2.5 rounded-xl border border-white/50 flex items-start text-left gap-2 shadow-sm">
-               <span className="text-sky-400 mt-0.5 text-sm shrink-0 leading-none">🎓</span>
-               <p className="text-slate-600 text-[11px] font-medium leading-relaxed">
-                 {member.education}
-               </p>
-             </div>
+            <div className="bg-slate-50/90 p-2.5 rounded-xl border border-slate-100 flex items-start text-left gap-2">
+              <span className="text-sky-500 mt-0.5 text-sm shrink-0 leading-none" aria-hidden="true">🎓</span>
+              <p className="text-slate-600 text-xs font-medium leading-relaxed">{member.education}</p>
+            </div>
           )}
         </div>
       </div>
@@ -129,42 +119,68 @@ const AquaCard = ({ member, idx, teamLength }) => {
 };
 
 export default function Team() {
+  const [paused, setPaused] = useState(false);
+
   return (
     <Container className="py-24 relative z-10" id="team">
       <SectionTitle
         pretitle="Наши эксперты"
-        title="Профессионалы, влюбленные в свое дело"
+        title="Профессионалы, влюблённые в своё дело"
       >
-        Каждый специалист нашего центра проходит строгий отбор и регулярную сертификацию. Мы не просто учим плавать - мы заботимся о гармоничном развитии вашего малыша.
+        Каждый специалист нашего центра проходит строгий отбор и регулярную сертификацию. Мы не просто учим плавать — мы заботимся о гармоничном развитии вашего малыша.
       </SectionTitle>
 
-      <div className="mt-16 overflow-hidden w-full relative mask-image-fade group">
-        <div className="flex w-max animate-marquee gap-8 pr-8 group-hover:[animation-play-state:paused]">
+      <div className="flex justify-end mb-4">
+        <button
+          type="button"
+          onClick={() => setPaused((p) => !p)}
+          className="px-4 py-2 rounded-full bg-white border border-sky-100 shadow-sm text-xs font-bold text-slate-600 hover:text-sky-600 hover:border-sky-200 transition-colors"
+        >
+          {paused ? "▶ Продолжить карусель" : "❚❚ Остановить карусель"}
+        </button>
+      </div>
+
+      <div className="overflow-hidden w-full relative mask-image-fade group py-2">
+        <div
+          className={`flex w-max animate-marquee gap-7 pr-7 group-hover:[animation-play-state:paused] ${
+            paused ? "[animation-play-state:paused]" : ""
+          }`}
+        >
           {[...team, ...team].map((member, idx) => (
-            <AquaCard key={idx} member={member} idx={idx} teamLength={team.length} />
+            <AquaCard key={idx} member={member} isDuplicate={idx >= team.length} />
           ))}
         </div>
       </div>
 
       <style jsx>{`
         .animate-marquee {
-          animation: marquee 80s linear infinite;
+          animation: marquee 70s linear infinite;
         }
-        
+
         @media (max-width: 640px) {
           .animate-marquee {
             animation: marquee 40s linear infinite;
           }
         }
 
-        @keyframes marquee {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-marquee {
+            animation-play-state: paused;
+          }
         }
-        
+
+        @keyframes marquee {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
         .mask-image-fade {
-          mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-          -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+          mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
         }
       `}</style>
     </Container>

@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -8,7 +7,7 @@ const photos = [
   { src: "/img/gallery/pool1.jpg", alt: "Занятие в бассейне", size: "col-span-1 row-span-2 h-80 sm:h-96" },
   { src: "/img/gallery/pool2.jpg", alt: "Наш тренер", size: "col-span-1 row-span-1 h-40 sm:h-48" },
   { src: "/img/gallery/pool3.jpg", alt: "Первые успехи", size: "col-span-1 row-span-1 h-40 sm:h-48" },
-  { src: "/img/gallery/pool12.jpg", alt: "Игровая форма", size: "col-span-2 md:col-span-1 row-span-1 h-48 sm:h-64" }, // Скорректировал для мобилки
+  { src: "/img/gallery/pool12.jpg", alt: "Игровая форма", size: "col-span-2 md:col-span-1 row-span-1 h-48 sm:h-64" },
   { src: "/img/gallery/pool13.jpg", alt: "Чистая вода", size: "col-span-1 row-span-1 h-48 sm:h-64" },
   { src: "/img/gallery/pool4.jpg", alt: "Комфорт", size: "col-span-1 row-span-1 h-48 sm:h-64" },
   { src: "/img/gallery/pool5.jpg", alt: "Улыбки", size: "col-span-1 row-span-1 h-48 sm:h-64" },
@@ -18,16 +17,20 @@ const photos = [
   { src: "/img/gallery/pool101.jpg", alt: "Здоровье", size: "col-span-1 row-span-1 h-48 sm:h-64" },
   { src: "/img/gallery/pool111.jpg", alt: "Радость", size: "col-span-1 row-span-1 h-48 sm:h-64" },
   { src: "/img/gallery/pool81.jpg", alt: "Сила", size: "col-span-1 row-span-1 h-48 sm:h-64" },
-  { src: "/img/gallery/pool91.jpg", alt: "Успех", size: "col-span-1 row-span-1 h-48 sm:h-64" }
+  { src: "/img/gallery/pool91.jpg", alt: "Успех", size: "col-span-1 row-span-1 h-48 sm:h-64" },
 ];
 
 export default function Gallery() {
   return (
     <Container id="gallery" className="py-12 pb-24 max-w-6xl mx-auto relative scroll-mt-24">
       <div className="text-center mb-16 relative z-10">
-        <motion.h2 
+        <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
+          Фотогалерея
+        </span>
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4"
         >
           Атмосфера заботы
@@ -37,16 +40,15 @@ export default function Gallery() {
         </p>
       </div>
 
-      {/* МАГИЯ ЗДЕСЬ: Добавлен grid-flow-row-dense для плотной упаковки */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 auto-rows-auto grid-flow-row-dense relative z-10">
         {photos.map((photo, idx) => (
           <motion.div
-            key={idx}
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            key={photo.src}
+            initial={{ opacity: 0, scale: 0.96, y: 20 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: (idx % 3) * 0.1, ease: "easeOut" }} // Оптимизировал задержку
-            className={`relative rounded-3xl overflow-hidden group shadow-md hover:shadow-xl transition-all duration-300 ${photo.size}`}
+            transition={{ duration: 0.45, delay: (idx % 3) * 0.08, ease: "easeOut" }}
+            className={`relative rounded-3xl overflow-hidden group shadow-md hover:shadow-xl transition-all duration-300 bg-slate-100 ${photo.size}`}
           >
             <Image
               src={photo.src}
@@ -56,12 +58,10 @@ export default function Gallery() {
               sizes="(max-width: 768px) 50vw, 33vw"
             />
 
-            {/* Градиент */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/75 via-slate-900/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 z-10" />
 
-            {/* Текст */}
-            <div className="absolute bottom-0 left-0 w-full p-6 z-20 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-              <p className="text-white font-bold text-lg tracking-wide drop-shadow-md">
+            <div className="absolute bottom-0 left-0 w-full p-5 sm:p-6 z-20 opacity-0 group-hover:opacity-100 transition-all duration-400 transform translate-y-3 group-hover:translate-y-0">
+              <p className="text-white font-bold text-base sm:text-lg tracking-wide drop-shadow-md">
                 {photo.alt}
               </p>
             </div>

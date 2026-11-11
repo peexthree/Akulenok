@@ -1,48 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { 
-  ShieldCheckIcon, 
-  BeakerIcon, 
-  AcademicCapIcon, 
-  HeartIcon,
+import {
+  BeakerIcon,
+  AcademicCapIcon,
   SunIcon,
   SparklesIcon,
   FaceSmileIcon,
-  HomeModernIcon
+  HomeModernIcon,
 } from "@heroicons/react/24/outline";
 
-// Расширенный список для длинного "паровоза"
 const trustItems = [
   { text: "Вода лучшего качества", icon: BeakerIcon },
   { text: "Сотрудники с медицинским и педагогическим образованием", icon: AcademicCapIcon },
-  { text: "Температура воды 32-33°C", icon: SunIcon },
-  { text: "Многоступенчатая система очистки воды - вода питьевого качества", icon: SparklesIcon },
+  { text: "Температура воды 32–33 °C", icon: SunIcon },
+  { text: "Многоступенчатая система очистки воды — вода питьевого качества", icon: SparklesIcon },
   { text: "Игровой формат", icon: FaceSmileIcon },
   { text: "Удобная зона отдыха и ожидания", icon: HomeModernIcon },
 ];
 
 export default function TrustBar() {
+  const [paused, setPaused] = useState(false);
+
   return (
     <div className="relative -mt-10 sm:-mt-12 z-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 0.8 }}
-        className="bg-white/80 backdrop-blur-lg py-6 px-4 rounded-3xl sm:rounded-[2.5rem] shadow-soft border border-white"
+        transition={{ delay: 0.25, duration: 0.6 }}
+        className="bg-white/90 backdrop-blur-lg py-5 px-4 sm:px-6 rounded-3xl sm:rounded-[2.5rem] shadow-soft border border-white flex items-center gap-3"
       >
-        {/* Единая бегущая строка для всех устройств */}
         <div className="overflow-hidden w-full relative mask-image-fade group">
-          {/* group-hover:pause останавливает анимацию при наведении мыши */}
-          <div className="flex w-max animate-marquee gap-8 pr-8 group-hover:[animation-play-state:paused]">
-            {/* Склеиваем массив для бесконечного лупа */}
+          <div
+            className={`flex w-max animate-marquee gap-8 pr-8 group-hover:[animation-play-state:paused] ${
+              paused ? "[animation-play-state:paused]" : ""
+            }`}
+          >
             {[...trustItems, ...trustItems].map((item, idx) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className="flex items-center gap-3 whitespace-nowrap"
-                aria-hidden={idx >= trustItems.length ? "true" : "false"}
+                aria-hidden={idx >= trustItems.length}
               >
-                <div className="p-2 bg-sky-100 rounded-full text-sky-500 shrink-0 shadow-sm transition-transform group-hover:scale-110">
-                  <item.icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                <div className="p-2 bg-sky-100 rounded-full text-sky-600 shrink-0 shadow-sm">
+                  <item.icon className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
                 </div>
                 <span className="font-bold text-slate-700 text-sm sm:text-base cursor-default">
                   {item.text}
@@ -51,30 +51,46 @@ export default function TrustBar() {
             ))}
           </div>
         </div>
+
+        <button
+          type="button"
+          onClick={() => setPaused((p) => !p)}
+          aria-label={paused ? "Запустить бегущую строку" : "Остановить бегущую строку"}
+          className="shrink-0 w-8 h-8 rounded-full bg-slate-100 hover:bg-sky-100 text-slate-600 hover:text-sky-600 flex items-center justify-center transition-colors text-xs font-black"
+        >
+          {paused ? "▶" : "❚❚"}
+        </button>
       </motion.div>
 
       <style jsx>{`
         .animate-marquee {
-          /* На десктопе строка длиннее, поэтому увеличиваем время прохождения (40s), 
-             чтобы скорость была комфортной для чтения */
           animation: marquee 40s linear infinite;
         }
-        
-        /* Ускоряем для мобилок, так как экран уже */
+
         @media (max-width: 640px) {
           .animate-marquee {
-            animation: marquee 20s linear infinite;
+            animation: marquee 22s linear infinite;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .animate-marquee {
+            animation-play-state: paused;
           }
         }
 
         @keyframes marquee {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
         }
-        
+
         .mask-image-fade {
-          mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-          -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+          mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
         }
       `}</style>
     </div>

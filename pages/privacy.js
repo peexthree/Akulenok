@@ -18,8 +18,10 @@ export default function Privacy() {
         <link rel="canonical" href={`${COMPANY_DETAILS.siteUrl}/privacy`} />
       </Head>
 
-      <div className="min-h-screen bg-slate-50 pt-24 pb-24">
-        <Container>
+      <div className="min-h-screen bg-[#F6FBFF] pt-24 pb-24 relative overflow-hidden">
+        <div className="absolute top-20 left-1/4 w-96 h-96 bg-sky-300/25 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-rose-300/20 rounded-full blur-3xl pointer-events-none" />
+        <Container className="relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -36,10 +38,10 @@ export default function Privacy() {
               Вернуться на главную
             </Link>
 
-            <div className="bg-white/90 backdrop-blur-xl border border-white p-8 md:p-16 rounded-[3rem] shadow-soft overflow-hidden relative">
-              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-sky-400 to-blue-500" />
+            <div className="bg-white/80 backdrop-blur-xl border border-white/90 p-8 md:p-16 rounded-3xl shadow-soft overflow-hidden relative">
+              <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-sky-500 via-indigo-400 to-rose-500" />
 
-              <h1 className="text-3xl sm:text-4xl font-black text-slate-900 mb-8 tracking-tight">
+              <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0C1A2E] mb-8 tracking-tight">
                 Политика конфиденциальности
               </h1>
 

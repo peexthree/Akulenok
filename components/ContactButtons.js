@@ -60,7 +60,7 @@ export default function ContactButtons({ wide = false, vertical = false }) {
         whileTap={{ scale: 0.98 }}
         className={clsx(
           buttonBase,
-          "bg-gradient-to-br from-purple-500 to-fuchsia-600 border border-white/20",
+          "bg-gradient-to-br from-sky-500 via-indigo-400 to-rose-500 border border-white/20",
           wide && "w-full"
         )}
       >

@@ -15,7 +15,7 @@ export default function Layout({ children }) {
   });
 
   return (
-    <div className="relative min-h-screen bg-slate-50 text-slate-900 font-nunito overflow-x-clip selection:bg-sky-200 selection:text-sky-900">
+    <div className="relative min-h-screen bg-[#F6FBFF] text-[#0C1A2E] font-nunito overflow-x-clip selection:bg-sky-200 selection:text-[#0C1A2E]">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-xl focus:bg-white focus:text-sky-700 focus:font-bold focus:shadow-lg"
@@ -23,10 +23,10 @@ export default function Layout({ children }) {
         Перейти к основному содержанию
       </a>
 
-      {/* Индикатор прогресса чтения */}
+      {/* Индикатор прогресса чтения (Aqua → Rose) */}
       <motion.div
         aria-hidden="true"
-        className="fixed top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-sky-400 to-blue-500 origin-left z-[100] rounded-r-full shadow-[0_0_15px_rgba(56,189,248,0.6)]"
+        className="fixed top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-sky-500 via-indigo-400 to-rose-500 origin-left z-[100] rounded-r-full shadow-[0_0_15px_rgba(14,165,233,0.45)]"
         style={{ scaleX }}
       />
 

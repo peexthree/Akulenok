@@ -175,15 +175,18 @@ export default function Gallery() {
 
   return (
     <Container id="gallery" className="py-16 pb-24 max-w-6xl mx-auto relative scroll-mt-24">
+      <div className="absolute top-32 left-1/4 w-96 h-96 bg-sky-300/25 rounded-full blur-3xl -z-10 pointer-events-none" />
+      <div className="absolute bottom-24 right-1/4 w-96 h-96 bg-rose-300/20 rounded-full blur-3xl -z-10 pointer-events-none" />
+
       <div className="text-center mb-10 relative z-10">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
+        <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100/80 border border-sky-200/60 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
           Фотогалерея
         </span>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4"
+          className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] tracking-tight leading-tight mb-4"
         >
           Атмосфера заботы
         </motion.h2>
@@ -214,8 +217,8 @@ export default function Gallery() {
                 }}
                 className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-200 ${
                   active
-                    ? "bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-md shadow-sky-200"
-                    : "bg-white text-slate-600 border border-slate-200 hover:border-sky-300 hover:text-sky-700"
+                    ? "bg-gradient-to-r from-sky-500 to-cyan-500 text-white shadow-md shadow-sky-500/20"
+                    : "bg-white/80 backdrop-blur-md text-slate-600 border border-white/90 hover:border-sky-300 hover:text-sky-700"
                 }`}
               >
                 {cat} <span className={active ? "text-sky-100" : "text-slate-400"}>({count})</span>

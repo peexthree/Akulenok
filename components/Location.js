@@ -11,15 +11,18 @@ export default function Location() {
 
   return (
     <Container id="contacts" className="py-24 relative z-10 scroll-mt-24">
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-sky-300/25 rounded-full blur-3xl -z-10 pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 h-80 bg-rose-300/20 rounded-full blur-3xl -z-10 pointer-events-none" />
+
       <div className="text-center mb-16 relative">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
+        <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100/80 border border-sky-200/60 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
           Контакты
         </span>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4"
+          className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] tracking-tight leading-tight mb-4"
         >
           Ждём вас в гости
         </motion.h2>
@@ -33,20 +36,20 @@ export default function Location() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.55 }}
-        className="grid gap-8 lg:grid-cols-[450px_1fr] items-center bg-white/90 backdrop-blur-xl border border-white p-6 sm:p-10 rounded-[3rem] shadow-soft mx-auto"
+        className="grid gap-8 lg:grid-cols-[450px_1fr] items-center bg-white/80 backdrop-blur-xl border border-white/90 p-6 sm:p-10 rounded-3xl shadow-soft mx-auto"
       >
         <div className="flex flex-col justify-center h-full space-y-8">
           <div className="space-y-6 text-lg">
             <div className="flex flex-col gap-1">
               <span className="text-sm font-bold text-sky-600 uppercase tracking-wider">Адрес</span>
-              <span className="font-bold text-slate-900 text-xl">{COMPANY_DETAILS.shortAddress}</span>
+              <span className="font-bold text-[#0C1A2E] text-xl">{COMPANY_DETAILS.shortAddress}</span>
             </div>
 
             <div className="flex flex-col gap-1">
               <span className="text-sm font-bold text-sky-600 uppercase tracking-wider">Телефон</span>
               <a
                 href={`tel:${COMPANY_DETAILS.phoneRaw}`}
-                className="font-bold text-slate-900 text-2xl hover:text-sky-600 transition-colors self-start rounded-lg"
+                className="font-display font-extrabold text-[#0C1A2E] text-2xl hover:text-rose-600 transition-colors self-start rounded-lg"
               >
                 {COMPANY_DETAILS.phone}
               </a>
@@ -59,9 +62,9 @@ export default function Location() {
               </span>
             </div>
 
-            <div className="inline-flex items-center gap-2 bg-amber-50 px-4 py-2 rounded-xl border border-amber-200/70 self-start">
-              <span className="text-amber-500 text-xl" aria-hidden="true">★</span>
-              <span className="font-bold text-slate-900">{COMPANY_DETAILS.rating}</span>
+            <div className="inline-flex items-center gap-2 bg-[#F6FBFF] px-4 py-2 rounded-xl border border-sky-200/70 self-start">
+              <span className="text-amber-400 text-xl" aria-hidden="true">★</span>
+              <span className="font-display font-extrabold text-[#0C1A2E]">{COMPANY_DETAILS.rating}</span>
               <span className="text-slate-600 text-sm font-medium">({COMPANY_DETAILS.reviewsCountText})</span>
             </div>
           </div>
@@ -71,7 +74,7 @@ export default function Location() {
               href={COMPANY_DETAILS.yandexMaps}
               target="_blank"
               rel="noopener noreferrer"
-              className={clsx(commonButtonClasses, "bg-slate-800 hover:bg-slate-700 xl:col-span-2")}
+              className={clsx(commonButtonClasses, "bg-[#0C1A2E] hover:bg-slate-800 xl:col-span-2")}
             >
               <FaMapMarkerAlt size={20} aria-hidden="true" />
               <span>Построить маршрут</span>

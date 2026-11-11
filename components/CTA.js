@@ -28,13 +28,13 @@ function Cta() {
       <div
         className={clsx(
           "relative flex flex-col lg:flex-row items-center justify-between w-full max-w-5xl gap-8 mx-auto text-white",
-          "bg-gradient-to-r from-sky-500 via-sky-600 to-blue-700 p-8 sm:p-10 lg:p-16 rounded-[3rem] shadow-2xl",
-          "overflow-hidden border-4 border-white/25"
+          "bg-gradient-to-br from-sky-500 via-sky-600 to-cyan-500 p-8 sm:p-10 lg:p-14 rounded-3xl sm:rounded-[2.5rem] shadow-2xl",
+          "overflow-hidden border border-white/30"
         )}
       >
-        <div className="absolute top-0 left-0 w-full h-full opacity-15 pointer-events-none">
-          <div className="absolute top-4 left-10 w-24 h-24 bg-white rounded-full blur-xl" />
-          <div className="absolute bottom-10 right-20 w-36 h-36 bg-white rounded-full blur-2xl" />
+        <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+          <div className="absolute top-4 left-10 w-32 h-32 bg-white rounded-full blur-2xl" />
+          <div className="absolute bottom-4 right-16 w-48 h-48 bg-rose-400 rounded-full blur-3xl" />
         </div>
 
         <div className="relative z-10 flex-grow text-center lg:text-left">
@@ -42,7 +42,7 @@ function Cta() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tighter text-white drop-shadow-md"
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-white drop-shadow-md"
           >
             Готовы записаться <br /> на пробное занятие?
           </motion.h2>
@@ -54,7 +54,7 @@ function Cta() {
         <div className="relative z-10 flex-shrink-0 w-full lg:w-auto flex flex-col gap-4">
           <a
             href={`tel:${COMPANY_DETAILS.phoneRaw}`}
-            className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-orange-400 to-orange-500 text-white text-xl sm:text-2xl font-black tracking-wide leading-snug px-10 py-5 rounded-2xl shadow-[0_10px_30px_rgba(249,115,22,0.4)] hover:shadow-[0_15px_40px_rgba(249,115,22,0.6)] hover:-translate-y-1 transition-all duration-300 border border-orange-300/50"
+            className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white text-xl sm:text-2xl font-extrabold tracking-wide leading-snug px-10 py-5 rounded-2xl shadow-lg shadow-rose-500/35 hover:-translate-y-1 transition-all duration-300 border border-white/25"
           >
             <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />

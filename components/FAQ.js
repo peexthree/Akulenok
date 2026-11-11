@@ -45,10 +45,10 @@ export default function Faq() {
       </div>
 
       <div className="text-center mb-16 relative z-10">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
+        <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100/80 border border-sky-200/60 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
           Частые вопросы
         </span>
-        <h2 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4 text-balance">
+        <h2 className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] tracking-tight leading-tight mb-4 text-balance">
           Вопросы, которые волнуют мам
         </h2>
         <p className="text-xl text-slate-600 max-w-2xl mx-auto font-medium">
@@ -68,10 +68,10 @@ export default function Faq() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.08 }}
-              className={`rounded-[2rem] border transition-all duration-300 overflow-hidden ${
+              className={`rounded-3xl border transition-all duration-300 overflow-hidden ${
                 isOpen
-                  ? "bg-white border-sky-300 shadow-xl"
-                  : "bg-white/80 backdrop-blur-md border-slate-100 hover:bg-white hover:shadow-md hover:border-sky-100"
+                  ? "bg-white/95 border-rose-200 shadow-xl"
+                  : "bg-white/80 backdrop-blur-xl border-white/90 hover:bg-white hover:shadow-md hover:border-sky-200"
               }`}
             >
               <h3 className="m-0">
@@ -80,11 +80,11 @@ export default function Faq() {
                   aria-expanded={isOpen}
                   aria-controls={panelId}
                   onClick={() => toggleFaq(idx)}
-                  className="w-full text-left px-6 py-6 sm:px-8 sm:py-7 flex justify-between items-center rounded-[2rem]"
+                  className="w-full text-left px-6 py-6 sm:px-8 sm:py-7 flex justify-between items-center rounded-3xl"
                 >
                   <span
                     className={`text-lg sm:text-xl font-bold transition-colors duration-300 pr-4 ${
-                      isOpen ? "text-sky-600" : "text-slate-800"
+                      isOpen ? "text-rose-600" : "text-[#0C1A2E]"
                     }`}
                   >
                     {faq.q}
@@ -95,8 +95,8 @@ export default function Faq() {
                     animate={{ rotate: isOpen ? 45 : 0 }}
                     className={`shrink-0 flex items-center justify-center w-10 h-10 rounded-full transition-colors duration-300 ${
                       isOpen
-                        ? "bg-sky-500 text-white shadow-md shadow-sky-200"
-                        : "bg-slate-100 text-slate-500"
+                        ? "bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-md shadow-rose-500/25"
+                        : "bg-sky-50 text-sky-600"
                     }`}
                   >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

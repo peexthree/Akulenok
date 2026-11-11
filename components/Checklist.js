@@ -54,10 +54,10 @@ export default function Checklist() {
   );
 
   return (
-    <Container className="py-24 relative overflow-hidden bg-white rounded-[3rem] my-6 shadow-sm border border-slate-100">
+    <Container className="py-24 relative overflow-hidden bg-white/80 backdrop-blur-xl rounded-3xl my-6 shadow-soft border border-white/90">
       <div
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] z-0 pointer-events-none select-none opacity-25"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] z-0 pointer-events-none select-none opacity-20"
       >
         <Image
           src="/img/think.png"
@@ -70,14 +70,14 @@ export default function Checklist() {
 
       <div className="flex flex-col items-center pt-4 relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100/80 border border-sky-200/60 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
             Памятка
           </span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl sm:text-5xl font-black text-slate-900 mb-5 tracking-tight"
+            className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] mb-5 tracking-tight"
           >
             Что взять на занятие?
           </motion.h2>
@@ -86,7 +86,7 @@ export default function Checklist() {
           </p>
         </div>
 
-        <div className="w-full max-w-2xl mx-auto flex flex-col items-center bg-white/90 backdrop-blur-xl p-6 sm:p-10 rounded-[2.5rem] shadow-soft border border-sky-100/70 z-10">
+        <div className="w-full max-w-2xl mx-auto flex flex-col items-center bg-white/85 backdrop-blur-xl p-6 sm:p-10 rounded-3xl shadow-soft border border-white/90 z-10">
           <div className="flex flex-wrap justify-center gap-3 mb-6" role="group" aria-label="Выбор зоны занятия">
             <button
               type="button"
@@ -94,8 +94,8 @@ export default function Checklist() {
               onClick={() => setActiveTab("pool")}
               className={`px-8 py-3.5 rounded-2xl font-bold text-lg transition-all duration-300 ${
                 activeTab === "pool"
-                  ? "bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-lg shadow-sky-200 scale-[1.02]"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                  ? "bg-gradient-to-r from-sky-500 to-cyan-500 text-white shadow-lg shadow-sky-500/20 scale-[1.02]"
+                  : "bg-[#F6FBFF] text-slate-600 border border-sky-100 hover:bg-sky-50"
               }`}
             >
               Бассейн
@@ -106,8 +106,8 @@ export default function Checklist() {
               onClick={() => setActiveTab("gym")}
               className={`px-8 py-3.5 rounded-2xl font-bold text-lg transition-all duration-300 ${
                 activeTab === "gym"
-                  ? "bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-lg shadow-sky-200 scale-[1.02]"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                  ? "bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-lg shadow-rose-500/25 scale-[1.02]"
+                  : "bg-[#F6FBFF] text-slate-600 border border-sky-100 hover:bg-rose-50 hover:text-rose-700"
               }`}
             >
               Зал

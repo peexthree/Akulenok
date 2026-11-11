@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 
 const stats = [
-  { k: "3 мес+", v: "возраст начала" },
-  { k: "4.8★", v: "рейтинг Яндекс.Карт" },
-  { k: "от 30 мин", v: "длительность занятия" },
+  { k: "3 мес+", v: "возраст начала", accent: "text-sky-600" },
+  { k: "4.8★", v: "рейтинг Яндекс.Карт", accent: "text-rose-500" },
+  { k: "от 30 мин", v: "длительность занятия", accent: "text-sky-600" },
 ];
 
 const reasons = [
@@ -29,7 +29,11 @@ const itemVariants = {
 
 const About = () => {
   return (
-    <Container>
+    <Container className="relative">
+      {/* Aurora Glow сквозь воду */}
+      <div className="absolute top-12 left-10 w-80 h-80 bg-sky-300/30 rounded-full blur-3xl -z-10 pointer-events-none" />
+      <div className="absolute bottom-12 right-10 w-80 h-80 bg-rose-300/20 rounded-full blur-3xl -z-10 pointer-events-none" />
+
       <div id="about" className="grid gap-12 lg:gap-12 lg:grid-cols-2 items-center relative z-10 py-12 lg:py-20 scroll-mt-24">
         {/* Левая колонка */}
         <motion.div
@@ -45,12 +49,12 @@ const About = () => {
 
           <motion.div
             variants={itemVariants}
-            className="inline-block px-4 py-1.5 rounded-full bg-sky-100 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4"
+            className="inline-block px-4 py-1.5 rounded-full bg-sky-100/80 border border-sky-200/60 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4"
           >
             О центре
           </motion.div>
 
-          <motion.h2 variants={itemVariants} className="text-3xl sm:text-5xl font-black text-slate-900 mb-6 tracking-tight">
+          <motion.h2 variants={itemVariants} className="text-3xl sm:text-5xl font-extrabold text-[#0C1A2E] mb-6 tracking-tight">
             Про нас
           </motion.h2>
           <motion.p variants={itemVariants} className="text-lg sm:text-xl text-slate-600 leading-relaxed z-10 relative font-medium">
@@ -62,9 +66,11 @@ const About = () => {
               <motion.div
                 key={s.k}
                 variants={itemVariants}
-                className="bg-white/85 backdrop-blur-md border border-sky-100/70 p-5 rounded-2xl text-center shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white/80 backdrop-blur-xl border border-white/90 p-5 rounded-3xl text-center shadow-soft hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="text-3xl font-black text-sky-600 mb-1">{s.k}</div>
+                <div className={`font-display text-3xl font-extrabold mb-1 tracking-tight ${s.accent}`}>
+                  {s.k}
+                </div>
                 <div className="text-sm font-semibold text-slate-600">{s.v}</div>
               </motion.div>
             ))}
@@ -79,10 +85,10 @@ const About = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="relative group h-full"
         >
-          <div className="bg-white/90 backdrop-blur-xl border border-white rounded-[2.5rem] p-8 sm:p-10 pb-28 sm:pb-32 shadow-soft relative overflow-hidden h-full flex flex-col justify-center">
-            <div className="absolute inset-0 bg-gradient-to-br from-sky-50/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
+          <div className="bg-white/80 backdrop-blur-xl border border-white/90 rounded-3xl p-8 sm:p-10 pb-28 sm:pb-32 shadow-soft relative overflow-hidden h-full flex flex-col justify-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-sky-50/60 via-transparent to-rose-50/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
 
-            <h3 className="text-2xl sm:text-3xl font-black text-slate-800 mb-6 relative z-10">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0C1A2E] mb-6 relative z-10">
               Почему нам доверяют
             </h3>
 

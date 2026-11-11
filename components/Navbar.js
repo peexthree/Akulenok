@@ -98,7 +98,7 @@ export default function Navbar() {
         className={`
           pointer-events-auto flex items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]
           ${isScrolled
-            ? "w-[95%] max-w-5xl rounded-full bg-white/95 backdrop-blur-xl shadow-[0_12px_36px_-10px_rgba(14,165,233,0.22)] border border-sky-100/80 px-5 sm:px-6 py-2"
+            ? "w-[95%] max-w-5xl rounded-full bg-white/85 backdrop-blur-xl shadow-[0_12px_36px_-10px_rgba(14,165,233,0.22)] border border-white/90 px-5 sm:px-6 py-2"
             : "w-full max-w-full rounded-none bg-transparent px-6 sm:px-8 lg:px-16 py-6 sm:py-8"
           }
         `}
@@ -137,7 +137,7 @@ export default function Navbar() {
               }`}
             >
               {isScrolled ? (
-                <span className="font-black tracking-tight text-xl text-slate-900 leading-tight">
+                <span className="font-display font-extrabold tracking-tight text-xl text-[#0C1A2E] leading-tight">
                   Акулёнок
                 </span>
               ) : (
@@ -203,10 +203,10 @@ export default function Navbar() {
           <a
             href={`tel:${COMPANY_DETAILS.phoneRaw}`}
             className={`
-              hidden sm:inline-flex items-center justify-center rounded-full font-black tracking-wide leading-snug transition-all duration-500 active:scale-95
+              hidden sm:inline-flex items-center justify-center rounded-full font-extrabold tracking-wide leading-snug transition-all duration-500 active:scale-95
               ${isScrolled
-                ? "bg-gradient-to-r from-sky-500 to-blue-600 text-white px-5 py-2.5 text-xs sm:text-sm shadow-md shadow-sky-500/25 hover:shadow-lg"
-                : "bg-white/95 backdrop-blur-md text-sky-600 px-6 py-3 text-sm sm:text-base shadow-[0_0_20px_rgba(255,255,255,0.45)] hover:bg-white hover:shadow-[0_0_25px_rgba(255,255,255,0.7)]"
+                ? "bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-5 py-2.5 text-xs sm:text-sm shadow-lg shadow-rose-500/25"
+                : "bg-white/95 backdrop-blur-md text-rose-600 px-6 py-3 text-sm sm:text-base shadow-[0_0_25px_rgba(255,255,255,0.45)] hover:bg-white hover:shadow-[0_0_30px_rgba(244,63,94,0.35)]"
               }
             `}
           >
@@ -285,7 +285,7 @@ export default function Navbar() {
                   <a
                     href={`tel:${COMPANY_DETAILS.phoneRaw}`}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="w-full mt-4 block text-center rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 px-4 py-4 text-lg font-black tracking-wide leading-snug text-white shadow-lg shadow-sky-500/25 active:scale-95 transition-transform"
+                    className="w-full mt-4 block text-center rounded-2xl bg-gradient-to-r from-rose-500 to-pink-500 px-4 py-4 text-lg font-extrabold tracking-wide leading-snug text-white shadow-lg shadow-rose-500/25 active:scale-95 transition-transform"
                   >
                     Позвонить
                   </a>

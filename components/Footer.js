@@ -10,8 +10,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-sky-50 pt-16 pb-8 mt-12 rounded-t-[3rem] sm:rounded-t-[4rem] overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-white rounded-full blur-[80px] opacity-60 pointer-events-none" />
+    <footer className="relative bg-gradient-to-b from-[#ECF8FF] to-sky-100/70 pt-16 pb-8 mt-12 rounded-t-[3rem] sm:rounded-t-[4rem] overflow-hidden border-t border-white">
+      <div className="absolute top-0 left-1/3 w-96 h-96 bg-white/70 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-rose-200/20 rounded-full blur-3xl pointer-events-none" />
 
       <Container className="relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-10 border-b border-sky-200/70 pb-10">
@@ -26,7 +27,7 @@ export default function Footer() {
                 className="drop-shadow-md object-contain"
               />
             </motion.div>
-            <h3 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
+            <h3 className="text-2xl font-extrabold text-[#0C1A2E] tracking-tight mb-2">
               {COMPANY_DETAILS.name}
             </h3>
             <p className="text-slate-600 font-medium text-sm mb-4">
@@ -61,7 +62,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Max Messenger"
-                className="p-3 bg-white text-purple-600 font-bold rounded-2xl shadow-sm hover:shadow-md hover:bg-purple-50 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center min-w-[46px] min-h-[46px]"
+                className="p-3 bg-white text-sky-600 font-bold rounded-2xl shadow-sm hover:shadow-md hover:bg-sky-50 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center min-w-[46px] min-h-[46px]"
               >
                 MAX
               </a>
@@ -88,7 +89,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="ВКонтакте"
-                className="p-3 bg-white text-blue-600 rounded-2xl shadow-sm hover:shadow-md hover:bg-blue-50 hover:-translate-y-1 transition-all duration-300"
+                className="p-3 bg-white text-sky-700 rounded-2xl shadow-sm hover:shadow-md hover:bg-sky-50 hover:-translate-y-1 transition-all duration-300"
               >
                 <FaVk size={22} aria-hidden="true" />
               </a>
@@ -97,14 +98,14 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="p-3 bg-white text-pink-500 rounded-2xl shadow-sm hover:shadow-md hover:bg-pink-50 hover:-translate-y-1 transition-all duration-300"
+                className="p-3 bg-white text-rose-500 rounded-2xl shadow-sm hover:shadow-md hover:bg-rose-50 hover:-translate-y-1 transition-all duration-300"
               >
                 <FaInstagram size={22} aria-hidden="true" />
               </a>
               <a
                 href={`tel:${COMPANY_DETAILS.phoneRaw}`}
                 aria-label="Позвонить"
-                className="p-3 bg-white text-orange-500 rounded-2xl shadow-sm hover:shadow-md hover:bg-orange-50 hover:-translate-y-1 transition-all duration-300"
+                className="p-3 bg-white text-rose-500 rounded-2xl shadow-sm hover:shadow-md hover:bg-rose-50 hover:-translate-y-1 transition-all duration-300"
               >
                 <FaPhoneAlt size={22} aria-hidden="true" />
               </a>
@@ -112,7 +113,7 @@ export default function Footer() {
 
             <a
               href={`tel:${COMPANY_DETAILS.phoneRaw}`}
-              className="text-2xl font-black text-slate-900 hover:text-sky-600 transition-colors"
+              className="font-display text-2xl font-extrabold text-[#0C1A2E] hover:text-rose-600 transition-colors"
             >
               {COMPANY_DETAILS.phone}
             </a>

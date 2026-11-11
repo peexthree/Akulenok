@@ -35,28 +35,29 @@ const safetyFacts = [
 export default function Safety() {
   return (
     <Container className="py-16 lg:py-24 relative">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-sky-100/50 rounded-full blur-[100px] -z-10 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sky-300/30 rounded-full blur-3xl -z-10 pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 h-80 bg-rose-300/20 rounded-full blur-3xl -z-10 pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="bg-white/95 backdrop-blur-xl p-8 sm:p-10 lg:p-14 rounded-[3rem] border border-white shadow-xl max-w-5xl mx-auto flex flex-col items-center"
+        className="bg-white/80 backdrop-blur-xl p-8 sm:p-10 lg:p-14 rounded-3xl sm:rounded-[2.5rem] border border-white/90 shadow-soft max-w-5xl mx-auto flex flex-col items-center"
       >
         <motion.div
           initial={{ scale: 0.8, rotate: -10 }}
           whileInView={{ scale: 1, rotate: 0 }}
           transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.15 }}
           viewport={{ once: true }}
-          className="w-20 h-20 sm:w-24 sm:h-24 mb-8 bg-gradient-to-br from-sky-100 to-blue-50 rounded-[2rem] flex items-center justify-center shadow-inner border border-sky-100"
+          className="w-20 h-20 sm:w-24 sm:h-24 mb-8 bg-gradient-to-br from-sky-100 to-rose-50 rounded-3xl flex items-center justify-center shadow-inner border border-white"
         >
           <svg className="w-11 h-11 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
           </svg>
         </motion.div>
 
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mb-4 text-center tracking-tight">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0C1A2E] mb-4 text-center tracking-tight">
           Чистота, которой доверяют
         </h2>
         <p className="text-lg sm:text-xl text-slate-600 font-medium mb-12 text-center max-w-2xl">
@@ -67,12 +68,12 @@ export default function Safety() {
           {safetyFacts.map((fact) => (
             <div
               key={fact.title}
-              className="flex flex-col items-center text-center p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-md transition-all duration-300 group"
+              className="flex flex-col items-center text-center p-6 rounded-3xl bg-[#F6FBFF] border border-sky-100/80 hover:bg-white hover:shadow-md hover:-translate-y-1 transition-all duration-300 group"
             >
               <div className="mb-5 p-4 bg-white rounded-2xl shadow-sm group-hover:scale-110 transition-transform duration-300">
                 {fact.icon}
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">{fact.title}</h3>
+              <h3 className="text-xl font-extrabold text-[#0C1A2E] mb-3">{fact.title}</h3>
               <p className="text-slate-600 font-medium leading-relaxed text-sm sm:text-base">
                 {fact.desc}
               </p>

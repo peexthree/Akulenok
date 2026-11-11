@@ -9,7 +9,7 @@ const yandexReviews = [
   {
     author: "Татьяна Галиева",
     initials: "ТГ",
-    avatarColor: "from-sky-400 to-blue-600",
+    avatarColor: "from-sky-500 to-cyan-400",
     date: "23 июля · Яндекс.Карты",
     tag: "Тренеры Регина и Любовь",
     text: "Очень приятно и радостно видеть замечательный персонал, который любит детей. Тренер Регина и Любовь — вам отдельная благодарность. Успехов вам всем и здоровья.",
@@ -17,7 +17,7 @@ const yandexReviews = [
   {
     author: "Ксения Жернакова",
     initials: "КЖ",
-    avatarColor: "from-teal-400 to-emerald-600",
+    avatarColor: "from-rose-500 to-pink-500",
     date: "26 июля 2025 · Яндекс.Карты",
     tag: "Преодолели страх воды · Арина",
     text: "Супер место. Приятные администраторы, отличный тренер Арина. Буквально за пару занятий моя дочь перестала бояться воды, стала держаться на плаву и даже немного поплыла. Спасибо большое.",
@@ -25,7 +25,7 @@ const yandexReviews = [
   {
     author: "Евгений",
     initials: "Е",
-    avatarColor: "from-indigo-400 to-sky-600",
+    avatarColor: "from-sky-500 via-indigo-400 to-rose-400",
     date: "14 июля 2024 · Яндекс.Карты",
     tag: "Ходим уже 4 месяца",
     text: "Детский центр «Акулёнок» вообще отличный, возим ребёнка 4 месяца — ему нравится. Специалисты хорошие, добрые, умеют обращаться с детьми, и с такими маленькими в том числе. Советую!",
@@ -33,7 +33,7 @@ const yandexReviews = [
   {
     author: "Фотолюкс",
     initials: "Ф",
-    avatarColor: "from-amber-400 to-orange-500",
+    avatarColor: "from-sky-500 to-blue-600",
     date: "1 мая 2023 · Яндекс.Карты",
     tag: "Бассейн, уют и монитор для родителей",
     text: "Единственный в своём роде, уникальный водный комплекс для маленьких детей. Добрые администраторы, большой бассейн, опытные тренеры, уютная зона ожидания и монитор для наблюдения за тем, как плавает ваш маленький пловец.",
@@ -45,8 +45,8 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" className="py-24 relative z-10 scroll-mt-24 overflow-hidden">
-      <div className="absolute top-24 right-0 w-96 h-96 bg-sky-100/60 rounded-full blur-[120px] -z-10 pointer-events-none" />
-      <div className="absolute bottom-12 left-0 w-80 h-80 bg-amber-100/40 rounded-full blur-[110px] -z-10 pointer-events-none" />
+      <div className="absolute top-24 right-1/4 w-96 h-96 bg-sky-300/30 rounded-full blur-3xl -z-10 pointer-events-none" />
+      <div className="absolute bottom-12 left-1/4 w-80 h-80 bg-rose-300/20 rounded-full blur-3xl -z-10 pointer-events-none" />
 
       <Container>
         <SectionTitle
@@ -61,11 +61,11 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-10 bg-white/95 backdrop-blur-xl border border-sky-100 rounded-[2rem] p-5 sm:p-6 shadow-soft flex flex-col md:flex-row items-center justify-between gap-5"
+          className="mb-10 bg-white/80 backdrop-blur-xl border border-white/90 rounded-3xl p-5 sm:p-6 shadow-soft flex flex-col md:flex-row items-center justify-between gap-5"
         >
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
-            <div className="flex items-center gap-3 bg-amber-50 border border-amber-200/80 px-4 py-2.5 rounded-2xl">
-              <span className="text-3xl font-black text-slate-900 leading-none">
+            <div className="flex items-center gap-3 bg-[#F6FBFF] border border-sky-200/70 px-4 py-2.5 rounded-2xl">
+              <span className="font-display text-3xl font-extrabold text-[#0C1A2E] leading-none">
                 {COMPANY_DETAILS.rating}
               </span>
               <div className="flex flex-col">
@@ -79,7 +79,7 @@ export default function Testimonials() {
             </div>
 
             <div className="text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start gap-1.5 text-slate-900 font-black text-base sm:text-lg">
+              <div className="flex items-center justify-center md:justify-start gap-1.5 text-[#0C1A2E] font-extrabold text-base sm:text-lg">
                 <CheckBadgeIcon className="w-5 h-5 text-sky-500 shrink-0" aria-hidden="true" />
                 <span>Подтверждённые отзывы посетителей</span>
               </div>
@@ -102,7 +102,7 @@ export default function Testimonials() {
               href={COMPANY_DETAILS.yandexReviews}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold py-3 px-6 rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all text-sm sm:text-base"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-600 hover:to-cyan-600 text-white font-bold py-3 px-6 rounded-2xl shadow-md shadow-sky-500/20 hover:shadow-lg hover:-translate-y-0.5 transition-all text-sm sm:text-base"
             >
               Оставить отзыв
               <ArrowTopRightOnSquareIcon className="w-4 h-4" aria-hidden="true" />
@@ -120,17 +120,17 @@ export default function Testimonials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: index * 0.06 }}
-                className="flex flex-col p-6 sm:p-7 rounded-[2.25rem] bg-white/95 backdrop-blur-xl border border-white shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative group"
+                className="flex flex-col p-6 sm:p-7 rounded-3xl bg-white/80 backdrop-blur-xl border border-white/90 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative group"
               >
                 <div className="flex items-center gap-3.5 mb-4">
                   <div
                     aria-hidden="true"
-                    className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.avatarColor} text-white font-black text-base flex items-center justify-center shrink-0 shadow-md`}
+                    className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.avatarColor} text-white font-display font-extrabold text-base flex items-center justify-center shrink-0 shadow-md`}
                   >
                     {item.initials}
                   </div>
                   <div className="min-w-0">
-                    <h3 className="text-base sm:text-lg font-black text-slate-900 leading-tight truncate">
+                    <h3 className="text-base sm:text-lg font-extrabold text-[#0C1A2E] leading-tight truncate">
                       {item.author}
                     </h3>
                     <p className="text-xs font-semibold text-slate-500 mt-0.5">{item.date}</p>
@@ -148,7 +148,7 @@ export default function Testimonials() {
                   </div>
                 </div>
 
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium flex-grow">
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium flex-grow">
                   «{item.text}»
                 </p>
               </motion.article>
@@ -161,14 +161,14 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.12 }}
-            className={`lg:col-span-5 flex-col bg-white/95 backdrop-blur-xl border border-sky-100 rounded-[2.5rem] p-4 sm:p-5 shadow-soft ${
+            className={`lg:col-span-5 flex-col bg-white/80 backdrop-blur-xl border border-white/90 rounded-3xl p-4 sm:p-5 shadow-soft ${
               showMobileWidget ? "flex" : "hidden lg:flex"
             }`}
           >
-            <div className="flex items-center justify-between gap-2 px-2 pb-3 mb-3 border-b border-slate-100">
+            <div className="flex items-center justify-between gap-2 px-2 pb-3 mb-3 border-b border-sky-100">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-500" aria-hidden="true" />
-                <span className="text-sm font-black text-slate-900">Лента Яндекс.Карт</span>
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500" aria-hidden="true" />
+                <span className="text-sm font-extrabold text-[#0C1A2E]">Лента Яндекс.Карт</span>
               </div>
               <a
                 href={COMPANY_DETAILS.yandexReviews}
@@ -181,7 +181,7 @@ export default function Testimonials() {
               </a>
             </div>
 
-            <div className="relative w-full h-[520px] lg:h-full lg:min-h-[540px] rounded-[1.75rem] overflow-hidden bg-slate-50 border border-slate-100">
+            <div className="relative w-full h-[520px] lg:h-full lg:min-h-[540px] rounded-2xl overflow-hidden bg-[#F6FBFF] border border-sky-100/70">
               <iframe
                 src={COMPANY_DETAILS.yandexReviewsWidget}
                 title="Живые отзывы о центре Акулёнок на Яндекс.Картах"
@@ -202,7 +202,7 @@ export default function Testimonials() {
             href={COMPANY_DETAILS.yandexReviews}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-white text-slate-800 font-bold py-3.5 px-7 rounded-2xl shadow-md border border-slate-200 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-2 bg-white/90 backdrop-blur-md text-[#0C1A2E] font-bold py-3.5 px-7 rounded-2xl shadow-soft border border-white hover:border-sky-200 hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto"
           >
             Все {COMPANY_DETAILS.reviewsCountText} на Яндекс.Картах
             <ArrowTopRightOnSquareIcon className="w-4 h-4" aria-hidden="true" />
@@ -212,7 +212,7 @@ export default function Testimonials() {
             href={COMPANY_DETAILS.yandexReviews}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold py-3.5 px-7 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-600 hover:to-cyan-600 text-white font-bold py-3.5 px-7 rounded-2xl shadow-lg shadow-sky-500/20 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto"
           >
             Написать свой отзыв на Яндексе
           </a>

@@ -26,14 +26,14 @@ const SectionTitle = (props) => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15, duration: 0.4 }}
-          className="inline-block px-4 py-1.5 rounded-full bg-sky-100 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4 shadow-sm"
+          className="inline-block px-4 py-1.5 rounded-full bg-sky-100/80 border border-sky-200/60 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4 shadow-sm"
         >
           {props.pretitle}
         </motion.div>
       )}
 
       {props.title && (
-        <h2 className="max-w-3xl mt-2 text-4xl sm:text-5xl font-black leading-tight tracking-tight text-slate-900 text-balance">
+        <h2 className="max-w-3xl mt-2 text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight text-[#0C1A2E] text-balance">
           {props.title}
         </h2>
       )}

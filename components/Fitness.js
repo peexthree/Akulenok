@@ -17,9 +17,9 @@ import { FaTelegramPlane, FaWhatsapp, FaCommentDots } from "react-icons/fa";
 import { COMPANY_DETAILS } from "../config/company";
 
 const advantages = [
-  { label: "Удобно для мам", icon: HeartIcon },
-  { label: "Экономия времени", icon: ClockIcon },
-  { label: "Забота о всей семье", icon: UsersIcon },
+  { label: "Удобно для мам", icon: HeartIcon, rose: true },
+  { label: "Экономия времени", icon: ClockIcon, rose: false },
+  { label: "Забота о всей семье", icon: UsersIcon, rose: false },
 ];
 
 const programs = [
@@ -29,8 +29,10 @@ const programs = [
     badge: "Для мам и женщин",
     image: "/img/fitness/women-fitness.webp",
     imageAlt: "Женский фитнес и стретчинг в студии Акулёнок",
-    accent: "from-sky-500 to-blue-600",
-    pillBg: "bg-sky-50 text-sky-800 border-sky-100",
+    accent: "from-rose-500 to-pink-500",
+    pillBg: "bg-rose-50/90 text-rose-700 border-rose-200/70",
+    slotActive: "bg-rose-50 border-rose-300 shadow-sm",
+    slotLabel: "text-rose-700",
     directions: [
       { label: "Фитнес", icon: BoltIcon },
       { label: "Стретчинг", icon: SparklesIcon },
@@ -51,8 +53,10 @@ const programs = [
     badge: "от 3 до 7 лет",
     image: "/img/fitness/kids-fitness.webp",
     imageAlt: "Детская группа ОФП, ритмики и гимнастики в центре Акулёнок",
-    accent: "from-teal-500 to-sky-600",
-    pillBg: "bg-teal-50 text-teal-800 border-teal-100",
+    accent: "from-sky-500 to-cyan-400",
+    pillBg: "bg-sky-50/90 text-sky-700 border-sky-200/70",
+    slotActive: "bg-sky-50 border-sky-300 shadow-sm",
+    slotLabel: "text-sky-700",
     directions: [
       { label: "Ритмика", icon: MusicalNoteIcon },
       { label: "ОФП", icon: BoltIcon },
@@ -68,7 +72,7 @@ const programs = [
 ];
 
 export default function Fitness() {
-  const [filter, setFilter] = useState("all"); // 'all' | 'women' | 'kids'
+  const [filter, setFilter] = useState("all");
 
   const visiblePrograms =
     filter === "all" ? programs : programs.filter((p) => p.id === filter);
@@ -76,19 +80,19 @@ export default function Fitness() {
   return (
     <section
       id="fitness"
-      className="py-24 relative overflow-hidden bg-gradient-to-b from-sky-50/70 via-white to-slate-50 scroll-mt-24"
+      className="py-24 relative overflow-hidden bg-gradient-to-b from-[#ECF8FF]/70 via-[#F6FBFF] to-[#F6FBFF] scroll-mt-24"
     >
-      <div className="absolute top-20 left-1/4 w-80 h-80 bg-sky-200/35 rounded-full blur-[110px] pointer-events-none" />
-      <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-teal-200/25 rounded-full blur-[120px] pointer-events-none" />
+      {/* Aurora Glow сквозь воду */}
+      <div className="absolute top-24 left-1/4 w-96 h-96 bg-sky-300/30 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-24 right-1/4 w-96 h-96 bg-rose-300/20 rounded-full blur-3xl pointer-events-none" />
 
       <Container className="relative z-10">
-        {/* Заголовок блока и главное УТП */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <motion.span
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-1.5 rounded-full bg-sky-100 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4 shadow-sm"
+            className="inline-block px-4 py-1.5 rounded-full bg-rose-50 border border-rose-200/70 text-rose-700 font-bold text-xs tracking-widest uppercase mb-4 shadow-sm"
           >
             Фитнес-студия
           </motion.span>
@@ -97,10 +101,10 @@ export default function Fitness() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-[1.12] mb-4 text-balance"
+            className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] tracking-tight leading-[1.12] mb-4 text-balance"
           >
             Мама занимается —{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-blue-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-indigo-400 to-rose-500">
               ребёнок развивается!
             </span>
           </motion.h2>
@@ -115,7 +119,6 @@ export default function Fitness() {
             Параллельные занятия в соседних залах
           </motion.p>
 
-          {/* 3 главных преимущества с афиши */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -126,9 +129,13 @@ export default function Fitness() {
             {advantages.map((adv) => (
               <div
                 key={adv.label}
-                className="inline-flex items-center gap-2.5 bg-white/95 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-sky-100 shadow-sm text-slate-800 font-bold text-sm sm:text-base"
+                className="inline-flex items-center gap-2.5 bg-white/80 backdrop-blur-xl px-5 py-2.5 rounded-2xl border border-white/90 shadow-soft text-[#0C1A2E] font-bold text-sm sm:text-base"
               >
-                <span className="w-8 h-8 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center shrink-0">
+                <span
+                  className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
+                    adv.rose ? "bg-rose-50 text-rose-600" : "bg-sky-100 text-sky-600"
+                  }`}
+                >
                   <adv.icon className="w-5 h-5" aria-hidden="true" />
                 </span>
                 <span>{adv.label}</span>
@@ -136,13 +143,11 @@ export default function Fitness() {
             ))}
           </motion.div>
 
-          {/* Акцент совпадения времени */}
-          <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-amber-50 border border-amber-200/80 text-amber-900 text-xs sm:text-sm font-extrabold tracking-wide shadow-sm mb-8">
-            <ClockIcon className="w-4 h-4 text-amber-600 shrink-0" aria-hidden="true" />
+          <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-rose-50 border border-rose-200/80 text-rose-700 text-xs sm:text-sm font-extrabold tracking-wide shadow-sm mb-8">
+            <ClockIcon className="w-4 h-4 text-rose-500 shrink-0" aria-hidden="true" />
             <span>Совмещайте удобно: ПН / СР / ПТ в 18:30 и 19:30 в соседних залах</span>
           </div>
 
-          {/* Фильтр направлений */}
           <div
             role="group"
             aria-label="Фильтр направлений фитнеса"
@@ -160,8 +165,8 @@ export default function Fitness() {
                 onClick={() => setFilter(tab.id)}
                 className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-200 ${
                   filter === tab.id
-                    ? "bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-md shadow-sky-200"
-                    : "bg-white text-slate-600 border border-slate-200 hover:border-sky-300 hover:text-sky-700"
+                    ? "bg-gradient-to-r from-sky-500 to-cyan-500 text-white shadow-md shadow-sky-500/20"
+                    : "bg-white/80 backdrop-blur-md text-slate-600 border border-white/90 hover:border-sky-300 hover:text-sky-700"
                 }`}
               >
                 {tab.label}
@@ -170,7 +175,6 @@ export default function Fitness() {
           </div>
         </div>
 
-        {/* Карточки направлений */}
         <div
           className={`grid gap-8 items-stretch ${
             visiblePrograms.length === 1 ? "max-w-2xl mx-auto grid-cols-1" : "grid-cols-1 lg:grid-cols-2"
@@ -183,9 +187,8 @@ export default function Fitness() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="bg-white/95 backdrop-blur-xl rounded-[2.5rem] sm:rounded-[3rem] border border-white shadow-soft hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
+              className="bg-white/80 backdrop-blur-xl rounded-3xl border border-white/90 shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col"
             >
-              {/* Изображение направления */}
               <div className="relative aspect-video w-full bg-sky-50 overflow-hidden">
                 <Image
                   src={prog.image}
@@ -194,24 +197,22 @@ export default function Fitness() {
                   sizes={visiblePrograms.length === 1 ? "(max-width: 768px) 100vw, 672px" : "(max-width: 1024px) 100vw, 50vw"}
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/55 via-slate-900/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0C1A2E]/65 via-[#0C1A2E]/10 to-transparent" />
                 <div className="absolute top-4 left-4 sm:top-5 sm:left-5">
                   <span
-                    className={`inline-block px-4 py-1.5 rounded-full bg-gradient-to-r ${prog.accent} text-white text-xs font-black uppercase tracking-wider shadow-md`}
+                    className={`inline-block px-4 py-1.5 rounded-full bg-gradient-to-r ${prog.accent} text-white text-xs font-extrabold uppercase tracking-wider shadow-md`}
                   >
                     {prog.badge}
                   </span>
                 </div>
                 <div className="absolute bottom-4 left-5 right-5">
-                  <h3 className="text-2xl sm:text-3xl font-black text-white drop-shadow-md tracking-tight">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white drop-shadow-md tracking-tight">
                     {prog.title}
                   </h3>
                 </div>
               </div>
 
-              {/* Контент карточки */}
               <div className="p-6 sm:p-8 flex flex-col flex-grow gap-6">
-                {/* Направления с иконками */}
                 <div>
                   <div className="text-xs font-extrabold uppercase tracking-widest text-slate-500 mb-3">
                     Направления
@@ -229,14 +230,13 @@ export default function Fitness() {
                   </div>
                 </div>
 
-                {/* Дни и расписание */}
-                <div className="bg-slate-50/90 rounded-3xl p-5 border border-slate-100 mt-auto">
+                <div className="bg-[#F6FBFF] rounded-2xl p-5 border border-sky-100/80 mt-auto">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-                    <div className="inline-flex items-center gap-2 text-slate-800 font-black text-sm sm:text-base">
+                    <div className="inline-flex items-center gap-2 text-[#0C1A2E] font-extrabold text-sm sm:text-base">
                       <CalendarDaysIcon className="w-5 h-5 text-sky-600 shrink-0" aria-hidden="true" />
                       <span>Дни занятий: {prog.days}</span>
                     </div>
-                    <span className="text-xs font-bold text-amber-800 bg-amber-100/80 px-3 py-1 rounded-full">
+                    <span className="text-xs font-bold text-rose-700 bg-rose-50 border border-rose-200/70 px-3 py-1 rounded-full">
                       Параллельно: 18:30 и 19:30
                     </span>
                   </div>
@@ -246,17 +246,15 @@ export default function Fitness() {
                       <div
                         key={slot.time}
                         className={`rounded-2xl px-3 py-2.5 text-center border transition-colors ${
-                          slot.parallel
-                            ? "bg-sky-50 border-sky-300 shadow-sm"
-                            : "bg-white border-slate-200"
+                          slot.parallel ? prog.slotActive : "bg-white border-slate-200/80"
                         }`}
                       >
-                        <div className="text-lg font-black text-slate-900 leading-tight">
+                        <div className="font-display text-lg font-extrabold text-[#0C1A2E] leading-tight">
                           {slot.time}
                         </div>
                         <div
                           className={`text-[11px] font-bold uppercase tracking-wider mt-0.5 ${
-                            slot.parallel ? "text-sky-700" : "text-slate-500"
+                            slot.parallel ? prog.slotLabel : "text-slate-500"
                           }`}
                         >
                           {slot.period}
@@ -274,19 +272,19 @@ export default function Fitness() {
           ))}
         </div>
 
-        {/* Нижняя панель с адресом, девизом и CTA (без цен) */}
+        {/* Фирменный Aqua-Rose баннер (без выдуманных цен) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-10 bg-gradient-to-r from-sky-600 via-sky-500 to-blue-600 rounded-[2.5rem] p-7 sm:p-10 text-white shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6"
+          className="mt-10 bg-gradient-to-br from-sky-500 via-indigo-400 to-rose-500 rounded-3xl p-7 sm:p-10 text-white shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6 border border-white/30"
         >
           <div className="text-center lg:text-left space-y-2">
-            <div className="inline-flex items-center gap-2 text-sky-50 font-bold text-sm sm:text-base">
+            <div className="inline-flex items-center gap-2 text-white/90 font-bold text-sm sm:text-base">
               <MapPinIcon className="w-5 h-5 shrink-0" aria-hidden="true" />
               <span>{COMPANY_DETAILS.shortAddress}</span>
             </div>
-            <p className="text-xl sm:text-2xl font-black tracking-tight text-white">
+            <p className="font-display text-xl sm:text-2xl font-extrabold tracking-tight text-white">
               Движение, развитие, восстановление
             </p>
           </div>
@@ -294,7 +292,7 @@ export default function Fitness() {
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
             <a
               href={`tel:${COMPANY_DETAILS.phoneRaw}`}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white text-sky-700 hover:bg-sky-50 px-7 py-4 rounded-2xl font-black text-base sm:text-lg shadow-lg transition-all active:scale-95 text-center"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white text-rose-600 hover:bg-rose-50 px-7 py-4 rounded-2xl font-extrabold text-base sm:text-lg shadow-lg transition-all active:scale-95 text-center"
             >
               <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />

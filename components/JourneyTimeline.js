@@ -38,19 +38,22 @@ export default function JourneyTimeline() {
   });
 
   return (
-    <section ref={containerRef} className="py-24 relative bg-white/50">
-      <Container>
+    <section ref={containerRef} className="py-24 relative bg-[#F6FBFF] overflow-visible">
+      <div className="absolute top-32 right-1/4 w-80 h-80 bg-sky-300/25 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-32 left-1/4 w-80 h-80 bg-rose-300/20 rounded-full blur-3xl pointer-events-none" />
+
+      <Container className="relative z-10">
         <div className="flex flex-col lg:flex-row gap-14 lg:gap-20 relative">
           {/* Липкий заголовок */}
           <div className="w-full lg:w-1/3 flex flex-col items-start lg:sticky lg:top-32 lg:self-start">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100/80 border border-sky-200/60 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
               Первый визит
             </span>
             <motion.h2
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6 text-balance"
+              className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] tracking-tight leading-[1.1] mb-6 text-balance"
             >
               Как проходит первое занятие
             </motion.h2>
@@ -67,9 +70,9 @@ export default function JourneyTimeline() {
 
           {/* Таймлайн */}
           <div className="w-full lg:w-2/3 flex flex-col gap-12 sm:gap-16 relative">
-            <div className="absolute left-[2.25rem] sm:left-[3.25rem] top-0 bottom-0 w-1 bg-slate-200/70 rounded-full z-0 hidden sm:block overflow-hidden">
+            <div className="absolute left-[2.25rem] sm:left-[3.25rem] top-0 bottom-0 w-1 bg-sky-100 rounded-full z-0 hidden sm:block overflow-hidden">
               <motion.div
-                className="w-full h-full bg-gradient-to-b from-sky-400 to-blue-500 origin-top"
+                className="w-full h-full bg-gradient-to-b from-sky-500 via-indigo-400 to-rose-500 origin-top"
                 style={{ scaleY: scrollYProgress }}
               />
             </div>
@@ -83,14 +86,14 @@ export default function JourneyTimeline() {
                 transition={{ duration: 0.6, delay: idx * 0.08, ease: "easeOut" }}
                 className="flex flex-col sm:flex-row gap-6 sm:gap-10 relative z-10 items-start group"
               >
-                <div className="shrink-0 w-16 h-16 sm:w-24 sm:h-24 rounded-[2rem] bg-white border-2 border-sky-100 flex items-center justify-center shadow-sm group-hover:border-sky-400 group-hover:shadow-soft transition-all duration-500 overflow-hidden relative">
-                  <span className="text-2xl sm:text-4xl font-black text-sky-400 group-hover:text-sky-600 transition-colors">
+                <div className="shrink-0 w-16 h-16 sm:w-24 sm:h-24 rounded-3xl bg-white/90 backdrop-blur-md border-2 border-white flex items-center justify-center shadow-soft group-hover:border-rose-300 transition-all duration-300 overflow-hidden relative">
+                  <span className="font-display text-2xl sm:text-4xl font-extrabold text-sky-500 group-hover:text-rose-500 transition-colors">
                     {step.num}
                   </span>
                 </div>
 
-                <div className="flex-1 bg-white/85 backdrop-blur-xl border border-white rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 shadow-soft hover:shadow-xl transition-all duration-500 group-hover:-translate-y-1.5 relative overflow-hidden">
-                  <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3 tracking-tight relative z-10">
+                <div className="flex-1 bg-white/80 backdrop-blur-xl border border-white/90 rounded-3xl p-6 sm:p-9 shadow-soft hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1 relative overflow-hidden">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0C1A2E] mb-3 tracking-tight relative z-10">
                     {step.title}
                   </h3>
                   <p className="text-lg text-slate-600 leading-relaxed font-medium relative z-10 mb-6">

@@ -27,7 +27,7 @@ export default function TrustBar() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.25, duration: 0.6 }}
-        className="bg-white/90 backdrop-blur-lg py-5 px-4 sm:px-6 rounded-3xl sm:rounded-[2.5rem] shadow-soft border border-white flex items-center gap-3"
+        className="bg-white/80 backdrop-blur-xl py-5 px-4 sm:px-6 rounded-3xl shadow-soft border border-white/90 flex items-center gap-3"
       >
         <div className="overflow-hidden w-full relative mask-image-fade group">
           <div

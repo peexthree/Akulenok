@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import "../css/tailwind.css";
-import { Nunito } from "next/font/google";
+import { Nunito, Manrope } from "next/font/google";
 import Layout from "../components/Layout";
 import { SharkProvider } from "../components/SharkProvider";
 import Head from "next/head";
@@ -15,7 +15,14 @@ export const nunito = Nunito({
   display: "swap",
 });
 
-// Премиальная стартовая заставка (SEO-безопасная: без <h1> и aria-hidden)
+export const manrope = Manrope({
+  subsets: ["cyrillic", "latin"],
+  variable: "--font-display",
+  weight: ["500", "600", "700", "800"],
+  display: "swap",
+});
+
+// Премиальная стартовая заставка (Liquid Glass + Aqua-Rose, без <h1> и aria-hidden)
 const LoadingScreen = () => (
   <motion.div
     key="loader"
@@ -23,26 +30,29 @@ const LoadingScreen = () => (
     initial={{ opacity: 1 }}
     exit={{ opacity: 0, scale: 1.02 }}
     transition={{ duration: 0.65, ease: "easeInOut" }}
-    className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-gradient-to-b from-sky-50 via-white to-sky-50 pointer-events-none select-none"
+    className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#F6FBFF] pointer-events-none select-none overflow-hidden"
   >
+    <div className="absolute top-1/3 left-1/3 w-72 h-72 bg-sky-300/30 rounded-full blur-3xl pointer-events-none" />
+    <div className="absolute bottom-1/3 right-1/3 w-72 h-72 bg-rose-300/20 rounded-full blur-3xl pointer-events-none" />
+
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.55, delay: 0.1 }}
-      className="flex flex-col items-center"
+      className="relative z-10 flex flex-col items-center"
     >
-      <span className="text-xs font-extrabold uppercase tracking-[0.35em] text-sky-400 mb-3">
+      <span className="text-xs font-extrabold uppercase tracking-[0.35em] text-sky-600 mb-3">
         Семейный аквацентр
       </span>
-      <div className="text-5xl sm:text-7xl font-black bg-gradient-to-r from-sky-500 via-blue-500 to-teal-400 bg-clip-text text-transparent tracking-tighter mb-4">
+      <div className="font-display text-5xl sm:text-7xl font-extrabold bg-gradient-to-r from-sky-500 via-indigo-400 to-rose-500 bg-clip-text text-transparent tracking-tight mb-5">
         Акулёнок
       </div>
-      <div className="w-36 h-1.5 bg-sky-100 rounded-full overflow-hidden">
+      <div className="w-40 h-1.5 bg-sky-100 rounded-full overflow-hidden shadow-inner">
         <motion.div
           initial={{ x: "-100%" }}
           animate={{ x: "0%" }}
           transition={{ duration: 1.15, ease: "easeInOut" }}
-          className="h-full w-full bg-gradient-to-r from-sky-400 to-teal-400 rounded-full"
+          className="h-full w-full bg-gradient-to-r from-sky-500 via-indigo-400 to-rose-500 rounded-full"
         />
       </div>
     </motion.div>
@@ -97,6 +107,7 @@ function MyApp({ Component, pageProps }) {
       <style jsx global>{`
         :root {
           --font-nunito: ${nunito.style.fontFamily};
+          --font-display: ${manrope.style.fontFamily};
         }
       `}</style>
 
@@ -122,7 +133,7 @@ function MyApp({ Component, pageProps }) {
 
       <MotionConfig reducedMotion="user">
         <SharkProvider>
-          <div className={`${nunito.variable} font-nunito antialiased text-slate-900`}>
+          <div className={`${nunito.variable} ${manrope.variable} font-nunito antialiased text-[#0C1A2E]`}>
             {isConsentGiven && (
               <noscript>
                 <div>

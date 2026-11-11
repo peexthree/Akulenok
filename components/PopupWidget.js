@@ -50,7 +50,7 @@ const actionLinks = [
     icon: PhoneIcon,
     href: `tel:${COMPANY_DETAILS.phoneRaw}`,
     external: false,
-    color: "bg-orange-500/10 text-orange-700 border-orange-200 hover:bg-orange-500 hover:text-white",
+    color: "bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-500 hover:text-white",
   },
 ];
 
@@ -118,8 +118,8 @@ export default function PopupWidget() {
         aria-label={open ? "Закрыть окно связи" : "Связаться с нами"}
         aria-expanded={open}
         className={clsx(
-          "h-14 w-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300",
-          "bg-gradient-to-br from-sky-400 via-sky-500 to-blue-600 text-white",
+          "h-14 w-14 rounded-full shadow-lg shadow-rose-500/30 flex items-center justify-center transition-all duration-300 border border-white/30",
+          "bg-gradient-to-br from-rose-500 to-pink-500 text-white",
           open ? "rotate-90 scale-95" : "hover:scale-110 active:scale-90"
         )}
       >

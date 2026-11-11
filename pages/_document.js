@@ -11,7 +11,7 @@ export default function Document() {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       </Head>
 
-      <body className="bg-slate-50 text-slate-900 antialiased selection:bg-sky-500/30">
+      <body className="bg-[#F6FBFF] text-[#0C1A2E] antialiased selection:bg-sky-500/25">
         <Main />
         <NextScript />
       </body>

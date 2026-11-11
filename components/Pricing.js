@@ -66,8 +66,11 @@ export default function Pricing() {
   };
 
   return (
-    <section id="pricing" className="py-24 bg-slate-50 relative overflow-hidden scroll-mt-24">
-      <Container>
+    <section id="pricing" className="py-24 bg-[#F6FBFF] relative overflow-hidden scroll-mt-24">
+      <div className="absolute top-32 left-1/4 w-96 h-96 bg-sky-300/30 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-24 right-1/4 w-96 h-96 bg-rose-300/20 rounded-full blur-3xl pointer-events-none" />
+
+      <Container className="relative z-10">
         <SectionTitle
           pretitle="Стоимость"
           title="Инвестиция в здоровье и радость"
@@ -82,15 +85,15 @@ export default function Pricing() {
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10 }}
-              className={`relative flex flex-col p-8 rounded-[3rem] transition-all duration-300 backdrop-blur-xl border-2 ${
+              whileHover={{ y: -4 }}
+              className={`relative flex flex-col p-8 rounded-3xl transition-all duration-300 backdrop-blur-xl border ${
                 item.highlight
-                  ? "border-sky-400 shadow-2xl md:scale-[1.03] z-10 bg-white"
-                  : "border-white shadow-soft hover:shadow-xl bg-white/85"
+                  ? "border-sky-300 shadow-xl md:scale-[1.03] z-10 bg-white/95 ring-2 ring-sky-200/70"
+                  : "border-white/90 shadow-soft hover:shadow-xl bg-white/80"
               }`}
             >
               {item.highlight && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-sky-500 to-blue-600 text-white px-6 py-1.5 rounded-full text-xs font-black uppercase tracking-widest shadow-lg flex items-center gap-2 whitespace-nowrap">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-6 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest shadow-lg shadow-rose-500/25 flex items-center gap-2 whitespace-nowrap">
                   <StarIcon className="h-4 w-4" aria-hidden="true" />
                   Выбор мам
                 </div>
@@ -101,13 +104,13 @@ export default function Pricing() {
               </div>
 
               <div className="text-center mb-8">
-                <h3 className="text-sm uppercase font-black text-slate-500 tracking-widest mb-2">
+                <h3 className="text-sm uppercase font-extrabold text-slate-500 tracking-widest mb-2">
                   {item.title}
                 </h3>
-                <div className="text-4xl sm:text-5xl font-black text-slate-900 mb-3 tracking-tight leading-none">
+                <div className="font-display text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] mb-3 tracking-tight leading-none">
                   {item.price}
                 </div>
-                <p className="text-sm text-sky-700 font-bold bg-sky-50 py-1 px-3.5 rounded-full inline-block">
+                <p className="text-sm text-sky-700 font-bold bg-sky-50 border border-sky-100 py-1 px-3.5 rounded-full inline-block">
                   {item.description}
                 </p>
               </div>
@@ -115,7 +118,10 @@ export default function Pricing() {
               <ul className="space-y-4 mb-10 flex-grow">
                 {item.features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <CheckCircleIcon className="h-5 w-5 text-sky-500 shrink-0 mt-0.5" aria-hidden="true" />
+                    <CheckCircleIcon
+                      className={`h-5 w-5 shrink-0 mt-0.5 ${item.highlight ? "text-rose-500" : "text-sky-500"}`}
+                      aria-hidden="true"
+                    />
                     <span className="text-slate-600 text-sm font-bold leading-snug tracking-wide">
                       {feature}
                     </span>
@@ -125,10 +131,10 @@ export default function Pricing() {
 
               <a
                 href={`tel:${COMPANY_DETAILS.phoneRaw}`}
-                className={`w-full py-4 sm:py-5 rounded-[2rem] font-black tracking-wide leading-snug text-center transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 ${
+                className={`w-full py-4 rounded-2xl font-extrabold tracking-wide leading-snug text-center transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 ${
                   item.highlight
-                    ? "bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-[0_10px_25px_rgba(14,165,233,0.35)] hover:shadow-[0_14px_30px_rgba(14,165,233,0.5)]"
-                    : "bg-slate-100 text-slate-800 border border-slate-200 hover:bg-sky-50 hover:border-sky-200 hover:text-sky-700"
+                    ? "bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white shadow-lg shadow-rose-500/25"
+                    : "bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-600 hover:to-cyan-600 text-white shadow-md shadow-sky-500/20"
                 }`}
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -140,17 +146,17 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* Секция лояльности */}
-        <div id="discounts" className="mt-20 grid md:grid-cols-3 gap-8 scroll-mt-24">
+        {/* Секция лояльности (65 / 25 / 10 Aqua-Rose) */}
+        <div id="discounts" className="mt-20 grid md:grid-cols-3 gap-6 sm:gap-8 scroll-mt-24">
           <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft flex flex-col gap-4"
+            whileHover={{ y: -3 }}
+            className="p-8 rounded-3xl bg-white/80 backdrop-blur-xl border border-white/90 shadow-soft flex flex-col gap-4 transition-all duration-300"
           >
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-sky-100 text-sky-700 rounded-3xl flex items-center justify-center text-xl font-black shrink-0">
+              <div className="font-display w-14 h-14 bg-sky-100 text-sky-700 rounded-2xl flex items-center justify-center text-xl font-extrabold shrink-0">
                 5%
               </div>
-              <h4 className="font-black text-xl text-slate-900 leading-tight">
+              <h4 className="font-extrabold text-xl text-[#0C1A2E] leading-tight">
                 Постоянным
                 <br />
                 клиентам
@@ -162,14 +168,14 @@ export default function Pricing() {
           </motion.div>
 
           <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-soft flex flex-col gap-4"
+            whileHover={{ y: -3 }}
+            className="p-8 rounded-3xl bg-white/80 backdrop-blur-xl border border-white/90 shadow-soft flex flex-col gap-4 transition-all duration-300"
           >
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-orange-100 text-orange-600 rounded-3xl flex items-center justify-center text-xl font-black shrink-0">
+              <div className="font-display w-14 h-14 bg-rose-50 border border-rose-200/70 text-rose-600 rounded-2xl flex items-center justify-center text-xl font-extrabold shrink-0">
                 10%
               </div>
-              <h4 className="font-black text-xl text-slate-900 leading-tight">
+              <h4 className="font-extrabold text-xl text-[#0C1A2E] leading-tight">
                 Социальная
                 <br />
                 поддержка
@@ -179,23 +185,24 @@ export default function Pricing() {
               Льготы многодетным и семьям участников СВО.
             </p>
             <div className="mt-auto">
-              <span className="text-orange-700 font-black text-[11px] uppercase bg-orange-50 px-2.5 py-1 rounded-md border border-orange-200 inline-block">
+              <span className="text-rose-700 font-extrabold text-[11px] uppercase bg-rose-50 px-3 py-1 rounded-full border border-rose-200/70 inline-block">
                 +2% за наличный расчёт
               </span>
             </div>
           </motion.div>
 
+          {/* Промокод АКУЛА в фирменном Aqua-Rose градиенте */}
           <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="p-8 rounded-[2.5rem] bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-100 shadow-soft flex flex-col gap-4 relative overflow-hidden group"
+            whileHover={{ y: -3 }}
+            className="p-8 rounded-3xl bg-gradient-to-br from-sky-50/90 via-white/90 to-rose-50/90 backdrop-blur-xl border border-white/90 shadow-soft flex flex-col gap-4 relative overflow-hidden group transition-all duration-300"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-purple-200/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-36 h-36 bg-rose-300/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
             <div className="flex items-center gap-4 relative z-10">
-              <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-3xl flex items-center justify-center text-xl font-black shrink-0 shadow-md">
+              <div className="w-14 h-14 bg-gradient-to-br from-sky-400 via-indigo-400 to-rose-400 text-white rounded-2xl flex items-center justify-center text-xl font-extrabold shrink-0 shadow-md">
                 <GiftIcon className="w-6 h-6" aria-hidden="true" />
               </div>
-              <h4 className="font-black text-xl text-slate-900 leading-tight text-balance">
+              <h4 className="font-extrabold text-xl text-[#0C1A2E] leading-tight text-balance">
                 Скидка
                 <br />
                 новым клиентам
@@ -215,7 +222,7 @@ export default function Pricing() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="w-full py-3 bg-white/80 backdrop-blur-sm border border-indigo-200 border-dashed rounded-2xl text-center text-indigo-600 font-bold text-sm flex items-center justify-center gap-2 hover:bg-indigo-100 transition-colors"
+                    className="w-full py-3 bg-white/90 backdrop-blur-sm border border-rose-200 border-dashed rounded-2xl text-center text-rose-700 font-bold text-sm flex items-center justify-center gap-2 hover:bg-rose-50 transition-colors"
                   >
                     <span>Узнать промокод</span>
                     <svg className="w-4 h-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -229,12 +236,12 @@ export default function Pricing() {
                     onClick={handleCopyPromo}
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl text-center shadow-lg transition-colors"
+                    className="w-full py-3 bg-gradient-to-br from-sky-500 via-indigo-400 to-rose-500 text-white rounded-2xl text-center shadow-lg transition-all hover:brightness-105"
                   >
-                    <span className="text-xs font-medium opacity-90 uppercase tracking-widest block mb-1">
+                    <span className="text-xs font-medium opacity-95 uppercase tracking-widest block mb-1">
                       {copied ? "Скопировано ✓" : "Ваш промокод (нажмите, чтобы скопировать):"}
                     </span>
-                    <span className="font-black text-2xl tracking-widest">АКУЛА</span>
+                    <span className="font-display font-extrabold text-2xl tracking-widest">АКУЛА</span>
                   </motion.button>
                 )}
               </AnimatePresence>

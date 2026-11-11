@@ -98,15 +98,15 @@ export default function Home() {
         />
       </Head>
 
-      <div className="flex flex-col min-h-screen relative overflow-x-clip bg-slate-50">
+      <div className="flex flex-col min-h-screen relative overflow-x-clip bg-[#F6FBFF]">
         <Navbar />
 
         <Hero />
-        <WaveDivider waveColor="text-white" />
+        <WaveDivider waveColor="text-[#F6FBFF]" />
         <TrustBar />
         <About />
 
-        <WaveDivider waveColor="text-sky-50" />
+        <WaveDivider waveColor="text-[#ECF8FF]" />
         <Methodology />
         <JourneyTimeline />
 
@@ -120,13 +120,13 @@ export default function Home() {
 
         <Checklist />
 
-        <WaveDivider waveColor="text-sky-50" />
+        <WaveDivider waveColor="text-[#ECF8FF]" />
         <Team />
         <Schedule />
 
         <Pricing />
 
-        <WaveDivider waveColor="text-white" />
+        <WaveDivider waveColor="text-[#F6FBFF]" />
         <Testimonials />
 
         <Gallery />

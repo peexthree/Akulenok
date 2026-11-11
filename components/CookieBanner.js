@@ -35,11 +35,11 @@ export default function CookieBanner() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
-          className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-96 z-[9999] bg-white/95 backdrop-blur-xl border border-sky-100 p-6 rounded-2xl shadow-2xl"
+          className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-96 z-[9999] bg-white/85 backdrop-blur-xl border border-white/90 p-6 rounded-3xl shadow-soft"
         >
           <div className="flex items-start gap-4">
             <div className="flex-1">
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Мы используем файлы cookie 🍪</h3>
+              <h3 className="text-lg font-extrabold text-[#0C1A2E] mb-2">Мы используем файлы cookie 🍪</h3>
               <p className="text-sm text-slate-600 mb-4 leading-relaxed font-medium">
                 Нажимая «Хорошо», вы соглашаетесь на работу аналитики согласно{" "}
                 <Link href="/privacy" className="text-sky-600 hover:text-sky-700 underline underline-offset-2 transition-colors">
@@ -51,7 +51,7 @@ export default function CookieBanner() {
                 <button
                   type="button"
                   onClick={acceptCookies}
-                  className="w-full bg-sky-500 text-white font-bold py-2.5 px-4 rounded-xl hover:bg-sky-600 transition-colors shadow-md active:scale-95"
+                  className="w-full bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-600 hover:to-cyan-600 text-white font-bold py-2.5 px-4 rounded-2xl transition-all shadow-md shadow-sky-500/20 active:scale-95"
                 >
                   Хорошо
                 </button>

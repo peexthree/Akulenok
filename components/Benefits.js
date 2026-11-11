@@ -46,7 +46,7 @@ export default function Benefits() {
   return (
     <Container className="relative">
       <div className="text-center mb-16 relative z-10">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
+        <span className="inline-block px-4 py-1.5 rounded-full bg-sky-100/80 border border-sky-200/60 text-sky-700 font-bold text-xs tracking-widest uppercase mb-4">
           Преимущества
         </span>
         <motion.h2
@@ -54,11 +54,11 @@ export default function Benefits() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight text-balance"
+          className="text-4xl sm:text-5xl font-extrabold text-[#0C1A2E] tracking-tight text-balance"
         >
           Почему «Акулёнок» — это верный выбор?
         </motion.h2>
-        <div className="w-24 h-1.5 bg-gradient-to-r from-sky-400 to-blue-500 mx-auto mt-6 rounded-full" />
+        <div className="w-24 h-1.5 bg-gradient-to-r from-sky-500 via-indigo-400 to-rose-500 mx-auto mt-6 rounded-full" />
       </div>
 
       <motion.div
@@ -66,16 +66,20 @@ export default function Benefits() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="grid gap-8 md:grid-cols-3 pb-12 relative z-10"
+        className="grid gap-6 sm:gap-8 md:grid-cols-3 pb-12 relative z-10"
       >
         {items.map((item, index) => (
           <motion.div
             key={index}
             variants={itemVariants}
-            whileHover={{ y: -10, transition: { duration: 0.25 } }}
-            className="bg-white/80 backdrop-blur-xl p-8 sm:p-10 flex flex-col items-center text-center rounded-[2.5rem] sm:rounded-[3rem] border border-white shadow-soft hover:shadow-2xl transition-all duration-300 group"
+            whileHover={{ y: -4, transition: { duration: 0.25 } }}
+            className={`backdrop-blur-xl p-8 rounded-3xl border border-white/90 shadow-soft hover:shadow-xl transition-all duration-300 group flex flex-col items-center text-center ${
+              index === 1
+                ? "bg-gradient-to-b from-white/95 to-sky-50/85 ring-1 ring-sky-200/60"
+                : "bg-white/80"
+            }`}
           >
-            <div className="w-40 h-40 mb-8 relative flex items-center justify-center bg-sky-50 rounded-[40px] overflow-hidden border-4 border-white shadow-inner group-hover:scale-105 transition-transform duration-500">
+            <div className="w-36 h-36 sm:w-40 sm:h-40 mb-7 relative flex items-center justify-center bg-[#ECF8FF] rounded-3xl overflow-hidden border-2 border-white shadow-inner group-hover:scale-105 transition-transform duration-500">
               <Image
                 src={item.img}
                 alt={item.title}
@@ -84,7 +88,7 @@ export default function Benefits() {
                 className="object-contain p-4"
               />
             </div>
-            <h3 className="text-2xl font-black text-slate-900 mb-4 leading-tight">
+            <h3 className="text-2xl font-extrabold text-[#0C1A2E] mb-4 leading-tight">
               {item.title}
             </h3>
             <p className="text-slate-600 font-medium leading-relaxed">
@@ -94,7 +98,8 @@ export default function Benefits() {
         ))}
       </motion.div>
 
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-sky-100 rounded-full blur-[120px] opacity-40 -z-10 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sky-300/30 rounded-full blur-3xl -z-10 pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 h-80 bg-rose-300/20 rounded-full blur-3xl -z-10 pointer-events-none" />
     </Container>
   );
 }

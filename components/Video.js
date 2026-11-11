@@ -50,12 +50,12 @@ export default function Video() {
         transition={{ duration: 0.7, ease: "easeOut" }}
         className="relative max-w-5xl mx-auto group"
       >
-        <div className="absolute -inset-4 bg-gradient-to-tr from-sky-400/20 to-blue-400/10 rounded-[2.5rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
+        <div className="absolute -inset-6 bg-gradient-to-tr from-sky-300/30 via-transparent to-rose-300/20 rounded-3xl blur-3xl -z-10 pointer-events-none" />
 
-        <div className="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-[10px] sm:border-[12px] border-white/90 bg-slate-100">
+        <div className="relative aspect-video rounded-3xl sm:rounded-[2.5rem] overflow-hidden shadow-heavy border-[10px] sm:border-[12px] border-white/90 bg-sky-50">
           <div className="absolute top-5 right-5 z-20 pointer-events-none">
-            <div className="flex items-center gap-2 bg-slate-900/45 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/25 text-white text-xs font-bold uppercase tracking-wider">
-              <span className="w-2 h-2 rounded-full bg-sky-400" aria-hidden="true" />
+            <div className="flex items-center gap-2 bg-[#0C1A2E]/50 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/25 text-white text-xs font-bold uppercase tracking-wider">
+              <span className="w-2 h-2 rounded-full bg-rose-400" aria-hidden="true" />
               Атмосфера занятий
             </div>
           </div>

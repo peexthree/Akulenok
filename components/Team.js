@@ -67,11 +67,11 @@ const AquaCard = ({ member, isDuplicate }) => {
   return (
     <motion.div
       aria-hidden={isDuplicate}
-      whileHover={{ scale: 1.02, y: -8 }}
+      whileHover={{ scale: 1.02, y: -4 }}
       transition={{ duration: 0.25 }}
-      className="relative group w-[300px] sm:w-[320px] shrink-0 rounded-[2.5rem] p-6 overflow-hidden
-                 bg-white/75 backdrop-blur-md border border-white
-                 shadow-[0_10px_30px_rgba(14,165,233,0.08)] hover:shadow-xl flex flex-col"
+      className="relative group w-[300px] sm:w-[320px] shrink-0 rounded-3xl p-6 overflow-hidden
+                 bg-white/80 backdrop-blur-xl border border-white/90
+                 shadow-soft hover:shadow-xl flex flex-col"
     >
       <div className="relative aspect-[3/4] w-full rounded-3xl overflow-hidden mb-5 bg-gradient-to-b from-sky-100 to-sky-50 shadow-inner">
         <Image

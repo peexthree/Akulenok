@@ -5,7 +5,7 @@ import { COMPANY_DETAILS } from "../config/company";
 
 export default function LoyalClients() {
   return (
-    <section className="py-24 relative overflow-hidden bg-[#ECF8FF]">
+    <section data-ym-section="loyal-clients" className="py-24 relative overflow-hidden bg-[#ECF8FF]">
       <div className="absolute top-0 right-0 w-96 h-96 bg-sky-300/30 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-rose-300/20 rounded-full blur-3xl pointer-events-none" />
 

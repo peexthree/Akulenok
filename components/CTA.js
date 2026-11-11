@@ -8,7 +8,7 @@ import { COMPANY_DETAILS } from "../config/company";
 
 function Cta() {
   return (
-    <Container className="mb-24 relative overflow-visible">
+    <Container id="cta" className="mb-24 relative overflow-visible">
       <motion.div
         initial={{ opacity: 0, x: 36 }}
         whileInView={{ opacity: 1, x: 0 }}

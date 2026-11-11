@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { CheckCircleIcon, StarIcon, GiftIcon } from "@heroicons/react/24/solid";
 import { COMPANY_DETAILS } from "../config/company";
+import { YM_GOALS, trackGoal } from "../utils/metrika";
 
 const pricingData = [
   {
@@ -54,6 +55,7 @@ export default function Pricing() {
   const [copied, setCopied] = useState(false);
 
   const handleCopyPromo = async () => {
+    trackGoal(YM_GOALS.COPY_PROMO, { section: "pricing" });
     try {
       if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText("АКУЛА");
@@ -218,7 +220,10 @@ export default function Pricing() {
                   <motion.button
                     key="hidden"
                     type="button"
-                    onClick={() => setShowPromo(true)}
+                    onClick={() => {
+                      setShowPromo(true);
+                      trackGoal(YM_GOALS.OPEN_PROMO, { section: "pricing" });
+                    }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}

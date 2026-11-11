@@ -44,7 +44,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-[94vh] flex flex-col justify-center pt-28 pb-24 overflow-hidden rounded-b-[3rem] sm:rounded-b-[5rem] bg-[#0C1A2E]">
+    <section data-ym-section="hero" className="relative min-h-[94vh] flex flex-col justify-center pt-28 pb-24 overflow-hidden rounded-b-[3rem] sm:rounded-b-[5rem] bg-[#0C1A2E]">
       {/* Фоновое видео */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video

@@ -91,6 +91,7 @@ export default function PopupWidget() {
   return (
     <div
       ref={widgetRef}
+      data-ym-section="popup-widget"
       className={clsx(
         "fixed right-6 z-[100] transition-all duration-300",
         isBannerClosed ? "bottom-6" : "bottom-40 sm:bottom-36"

@@ -7,6 +7,7 @@ import { SharkProvider } from "../components/SharkProvider";
 import Head from "next/head";
 import Script from "next/script";
 import { useRouter } from "next/router";
+import { YM_COUNTER_ID, handleTrackedLinkClick } from "../utils/metrika";
 
 export const nunito = Nunito({
   subsets: ["cyrillic", "latin"],
@@ -86,7 +87,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     const handleRouteChange = (url) => {
       if (typeof window !== "undefined" && window.ym && isConsentGiven) {
-        window.ym(108276956, "hit", url);
+        window.ym(YM_COUNTER_ID, "hit", url);
       }
     };
 
@@ -95,6 +96,13 @@ function MyApp({ Component, pageProps }) {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events, isConsentGiven]);
+
+  useEffect(() => {
+    if (!isConsentGiven) return undefined;
+
+    document.addEventListener("click", handleTrackedLinkClick);
+    return () => document.removeEventListener("click", handleTrackedLinkClick);
+  }, [isConsentGiven]);
 
   return (
     <>
@@ -121,7 +129,7 @@ function MyApp({ Component, pageProps }) {
                 k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
             })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
 
-            ym(108276956, 'init', {
+            ym(${YM_COUNTER_ID}, 'init', {
               clickmap:true,
               trackLinks:true,
               accurateTrackBounce:true,
@@ -138,7 +146,7 @@ function MyApp({ Component, pageProps }) {
               <noscript>
                 <div>
                   <img
-                    src="https://mc.yandex.ru/watch/108276956"
+                    src={`https://mc.yandex.ru/watch/${YM_COUNTER_ID}`}
                     style={{ position: "absolute", left: "-9999px" }}
                     alt=""
                   />

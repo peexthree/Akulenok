@@ -38,12 +38,6 @@ const securityHeaders = [
     key: "Permissions-Policy",
     value: "camera=(), microphone=(), geolocation=()",
   },
-  {
-    // Перекрывает автоматический Access-Control-Allow-Origin: *,
-    // который Vercel добавляет к статическим файлам.
-    key: "Access-Control-Allow-Origin",
-    value: "https://www.akulenok-tmz.ru",
-  },
 ];
 
 const nextConfig = {

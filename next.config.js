@@ -79,6 +79,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/:path*(Оферта|%D0%9E%D1%84%D0%B5%D1%80%D1%82%D0%B0).pdf",
+        destination: "/oferta.pdf",
+        permanent: true,
+      },
+      {
         source: "/:path*",
         has: [
           {

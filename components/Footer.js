@@ -138,7 +138,7 @@ export default function Footer() {
               </button>
               <span className="hidden sm:inline text-slate-300">•</span>
               <a
-                href="/Оферта.pdf"
+                href="/oferta.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-sky-600 transition-colors"

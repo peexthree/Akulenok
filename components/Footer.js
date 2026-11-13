@@ -158,7 +158,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener"
               title="AppSeal Security Verified: Grade A+ (100/100)"
-              className="inline-flex items-center hover:opacity-90 transition-opacity shrink-0"
+              className="inline-flex items-center hover:opacity-90 transition-opacity shrink-0 mr-10 sm:mr-16"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

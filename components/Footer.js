@@ -124,14 +124,28 @@ export default function Footer() {
         <div className="flex flex-col gap-3 pt-8 text-slate-500 text-sm font-medium">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p>© {currentYear} {COMPANY_DETAILS.name}. Все права защищены.</p>
-            <a
-              href="/Оферта.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-sky-600 transition-colors"
-            >
-              Публичная оферта: Правила посещения центра
-            </a>
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+              <button
+                type="button"
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.dispatchEvent(new Event("openCookieSettings"));
+                  }
+                }}
+                className="hover:text-sky-600 transition-colors cursor-pointer underline underline-offset-4 decoration-slate-300 hover:decoration-sky-500"
+              >
+                Настройки cookie
+              </button>
+              <span className="hidden sm:inline text-slate-300">•</span>
+              <a
+                href="/Оферта.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-sky-600 transition-colors"
+              >
+                Публичная оферта: Правила посещения центра
+              </a>
+            </div>
           </div>
           <p className="text-xs text-slate-500 text-center md:text-left leading-relaxed">
             {COMPANY_DETAILS.metaDisclaimer}

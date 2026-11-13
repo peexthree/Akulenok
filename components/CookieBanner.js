@@ -13,6 +13,12 @@ export default function CookieBanner() {
     }
   }, []);
 
+  useEffect(() => {
+    const handleOpen = () => setIsVisible(true);
+    window.addEventListener("openCookieSettings", handleOpen);
+    return () => window.removeEventListener("openCookieSettings", handleOpen);
+  }, []);
+
   const acceptCookies = () => {
     localStorage.setItem("cookieConsent", "true");
     setIsVisible(false);

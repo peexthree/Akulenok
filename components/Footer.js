@@ -121,7 +121,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 pt-8 text-slate-500 text-sm font-medium">
+        <div className="flex flex-col gap-6 pt-8 text-slate-500 text-sm font-medium">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p>© {currentYear} {COMPANY_DETAILS.name}. Все права защищены.</p>
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
@@ -147,9 +147,30 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          <p className="text-xs text-slate-500 text-center md:text-left leading-relaxed">
-            {COMPANY_DETAILS.metaDisclaimer}
-          </p>
+
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-2">
+            <p className="text-xs text-slate-500 text-center md:text-left leading-relaxed max-w-2xl">
+              {COMPANY_DETAILS.metaDisclaimer}
+            </p>
+
+            <a
+              href="https://appseal.online/?report=mwezge9i-aa37aff13b"
+              target="_blank"
+              rel="noopener"
+              title="AppSeal Security Verified: Grade A+ (100/100)"
+              className="inline-flex items-center hover:opacity-90 transition-opacity shrink-0"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://appseal.online/api/badge?id=mwezge9i-aa37aff13b"
+                alt="AppSeal Verified: Grade A+"
+                width={228}
+                height={44}
+                className="h-11 w-auto object-contain rounded-lg shadow-sm"
+                loading="lazy"
+              />
+            </a>
+          </div>
         </div>
       </Container>
     </footer>

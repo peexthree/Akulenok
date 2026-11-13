@@ -107,7 +107,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title key="title">Акулёнок - детский бассейн, женский и детский фитнес в Туймазах</title>
         <meta name="title" content="Акулёнок - детский бассейн, женский и детский фитнес в Туймазах" />
         <meta
           name="description"

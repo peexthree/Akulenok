@@ -13,7 +13,8 @@ export default function Privacy() {
   return (
     <>
       <Head>
-        <title>{pageTitle}</title>
+        <title key="title">{pageTitle}</title>
+        <meta name="title" content={pageTitle} />
         <meta name="description" content={pageDescription} />
         <link rel="canonical" href={`${COMPANY_DETAILS.siteUrl}/privacy`} />
       </Head>

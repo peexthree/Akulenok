@@ -107,6 +107,12 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
+        <title key="title">Акулёнок - детский бассейн, женский и детский фитнес в Туймазах</title>
+        <meta name="title" content="Акулёнок - детский бассейн, женский и детский фитнес в Туймазах" />
+        <meta
+          name="description"
+          content="Семейный аквацентр «Акулёнок» в г. Туймазы: грудничковое и раннее плавание от 3 месяцев, женский фитнес и стретчинг, детская группа 3-7 лет. Запись: +7 (927) 303-99-77."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="theme-color" content="#0ea5e9" />
         <meta name="robots" content="index, follow" />

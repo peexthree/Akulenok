@@ -1,8 +1,14 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { nunito, manrope } from "../utils/fonts";
 
 export default function Document() {
   return (
-    <Html lang="ru" className="scroll-smooth">
+    <Html
+      lang="ru"
+      // Переменные шрифтов next/font вешаются на <Html> (= :root) классом .variable
+      // вместо inline-стиля styled-jsx - CSP обходится без 'unsafe-inline' в style-src
+      className={`scroll-smooth ${nunito.variable} ${manrope.variable}`}
+    >
       <Head>
         {/* eslint-disable-next-line @next/next/no-title-in-document-head -- raw <title> required by scanners without regex attribute support */}
         <title>Семейный аквацентр «Акулёнок» в Туймазах - грудничковое плавание и фитнес</title>

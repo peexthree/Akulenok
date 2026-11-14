@@ -1,27 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import "../css/tailwind.css";
-import { Nunito, Manrope } from "next/font/google";
+import { nunito, manrope } from "../utils/fonts";
 import Layout from "../components/Layout";
 import { SharkProvider } from "../components/SharkProvider";
 import Head from "next/head";
 import Script from "next/script";
 import { useRouter } from "next/router";
 import { YM_COUNTER_ID, handleTrackedLinkClick } from "../utils/metrika";
-
-export const nunito = Nunito({
-  subsets: ["cyrillic", "latin"],
-  variable: "--font-nunito",
-  weight: ["400", "500", "600", "700", "800", "900"],
-  display: "swap",
-});
-
-export const manrope = Manrope({
-  subsets: ["cyrillic", "latin"],
-  variable: "--font-display",
-  weight: ["500", "600", "700", "800"],
-  display: "swap",
-});
 
 // Премиальная стартовая заставка (Liquid Glass + Aqua-Rose, без <h1> и aria-hidden)
 const LoadingScreen = () => (
@@ -116,13 +102,6 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content="#0ea5e9" />
         <meta name="robots" content="index, follow" />
       </Head>
-
-      <style jsx global>{`
-        :root {
-          --font-nunito: ${nunito.style.fontFamily};
-          --font-display: ${manrope.style.fontFamily};
-        }
-      `}</style>
 
       {isConsentGiven && (
         // Код счётчика живёт в /metrika.js, чтобы CSP обходился без 'unsafe-inline'

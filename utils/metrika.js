@@ -1,4 +1,4 @@
-export const YM_COUNTER_ID = 108276956;
+export const YM_COUNTER_ID = 114248302;
 
 export const YM_GOALS = {
   PHONE: "click_phone",

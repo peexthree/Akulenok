@@ -5,7 +5,7 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value:
       "default-src 'self'; " +
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://mc.yandex.ru https://*.yandex.ru https://yastatic.net; " +
+      "script-src 'self' https://mc.yandex.ru https://*.yandex.ru https://yastatic.net; " +
       "style-src 'self' 'unsafe-inline' https://yastatic.net; " +
       "img-src 'self' data: blob: https://appseal.online https://mc.yandex.ru https://mc.yandex.com https://mc.webvisor.com https://mc.webvisor.org https://yastatic.net https://*.yandex.net https://*.yandex.ru; " +
       "font-src 'self' data: https://fonts.gstatic.com; " +
@@ -17,6 +17,10 @@ const securityHeaders = [
       "object-src 'none'; " +
       "frame-ancestors 'self' https://metrika.yandex.ru https://*.metrika.yandex.ru https://metrika.yandex.com https://metrika.yandex.by https://metrika.yandex.kz https://webvisor.com https://*.webvisor.com; " +
       "base-uri 'self'",
+  },
+  {
+    key: "Cross-Origin-Opener-Policy",
+    value: "same-origin",
   },
   {
     key: "Referrer-Policy",

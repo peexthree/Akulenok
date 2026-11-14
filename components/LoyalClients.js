@@ -72,7 +72,7 @@ export default function LoyalClients() {
 
               <div className="mt-10 pt-6 border-t border-slate-100">
                 <a
-                  href="/Оферта.pdf"
+                  href="/oferta.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sky-600 font-bold hover:text-sky-700 transition-colors group-hover:translate-x-1 duration-300"
